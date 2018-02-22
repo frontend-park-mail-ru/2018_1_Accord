@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA</title>
+    <link rel="stylesheet" href="css/mainStyle.css">
+</head>
+<body>
+<main id="application">
+
+    <section id="menu">
+
+        <div class="header">
+            <input class="button-mute" type="submit" value="Mute">
+        </div>
+
+        <h1>Bubble Wars</h1>
+
+        <ul>
+            <li>
+                <button data-section="play">Play</button>
+            </li>
+            <li>
+                <button data-section="login">Log in</button>
+            </li>
+            <li>
+                <button data-section="signup">Sign up</button>
+            </li>
+            <li>
+                <button data-section="about">About</button>
+            </li>
+        </ul>
+
+    </section>
+
+    <section id="play">
+
+        <div class="header">
+            <input class="button-back" type="submit" value="Back">
+            <input class="button-leaderBoard" type="submit" value="LeaderBoard">
+            <input class="button-mute" type="submit" value="Mute">
+        </div>
+
+        <h1>Let's play!</h1>
+
+    </section>
+
+    <section id="login">
+
+        <div class="header">
+            <input class="button-back" type="submit" value="Back">
+            <input class="button-mute" type="submit" value="Mute">
+        </div>
+
+        <h1>Log in</h1>
+
+        <form class="js-login-form">
+            <input required type="text" name="username" id="usernameLogIn" placeholder="Username...">
+            <input required type="password" name="password" id="passwordLogIn" placeholder="Password...">
+            <input class="js-login-submit" type="submit" value="log in">
+        </form>
+
+        <div class="error"></div>
+
+    </section>
+
+    <section id="signup">
+
+        <div class="header">
+            <input class="button-back" type="submit" value="Back">
+            <input class="button-mute" type="submit" value="Mute">
+        </div>
+
+        <h1>Sign up</h1>
+
+        <form class="js-signup-form">
+            <input required type="text" name="username" id="usernameSignUp" placeholder="Username...">
+            <input required type="password" name="password" id="passwordSignUp" placeholder="Password...">
+            <input required type="password" name="passwordConfirm" id="passwordConfirm"
+                   placeholder="Confirm password...">
+            <input class="js-signup-submit" type="submit" value="Sign up">
+        </form>
+
+        <div class="error"></div>
+
+    </section>
+
+
+    <section id="about">
+
+        <div class="navigation">
+            <input class="button-back" type="submit" value="Back">
+            <input class="button-mute" type="submit" value="Mute">
+        </div>
+
+        <h1>About</h1>
+
+    </section>
+
+</main>
+
+
+<script src="js/application.js"></script>
+</body>
+</html>
