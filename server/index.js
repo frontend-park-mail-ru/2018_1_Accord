@@ -54,8 +54,8 @@ app.post('/signup', function (req, res) {
     const passwordConfirm = req.body.passwordConfirm;
 
     if (!username || !password || !passwordConfirm ||
-        !password.match(/[^(\d\w)*]/) ||
-        !passwordConfirm.match(/[^(\d\w)*]/) ||
+        password.match(/[^(\d\w)*]/) ||
+        passwordConfirm.match(/[^(\d\w)*]/) ||
         password !== passwordConfirm) {
 
         return res.status(400).json({error: 'Invalid user data'});

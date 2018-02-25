@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 
 const application = document.getElementById('application');
@@ -44,12 +44,18 @@ const openFunction = {
     play: startPlay(),
 
     login: function () {
+        const backButton = loginSection.getElementsByClassName('button-back')[0];
+        backButton.addEventListener('click', getBack);
+
         loginForm.removeEventListener('submit', onSubmitLoginForm);
         loginForm.reset();
         loginForm.addEventListener('submit', onSubmitLoginForm);
     },
 
     signup: function () {
+        const backButton = signupSection.getElementsByClassName('button-back')[0];
+        backButton.addEventListener('click', getBack);
+
         signupForm.removeEventListener('submit', onSubmitSignupForm);
         signupForm.reset();
         signupForm.addEventListener('submit', onSubmitSignupForm);
@@ -80,6 +86,7 @@ function startPlay() {
 }
 
 function getBack(event) {
+    event.preventDefault();
     //В будущем данная функция будет больше и сложнее, но пока так
     openSection('menu');
 
@@ -135,7 +142,7 @@ class FormError {
 
         } else if (regExp.test(this._data['password'])) {
             this._stateError.passwordValid = false;
-            this._stateError.passwordError = 'Password must contain only latin symbols and digits\n';
+            this._stateError.passwordError = "Password must contain only latin symbols and digits\n";
 
         } else {
             this._stateError.passwordValid = true;
@@ -203,6 +210,7 @@ function onSubmitLoginForm(event) {
     event.preventDefault();
 
     const errorDiv = loginSection.getElementsByClassName('error')[0];
+    errorDiv.innerText = '';
     errorDiv.style.display = 'none';
 
     const fields = ['username', 'password'];
@@ -216,16 +224,16 @@ function onSubmitLoginForm(event) {
     if (!errorsOnDisplay(errorDiv, formError, 'login')) {
         loginUser(formData, function (err, response) {
             if (err) {
-                loginForm.reset();
+                form.reset();
                 errorDiv.style.display = 'block';
                 errorDiv.innerText += 'Invalid user data\n';
+            } else {
+                form.reset();
+                openSection('play');
             }
-
-            openSection('play');
         });
-    }
 
-    form.reset();
+    }
 }
 
 
@@ -237,6 +245,7 @@ function onSubmitSignupForm(event) {
     event.preventDefault();
 
     const errorDiv = signupSection.getElementsByClassName('error')[0];
+    errorDiv.innerText = '';
     errorDiv.style.display = 'none';
 
     const fields = ['username', 'password', 'passwordConfirm'];
@@ -250,20 +259,21 @@ function onSubmitSignupForm(event) {
     if (!errorsOnDisplay(errorDiv, formError, 'signup')) {
         signupUser(formData, function (err, response) {
             if (err) {
-                loginForm.reset();
+                form.reset();
                 errorDiv.style.display = 'block';
                 errorDiv.innerText += 'Invalid user data\n';
+            } else {
+                form.reset();
+                openSection('play');
             }
 
-            openSection('play');
         });
     }
-
-    form.reset();
 }
 
 function openAbout() {
-
+    const backButton = aboutSection.getElementsByClassName('button-back')[0];
+    backButton.addEventListener('click', getBack);
 }
 
 function loginUser(user, callback) {
