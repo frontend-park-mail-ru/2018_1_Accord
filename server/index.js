@@ -72,7 +72,7 @@ app.post('/signup', function (req, res) {
     users[username] = user;
 
     res.cookie('Accord', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
-    res.status(201).json({id});
+    res.status(200).json({id});
 });
 
 app.post('/login', function (req, res) {
@@ -91,14 +91,14 @@ app.post('/login', function (req, res) {
     ids[id] = username;
 
     res.cookie('Accord', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
-    res.status(201).json({id});
+    res.status(200).json({id});
 });
 
 app.get('/me', function (req, res) {
     const id = req.cookies['Accord'];
     const username = ids[id];
     if (!username || !users[username]) {
-        return res.status(401).end();
+        return res.status(400).end();
     }
 
     users[username].score += 1;

@@ -1,10 +1,13 @@
 'use strict';
 
 
+const httpModule = new window.HttpModule();
+
 const application = document.getElementById('application');
 
 const menuSection = document.getElementById('menu');
 const playSection = document.getElementById('play');
+const leaderBoardSection = document.getElementById('leaderboard');
 const loginSection = document.getElementById('login');
 const signupSection = document.getElementById('signup');
 const aboutSection = document.getElementById('about');
@@ -13,6 +16,7 @@ const loginForm = document.getElementsByClassName('js-login-form')[0];
 const signupForm = document.getElementsByClassName('js-signup-form')[0];
 
 playSection.style.display = 'none';
+leaderBoardSection.style.display = 'none';
 loginSection.style.display = 'none';
 signupSection.style.display = 'none';
 aboutSection.style.display = 'none';
@@ -20,28 +24,17 @@ aboutSection.style.display = 'none';
 const sections = {
     menu: menuSection,
     play: playSection,
+    leaderBoard: leaderBoardSection,
     login: loginSection,
     signup: signupSection,
     about: aboutSection
 };
 
-application.addEventListener('click', function (event) {
-    const target = event.target;
-
-    if (target.tagName.toLowerCase() !== 'button') {
-        return;
-    }
-
-    event.preventDefault();
-
-    const section = target.getAttribute('data-section');
-    console.info('Open section', section);
-    openSection(section);
-
-});
 
 const openFunction = {
     play: startPlay(),
+
+    leaderBoard: openleaderBoard(),
 
     login: function () {
         const backButton = loginSection.getElementsByClassName('button-back')[0];
@@ -65,6 +58,7 @@ const openFunction = {
 
 };
 
+
 function openSection(section) {
     Object.keys(sections).forEach(function (key) {
         if (key === section) {
@@ -72,18 +66,29 @@ function openSection(section) {
         } else {
             sections[key].style.display = 'none';
         }
-    });
 
+    });
     if (openFunction[section]) {
         openFunction[section]();
     }
+
 }
+application.addEventListener('click', function (event) {
+    const target = event.target;
+
+    if (target.tagName.toLowerCase() !== 'button') {
+        return;
+    }
+
+    event.preventDefault();
+
+    const section = target.getAttribute('data-section');
+    console.info('Open section', section);
+    openSection(section);
+
+});
 
 
-function startPlay() {
-    const backButton = playSection.getElementsByClassName('button-back')[0];
-    backButton.addEventListener('click', getBack);
-}
 
 function getBack(event) {
     event.preventDefault();
@@ -92,6 +97,18 @@ function getBack(event) {
 
 }
 
+function startPlay() {
+    const backButton = playSection.getElementsByClassName('button-back')[0];
+    const leaderBoardButton = playSection.getElementsByClassName('button-leaderBoard')[0];
+
+    backButton.addEventListener('click', getBack);
+    leaderBoardButton.addEventListener('click', openleaderBoard);
+}
+function openleaderBoard(event) {
+    event.preventDefault();
+
+
+}
 
 class FormError {
     constructor(formData, formType) {
@@ -276,49 +293,41 @@ function openAbout() {
     backButton.addEventListener('click', getBack);
 }
 
-function loginUser(user, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/login', true);
+function loadAllUsers(callback) {
+    httpModule.doGet({
+        url: '/users',
+        callback
+    });
+}
 
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState != 4) {
-            return;
-        }
 
-        if (xhr.status < 300) {
-            const response = JSON.parse(xhr.responseText);
-            callback(null, response);
-        } else {
-            callback(xhr);
-        }
-    };
-
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    xhr.withCredentials = true;
-
-    xhr.send(JSON.stringify(user));
+function loadMe(callback) {
+    httpModule.doGet({
+        url: '/me',
+        callback
+    });
 }
 
 function signupUser(user, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/signup', true);
+    httpModule.doPost({
+        url: '/signup',
+        callback,
+        data: user
+    });
+}
 
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState != 4) {
-            return;
-        }
 
-        if (xhr.status < 300) {
-            const response = JSON.parse(xhr.responseText);
-            callback(null, response);
-        } else {
-            callback(xhr);
-        }
-    };
+function loginUser(user, callback) {
+    httpModule.doPost({
+        url: '/login',
+        callback,
+        data: user
+    });
+}
 
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    xhr.withCredentials = true;
 
-    xhr.send(JSON.stringify(user));
+function checkAuth() {
 
 }
+
+openSection('menu');
