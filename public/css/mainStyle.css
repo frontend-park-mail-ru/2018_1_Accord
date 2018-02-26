@@ -6,3 +6,7 @@ html, body {
     justify-content: center;
     flex-direction: column;
 }
+
+.header {
+    justify-content: flex-start;
+}
