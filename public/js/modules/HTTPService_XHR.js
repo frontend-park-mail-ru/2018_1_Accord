@@ -16,6 +16,9 @@ class HttpResponse {
             return JSON.parse(this.body);
         } catch (error) {
             console.error('Parsing JSON error');
+            if (!this.body) {
+                console.error('User not found');
+            }
             return error;
         }
     }
