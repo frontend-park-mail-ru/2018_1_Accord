@@ -1,6 +1,4 @@
-import loginUser from "../js/modules/Login.js";
-import signupUser from "../js/modules/Signup.js";
-import loadUser from "../js/modules/LoadUser.js";
+import {loginUser, signupUser, loadUser} from "../js/modules/UserService.js";
 import Button from "../js/components/blocks/button.js";
 import SignupForm from "../js/components/blocks/signupForm.js";
 import LoginForm from "../js/components/blocks/loginForm.js";
