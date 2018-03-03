@@ -14,11 +14,17 @@ renderDOM(signupForm, document.getElementById('root'));
 renderDOM(loadUserButton, document.getElementById('root'));
 
 function loginUserCallback() {
-    loginUser(loginForm.getFormData());
+    if (loginForm.checkFormState()) {
+        loginUser(loginForm.getFormData());
+        loginForm.reset();
+    }
 }
 
 function signupUserCallback() {
-    signupUser(signupForm.getFormData());
+    if (signupForm.checkFormState()){
+        signupUser(signupForm.getFormData());
+        signupForm.reset();
+    }
 }
 
 loginForm.onSubmit(loginUserCallback);

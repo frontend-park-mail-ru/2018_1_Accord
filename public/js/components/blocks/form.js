@@ -9,6 +9,12 @@ export default class Form extends Block {
 
     render() {}
 
+    renderAll() {}
+
+    reset() {
+        this.formElement.reset();
+    }
+
     onSubmit(callback) {}
 
 }

@@ -1,75 +1,75 @@
-export default class FormError {
-    constructor(formData, formType) {
-        this._data = formData;
-        this._type = formType;
+export default class Validator {
 
-        this._stateError = {
-            usernameValid: false,
-            usernameError: '',
+    /**
+     * @param {InputForm} email
+     */
+    static checkEmail(email) {
+        if (!email.getData() || !email.getData().match(/@/)) {
+            return {
+                state: false,
+                errMessage: "Invalid e-mail!"
+            };
+        }
+        return {
+            state: true,
+            errMessage: ""
+        };
+    }
 
-            passwordValid: false,
-            passwordError: '',
+    /**
+     * @param {InputForm} username
+     */
+    static checkUsername(username) {
+        if (username.getData().length < 3 ||
+            username.getData().length > 20) {
+            return {
+                state: false,
+                errMessage: "Username need to contain 3-20 symbols!"
+            }
+        }
 
-            passwordConfirmValid: false,
-            passwordConfirmError: ''
+        return {
+            state: true,
+            errMessage: ""
         }
     }
 
-    get stateError() {
-        return this._stateError;
-    }
-
-    validate() {
-        this.validateUsername();
-        this.validatePassword();
-
-        if (this._type === 'signup') {
-            this.validatePasswordConfirm();
+    /**
+     * @param {InputForm} password
+     */
+    static checkPassword(password) {
+        if (!password.getData().match(/[\w\d]/) ||
+            password.getData().length < 4 || password.getData().length > 30) {
+            return {
+                state: false,
+                errMessage: "Password need to contain more than 4 symbols " +
+                "with letters and digits"
+            }
+        }
+        return {
+            state: true,
+            errMessage: ""
         }
     }
 
-    validateUsername() {
-        if (!this._data['username']) {
-            this._stateError.usernameValid = false;
-            this._stateError.usernameError = 'Enter your username!\n';
-        } else {
-            this._stateError.usernameValid = true;
-            this._stateError.usernameError = '';
+    /**
+     * @param {InputForm} password
+     * @param {InputForm} passwordConfirm
+     */
+    static confirmPassword(password, passwordConfirm) {
+        if (password.getData() !== passwordConfirm.getData()) {
+            return {
+                state: false,
+                errMessage: "Password do not match!"
+            }
         }
-    }
-
-    validatePassword() {
-        const regExp = /[^(\d\w)*]/;
-
-        if (!this._data['password']) {
-            this._stateError.passwordValid = false;
-            this._stateError.passwordError = 'Enter password!\n';
-
-        } else if (regExp.test(this._data['password'])) {
-            this._stateError.passwordValid = false;
-            this._stateError.passwordError = "Password must contain only latin symbols and digits\n";
-
-        } else {
-            this._stateError.passwordValid = true;
-            this._stateError.passwordError = '';
-        }
-    }
-
-    validatePasswordConfirm() {
-        if (!this._data['passwordConfirm']) {
-            this._stateError.passwordConfirmValid = false;
-            this._stateError.passwordConfirmError = 'Confirm password!\n';
-
-        } else if (this._data['password'] !== this._data['passwordConfirm']) {
-            this._stateError.passwordConfirmValid = false;
-            this._stateError.passwordConfirmError = 'Passwords do not match!\n';
-
-        } else {
-            this._stateError.passwordConfirmValid = true;
-            this._stateError.passwordConfirmError = '';
+        return {
+            state: true,
+            errMessage: ""
         }
     }
 }
+
 
 
 
