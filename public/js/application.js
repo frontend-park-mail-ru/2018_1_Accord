@@ -1,7 +1,9 @@
 'use strict';
 
-import FormError from "./components/validation.js";
-const httpModule = new window.HttpModule();
+import FormError from "./components/validation/validation.js";
+import HttpModule from "./modules/http.js";
+
+const httpModule = new HttpModule();
 
 const application = document.getElementById('application');
 
@@ -38,7 +40,7 @@ const openFunction = {
     play: startPlay(),
 
     //leaderBoard: openleaderBoard(),
-
+    //change form function
     login: function () {
         const backButton = loginSection.getElementsByClassName('button-back')[0];
         backButton.addEventListener('click', getBack);
@@ -64,6 +66,7 @@ const openFunction = {
 
 function openSection(section) {
     Object.keys(sections).forEach(function (key) {
+        //class changeSection
         if (key === section) {
             sections[key].style.display = 'block';
         } else {
