@@ -7,26 +7,27 @@ import renderDOM from "../js/components/render/render.js";
 
 const loginForm = new LoginForm();
 const signupForm = new SignupForm();
-const loadUserButton = new Button('submit', 'Load User');
+const loadUserButton = new Button("submit", "Load User");
 
-renderDOM(loginForm, document.getElementById('root'));
-renderDOM(signupForm, document.getElementById('root'));
-renderDOM(loadUserButton, document.getElementById('root'));
+renderDOM(loginForm, document.getElementById("root"));
+renderDOM(signupForm, document.getElementById("root"));
+renderDOM(loadUserButton, document.getElementById("root"));
 
 function loginUserCallback() {
-    if (loginForm.checkFormState()) {
-        loginUser(loginForm.getFormData());
-        loginForm.reset();
-    }
+	if (loginForm.checkFormState()) {
+		loginUser(loginForm.getFormData());
+		loginForm.reset();
+	}
 }
 
 function signupUserCallback() {
-    if (signupForm.checkFormState()){
-        signupUser(signupForm.getFormData());
-        signupForm.reset();
-    }
+	if (signupForm.checkFormState()){
+		signupUser(signupForm.getFormData());
+		signupForm.reset();
+	}
 }
 
 loginForm.onSubmit(loginUserCallback);
 signupForm.onSubmit(signupUserCallback);
-loadUserButton.onSubmit(loadUser());
+loadUserButton.onClick(loadUser);
+

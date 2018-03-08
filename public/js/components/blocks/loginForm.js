@@ -1,60 +1,55 @@
 import Form from "./form.js";
 import InputForm from "./input.js";
 import Button from "./button.js";
-import renderDOM from "../render/render.js"
-import Validator from "../validation/validation.js";
+import Validator from "../../modules/validation/validation.js";
 
 export default class LoginForm extends Form {
-    constructor() {
-        super();
+	constructor() {
+		super();
+	}
 
-        this.Email = new InputForm('text', 'Enter your e-mail...');
-        this.Password = new InputForm('password', 'Enter your password...');
-        this.ButtonSubmit = new Button('submit', 'Log in');
+	getFormData() {
+		return {
+			email: this.Email.getData(),
+			password: this.Password.getData()
+		};
+	}
 
-        this.Email.onInputChange(this.validateEmail.bind(this));
-        this.Password.onInputChange(this.validatePassword.bind(this));
+	render() {
+		this.Email = new InputForm("text", "Enter your e-mail...");
+		this.Password = new InputForm("password", "Enter your password...");
+		this.ButtonSubmit = new Button("submit", "Log in");
 
-        this.renderAll();
-    }
+		this.Email.onInputChange(this.validateEmail.bind(this));
+		this.Password.onInputChange(this.validatePassword.bind(this));
 
-    getFormData() {
-        return {
-            email: this.Email.getData(),
-            password: this.Password.getData()
-        }
-    }
+		this.formElement.appendChild(this.Email.render());
+		this.formElement.appendChild(this.Password.render());
+		this.formElement.appendChild(this.ButtonSubmit.render());
 
-    render() {
-        return this.formElement;
-    }
+		return this.formElement;
+	}
 
-    renderAll() {
-        renderDOM(this.Email, this.formElement);
-        renderDOM(this.Password, this.formElement);
-        renderDOM(this.ButtonSubmit, this.formElement);
-    }
+	onSubmit(callback) {
+		this.formElement.addEventListener("submit", (event) => {
+			event.preventDefault();
+			callback();
+		});
+	}
 
-    onSubmit(callback) {
-        this.formElement.addEventListener('submit', (event) => {
-            event.preventDefault();
-            callback();
-        });
-    }
+	checkFormState() {
+		return this.Email.getState() && this.Password.getState();
+	}
 
-    checkFormState() {
-        return this.Email.getState() && this.Password.getState();
-    }
+	validateEmail() {
+		const formState = Validator.checkEmail(this.Email);
 
-    validateEmail() {
-        const formState = Validator.checkEmail(this.Email);
+		this.Email.setError(formState.errMessage);
+	}
 
-        this.Email.setError(formState.errMessage);
-    }
+	validatePassword() {
+		const formState = Validator.checkPassword(this.Password);
 
-    validatePassword() {
-        const formState = Validator.checkPassword(this.Password);
-
-        this.Password.setError(formState.errMessage);
-    }
+		this.Password.setError(formState.errMessage);
+	}
 }
