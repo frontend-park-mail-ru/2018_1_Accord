@@ -1,27 +1,37 @@
-import Section from "./section.js";
-import LoginForm from "../blocks/loginForm.js";
-import {loginUser} from "../../modules/UserService.js";
+import Section from './section.js';
+import LoginForm from '../blocks/loginForm.js';
+import UserService from '../../modules/UserService.js';
+import Logger from '../../modules/logger.js';
+import SectionDispatcher from '../../modules/SectionDispatcher.js';
 
 
 export default class LoginSection extends Section {
-	constructor() {
-		super();
+    constructor() {
+        super();
 
-	}
+    }
 
-	render() {
-	    this.login = document.createElement("div");
-		this.loginForm = new LoginForm();
+    render() {
+        this.login = document.createElement('div');
+        this.loginForm = new LoginForm();
 
-		this.login.appendChild(this.loginForm.render());
+        this.login.appendChild(this.loginForm.render());
 
-		this.loginForm.onSubmit(() => {
-			if (this.loginForm.checkFormState()) {
-				loginUser(this.loginForm.getFormData());
-				this.loginForm.reset();
-			}
-		});
+        this.loginForm.onSubmit(() => {
+            if (this.loginForm.checkFormState()) {
+                UserService.login(this.loginForm.getFormData())
+                    .then((user) => {
+                        if (!user) {
+                            Logger.log('Unsuccessful login');
+                            return;
+                        }
+                        SectionDispatcher.changeSection('Menu');
 
-		return this.login;
-	}
+                    });
+                this.loginForm.reset();
+            }
+        });
+
+        return this.login;
+    }
 }

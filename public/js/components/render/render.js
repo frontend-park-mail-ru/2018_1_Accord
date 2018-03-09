@@ -5,11 +5,11 @@
  */
 
 function renderDOM (child, root) {
-	while(root.firstChild) {
-		root.removeChild(root.firstChild);
-	}
+    while(root.firstChild) {
+        root.removeChild(root.firstChild);
+    }
 
-	root.appendChild(child);
+    root.appendChild(child);
 }
 
 export default renderDOM;

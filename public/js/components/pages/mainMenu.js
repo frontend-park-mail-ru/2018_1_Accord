@@ -1,38 +1,52 @@
-import Button from "../blocks/button.js";
-import Section from "./section.js";
-import SectionDispatcher from "../../modules/SectionDispatcher.js";
-
+import Button from '../blocks/button.js';
+import Section from './section.js';
+import SectionDispatcher from '../../modules/SectionDispatcher.js';
+import TextField from '../blocks/textField.js';
+import UserService from '../../modules/UserService.js';
 
 export default class MenuSection extends Section {
-	constructor() {
-		super();
+    constructor() {
+        super();
 
-	}
+    }
 
-	render() {
-		this.menu = document.createElement("div");
+    render() {
+        this.menu = document.createElement('div');
 
-		this.playButton = new Button("button", "Play");
-		this.loginButton = new Button("button", "Login");
-		this.signupButton = new Button("button", "Signup");
+        this.title = new TextField('Bubble Wars');
+        this.playButton = new Button('button', 'Play');
 
-		this.menu.appendChild(this.playButton.render());
-		this.menu.appendChild(this.loginButton.render());
-		this.menu.appendChild(this.signupButton.render());
+        this.menu.appendChild(this.title.render());
+        this.menu.appendChild(this.playButton.render());
 
-		this.playButton.onClick(() => {
-			SectionDispatcher.changeSection("Play");
-		});
+        UserService.getUser()
+            .then((user) => {
+                if (!user) {
+                    this.loginButton = new Button('button', 'Login');
+                    this.signupButton = new Button('button', 'Signup');
 
-		this.loginButton.onClick(() => {
-			SectionDispatcher.changeSection("Login");
-		});
+                    this.menu.appendChild(this.loginButton.render());
+                    this.menu.appendChild(this.signupButton.render());
 
-		this.signupButton.onClick(() => {
-			SectionDispatcher.changeSection("Signup");
-		});
+                    this.loginButton.onClick(() => {
+                        SectionDispatcher.changeSection('Login');
+                    });
 
-		return this.menu;
-	}
+                    this.signupButton.onClick(() => {
+                        SectionDispatcher.changeSection('Signup');
+                    });
+                } else {
+                    this.logoutButton = new Button('button', 'Logout');
+                    this.menu.appendChild(this.logoutButton.render());
+
+                    this.logoutButton.onClick(UserService.logout);
+
+                    this.playButton.onClick(() => {
+                        SectionDispatcher.changeSection('Play');
+                    });
+                }
+            });
+        return this.menu;
+    }
 
 }
