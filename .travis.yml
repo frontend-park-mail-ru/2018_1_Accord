@@ -1,0 +1,15 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js: 9
+branches:
+  only:
+  - module-1
+deploy:
+  provider: heroku
+  app:
+    module-1: bubblewars
+  skip_cleanup: true
+  api_key:
+    module-1:
+      secure: sZLvkTmLDA38sFctKfpBGM7zj21ROYR+ZJrq9Yg1dStP95neNh9wb+J17fLhdts84vIwK+Qd6c+1azrryIecba+hp+jw6YMTQp8a1kypNOXHlAkNRefLQ+299QpFsLhdnUmbx0Qbj6K0LBpbGtjKPbFz8EcAFqeTT5COS+nMRuvK4Fx/HzWRWR9aZwXtDwzNFyO12IMex5Jm3+K4Xqpy2lfLy7C501C3vBXMruwfUmliadbT0+LIYYj7w6tbZ6MWxlTbzfGzAIGPNMUsVgnj2W5tUB0xAmpEwOKqZIVH/xoHICY4v7kt/nFDVGyZ/9LB1TLA0LjKAnEPCtl8OvOF1Ywv47oGVZJhqtiiE+2eU/KMG2++Do/+++sWNQejqEqxPwZ53EhiWKqv2ghoGHnZy2nWe+2JYqJaXAZIP//5VCkqemJZhMmOzQD5BQBi33i2NtCswTxrv2cTcyG2szE4sMLUBWsZmLRIWmKbLnb8y3ssRLzIz1xwk+P8hI+E3F7KcYqLfRzrP4SzO0TMSx9NYyFcHPHgmOMVgDQrOQFjBw1sE2BX72XxptjRfKIpAYOovtdWdM1xSEuoJ/U+2+GY0NwYkTdtXZGhMtDHQFmbHNEALXB2WZuC0nqeDJK6B+PjbZ2n/D6dePYHgMhUgAO+k4xN4Egs/STHtp7/HdTqr88=
