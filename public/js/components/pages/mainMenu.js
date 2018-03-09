@@ -39,7 +39,12 @@ export default class MenuSection extends Section {
                     this.logoutButton = new Button('button', 'Logout');
                     this.menu.appendChild(this.logoutButton.render());
 
-                    this.logoutButton.onClick(UserService.logout);
+                    this.logoutButton.onClick(() => {
+                        UserService.logout()
+                            .then(() => SectionDispatcher.changeSection('Menu'))
+                            .catch(() => SectionDispatcher.changeSection('Menu'));
+                        //TODO: обработать неуспешный выход
+                    });
 
                     this.playButton.onClick(() => {
                         SectionDispatcher.changeSection('Play');

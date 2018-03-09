@@ -64,11 +64,11 @@ class UserService {
      * @returns {Promise<Response>}
      */
     logout() {
-        this.user = new Promise.resolve();
-        return http.get(config.APIMethods.logout)
+        return http.delete(config.APIMethods.logout)
             .then((response) => {
                 switch (response.status) {
                     case 200:
+                        this.user = Promise.resolve();
                         return true;
                     case 400:
                         throw {status: 'Error', message: 'Unsuccessful logout'};
@@ -111,37 +111,6 @@ class UserService {
     getUser() {
         return this.user;
     }
-
-    //
-    // checkAuth() {
-    //     return this.user.getStatus();
-    // }
-    //
-    // login(userData) {
-    //     HttpService.post(config.APIMethods.login, userData, (response) => {
-    //         this.user.changeStatus(response.json());
-    //         console.log(response.json());
-    //     });
-    // }
-    //
-    // signUp(userData) {
-    //     HttpService.post(config.APIMethods.signUp, userData, (response) => {
-    //         console.log(response.json());
-    //     });
-    // }
-    //
-    // load() {
-    //     HttpService.get(config.APIMethods.user, (response) => {
-    //         this.user.changeStatus(response.json());
-    //         console.log(response.json());
-    //     });
-    // }
-    //
-    // logout() {
-    //     HttpService.post(config.APIMethods.logout, (response) => {
-    //         console.log(response.json());
-    //     });
-    // }
 }
 
 const Us = new UserService();

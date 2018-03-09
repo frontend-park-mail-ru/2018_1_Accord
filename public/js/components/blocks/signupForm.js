@@ -39,10 +39,13 @@ export default class SignupForm extends Form {
     }
 
     onSubmit(callback) {
-        this.formElement.addEventListener('submit', (event) => {
+        const eventCallback = (event) => {
             event.preventDefault();
             callback();
-        });
+        };
+
+        this.formElement.addEventListener('submit', eventCallback);
+        return () => this.formElement.removeEventListener('submit', eventCallback);
     }
 
     checkFormState() {
