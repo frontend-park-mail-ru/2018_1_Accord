@@ -3,6 +3,7 @@ import LoginForm from '../blocks/loginForm.js';
 import UserService from '../../modules/UserService.js';
 import Logger from '../../utils/logger.js';
 import SectionDispatcher from '../../modules/SectionDispatcher.js';
+import BackButton from '../blocks/backButton.js';
 
 
 export default class LoginSection extends Section {
@@ -14,8 +15,12 @@ export default class LoginSection extends Section {
   render() {
     this.login = document.createElement('div');
     this.loginForm = new LoginForm();
+    this.backButton = new BackButton('Menu');
 
+    this.login.appendChild(this.backButton.render());
     this.login.appendChild(this.loginForm.render());
+
+    this.backButton.onClick();
 
     const submitCallback = (event) => {
       event.preventDefault();
