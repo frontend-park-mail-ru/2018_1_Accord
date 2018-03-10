@@ -17,6 +17,7 @@
     "fest": "^0.12.1",
     "morgan": "^1.9.0",
     "path": "^0.12.7",
+    "pug": "^2.0.1",
     "uuid": "^3.2.1"
   },
   "devDependencies": {

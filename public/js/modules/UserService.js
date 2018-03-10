@@ -9,7 +9,6 @@ class UserService {
   }
 
   /**
-   * @private
    * @param {Response} response
    * @returns {*|{jsonchars, jsonchars_test, jsonhash, replaceJSON, escapeJSON}|JSON|Promise<any>}
    */
@@ -25,7 +24,7 @@ class UserService {
   }
 
   /**
-   * @private
+   *
    * @param {String|Object} error
    */
   static errorTransformer(error) {
