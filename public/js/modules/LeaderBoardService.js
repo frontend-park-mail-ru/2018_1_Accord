@@ -13,7 +13,7 @@ export default class LeaderBoardService {
   static getLeaderBoard(page) {
     const path = config.APIMethods.leaderBoard + `/${page}`;
     Logger.log(path);
-    this.LBJson = http.post(path, undefined)
+    this.LBJson = http.get(path)
       .then((response) => {
         switch (response.status) {
           case 200:
