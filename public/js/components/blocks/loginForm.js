@@ -2,54 +2,60 @@ import Form from './form.js';
 import InputForm from './input.js';
 import Button from './button.js';
 import Validator from '../../modules/validation/validation.js';
+import {disposableListener} from '../../utils/helperFuncs.js';
 
 export default class LoginForm extends Form {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    getFormData() {
-        return {
-            email: this.Email.getData(),
-            password: this.Password.getData()
-        };
-    }
+  getFormData() {
+    return {
+      email: this.Email.getData(),
+      password: this.Password.getData()
+    };
+  }
 
-    render() {
-        this.Email = new InputForm('text', 'Enter your e-mail...');
-        this.Password = new InputForm('password', 'Enter your password...');
-        this.ButtonSubmit = new Button('submit', 'Log in');
+  render() {
+    this.Email = new InputForm('text', 'Enter your e-mail...');
+    this.Password = new InputForm('password', 'Enter your password...');
+    this.ButtonSubmit = new Button('submit', 'Log in');
 
-        this.Email.onInputChange(this.validateEmail.bind(this));
-        this.Password.onInputChange(this.validatePassword.bind(this));
+    this.Email.onInputChange(this.validateEmail.bind(this));
+    this.Password.onInputChange(this.validatePassword.bind(this));
 
-        this.formElement.appendChild(this.Email.render());
-        this.formElement.appendChild(this.Password.render());
-        this.formElement.appendChild(this.ButtonSubmit.render());
+    this.formElement.appendChild(this.Email.render());
+    this.formElement.appendChild(this.Password.render());
+    this.formElement.appendChild(this.ButtonSubmit.render());
 
-        return this.formElement;
-    }
+    this.formElement.addEventListener('submit', (event) => event.preventDefault());
 
-    onSubmit(callback) {
-        this.formElement.addEventListener('submit', (event) => {
-            event.preventDefault();
-            callback();
-        });
-    }
+    return this.formElement;
+  }
 
-    checkFormState() {
-        return this.Email.getState() && this.Password.getState();
-    }
+  onSubmit(callback) {
+    return disposableListener(this.formElement, 'submit', callback);
+  }
 
-    validateEmail() {
-        const formState = Validator.checkEmail(this.Email);
+  checkFormState() {
+    return new Promise((resolve, reject) => {
+      if (this.Email.getState() && this.Password.getState()){
+        resolve(this.getFormData());
+      } else {
+        reject();
+      }
+    });
+  }
 
-        this.Email.setError(formState.errMessage);
-    }
+  validateEmail() {
+    const formState = Validator.checkEmail(this.Email);
 
-    validatePassword() {
-        const formState = Validator.checkPassword(this.Password);
+    this.Email.setError(formState.errMessage);
+  }
 
-        this.Password.setError(formState.errMessage);
-    }
+  validatePassword() {
+    const formState = Validator.checkPassword(this.Password);
+
+    this.Password.setError(formState.errMessage);
+  }
 }

@@ -1,42 +1,42 @@
 import Section from './section.js';
 import SignupForm from '../blocks/signupForm.js';
 import UserService from '../../modules/UserService.js';
-import Logger from '../../modules/logger.js';
+import Logger from '../../utils/logger.js';
 import SectionDispatcher from '../../modules/SectionDispatcher.js';
+// import Us from '../../modules/UserService';
 
 export default class SignupSection extends Section {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    render() {
-        this.signup = document.createElement('div');
-        this.signupForm = new SignupForm();
+  render() {
+    this.signup = document.createElement('div');
+    this.signupForm = new SignupForm();
+    this.signup.appendChild(this.signupForm.render());
 
-        this.signup.appendChild(this.signupForm.render());
+    const submitCallback = (event) => {
+      event.preventDefault();
 
-        const submitCallback = () => {
-            Logger.log(1);
-            this.remover();
-            const temporalRemover = this.signupForm.onSubmit(()=>{});
+      this.signupForm.checkFormState()
+        .then((userData) => UserService.signUp(userData))
+        .then((user) => {
+          if (!user) {
+            this.signupForm.onSubmit(submitCallback);
+            Logger.log('Unsuccessful registration');
+            return;
+          }
+          SectionDispatcher.changeSection('Menu');
+        })
+        .catch((err) => {
+          this.signupForm.onSubmit(submitCallback);
+          Logger.error(err);
+          //TODO:Error dispatcher
+        });
+    };
 
-            if (this.signupForm.checkFormState()) {
-                UserService.signUp(this.signupForm.getFormData())
-                    .then((user) => {
-                        if (!user) {
-                            temporalRemover();
-                            this.remover = this.signupForm.onSubmit(submitCallback);
-                            Logger.log('Unsuccessful registration');
-                            return;
-                        }
-                        SectionDispatcher.changeSection('Menu');
-                    });
-                this.signupForm.reset();
-            }
-        };
+    this.signupForm.onSubmit(submitCallback);
 
-        this.remover = this.signupForm.onSubmit(submitCallback);
-
-        return this.signup;
-    }
+    return this.signup;
+  }
 }

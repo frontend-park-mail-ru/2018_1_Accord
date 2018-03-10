@@ -10,9 +10,9 @@ const loginSection = new LoginSection();
 const signupSection = new SignupSection();
 
 export const Sections = {
-    'Menu': menuSection,
-    'Login': loginSection,
-    'Signup': signupSection
+  'Menu': menuSection,
+  'Login': loginSection,
+  'Signup': signupSection
 };
 
 renderDOM(menuSection.render(), document.getElementById('root'));

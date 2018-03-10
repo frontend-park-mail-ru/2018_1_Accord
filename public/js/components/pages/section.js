@@ -1,9 +1,9 @@
 export default class Section {
-    constructor() {
-    }
+  constructor() {
+  }
 
-    render() {}
+  render() {}
 
-    open() {}
+  open() {}
 
 }
