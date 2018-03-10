@@ -5,7 +5,7 @@ export default class TextField extends Block{
 	 *
      * @param {String} text
      */
-  constructor(text){
+  constructor(text) {
     super();
 
     this.textElement = document.createElement('div');
@@ -16,10 +16,4 @@ export default class TextField extends Block{
     return this.textElement;
   }
 
-  onClick(callback) {
-    this.textElement.addEventListener('click', (event) => {
-      event.preventDefault();
-      callback();
-    });
-  }
 }

@@ -5,7 +5,7 @@
  */
 
 function renderDOM (child, root) {
-  while(root.firstChild) {
+  while (root.firstChild) {
     root.removeChild(root.firstChild);
   }
 

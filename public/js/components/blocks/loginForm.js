@@ -39,7 +39,7 @@ export default class LoginForm extends Form {
 
   checkFormState() {
     return new Promise((resolve, reject) => {
-      if (this.Email.getState() && this.Password.getState()){
+      if (this.Email.getState() && this.Password.getState()) {
         resolve(this.getFormData());
       } else {
         reject();

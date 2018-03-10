@@ -3,7 +3,8 @@ import renderDOM from '../components/render/render.js';
 
 export default class SectionDispatcher {
 
-  constructor() {}
+  constructor() {
+  }
 
   /**
      * @param {String} newSection

@@ -9,6 +9,33 @@ class UserService {
   }
 
   /**
+   * @private
+   * @param {Response} response
+   * @returns {*|{jsonchars, jsonchars_test, jsonhash, replaceJSON, escapeJSON}|JSON|Promise<any>}
+   */
+  static responseDispatcher(response) {
+    switch (response.status) {
+      case 200:
+        return response.json();
+      case 401:
+        return;
+      default:
+        throw {status: 'Error', message: 'Unexpected error'};
+    }
+  }
+
+  /**
+   * @private
+   * @param {String|Object} error
+   */
+  static errorTransformer(error) {
+    if (typeof error === 'string') {
+      throw {status: 'Error', message: error};
+    }
+    throw error;
+  }
+
+  /**
      * @private
      * @returns {Promise<User | undefined>}
      */
@@ -79,34 +106,6 @@ class UserService {
       })
       .catch(UserService.errorTransformer);
   }
-
-  /**
-     * @private
-     * @param {Response} response
-     * @returns {*|{jsonchars, jsonchars_test, jsonhash, replaceJSON, escapeJSON}|JSON|Promise<any>}
-     */
-  static responseDispatcher(response) {
-    switch (response.status) {
-      case 200:
-        return response.json();
-      case 401:
-        return;
-      default:
-        throw {status: 'Error', message: 'Unexpected error'};
-    }
-  }
-
-  /**
-     * @private
-     * @param {String|Object} error
-     */
-  static errorTransformer(error) {
-    if (typeof error === 'string') {
-      throw {status: 'Error', message: error};
-    }
-    throw error;
-  }
-
 
   getUser() {
     return this.user;

@@ -7,12 +7,14 @@ export default class Form extends Block {
 
   }
 
-  render() {}
+  render() {
+  }
 
   reset() {
     this.formElement.reset();
   }
 
-  onSubmit() {}
+  onSubmit() {
+  }
 
 }
