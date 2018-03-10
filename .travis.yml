@@ -4,12 +4,19 @@ language: node_js
 node_js: 9
 branches:
   only:
+  - master
   - module-1
+  - module-2
+  - module-3
+  - module-4
 deploy:
   provider: heroku
   app:
-    module-1: bubblewars
+    master: bubblewars
+    module-1: bubble-dev1
+    module-2: bubble-dev2
+    module-3: bubble-dev3
+    module-4: bubble-dev4
   skip_cleanup: true
   api_key:
-    module-1:
-      secure: sZLvkTmLDA38sFctKfpBGM7zj21ROYR+ZJrq9Yg1dStP95neNh9wb+J17fLhdts84vIwK+Qd6c+1azrryIecba+hp+jw6YMTQp8a1kypNOXHlAkNRefLQ+299QpFsLhdnUmbx0Qbj6K0LBpbGtjKPbFz8EcAFqeTT5COS+nMRuvK4Fx/HzWRWR9aZwXtDwzNFyO12IMex5Jm3+K4Xqpy2lfLy7C501C3vBXMruwfUmliadbT0+LIYYj7w6tbZ6MWxlTbzfGzAIGPNMUsVgnj2W5tUB0xAmpEwOKqZIVH/xoHICY4v7kt/nFDVGyZ/9LB1TLA0LjKAnEPCtl8OvOF1Ywv47oGVZJhqtiiE+2eU/KMG2++Do/+++sWNQejqEqxPwZ53EhiWKqv2ghoGHnZy2nWe+2JYqJaXAZIP//5VCkqemJZhMmOzQD5BQBi33i2NtCswTxrv2cTcyG2szE4sMLUBWsZmLRIWmKbLnb8y3ssRLzIz1xwk+P8hI+E3F7KcYqLfRzrP4SzO0TMSx9NYyFcHPHgmOMVgDQrOQFjBw1sE2BX72XxptjRfKIpAYOovtdWdM1xSEuoJ/U+2+GY0NwYkTdtXZGhMtDHQFmbHNEALXB2WZuC0nqeDJK6B+PjbZ2n/D6dePYHgMhUgAO+k4xN4Egs/STHtp7/HdTqr88=
+    secure: LItXa4lRwKrFQvOWINUY8iyHHcTtqr+SzAb7wNt1BaoYct1d7WaGIocNwqTZC+ByH9qfSEfu9ccHPGdy1blkfCT8qPDA5JYcjj3qyIY9wtGJm5iXuzwpHraMyCZ9hzn//pKfEoGtb75WsciFMGn6FuPh1dHAkl+8Nn4f7BwiPVx9/gXBVT7XXH5k4dRS4bZ9srrrB/dsD1SGNjtWrPKqMoamnvsxCAoADuFeanHQldhHUAGOPpnX1U7Nar2ZpZyIyhDP08MxVq6UYVlikSkOYbWwgJnPHHYr8G2JozeSnf/Aa5lTo57ORCSmbdkA1LlctPetCF7CMks0/RqjfmAB+WNmgK/GwGlWWloR3bFIiCCYsg++5UkfqS86oeiikjDhr/0MuODsZ9XpIfX6qOvwfGkdk4Gcz9WMRF4ldIrFHuw1Q4qT08daIrg1phY4YESE/pA9yi9kmXh3bIGAy8xGIyN3RLJQJQhOnw0j/RnpTLZA4D4TNqoURq9lHJLLE+KZs7QaUVXTUifnh8jIK1DaG+3MOk0r+n+UD3I4ANihUZ4kbxUqC59iHOVbCkxEjDt0RvBbBTR88yl1lYaPd1MPipUQHmyAAmt8imQnhOHJpvFqEV+JaT7UF33EgYW5SN6AlROzXBOW0oR+NIeOdR1W1wo1N+6KX5hlHHDXsS8uOZI=

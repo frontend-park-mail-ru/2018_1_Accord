@@ -1,6 +1,6 @@
 {
   "name": "BubbleWars",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Accord team's first SPA",
   "main": "index.js",
   "scripts": {
