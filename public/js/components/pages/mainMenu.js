@@ -19,6 +19,10 @@ export default class MenuSection extends Section {
     this.menu.appendChild(this.title.render());
     this.menu.appendChild(this.playButton.render());
 
+    this.playButton.onClick(() => {
+      SectionDispatcher.changeSection('Play');
+    });
+
     UserService.getUser()
       .then((user) => {
         if (!user) {
@@ -44,10 +48,6 @@ export default class MenuSection extends Section {
               .then(() => SectionDispatcher.changeSection('Menu'))
               .catch(() => SectionDispatcher.changeSection('Menu'));
             //TODO: обработать неуспешный выход
-          });
-
-          this.playButton.onClick(() => {
-            SectionDispatcher.changeSection('Play');
           });
         }
       });
