@@ -28,7 +28,7 @@ export default class LoginSection extends Section {
             Logger.log('Unsuccessful login');
             return;
           }
-          SectionDispatcher.changeSection('Menu');
+          SectionDispatcher.changeSection('Play');
         })
         .catch((err) => {
           this.loginForm.onSubmit(submitCallback);

@@ -3,7 +3,6 @@ import SignupForm from '../blocks/signupForm.js';
 import UserService from '../../modules/UserService.js';
 import Logger from '../../utils/logger.js';
 import SectionDispatcher from '../../modules/SectionDispatcher.js';
-// import Us from '../../modules/UserService';
 
 export default class SignupSection extends Section {
   constructor() {
@@ -26,7 +25,7 @@ export default class SignupSection extends Section {
             Logger.log('Unsuccessful registration');
             return;
           }
-          SectionDispatcher.changeSection('Menu');
+          SectionDispatcher.changeSection('Play');
         })
         .catch((err) => {
           this.signupForm.onSubmit(submitCallback);
