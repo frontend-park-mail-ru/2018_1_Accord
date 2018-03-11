@@ -1,37 +1,46 @@
 import http from './FetchService.js';
 import config from '../config/config.js';
-import Logger from '../utils/logger.js';
 import {errorTransformer} from '../utils/httpServiceHelpers.js';
 
-export default class LeaderBoardService {
+class LeaderBoardService {
+  constructor() {
+  }
 
   /**
    *
-   * @param {Number} page
+   * @param page
    * @returns {Promise<Response> | *}
    */
-  static getLeaderBoard(page) {
-    const path = config.APIMethods.leaderBoard + `/${page}`;
-    Logger.log(path);
-    this.LBJson = http.get(path)
+  getLeaderBoard(page) {
+    page = page || 1;
+
+    const path = `${config.APIMethods.leaderBoard}/${page}`;
+    this.dataPromise = http.get(path)
       .then((response) => {
         switch (response.status) {
           case 200:
+            this.curPage = page;
             return response.json();
           case 400:
-            return;
+            throw {status: 'Error', message: 'Unsuccessful try'};
           default:
             throw {status: 'Error', message: 'Unexpected error'};
         }
       })
       .then((json) => {
         if (json) {
-          return json;
+          return {
+            curPage: Number(json.currentPage),
+            pageNum: Number(json.numberOfPages),
+            data: json.scoreBoard
+          };
         }
       })
       .catch(errorTransformer);
 
-    return this.LBJson;
+    return this.dataPromise;
   }
-
 }
+
+const LBService = new LeaderBoardService();
+export default LBService;

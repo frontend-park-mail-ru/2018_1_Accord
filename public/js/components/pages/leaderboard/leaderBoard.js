@@ -5,11 +5,31 @@ import LeaderBoardService from '../../../modules/LeaderBoardService.js';
 import Logger from '../../../utils/logger.js';
 import Paginator from '../../blocks/Paginator.js';
 
-const LBTemplate = window.fest['js/components/pages/LeaderBoard.tmpl'];
+const LBTemplate = window.fest['js/components/pages/leaderboard/LeaderBoard.tmpl'];
 
 export default class LeaderBoard extends Section {
   constructor() {
     super();
+    this.page = 1;
+  }
+
+  updateLeaderboard(page) {
+    this.page = page;
+
+    LeaderBoardService.getLeaderBoard(this.page)
+      .then((obj) => {
+        if (!obj) {
+          Logger.log(`Can't open leader board on page ${this.page}`);
+          this.leaderBoardTable.innerHTML = 'Empty';
+        } else {
+          this.leaderBoardTable.innerHTML = LBTemplate(obj.data);
+          this.paginator.updatePaginator(obj.curPage, obj.pageNum);
+        }
+      })
+      .catch((err) => {
+        Logger.error(err);
+        //TODO: error dispatcher
+      });
   }
 
   render() {
@@ -19,29 +39,16 @@ export default class LeaderBoard extends Section {
     this.leaderBoardTable = document.createElement('div');
     this.paginator = new Paginator();
 
-    this.page = 1;
-
     this.leaderBoard.appendChild(this.backButton.render());
     this.leaderBoard.appendChild(this.title.render());
     this.leaderBoard.appendChild(this.leaderBoardTable);
 
+    this.paginator.onClick(this.updateLeaderboard.bind(this));
     this.backButton.onClick();
 
-    LeaderBoardService.getLeaderBoard(this.page)
-      .then((json) => {
-        if (!json) {
-          Logger.log(`Can't open leader board on page ${this.page}`);
-          this.leaderBoardTable.innerHTML = 'Empty';
-        } else {
-          this.leaderBoard.appendChild(this.paginator.render(json.currentPage, json.numberOfPages));
-          this.leaderBoardTable.innerHTML = LBTemplate(json);
-          Logger.log(json);
-        }
-      })
-      .catch((err) => {
-        Logger.error(err);
-        //TODO: error dispatcher
-      });
+    this.updateLeaderboard(this.page);
+
+    this.leaderBoard.appendChild(this.paginator.render());
 
     return this.leaderBoard;
   }
