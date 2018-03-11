@@ -3,7 +3,7 @@ import Section from './section.js';
 import SectionDispatcher from '../../modules/SectionDispatcher.js';
 import TextField from '../blocks/textField.js';
 import UserService from '../../modules/UserService.js';
-import Logger from '../../utils/logger.js';
+
 
 export default class MenuSection extends Section {
   constructor() {
@@ -45,7 +45,6 @@ export default class MenuSection extends Section {
           this.menu.appendChild(this.logoutButton.render());
 
           this.logoutButton.onClick(() => {
-            Logger.log(UserService);
             UserService.logout()
               .then(() => SectionDispatcher.changeSection('Menu'))
               .catch(() => SectionDispatcher.changeSection('Menu'));

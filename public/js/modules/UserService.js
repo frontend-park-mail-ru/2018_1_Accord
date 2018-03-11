@@ -1,6 +1,7 @@
 import http from './FetchService.js';
 import config from '../config/config.js';
 import User from './User.js';
+import {errorTransformer} from '../utils/httpServiceHelpers.js';
 
 
 class UserService {
@@ -24,17 +25,6 @@ class UserService {
   }
 
   /**
-   *
-   * @param {String|Object} error
-   */
-  static errorTransformer(error) {
-    if (typeof error === 'string') {
-      throw {status: 'Error', message: error};
-    }
-    throw error;
-  }
-
-  /**
      * @private
      * @returns {Promise<User | undefined>}
      */
@@ -46,7 +36,7 @@ class UserService {
           return new User(json);
         }
       })
-      .catch(UserService.errorTransformer);
+      .catch(errorTransformer);
   }
 
   /**
@@ -62,7 +52,7 @@ class UserService {
           return new User(json);
         }
       })
-      .catch(UserService.errorTransformer);
+      .catch(errorTransformer);
 
     return this.user;
   }
@@ -80,7 +70,7 @@ class UserService {
           return new User(json);
         }
       })
-      .catch(UserService.errorTransformer);
+      .catch(errorTransformer);
 
     return this.user;
   }
@@ -103,7 +93,7 @@ class UserService {
 
         }
       })
-      .catch(UserService.errorTransformer);
+      .catch(errorTransformer);
   }
 
   getUser() {

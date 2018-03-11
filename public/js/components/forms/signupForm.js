@@ -3,19 +3,19 @@ import InputForm from '../blocks/input.js';
 import Button from '../blocks/button.js';
 import Validator from '../../modules/validation/validation.js';
 import {disposableListener} from '../../utils/helperFuncs.js';
-import Logger from '../../utils/logger.js';
+import {inputData} from '../../config/inputData.js';
+
 
 export default class SignupForm extends Form {
   constructor() {
     super();
-
   }
 
   render() {
-    this.Email = new InputForm('email', 'Enter your e-mail...');
-    this.Username = new InputForm('text', 'Enter username...');
-    this.Password = new InputForm('password', 'Enter your password...');
-    this.PasswordConfirm = new InputForm('password', 'Confirm password...');
+    this.Email = new InputForm(inputData.email);
+    this.Username = new InputForm(inputData.username);
+    this.Password = new InputForm(inputData.password);
+    this.PasswordConfirm = new InputForm(inputData.passwordConfirm);
     this.ButtonSubmit = new Button('submit', 'Sign up');
 
     this.Email.onInputChange(this.validateEmail.bind(this));
@@ -51,7 +51,6 @@ export default class SignupForm extends Form {
                 this.Password.getState() &&
                 this.Username.getState() &&
                 this.PasswordConfirm.getState()) {
-        Logger.log(1);
         resolve(this.getFormData());
       } else {
         reject();
@@ -62,27 +61,21 @@ export default class SignupForm extends Form {
 
   validateEmail() {
     const formState = Validator.checkEmail(this.Email);
-
     this.Email.setError(formState.errMessage);
   }
 
   validatePassword() {
     const formState = Validator.checkPassword(this.Password);
-
     this.Password.setError(formState.errMessage);
-
   }
 
   validateUsername() {
     const formState = Validator.checkUsername(this.Username);
-
     this.Username.setError(formState.errMessage);
-
   }
 
   confirmPassword() {
     const formState = Validator.confirmPassword(this.Password, this.PasswordConfirm);
-
     this.PasswordConfirm.setError(formState.errMessage);
   }
 }

@@ -8,7 +8,7 @@ export default class FetchService {
      * @returns {Promise<Response>}
      */
   static get(path) {
-    return this.request('GET', path, undefined);
+    return this.__request('GET', path, undefined);
   }
 
   /**
@@ -18,7 +18,7 @@ export default class FetchService {
      * @returns {Promise<Response>}
      */
   static post(path, body) {
-    return this.request('POST', path, body);
+    return this.__request('POST', path, body);
   }
 
   /**
@@ -28,7 +28,7 @@ export default class FetchService {
      * @returns {Promise<Response>}
      */
   static put(path, body) {
-    return this.request('PUT', path, body);
+    return this.__request('PUT', path, body);
   }
 
   /**
@@ -37,17 +37,17 @@ export default class FetchService {
      * @returns {Promise<Response>}
      */
   static delete(path) {
-    return this.request('DELETE', path, undefined);
+    return this.__request('DELETE', path, undefined);
   }
 
   /**
-     *
+   * @private
      * @param {String} requestMethod
      * @param {String} path
      * @param {Object} body
      * @returns {Promise<Response>}
      */
-  static request(requestMethod, path, body) {
+  static __request(requestMethod, path, body) {
     const headers = new Headers();
 
     if (requestMethod === 'POST' || requestMethod === 'PUT') {
