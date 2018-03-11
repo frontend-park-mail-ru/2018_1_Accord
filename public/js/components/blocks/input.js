@@ -2,11 +2,17 @@ import Block from './block.js';
 
 export default class InputForm extends Block{
 
-  constructor(type, placeholder) {
+  /**
+   * inputData is an Object
+   * contains input type and placeholder
+   *
+   * @param {Object} inputData
+   */
+  constructor(inputData) {
     super();
     this.inputDomElement = document.createElement('input');
-    this.inputDomElement.type = type;
-    this.inputDomElement.placeholder = placeholder;
+    this.inputDomElement.type = inputData.type;
+    this.inputDomElement.placeholder = inputData.placeholder;
 
     this.divInputElement = document.createElement('div');
     this.divInputElement.appendChild(this.inputDomElement);

@@ -3,6 +3,7 @@ import InputForm from '../blocks/input.js';
 import Button from '../blocks/button.js';
 import Validator from '../../modules/validation/validation.js';
 import {disposableListener} from '../../utils/helperFuncs.js';
+import {inputData} from '../../config/inputData.js';
 
 export default class LoginForm extends Form {
   constructor() {
@@ -17,8 +18,8 @@ export default class LoginForm extends Form {
   }
 
   render() {
-    this.Email = new InputForm('text', 'Enter your e-mail...');
-    this.Password = new InputForm('password', 'Enter your password...');
+    this.Email = new InputForm(inputData.email);
+    this.Password = new InputForm(inputData.password);
     this.ButtonSubmit = new Button('submit', 'Log in');
 
     this.Email.onInputChange(this.validateEmail.bind(this));
@@ -49,13 +50,11 @@ export default class LoginForm extends Form {
 
   validateEmail() {
     const formState = Validator.checkEmail(this.Email);
-
     this.Email.setError(formState.errMessage);
   }
 
   validatePassword() {
     const formState = Validator.checkPassword(this.Password);
-
     this.Password.setError(formState.errMessage);
   }
 }

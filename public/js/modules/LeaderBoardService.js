@@ -1,7 +1,7 @@
 import http from './FetchService.js';
 import config from '../config/config.js';
-import UserService from './UserService.js';
 import Logger from '../utils/logger.js';
+import {errorTransformer} from '../utils/httpServiceHelpers.js';
 
 export default class LeaderBoardService {
 
@@ -29,7 +29,7 @@ export default class LeaderBoardService {
           return json;
         }
       })
-      .catch(UserService.errorTransformer);
+      .catch(errorTransformer);
 
     return this.LBJson;
   }

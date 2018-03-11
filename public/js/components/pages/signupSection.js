@@ -4,6 +4,7 @@ import UserService from '../../modules/UserService.js';
 import Logger from '../../utils/logger.js';
 import SectionDispatcher from '../../modules/SectionDispatcher.js';
 import BackButton from '../blocks/backButton.js';
+import {serverErrors} from '../../config/textErrors.js';
 
 export default class SignupSection extends Section {
   constructor() {
@@ -31,7 +32,7 @@ export default class SignupSection extends Section {
         .then((user) => {
           if (!user) {
             this.signupForm.onSubmit(submitCallback);
-            this.errorField.innerHTML = 'Incorrect email or username';
+            this.errorField.innerHTML = serverErrors.signup;
             this.errorField.style.display = 'block';
             Logger.log('Unsuccessful registration');
             return;
