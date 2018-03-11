@@ -1,7 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
     <table>
         <tbody>
-            <fest:for iterate="data.scoreBoard" index="i" value="v">
+            <fest:for iterate="data" index="i" value="v">
                 <tr>
                     <td>
                         <fest:value>i + 1</fest:value>

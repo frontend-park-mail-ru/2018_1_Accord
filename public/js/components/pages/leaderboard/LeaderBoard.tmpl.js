@@ -1,7 +1,7 @@
-(function () {
+;(function () {
   var x = Function('return this')();
   if (!x.fest) x.fest = {};
-  x.fest['js/components/pages/LeaderBoard.tmpl'] = function (__fest_context) {
+  x.fest['js/components/pages/leaderboard/LeaderBoard.tmpl'] = function (__fest_context) {
     'use strict';
     var __fest_self = this, __fest_buf = '', __fest_chunks = [], __fest_chunk, __fest_attrs = [], __fest_select,
       __fest_if, __fest_iterator, __fest_to, __fest_fn, __fest_html = '', __fest_blocks = {}, __fest_params,
@@ -70,27 +70,27 @@
       }, ___fest_log_error;
     if (typeof __fest_error === 'undefined') {
       ___fest_log_error = (typeof console !== 'undefined' && console.error) ? function () {
-        return Function.prototype.apply.call(console.error, console, arguments);
+        return Function.prototype.apply.call(console.error, console, arguments)
       } : function () {
       };
     } else {
-      ___fest_log_error = __fest_error;
+      ___fest_log_error = __fest_error
     }
 
     function __fest_log_error(msg) {
-      ___fest_log_error(msg + '\nin block "' + __fest_debug_block + '" at line: ' + __fest_debug_line + '\nfile: ' + __fest_debug_file);
+      ___fest_log_error(msg + '\nin block "' + __fest_debug_block + '" at line: ' + __fest_debug_line + '\nfile: ' + __fest_debug_file)
     }
 
     function __fest_call(fn, params, cp) {
       if (cp) for (var i in params) if (typeof params[i] == 'function' && params[i].param) params[i] = params[i]();
-      return fn.call(__fest_self, params);
+      return fn.call(__fest_self, params)
     }
 
     var data = __fest_context;
     __fest_buf += ('<table><tbody>');
     var i, v, __fest_to0, __fest_iterator0;
     try {
-      __fest_iterator0 = data.scoreBoard || [];
+      __fest_iterator0 = data || [];
       __fest_to0 = __fest_iterator0.length;
     } catch (e) {
       __fest_iterator0 = [];
@@ -101,21 +101,21 @@
       v = __fest_iterator0[i];
       __fest_buf += ('<tr><td>');
       try {
-        __fest_buf += (__fest_escapeHTML(i + 1));
-      } catch (e) {
-        __fest_log_error(e.message + '5');
-      }
-      __fest_buf += ('</td><td>');
-      try {
-        __fest_buf += (__fest_escapeHTML(v.nickname));
+        __fest_buf += (__fest_escapeHTML(i + 1))
       } catch (e) {
         __fest_log_error(e.message + '6');
       }
       __fest_buf += ('</td><td>');
       try {
-        __fest_buf += (__fest_escapeHTML(v.rating));
+        __fest_buf += (__fest_escapeHTML(v.nickname))
       } catch (e) {
-        __fest_log_error(e.message + '7');
+        __fest_log_error(e.message + '9');
+      }
+      __fest_buf += ('</td><td>');
+      try {
+        __fest_buf += (__fest_escapeHTML(v.rating))
+      } catch (e) {
+        __fest_log_error(e.message + '12');
       }
       __fest_buf += ('</td></tr>');
     }
@@ -136,5 +136,5 @@
     } else {
       return __fest_buf;
     }
-  };
+  }
 })();
