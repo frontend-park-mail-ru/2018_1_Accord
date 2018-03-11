@@ -1,5 +1,5 @@
 import http from './FetchService.js';
-import config from './config.js';
+import config from '../config/config.js';
 import User from './User.js';
 
 

@@ -1,5 +1,5 @@
 import Section from './section.js';
-import LoginForm from '../blocks/loginForm.js';
+import LoginForm from '../forms/loginForm.js';
 import UserService from '../../modules/UserService.js';
 import Logger from '../../utils/logger.js';
 import SectionDispatcher from '../../modules/SectionDispatcher.js';

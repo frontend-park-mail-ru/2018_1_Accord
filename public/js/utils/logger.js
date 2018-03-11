@@ -1,4 +1,4 @@
-import {config} from '../modules/config.js';
+import {config} from '../config/config.js';
 
 export default class Logger {
   static error(...args) {
