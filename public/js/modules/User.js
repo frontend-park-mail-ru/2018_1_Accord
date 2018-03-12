@@ -8,6 +8,7 @@ export default class User {
 
   getProfileData() {
     return {
+      'email': this.email,
       'username': this.username,
       'rating': this.rating
     };

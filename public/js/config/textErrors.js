@@ -7,5 +7,11 @@ export const validationErrors = {
 
 export const serverErrors = {
   login: 'Incorrect email or password',
-  signup: 'Incorrect email or username'
+  signup: 'Incorrect email or username',
+  updateNotLogin: 'You are not login',
+  unexpected: 'Something is not ok'
+};
+
+export const fetchFaildErrors = {
+  noConnection: 'Something wrong with internet connection'
 };

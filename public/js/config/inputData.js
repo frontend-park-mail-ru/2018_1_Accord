@@ -16,3 +16,18 @@ export const inputData = {
     placeholder: 'Confirm password...'
   }
 };
+
+export const newInputData = {
+  email: {
+    type: 'email',
+    placeholder: 'Enter new email'
+  },
+  username: {
+    type: 'text',
+    placeholder: 'Enter new username'
+  },
+  password: {
+    type: 'password',
+    placeholder: 'Enter new password'
+  }
+};

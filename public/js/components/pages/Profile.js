@@ -3,6 +3,7 @@ import TextField from '../blocks/textField.js';
 import BackButton from '../blocks/backButton.js';
 import UserService from '../../modules/UserService.js';
 import Button from '../blocks/button.js';
+import SectionDispatcher from '../../modules/SectionDispatcher.js';
 
 const userDataTemplate = window.fest['js/components/pages/Profile.tmpl'];
 
@@ -28,8 +29,13 @@ export default class Profile extends Section {
           this.userDataText.innerHTML = userDataTemplate(user.getProfileData());
 
           this.updateButton = new Button('button', 'Update');
+
           this.profile.appendChild(this.userDataText);
           this.profile.appendChild(this.updateButton.render());
+
+          this.updateButton.onClick(() => {
+            SectionDispatcher.changeSection('Update');
+          });
         }
       });
 

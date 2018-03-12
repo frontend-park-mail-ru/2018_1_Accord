@@ -5,8 +5,8 @@ const APIMethods = {
   signup: '/register',
   logout: '/logout',
   user: '/getUser',
-  userUpdate: '/updateUser',
-  leaderBoard: '/scoreboard'
+  updateUser: '/updateUser',
+  leaderBoard: '/scoreboard',
 };
 
 export const config = {
