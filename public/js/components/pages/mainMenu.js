@@ -3,6 +3,8 @@ import Section from './section.js';
 import SectionDispatcher from '../../modules/SectionDispatcher.js';
 import TextField from '../blocks/textField.js';
 import UserService from '../../modules/UserService.js';
+import Logger from '../../utils/logger.js';
+import {fetchFaildErrors} from '../../config/textErrors.js';
 
 
 export default class MenuSection extends Section {
@@ -51,6 +53,12 @@ export default class MenuSection extends Section {
             //TODO: обработать неуспешный выход
           });
         }
+      })
+      .catch((error) => {
+        Logger.error(error);
+        this.textError = document.createElement('div');
+        this.textError.innerHTML = fetchFaildErrors.noConnection;
+        this.menu.appendChild(this.textError);
       });
     return this.menu;
   }

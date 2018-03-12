@@ -17,8 +17,8 @@ export default class PlaySection extends Section {
     this.leaderBoardButton = new Button('button', 'Leader Board');
     this.backButton = new BackButton('Menu');
 
-    this.play.appendChild(this.text.render());
     this.play.appendChild(this.backButton.render());
+    this.play.appendChild(this.text.render());
     this.play.appendChild(this.leaderBoardButton.render());
 
     this.leaderBoardButton.onClick(() => {

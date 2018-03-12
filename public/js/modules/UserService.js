@@ -76,6 +76,29 @@ class UserService {
   }
 
   /**
+   *
+   * @param {Object} userData
+   * @returns {Promise<Response>}
+   */
+  update(userData) {
+    return http.put(config.APIMethods.updateUser, JSON.stringify(userData))
+      .then((response) => {
+        switch (response.status) {
+          case 200:
+            this.user = Promise.resolve();
+            return true;
+          case 400:
+            throw {status: 'Error', message: 'Unsuccessful update'};
+          case 401:
+            return;
+          default:
+            throw {status: 'Error', message: 'Unexpected error'};
+        }
+      })
+      .catch(errorTransformer);
+  }
+
+  /**
      *
      * @returns {Promise<Response>}
      */

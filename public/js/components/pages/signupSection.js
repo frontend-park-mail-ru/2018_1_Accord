@@ -15,11 +15,11 @@ export default class SignupSection extends Section {
     this.signup = document.createElement('div');
     this.backButton = new BackButton('Menu');
     this.signupForm = new SignupForm();
-    this.errorField = document.createElement('div');
-    this.errorField.style.display = 'none';
+    this.infoField = document.createElement('div');
+    this.infoField.style.display = 'none';
 
     this.signup.appendChild(this.backButton.render());
-    this.signup.appendChild(this.errorField);
+    this.signup.appendChild(this.infoField);
     this.signup.appendChild(this.signupForm.render());
 
     this.backButton.onClick();
@@ -32,8 +32,8 @@ export default class SignupSection extends Section {
         .then((user) => {
           if (!user) {
             this.signupForm.onSubmit(submitCallback);
-            this.errorField.innerHTML = serverErrors.signup;
-            this.errorField.style.display = 'block';
+            this.infoField.innerHTML = serverErrors.signup;
+            this.infoField.style.display = 'block';
             Logger.log('Unsuccessful registration');
             return;
           }

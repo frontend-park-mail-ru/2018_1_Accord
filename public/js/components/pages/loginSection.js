@@ -17,11 +17,11 @@ export default class LoginSection extends Section {
     this.login = document.createElement('div');
     this.loginForm = new LoginForm();
     this.backButton = new BackButton('Menu');
-    this.errorField = document.createElement('div');
-    this.errorField.style.display = 'none';
+    this.infoField = document.createElement('div');
+    this.infoField.style.display = 'none';
 
     this.login.appendChild(this.backButton.render());
-    this.login.appendChild(this.errorField);
+    this.login.appendChild(this.infoField);
     this.login.appendChild(this.loginForm.render());
 
     this.backButton.onClick();
@@ -34,8 +34,8 @@ export default class LoginSection extends Section {
         .then((user) => {
           if (!user) {
             this.loginForm.onSubmit(submitCallback);
-            this.errorField.innerHTML = serverErrors.login;
-            this.errorField.style.display = 'block';
+            this.infoField.innerHTML = serverErrors.login;
+            this.infoField.style.display = 'block';
             Logger.log('Unsuccessful login');
             return;
           }
