@@ -1,10 +1,10 @@
 import BaseView from '../../view/baseView.js';
 
-export default class LoginView extends BaseView{
+export default class SignupView extends BaseView {
   constructor() {
-    super('js/views/pages/loginView/LoginView.tmpl');
-
+    super('js/views/pages/signupView/SignupView.tmpl');
   }
+
   render() {
     const attrs = {
       form: {
@@ -15,12 +15,22 @@ export default class LoginView extends BaseView{
             inputPlaceholder: 'email'
           },
           {
+            inputType: 'text',
+            inputName: 'username',
+            inputPlaceholder: 'username'
+          },
+          {
             inputType: 'password',
             inputName: 'password',
             inputPlaceholder: 'password'
+          },
+          {
+            inputType: 'password',
+            inputName: 'password',
+            inputPlaceholder: 'confirm password'
           }
         ],
-        submitText: 'Log in'
+        submitText: 'Sign up'
       }
     };
     return super.render(attrs);
