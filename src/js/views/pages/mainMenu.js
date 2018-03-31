@@ -1,8 +1,8 @@
-import Button from '../blocks/button.js';
+import Button from '../../components/blocks/button.js';
 import Section from './section.js';
-import SectionDispatcher from '../../modules/SectionDispatcher.js';
-import TextField from '../blocks/textField.js';
-import UserService from '../../modules/UserService.js';
+import Router from '../../modules/router.js';
+import TextField from '../../components/blocks/textField.js';
+import UserService from '../../services/UserService.js';
 import Logger from '../../utils/logger.js';
 import {fetchFaildErrors} from '../../config/textErrors.js';
 
@@ -23,7 +23,7 @@ export default class MenuSection extends Section {
     this.menu.appendChild(this.playButton.render());
 
     this.playButton.onClick(() => {
-      SectionDispatcher.changeSection('Play');
+      Router.changeSection('Play');
     });
 
     UserService.getUser()
@@ -36,11 +36,11 @@ export default class MenuSection extends Section {
           this.menu.appendChild(this.signupButton.render());
 
           this.loginButton.onClick(() => {
-            SectionDispatcher.changeSection('Login');
+            Router.changeSection('Login');
           });
 
           this.signupButton.onClick(() => {
-            SectionDispatcher.changeSection('Signup');
+            Router.changeSection('Signup');
           });
         } else {
           this.logoutButton = new Button('button', 'Logout');
@@ -48,8 +48,8 @@ export default class MenuSection extends Section {
 
           this.logoutButton.onClick(() => {
             UserService.logout()
-              .then(() => SectionDispatcher.changeSection('Menu'))
-              .catch(() => SectionDispatcher.changeSection('Menu'));
+              .then(() => Router.changeSection('Menu'))
+              .catch(() => Router.changeSection('Menu'));
             //TODO: обработать неуспешный выход
           });
         }

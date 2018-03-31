@@ -1,9 +1,9 @@
 import Section from '../section.js';
-import BackButton from '../../blocks/backButton.js';
-import TextField from '../../blocks/textField.js';
-import LeaderBoardService from '../../../modules/LeaderBoardService.js';
+import BackButton from '../../../components/blocks/backButton.js';
+import TextField from '../../../components/blocks/textField.js';
+import LeaderBoardService from '../../../services/LeaderBoardService.js';
 import Logger from '../../../utils/logger.js';
-import Paginator from '../../blocks/Paginator.js';
+import Paginator from '../../../components/blocks/Paginator.js';
 
 const LBTemplate = window.fest['js/components/pages/leaderboard/LeaderBoard.tmpl'];
 

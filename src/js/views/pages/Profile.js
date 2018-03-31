@@ -1,9 +1,9 @@
 import Section from './section.js';
-import TextField from '../blocks/textField.js';
-import BackButton from '../blocks/backButton.js';
-import UserService from '../../modules/UserService.js';
-import Button from '../blocks/button.js';
-import SectionDispatcher from '../../modules/SectionDispatcher.js';
+import TextField from '../../components/blocks/textField.js';
+import BackButton from '../../components/blocks/backButton.js';
+import UserService from '../../services/UserService.js';
+import Button from '../../components/blocks/button.js';
+import Router from '../../modules/router.js';
 
 const userDataTemplate = window.fest['js/components/pages/Profile.tmpl'];
 
@@ -34,7 +34,7 @@ export default class Profile extends Section {
           this.profile.appendChild(this.updateButton.render());
 
           this.updateButton.onClick(() => {
-            SectionDispatcher.changeSection('Update');
+            Router.changeSection('Update');
           });
         }
       });

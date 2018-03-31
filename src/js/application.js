@@ -1,13 +1,13 @@
 'use strict';
 
-import Menu from './components/pages/mainMenu.js';
-import LoginSection from './components/pages/loginSection.js';
+import Menu from './views/pages/mainMenu.js';
+import LoginSection from './views/pages/loginSection.js';
 import renderDOM from './components/render/render.js';
-import SignupSection from './components/pages/signupSection.js';
-import PlaySection from './components/pages/PlaySection.js';
-import LeaderBoard from './components/pages/leaderboard/leaderBoard.js';
-import Profile from './components/pages/Profile.js';
-import UpdateUserSection from './components/pages/UpdateUserSection.js';
+import SignupSection from './views/pages/signupSection.js';
+import PlaySection from './views/pages/PlaySection.js';
+import LeaderBoard from './views/pages/leaderboard/leaderBoard.js';
+import Profile from './views/pages/Profile.js';
+import UpdateUserSection from './views/pages/UpdateUserSection.js';
 
 const menuSection = new Menu();
 const loginSection = new LoginSection();

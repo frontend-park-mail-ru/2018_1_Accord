@@ -1,6 +1,6 @@
 import http from './FetchService.js';
 import config from '../config/config.js';
-import User from './User.js';
+import User from '../models/User.js';
 import {errorTransformer} from '../utils/httpServiceHelpers.js';
 
 

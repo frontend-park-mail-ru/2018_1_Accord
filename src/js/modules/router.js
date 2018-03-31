@@ -1,7 +1,7 @@
 import {Sections} from '../application.js';
 import renderDOM from '../components/render/render.js';
 
-export default class SectionDispatcher {
+export default class Router {
 
   constructor() {
   }

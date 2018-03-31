@@ -1,10 +1,10 @@
 import Section from './section.js';
-import UpdateUserForm from '../forms/updateUserForm.js';
-import TextField from '../blocks/textField.js';
-import BackButton from '../blocks/backButton.js';
-import UserService from '../../modules/UserService.js';
+import UpdateUserForm from '../../components/forms/updateUserForm.js';
+import TextField from '../../components/blocks/textField.js';
+import BackButton from '../../components/blocks/backButton.js';
+import UserService from '../../services/UserService.js';
 import {serverErrors} from '../../config/textErrors.js';
-import SectionDispatcher from '../../modules/SectionDispatcher.js';
+import Router from '../../modules/router.js';
 import Logger from '../../utils/logger.js';
 
 export default class UpdateUserSection extends Section {
@@ -49,7 +49,7 @@ export default class UpdateUserSection extends Section {
             callbackDispatcher(type);
             return;
           }
-          SectionDispatcher.changeSection('Profile');
+          Router.changeSection('Profile');
         })
         .catch((err) => {
           this.infoField.innerHTML = serverErrors.unexpected;

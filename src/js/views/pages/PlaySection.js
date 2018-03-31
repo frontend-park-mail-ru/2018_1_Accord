@@ -1,9 +1,9 @@
 import Section from './section.js';
-import SectionDispatcher from '../../modules/SectionDispatcher.js';
-import TextField from '../blocks/textField.js';
-import BackButton from '../blocks/backButton.js';
-import Button from '../blocks/button.js';
-import UserService from '../../modules/UserService.js';
+import Router from '../../modules/router.js';
+import TextField from '../../components/blocks/textField.js';
+import BackButton from '../../components/blocks/backButton.js';
+import Button from '../../components/blocks/button.js';
+import UserService from '../../services/UserService.js';
 
 
 export default class PlaySection extends Section {
@@ -22,7 +22,7 @@ export default class PlaySection extends Section {
     this.play.appendChild(this.leaderBoardButton.render());
 
     this.leaderBoardButton.onClick(() => {
-      SectionDispatcher.changeSection('LeaderBoard');
+      Router.changeSection('LeaderBoard');
     });
 
     this.backButton.onClick();
@@ -34,7 +34,7 @@ export default class PlaySection extends Section {
           this.play.appendChild(this.profile.render());
 
           this.profile.onClick(() => {
-            SectionDispatcher.changeSection('Profile');
+            Router.changeSection('Profile');
           });
 
         } else {
@@ -47,11 +47,11 @@ export default class PlaySection extends Section {
           this.play.appendChild(this.signupButton.render());
 
           this.loginButton.onClick(() => {
-            SectionDispatcher.changeSection('Login');
+            Router.changeSection('Login');
           });
 
           this.signupButton.onClick(() => {
-            SectionDispatcher.changeSection('Signup');
+            Router.changeSection('Signup');
           });
         }
       });

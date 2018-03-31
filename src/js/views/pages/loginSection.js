@@ -1,9 +1,9 @@
 import Section from './section.js';
-import LoginForm from '../forms/loginForm.js';
-import UserService from '../../modules/UserService.js';
+import LoginForm from '../../components/forms/loginForm.js';
+import UserService from '../../services/UserService.js';
 import Logger from '../../utils/logger.js';
-import SectionDispatcher from '../../modules/SectionDispatcher.js';
-import BackButton from '../blocks/backButton.js';
+import Router from '../../modules/router.js';
+import BackButton from '../../components/blocks/backButton.js';
 import {serverErrors} from '../../config/textErrors.js';
 
 
@@ -39,7 +39,7 @@ export default class LoginSection extends Section {
             Logger.log('Unsuccessful login');
             return;
           }
-          SectionDispatcher.changeSection('Play');
+          Router.changeSection('Play');
         })
         .catch((err) => {
           this.loginForm.onSubmit(submitCallback);

@@ -4,7 +4,7 @@
   "description": "Accord team's first SPA",
   "main": "index.js",
   "scripts": {
-    "test": "eslint public --fix",
+    "test": "eslint src --fix",
     "start": "node server"
   },
   "author": "Yury, Victoria, Marina",

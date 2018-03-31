@@ -1,5 +1,5 @@
 import Button from './button.js';
-import SectionDispatcher from '../../modules/SectionDispatcher.js';
+import Router from '../../modules/router.js';
 
 export default class BackButton extends Button {
 
@@ -15,7 +15,7 @@ export default class BackButton extends Button {
   onClick() {
     this.buttonDomElement.addEventListener('click', (event) => {
       event.preventDefault();
-      SectionDispatcher.changeSection(this.backSection);
+      Router.changeSection(this.backSection);
     });
   }
 }
