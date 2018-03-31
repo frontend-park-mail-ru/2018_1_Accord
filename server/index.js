@@ -9,7 +9,7 @@ const logger = debug('mylogger');
 logger('Starting app');
 const app = express();
 
-app.use(express.static(path.resolve(__dirname, '..', 'public')));
+app.use(express.static(path.resolve(__dirname, '..', 'src')));
 app.use(body.json());
 
 const port = process.env.PORT || 8000;
