@@ -42,5 +42,5 @@ class LeaderBoardService {
   }
 }
 
-const LBService = new LeaderBoardService();
-export default LBService;
+const leaderBoardService = new LeaderBoardService();
+export default leaderBoardService;

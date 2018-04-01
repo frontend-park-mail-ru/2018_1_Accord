@@ -1,0 +1,20 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="attrs">
+    <div>
+        <fest:include context="attrs.navItems" src="../../../components/NavBar/NavBar.tmpl.xml"/>
+
+        <div>
+            <header>
+                <fest:value>attrs.header</fest:value>
+            </header>
+            <ul>
+                <fest:for iterate="attrs.menuItems" index="i" value="v">
+                    <li>
+                        <a href="{v.href}">
+                            <fest:value>v.title</fest:value>
+                        </a>
+                    </li>
+                </fest:for>
+            </ul>
+        </div>
+    </div>
+</fest:template>

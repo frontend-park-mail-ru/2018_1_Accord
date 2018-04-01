@@ -1,6 +1,6 @@
 import Section from './section.js';
 import SignupForm from '../../components/forms/signupForm.js';
-import UserService from '../../services/UserService.js';
+import userService from '../../services/UserService.js';
 import Logger from '../../utils/logger.js';
 import Router from '../../modules/router.js';
 import BackButton from '../../components/blocks/backButton.js';
@@ -28,7 +28,7 @@ export default class SignupSection extends Section {
       event.preventDefault();
 
       this.signupForm.checkFormState()
-        .then((userData) => UserService.signUp(userData))
+        .then((userData) => userService.signUp(userData))
         .then((user) => {
           if (!user) {
             this.signupForm.onSubmit(submitCallback);

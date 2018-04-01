@@ -3,7 +3,7 @@ import Router from '../../modules/router.js';
 import TextField from '../../components/blocks/textField.js';
 import BackButton from '../../components/blocks/backButton.js';
 import Button from '../../components/blocks/button.js';
-import UserService from '../../services/UserService.js';
+import userService from '../../services/UserService.js';
 
 
 export default class PlaySection extends Section {
@@ -27,7 +27,7 @@ export default class PlaySection extends Section {
 
     this.backButton.onClick();
 
-    UserService.getUser()
+    userService.getUser()
       .then((user) => {
         if (user) {
           this.profile = new Button('button', 'Profile');

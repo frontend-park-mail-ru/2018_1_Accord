@@ -1,9 +1,9 @@
-import Section from './section.js';
-import TextField from '../../components/blocks/textField.js';
-import BackButton from '../../components/blocks/backButton.js';
-import UserService from '../../services/UserService.js';
-import Button from '../../components/blocks/button.js';
-import Router from '../../modules/router.js';
+import Section from '../section.js';
+import TextField from '../../../components/blocks/textField.js';
+import BackButton from '../../../components/blocks/backButton.js';
+import userService from '../../../services/UserService.js';
+import Button from '../../../components/blocks/button.js';
+import Router from '../../../modules/router.js';
 
 const userDataTemplate = window.fest['js/components/pages/Profile.tmpl'];
 
@@ -22,7 +22,7 @@ export default class Profile extends Section {
 
     this.backButton.onClick();
 
-    UserService.getUser()
+    userService.getUser()
       .then((user) => {
         if (user) {
           this.userDataText = document.createElement('div');

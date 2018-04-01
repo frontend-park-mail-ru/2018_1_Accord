@@ -1,17 +1,17 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="user">
     <div>Email:
-        <fest:space></fest:space>
+        <fest:space> </fest:space>
         <fest:value>user.email</fest:value>
     </div>
 
     <div>Username:
-        <fest:space></fest:space>
+        <fest:space> </fest:space>
         <fest:value>user.username</fest:value>
     </div>
 
     <div>
         Rating:
-        <fest:space></fest:space>
+        <fest:space> </fest:space>
         <fest:value>user.rating</fest:value>
     </div>
 </fest:template>

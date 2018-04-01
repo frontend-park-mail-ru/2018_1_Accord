@@ -1,4 +1,4 @@
-import http from './FetchService.js';
+import FetchService from './FetchService.js';
 import config from '../config/config.js';
 import User from '../models/User.js';
 import {errorTransformer} from '../utils/httpServiceHelpers.js';
@@ -29,7 +29,7 @@ class UserService {
      * @returns {Promise<User | undefined>}
      */
   load() {
-    return http.get(config.APIMethods.user)
+    return FetchService.get(config.APIMethods.user)
       .then(UserService.responseDispatcher)
       .then((json) => {
         if (json) {
@@ -45,7 +45,7 @@ class UserService {
      * @returns {Promise<User | undefined>}
      */
   login(userData) {
-    this.user = http.post(config.APIMethods.login, JSON.stringify(userData))
+    this.user = FetchService.post(config.APIMethods.login, JSON.stringify(userData))
       .then(UserService.responseDispatcher)
       .then((json) => {
         if (json) {
@@ -63,7 +63,7 @@ class UserService {
      * @returns {Promise<User | undefined>}
      */
   signUp(userData) {
-    this.user = http.post(config.APIMethods.signup, JSON.stringify(userData))
+    this.user = FetchService.post(config.APIMethods.signup, JSON.stringify(userData))
       .then(UserService.responseDispatcher)
       .then((json) => {
         if (json) {
@@ -81,7 +81,7 @@ class UserService {
    * @returns {Promise<Response>}
    */
   update(userData) {
-    return http.put(config.APIMethods.updateUser, JSON.stringify(userData))
+    return FetchService.put(config.APIMethods.updateUser, JSON.stringify(userData))
       .then((response) => {
         switch (response.status) {
           case 200:
@@ -103,7 +103,7 @@ class UserService {
      * @returns {Promise<Response>}
      */
   logout() {
-    return http.delete(config.APIMethods.logout)
+    return FetchService.delete(config.APIMethods.logout)
       .then((response) => {
         switch (response.status) {
           case 200:
@@ -124,6 +124,6 @@ class UserService {
   }
 }
 
-const Us = new UserService();
-export default Us;
+const userService = new UserService();
+export default userService;
 

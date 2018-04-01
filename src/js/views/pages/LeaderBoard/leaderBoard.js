@@ -1,11 +1,11 @@
 import Section from '../section.js';
 import BackButton from '../../../components/blocks/backButton.js';
 import TextField from '../../../components/blocks/textField.js';
-import LeaderBoardService from '../../../services/LeaderBoardService.js';
+import leaderBoardService from '../../../services/LeaderBoardService.js';
 import Logger from '../../../utils/logger.js';
 import Paginator from '../../../components/blocks/Paginator.js';
 
-const LBTemplate = window.fest['js/components/pages/leaderboard/LeaderBoard.tmpl'];
+const LBTemplate = window.fest['js/components/pages/LeaderBoard/LeaderBoard.tmpl'];
 
 export default class LeaderBoard extends Section {
   constructor() {
@@ -16,7 +16,7 @@ export default class LeaderBoard extends Section {
   updateLeaderboard(page) {
     this.page = page;
 
-    LeaderBoardService.getLeaderBoard(this.page)
+    leaderBoardService.getLeaderBoard(this.page)
       .then((obj) => {
         if (!obj) {
           Logger.log(`Can't open leader board on page ${this.page}`);

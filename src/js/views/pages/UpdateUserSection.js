@@ -2,7 +2,7 @@ import Section from './section.js';
 import UpdateUserForm from '../../components/forms/updateUserForm.js';
 import TextField from '../../components/blocks/textField.js';
 import BackButton from '../../components/blocks/backButton.js';
-import UserService from '../../services/UserService.js';
+import userService from '../../services/UserService.js';
 import {serverErrors} from '../../config/textErrors.js';
 import Router from '../../modules/router.js';
 import Logger from '../../utils/logger.js';
@@ -41,7 +41,7 @@ export default class UpdateUserSection extends Section {
     const submitCallback = (event, userData, type) => {
       event.preventDefault();
 
-      UserService.update(userData)
+      userService.update(userData)
         .then((status) => {
           if (!status) {
             this.infoField.innerHTML = serverErrors.updateNotLogin;
