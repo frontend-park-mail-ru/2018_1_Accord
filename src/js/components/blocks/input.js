@@ -1,6 +1,4 @@
-import Block from './block.js';
-
-export default class InputForm extends Block{
+export default class InputForm {
 
   /**
    * inputData is an Object

@@ -2,7 +2,7 @@ import Section from './section.js';
 import Router from '../../modules/router.js';
 import TextField from '../../components/blocks/textField.js';
 import BackButton from '../../components/blocks/backButton.js';
-import Button from '../../components/blocks/button.js';
+
 import userService from '../../services/UserService.js';
 
 

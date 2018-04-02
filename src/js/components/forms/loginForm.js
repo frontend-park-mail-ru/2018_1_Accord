@@ -1,6 +1,6 @@
 import Form from './form.js';
 import InputForm from '../blocks/input.js';
-import Button from '../blocks/button.js';
+
 import Validator from '../../modules/validation/validation.js';
 import {disposableListener} from '../../utils/helperFuncs.js';
 import {inputData} from '../../config/inputData.js';

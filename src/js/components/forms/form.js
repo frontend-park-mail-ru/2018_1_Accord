@@ -1,6 +1,4 @@
-import Block from '../blocks/block.js';
-
-export default class Form extends Block {
+export default class Form {
   constructor() {
     super();
     this.formElement = document.createElement('form');

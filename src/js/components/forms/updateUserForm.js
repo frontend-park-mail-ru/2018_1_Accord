@@ -1,7 +1,7 @@
 import Form from './form.js';
 import InputForm from '../blocks/input.js';
 import {newInputData} from '../../config/inputData.js';
-import Button from '../blocks/button.js';
+
 import {disposableListener} from '../../utils/helperFuncs.js';
 
 export default class UpdateUserForm extends Form {

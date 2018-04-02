@@ -1,6 +1,4 @@
-import Block from './block.js';
-
-export default class TextField extends Block{
+export default class TextField {
   /**
 	 *
      * @param {String} text

@@ -1,21 +1,32 @@
-import Button from './button.js';
 import Router from '../../modules/router.js';
 
-export default class BackButton extends Button {
+export default class BackButton {
 
   /**
    *
-   * @param {String} backSection
+   * @param {String} cssClassName
+   * @param {String} backView - path of the view to go back
    */
-  constructor(backSection) {
-    super('button', 'Back');
-    this.backSection = backSection;
+  constructor(cssClassName, backView) {
+    this.backButton = document.createElement('button');
+    this.backButton.innerHTML = 'Back';
+    this.backButton.className = cssClassName;
+    this._onClick(backView);
   }
 
-  onClick() {
-    this.buttonDomElement.addEventListener('click', (event) => {
+  render() {
+    return this.backButton;
+  }
+
+  /**
+   *
+   * @param {String} backView
+   * @private
+   */
+  _onClick(backView) {
+    this.backButton.addEventListener('click', (event) => {
       event.preventDefault();
-      Router.changeSection(this.backSection);
+      Router.goTo();
     });
   }
 }

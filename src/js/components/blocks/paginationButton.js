@@ -1,6 +1,4 @@
-import Button from './button.js';
-
-export default class PaginationButton extends Button {
+export default class PaginationButton {
   constructor(type, value) {
     super(type, value);
   }

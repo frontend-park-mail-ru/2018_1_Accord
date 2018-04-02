@@ -16,4 +16,12 @@ export default class Router {
     }
 
   }
+
+  /**
+   *
+   * @param {String} path
+   */
+  static goTo(path) {
+
+  }
 }
