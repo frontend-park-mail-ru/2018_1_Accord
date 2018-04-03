@@ -1,17 +1,17 @@
 import Router from '../../modules/router.js';
+import {selectorMap} from '../../config/selectorMap.js';
 
 export default class BackButton {
 
   /**
    *
-   * @param {String} cssClassName
-   * @param {String} backView - path of the view to go back
+   * @param {String} curView - path of the view to go back
    */
-  constructor(cssClassName, backView) {
+  constructor(curView) {
     this.backButton = document.createElement('button');
-    this.backButton.innerHTML = 'Back';
-    this.backButton.className = cssClassName;
-    this._onClick(backView);
+    this.backButton.innerText = 'Back';
+    this.backButton.className = selectorMap.BACK_BUTTON;
+    this._onClick(curView);
   }
 
   render() {
@@ -20,13 +20,13 @@ export default class BackButton {
 
   /**
    *
-   * @param {String} backView
+   * @param {String} curView
    * @private
    */
-  _onClick(backView) {
+  _onClick(curView) {
     this.backButton.addEventListener('click', (event) => {
       event.preventDefault();
-      Router.goTo();
+      Router.back(curView);
     });
   }
 }

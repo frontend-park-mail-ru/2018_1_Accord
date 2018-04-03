@@ -21,7 +21,9 @@ export default class Router {
    *
    * @param {String} path
    */
-  static goTo(path) {
-
+  static back(path) {
+    window.history.back();
+    //TODO if cur view === game and previous view === login | signUp
+    //TODO ---> back to main menu
   }
 }

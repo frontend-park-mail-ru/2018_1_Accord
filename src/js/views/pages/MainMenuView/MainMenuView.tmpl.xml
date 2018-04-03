@@ -1,20 +1,6 @@
-<fest:template xmlns:fest="http://fest.mail.ru" context_name="attrs">
-    <div>
-        <fest:include context="attrs.navItems" src="../../../components/NavBar/NavBar.tmpl.xml"/>
-
-        <div>
-            <header>
-                <fest:value>attrs.header</fest:value>
-            </header>
-            <ul>
-                <fest:for iterate="attrs.menuItems" index="i" value="v">
-                    <li>
-                        <a href="{v.href}">
-                            <fest:value>v.title</fest:value>
-                        </a>
-                    </li>
-                </fest:for>
-            </ul>
-        </div>
+<fest:template xmlns:fest="http://fest.mail.ru">
+    <div class="main__menu-view">
+        <div class="nav__bar"></div>
+        <div class="main__menu-items"></div>
     </div>
 </fest:template>
