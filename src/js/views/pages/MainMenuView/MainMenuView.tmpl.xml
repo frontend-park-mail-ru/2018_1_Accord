@@ -1,6 +1,17 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
     <div class="main__menu-view">
-        <div class="nav__bar"></div>
-        <div class="main__menu-items"></div>
+        <div class="nav__bar">
+            <a class="profile-button"></a>
+            <div class="mute-button"></div>
+            <div class="settings-button"></div>
+        </div>
+        <div class="main__menu-items">
+            <a class="play-button"></a>
+            <a class="sign-up-button"></a>
+            <a class="login-button"></a>
+            <div class="logout-button"></div>
+            <a class="help-button"></a>
+            <a class="leader-board-button"></a>
+        </div>
     </div>
 </fest:template>

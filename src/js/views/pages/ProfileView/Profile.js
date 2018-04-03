@@ -1,6 +1,6 @@
 import Section from '../section.js';
 import TextField from '../../../components/blocks/textField.js';
-import BackButton from '../../../components/blocks/backButton.js';
+import BackButton from '../../../components/buttons/backButton.js';
 import userService from '../../../services/UserService.js';
 
 import Router from '../../../modules/router.js';
@@ -28,14 +28,8 @@ export default class Profile extends Section {
           this.userDataText = document.createElement('div');
           this.userDataText.innerHTML = userDataTemplate(user.getProfileData());
 
-          this.updateButton = new Button('button', 'Update');
-
           this.profile.appendChild(this.userDataText);
-          this.profile.appendChild(this.updateButton.render());
 
-          this.updateButton.onClick(() => {
-            Router.changeSection('Update');
-          });
         }
       });
 

@@ -10,7 +10,18 @@ export const selectorMap = {
 
   //little components
   BUTTON: 'js-button',
-  BACK_BUTTON: 'back-button',
-  PROFILE_BUTTON: 'profile-button'
 
+  //nav bar buttons
+  BACK_BUTTON: 'back-button',
+  PROFILE_BUTTON: 'profile-button',
+  MUTE_BUTTON: 'mute-button',
+  SETTINGS_BUTTON: 'settings-button',
+
+  //menu items
+  PLAY_BUTTON: 'play-button',
+  SIGN_UP_BUTTON: 'sign-up-button',
+  LOGIN_BUTTON: 'login-button',
+  LOGOUT_BUTTON: 'logout-button',
+  HELP_BUTTON: 'help-button',
+  LEADER_BOARD_BUTTON: 'leader-board-button'
 };

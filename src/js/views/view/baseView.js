@@ -13,6 +13,16 @@ export default class BaseView {
     return this.el;
   }
 
+  hide() {
+    this.el.setAttribute('hidden', 'hidden');
+    return this;
+  }
+
+  show() {
+    this.el.removeAttribute('hidden');
+    return this;
+  }
+
   destroy() {
     this.el.innerHTML = '';
     return this;

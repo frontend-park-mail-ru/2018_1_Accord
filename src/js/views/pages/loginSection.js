@@ -3,7 +3,7 @@ import LoginForm from '../../components/forms/loginForm.js';
 import userService from '../../services/UserService.js';
 import Logger from '../../utils/logger.js';
 import Router from '../../modules/router.js';
-import BackButton from '../../components/blocks/backButton.js';
+import BackButton from '../../components/buttons/backButton.js';
 import {serverErrors} from '../../config/textErrors.js';
 
 

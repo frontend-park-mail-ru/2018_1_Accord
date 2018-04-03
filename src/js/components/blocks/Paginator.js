@@ -1,4 +1,4 @@
-import PaginationButton from './paginationButton.js';
+import PaginationButton from '../buttons/paginationButton.js';
 
 export default class Paginator {
 

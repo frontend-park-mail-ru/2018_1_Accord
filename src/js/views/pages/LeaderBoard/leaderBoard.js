@@ -1,5 +1,5 @@
 import Section from '../section.js';
-import BackButton from '../../../components/blocks/backButton.js';
+import BackButton from '../../../components/buttons/backButton.js';
 import TextField from '../../../components/blocks/textField.js';
 import leaderBoardService from '../../../services/LeaderBoardService.js';
 import Logger from '../../../utils/logger.js';

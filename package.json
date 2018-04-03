@@ -4,6 +4,7 @@
   "description": "Accord team's first SPA",
   "main": "index.js",
   "scripts": {
+    "build": "./node_modules/.bin/fest-build --dir=src",
     "test": "eslint src --fix",
     "start": "node server"
   },
