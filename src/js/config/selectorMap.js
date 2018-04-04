@@ -1,5 +1,5 @@
 export const selectorMap = {
-  ROOT: '.root',
+  ROOT: 'root',
 
   //views
   MAIN_MENU_VIEW: '.main__menu-view',

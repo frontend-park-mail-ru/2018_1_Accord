@@ -2,6 +2,8 @@
 
 import Router from './modules/router.js';
 import {selectorMap} from './config/selectorMap.js';
+import MenuView from './views/pages/MainMenuView/MainMenuView.js';
+//import LoginSection from './views/pages/loginSection';
 
 
 export default class Application {
@@ -10,9 +12,10 @@ export default class Application {
   }
 
   run() {
-    Router.changeSection('Menu');
+    new Router(this.root)
+      .add('/', MenuView)
+      //.add('/login', LoginSection)
+      .start();
   }
 
 }
-
-//renderDOM(menuSection.render(), document.getElementById('root'));

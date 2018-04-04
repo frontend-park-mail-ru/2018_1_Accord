@@ -42,7 +42,7 @@ export default class MenuView extends BaseView {
         //this.textError.innerHTML = fetchFaildErrors.noConnection;
       });
 
-    return this.el;
+    return this;
   }
 
 }
