@@ -1,31 +1,26 @@
-import Section from './section.js';
 import UpdateUserForm from '../../components/forms/updateUserForm.js';
 import TextField from '../../components/blocks/textField.js';
-import BackButton from '../../components/buttons/backButton.js';
 import userService from '../../services/UserService.js';
 import {serverErrors} from '../../config/textErrors.js';
 import Router from '../../modules/router.js';
 import Logger from '../../utils/logger.js';
 
-export default class UpdateUserSection extends Section {
+export default class UpdateUserSection  {
   constructor() {
-    super();
+
   }
+
 
   render() {
     this.update = document.createElement('div');
     this.infoField = document.createElement('div');
     this.infoField.style.display = 'none';
     this.title = new TextField('Update your profile');
-    this.backButton = new BackButton('Profile');
-
-    this.backButton.onClick();
 
     this.email = new UpdateUserForm('email');
     this.username = new UpdateUserForm('username');
     this.password = new UpdateUserForm('password');
 
-    this.update.appendChild(this.backButton.render());
     this.update.appendChild(this.title.render());
     this.update.appendChild(this.email.render());
     this.update.appendChild(this.username.render());

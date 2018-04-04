@@ -16,7 +16,6 @@ export default class SignupForm extends Form {
     this.Username = new InputForm(inputData.username);
     this.Password = new InputForm(inputData.password);
     this.PasswordConfirm = new InputForm(inputData.passwordConfirm);
-    this.ButtonSubmit = new Button('submit', 'Sign up');
 
     this.Email.onInputChange(this.validateEmail.bind(this));
     this.Username.onInputChange(this.validateUsername.bind(this));
@@ -27,7 +26,6 @@ export default class SignupForm extends Form {
     this.formElement.appendChild(this.Username.render());
     this.formElement.appendChild(this.Password.render());
     this.formElement.appendChild(this.PasswordConfirm.render());
-    this.formElement.appendChild(this.ButtonSubmit.render());
 
     this.formElement.addEventListener('submit', (event) => event.preventDefault());
     return this.formElement;

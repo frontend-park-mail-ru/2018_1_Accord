@@ -3,8 +3,8 @@ import {Sections} from '../config/views.js';
 
 export default class Router {
 
-  constructor() {
-
+  constructor(root) {
+    this.root = root;
   }
 
   /**

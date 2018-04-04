@@ -1,33 +1,23 @@
-import Section from './section.js';
-import Router from '../../modules/router.js';
 import TextField from '../../components/blocks/textField.js';
-import BackButton from '../../components/buttons/backButton.js';
 
 import userService from '../../services/UserService.js';
+import Logger from '../../utils/logger.js';
 
 
-export default class PlaySection extends Section {
+export default class PlaySection  {
   constructor() {
-    super();
   }
 
   render() {
     this.play = document.createElement('div');
     this.text = new TextField('Let\'s play!');
-    this.backButton = new BackButton('Menu');
 
-    this.play.appendChild(this.backButton.render());
     this.play.appendChild(this.text.render());
-
-    this.backButton.onClick();
 
     userService.getUser()
       .then((user) => {
         if (user) {
-
-          this.profile.onClick(() => {
-            Router.changeSection('Profile');
-          });
+          Logger.log('User: ', user);
 
         } else {
           //TODO

@@ -1,28 +1,21 @@
-import Section from './section.js';
 import SignupForm from '../../components/forms/signupForm.js';
 import userService from '../../services/UserService.js';
 import Logger from '../../utils/logger.js';
 import Router from '../../modules/router.js';
-import BackButton from '../../components/buttons/backButton.js';
 import {serverErrors} from '../../config/textErrors.js';
 
-export default class SignupSection extends Section {
+export default class SignupSection  {
   constructor() {
-    super();
   }
 
   render() {
     this.signup = document.createElement('div');
-    this.backButton = new BackButton('Menu');
     this.signupForm = new SignupForm();
     this.infoField = document.createElement('div');
     this.infoField.style.display = 'none';
 
-    this.signup.appendChild(this.backButton.render());
     this.signup.appendChild(this.infoField);
     this.signup.appendChild(this.signupForm.render());
-
-    this.backButton.onClick();
 
     const submitCallback = (event) => {
       event.preventDefault();

@@ -1,13 +1,14 @@
+
 export default class BackButton {
 
   /**
-   *
+   * @param {HTMLElement} element
    * @param {String} className
    */
-  constructor(className) {
-    this.backButton = document.querySelector();
+  constructor(element, className) {
+    this.backButton = element.querySelector(className);
     this.backButton.innerText = 'Back';
-    this._onClick(className);
+    this._onClick();
   }
 
   render() {

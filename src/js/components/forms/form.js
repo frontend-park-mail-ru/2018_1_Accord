@@ -1,6 +1,5 @@
 export default class Form {
   constructor() {
-    super();
     this.formElement = document.createElement('form');
 
   }

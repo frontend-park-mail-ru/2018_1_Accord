@@ -32,7 +32,6 @@ export default class UpdateUserForm extends Form {
         break;
     }
 
-    this.sendButton = new Button('submit', 'Send');
     this.formElement.appendChild(this.sendButton.render());
 
     return this.formElement;

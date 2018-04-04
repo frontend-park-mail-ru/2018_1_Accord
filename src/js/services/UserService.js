@@ -2,6 +2,7 @@ import FetchService from './FetchService.js';
 import config from '../config/config.js';
 import User from '../models/User.js';
 import {errorTransformer} from '../utils/httpServiceHelpers.js';
+import Error from '../error/Error.js';
 
 
 class UserService {
@@ -110,9 +111,9 @@ class UserService {
             this.user = Promise.resolve();
             return true;
           case 400:
-            throw {status: 'Error', message: 'Unsuccessful logout'};
+            throw new Error('Logout', 400);
           default:
-            throw {status: 'Error', message: 'Unexpected error'};
+            throw new Error('Logout', 0);
 
         }
       })

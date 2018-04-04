@@ -7,7 +7,6 @@ export default class InputForm {
    * @param {Object} inputData
    */
   constructor(inputData) {
-    super();
     this.inputDomElement = document.createElement('input');
     this.inputDomElement.type = inputData.type;
     this.inputDomElement.placeholder = inputData.placeholder;

@@ -20,14 +20,12 @@ export default class LoginForm extends Form {
   render() {
     this.Email = new InputForm(inputData.email);
     this.Password = new InputForm(inputData.password);
-    this.ButtonSubmit = new Button('submit', 'Log in');
 
     this.Email.onInputChange(this.validateEmail.bind(this));
     this.Password.onInputChange(this.validatePassword.bind(this));
 
     this.formElement.appendChild(this.Email.render());
     this.formElement.appendChild(this.Password.render());
-    this.formElement.appendChild(this.ButtonSubmit.render());
 
     this.formElement.addEventListener('submit', (event) => event.preventDefault());
 
