@@ -2,47 +2,45 @@ import userService from '../../../services/UserService.js';
 import Logger from '../../../utils/logger.js';
 //import {fetchFaildErrors} from '../../../config/textErrors.js';
 import BaseView from '../../view/baseView.js';
-import LinkedButton from '../../../components/buttons/linkedButton.js';
-import {selectorMap} from '../../../config/selectorMap.js';
-import MuteButton from '../../../components/buttons/muteButton.js';
-import LogoutButton from '../../../components/buttons/logoutButton.js';
+import {selector} from '../../../config/selector.js';
+import NavBar from '../../../components/blocks/navBar/navBar.js';
+import MenuItems from '../../../components/blocks/menuItems.js';
 
 
 export default class MenuView extends BaseView {
   constructor() {
     super('js/views/pages/MainMenuView/MainMenuView.tmpl');
 
-    //create navBar elements
-    new MuteButton(this.el, selectorMap.MUTE_BUTTON);
-    new LinkedButton(this.el, selectorMap.SETTINGS_BUTTON, 'Settings', undefined);
-
-    //create menu elements
-    new LinkedButton(this.el, selectorMap.PLAY_BUTTON, 'Play', undefined);
-    new LinkedButton(this.el, selectorMap.HELP_BUTTON, 'Help', undefined);
+    this.navBar = [selector.MUTE_BUTTON, selector.SETTINGS_BUTTON];
+    this.menuItems = [selector.PLAY_BUTTON, selector.HELP_BUTTON];
   }
 
   render() {
     userService.getUser()
       .then((user) => {
         if (!user) {
-          new LinkedButton(this.el, selectorMap.LOGIN_BUTTON, 'Login', undefined);
-          new LinkedButton(this.el, selectorMap.SIGN_UP_BUTTON, 'Signup', undefined);
+          this.menuItems.push(selector.LOGIN_BUTTON, selector.SIGN_UP_BUTTON);
         } else {
-          new LinkedButton(this.el, selectorMap.PROFILE_BUTTON, 'Profile', user.getProfileData());
-          new LogoutButton(this.el, selectorMap.LOGOUT_BUTTON);
+          this.navBar.push(selector.PROFILE_BUTTON);
+          this.menuItems.push(selector.LEADER_BOARD_BUTTON, selector.LOGOUT_BUTTON);
         }
-        new LinkedButton(this.el, selectorMap.LEADER_BOARD_BUTTON, 'LeaderBoard', undefined);
+
+        new NavBar(this.el, this.navBar, user);
+        new MenuItems(this.el, this.menuItems);
+
         super.render();
         //TODO: обработать неуспешный выход
       })
       .catch((error) => {
         Logger.error(error);
 
+        new NavBar(this.el, this.navBar, undefined);
+        new MenuItems(this.el, this.menuItems);
         super.render();
         //this.textError.innerHTML = fetchFaildErrors.noConnection;
       });
 
-    return this.el;
+    return this;
   }
 
 }

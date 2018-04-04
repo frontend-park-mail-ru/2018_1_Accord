@@ -1,18 +1,24 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
     <div class="main__menu-view">
-        <div class="nav__bar">
-            <a class="profile-button"></a>
-            <div class="mute-button"></div>
-            <a class="settings-button"></a>
-        </div>
+        <fest:include context_name="data" src="../../../components/forms/Form.tmpl.xml"/>
         <div class="main__menu-items">
-            <a class="play-button"></a>
-            <a class="sign-up-button"></a>
-            <a class="login-button"></a>
-            <div class="logout-button"></div>
-            <a class="help-button"></a>
-            <a class="leader-board-button"></a>
-            <div class="main__menu-error"></div>
+            <div class="play-button">
+                <a> </a>
+            </div>
+            <div class="sign-up-button">
+                <a> </a>
+            </div>
+            <div class="login-button">
+                <a> </a>
+            </div>
+            <div class="logout-button"> </div>
+            <div class="help-button">
+                <a> </a>
+            </div>
+            <div class="leader-board-button">
+                <a> </a>
+            </div>
+            <div class="main__menu-error"> </div>
         </div>
     </div>
 </fest:template>

@@ -1,0 +1,18 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
+    <div class="view login-view">
+        <div class="login__error"> </div>
+
+        <fest:include context_name="" src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
+
+        <div class="login__form">
+            <fest:include context_name="data" src="../../../components/forms/Form.tmpl.xml"/>
+        </div>
+
+        <div class="please-signup">
+            If you haven't account yet, please
+            <div class="please-signup__ref"><a>sign up</a></div>
+        </div>
+
+        <div class="validation-error"> </div>
+    </div>
+</fest:template>

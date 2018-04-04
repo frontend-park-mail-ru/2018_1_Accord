@@ -2,14 +2,14 @@
 
 
 export default class BaseView {
-  constructor(name) {
+  constructor(name, attrs) {
     this.tmpl = window.fest[name];
     this.el = document.createElement('div');
-    this.el.innerHTML = this.tmpl();
+    this.el.innerHTML = this.tmpl(attrs);
   }
 
   render() {
-    return this.el;
+    return this;
   }
 
   hide() {

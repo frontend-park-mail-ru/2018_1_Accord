@@ -1,18 +1,22 @@
 export const inputData = {
   email: {
     type: 'email',
+    name: 'email',
     placeholder: 'Enter your e-mail...'
   },
   username: {
     type: 'text',
+    name: 'username',
     placeholder: 'Enter username...'
   },
   password: {
     type: 'password',
+    name: 'password',
     placeholder: 'Enter your password...'
   },
   passwordConfirm: {
     type: 'password',
+    name: 'password-confirm',
     placeholder: 'Confirm password...'
   }
 };

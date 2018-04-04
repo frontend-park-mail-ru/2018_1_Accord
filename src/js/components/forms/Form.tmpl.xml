@@ -1,0 +1,16 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
+    <form class="form">
+        <div class="form__fields">
+            <fest:for iterate="data" index="i" value="v">
+                <div class="form__field">
+                    <input class="form__field-input" type="{v.inputType}" name="{v.inputName}"
+                           placeholder="{v.inputPlaceholder}"/>
+                </div>
+            </fest:for>
+        </div>
+
+        <button class="button_text submit-button" type="submit">
+            <fest:value>data.form.submitText</fest:value>
+        </button>
+    </form>
+</fest:template>

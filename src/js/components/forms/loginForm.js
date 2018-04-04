@@ -1,44 +1,46 @@
-import Form from './form.js';
-import InputForm from '../blocks/input.js';
+import Input from '../blocks/input.js';
 
 import Validator from '../../modules/validation/validation.js';
 import {disposableListener} from '../../utils/helperFuncs.js';
-import {inputData} from '../../config/inputData.js';
+import {selector} from '../../config/selector.js';
 
-export default class LoginForm extends Form {
-  constructor() {
-    super();
+export default class LoginForm {
+
+  /**
+   *
+   * @param {HTMLElement} element
+   */
+  constructor(element) {
+    this.form = element.querySelector(selector.FORM);
+
+    this.email = new Input(this.form, 'email').render();
+    this.password = new Input(this.form, 'password').render();
+
+    this.submit = this.form.querySelector(selector.SUBMIT_BUTTON);
+    this.errorField = element.querySelector(selector.VALIDATE_ERR);
+
+    this.email.onInput(this.validateEmail, this.errorField);
+    this.password.onInput(this.validatePassword, this.errorField);
+  }
+
+  render() {
+    return this;
+  }
+
+  onSubmit(callback) {
+    return disposableListener(this.form, 'submit', callback);
   }
 
   getFormData() {
     return {
-      email: this.Email.getData(),
-      password: this.Password.getData()
+      email: this.email.getData(),
+      password: this.password.getData()
     };
-  }
-
-  render() {
-    this.Email = new InputForm(inputData.email);
-    this.Password = new InputForm(inputData.password);
-
-    this.Email.onInputChange(this.validateEmail.bind(this));
-    this.Password.onInputChange(this.validatePassword.bind(this));
-
-    this.formElement.appendChild(this.Email.render());
-    this.formElement.appendChild(this.Password.render());
-
-    this.formElement.addEventListener('submit', (event) => event.preventDefault());
-
-    return this.formElement;
-  }
-
-  onSubmit(callback) {
-    return disposableListener(this.formElement, 'submit', callback);
   }
 
   checkFormState() {
     return new Promise((resolve, reject) => {
-      if (this.Email.getState() && this.Password.getState()) {
+      if (this.email.getStatus() && this.password.getStatus()) {
         resolve(this.getFormData());
       } else {
         reject();
@@ -47,12 +49,12 @@ export default class LoginForm extends Form {
   }
 
   validateEmail() {
-    const formState = Validator.checkEmail(this.Email);
-    this.Email.setError(formState.errMessage);
+    const formState = Validator.checkEmail(this.email.getData());
+    this.errorField.innerText += `${formState.errMessage}\n`;
   }
 
   validatePassword() {
-    const formState = Validator.checkPassword(this.Password);
-    this.Password.setError(formState.errMessage);
+    const formState = Validator.checkPassword(this.password.getData());
+    this.errorField.innerText += `${formState.errMessage}\n`;
   }
 }

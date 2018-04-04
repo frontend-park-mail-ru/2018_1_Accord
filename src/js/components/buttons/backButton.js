@@ -1,12 +1,12 @@
+import {selector} from '../../config/selector.js';
 
 export default class BackButton {
 
   /**
    * @param {HTMLElement} element
-   * @param {String} className
    */
-  constructor(element, className) {
-    this.backButton = element.querySelector(className);
+  constructor(element) {
+    this.backButton = element.querySelector(selector.BACK_BUTTON);
     this.backButton.innerText = 'Back';
     this._onClick();
   }

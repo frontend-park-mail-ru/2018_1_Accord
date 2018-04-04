@@ -1,12 +1,12 @@
 'use strict';
 
 import Router from './modules/router.js';
-import {selectorMap} from './config/selectorMap.js';
+import {selector} from './config/selector.js';
 
 
 export default class Application {
   constructor() {
-    this.root = document.getElementById(selectorMap.ROOT);
+    this.root = document.getElementById(selector.ROOT);
   }
 
   run() {
