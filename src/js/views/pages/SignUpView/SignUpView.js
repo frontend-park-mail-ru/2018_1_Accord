@@ -1,22 +1,24 @@
 import BaseView from '../../view/baseView.js';
 import {selector} from '../../../config/selector.js';
 import NavBar from '../../../components/blocks/navBar/navBar.js';
-import LoginForm from '../../../components/forms/loginForm.js';
 import {serverErrors} from '../../../config/textErrors.js';
 import Router from '../../../modules/router.js';
 import Logger from '../../../utils/logger.js';
 import userService from '../../../services/UserService.js';
 import {inputData} from '../../../config/inputData.js';
+import SignUpForm from '../../../components/forms/signUpForm.js';
 
-export default class LoginView extends BaseView {
+export default class SignUpView extends BaseView {
   constructor() {
-    super('js/views/pages/LoginView/LoginView.tmpl',
+    super('js/views/pages/SignUpView/SignUpView.tmpl',
       {
         form: [
           inputData.email,
-          inputData.password
+          inputData.username,
+          inputData.password,
+          inputData.passwordConfirm
         ],
-        submitText: 'Login'
+        submitText: 'Sign up'
       }
     );
 
@@ -26,8 +28,8 @@ export default class LoginView extends BaseView {
 
     new NavBar(this.el, this.navBar, undefined);
 
-    this.error = this.el.querySelector(selector.LOGIN_ERROR);
-    this.signUpForm = new LoginForm(this.el).render();
+    this.error = this.el.querySelector(selector.SIGNUP_ERROR);
+    this.signUpForm = new SignUpForm(this.el).render();
   }
 
   render() {
@@ -35,14 +37,14 @@ export default class LoginView extends BaseView {
       event.preventDefault();
 
       this.signUpForm.checkFormState()
-        .then((userData) => userService.login(userData))
+        .then((userData) => userService.signUp(userData))
         .then((user) => {
           if (!user) {
             this.signUpForm.onSubmit(submitCallback);
 
-            this.error.innerText = serverErrors.login;
+            this.error.innerText = serverErrors.signup;
             this.error.style.display = 'block';
-            Logger.log('Unsuccessful login');
+            Logger.log('Unsuccessful signup');
 
           } else {
             Router.changeSection('Menu');

@@ -1,17 +1,18 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
-    <div class="view login-view">
-
+    <div class="view signup-view">
         <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
 
-        <div class="login__error"></div>
+        <div class="signup__error"></div>
 
-        <div class="login__form">
+        <div class="signup__form">
             <fest:include context_name="data" src="../../../components/forms/Form.tmpl.xml"/>
         </div>
 
-        <div class="please-signup">
-            If you haven't account yet, please
-            <div class="please-signup__ref"><a>sign up</a></div>
+        <div class="please-login">
+            Have an account?
+            <div class="please-login__ref">
+                <a>login</a>
+            </div>
         </div>
 
     </div>

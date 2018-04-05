@@ -13,4 +13,6 @@
             <fest:value>data.submitText</fest:value>
         </button>
     </form>
+
+    <div class="validation-error"></div>
 </fest:template>

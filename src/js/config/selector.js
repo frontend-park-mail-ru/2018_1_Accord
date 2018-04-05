@@ -4,6 +4,7 @@ export const selector = {
   //views
   MAIN_MENU_VIEW: '.main__menu-view',
   LOGIN_VIEW: '.login-view',
+  SIGNUP_VIEW: '.signup-view',
 
   //blocks for views
   NAV_BAR: '.nav__bar',
@@ -11,9 +12,12 @@ export const selector = {
 
   MAIN_ERROR: '.main__menu-error',
   LOGIN_ERROR: '.login__error',
+  SIGNUP_ERROR: '.signup__error',
   VALIDATE_ERR: '.validation-error',
 
   FORM: '.form',
+  LOGIN_FORM: '.login__form',
+  SIGNUP_FORM: '.signup__form',
   FORM_FIELDS: '.form__fields',
 
   //little components
