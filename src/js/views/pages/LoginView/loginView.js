@@ -27,7 +27,6 @@ export default class LoginView extends BaseView {
     new NavBar(this.el, this.navBar, undefined);
 
     this.loginError = this.el.querySelector(selector.LOGIN_ERROR);
-
     this.loginForm = new LoginForm(this.el).render();
   }
 
@@ -48,12 +47,16 @@ export default class LoginView extends BaseView {
           } else {
             Router.changeSection('Menu');
           }
-          super.render(this.attrs);
+          super.render();
         })
         .catch((err) => {
           this.loginForm.onSubmit(submitCallback);
+
+          this.loginError.innerText = serverErrors.unexpected;
+          this.loginError.style.display = 'block';
+
           Logger.error(err);
-          super.render(this.attrs);
+          super.render();
           //TODO:Error dispatcher
         });
     };

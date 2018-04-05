@@ -19,8 +19,8 @@ export default class LoginForm {
     this.submit = this.form.querySelector(selector.SUBMIT_BUTTON);
     this.errorField = element.querySelector(selector.VALIDATE_ERR);
 
-    this.email.onInput(this.validateEmail, this.errorField);
-    this.password.onInput(this.validatePassword, this.errorField);
+    this.email.onInput(this.validateEmail.bind(this), this.errorField);
+    this.password.onInput(this.validatePassword.bind(this), this.errorField);
   }
 
   render() {
@@ -40,7 +40,7 @@ export default class LoginForm {
 
   checkFormState() {
     return new Promise((resolve, reject) => {
-      if (this.email.getStatus() && this.password.getStatus()) {
+      if (!this.email.getStatus() && !this.password.getStatus()) {
         resolve(this.getFormData());
       } else {
         reject();
@@ -50,11 +50,21 @@ export default class LoginForm {
 
   validateEmail() {
     const formState = Validator.checkEmail(this.email.getData());
-    this.errorField.innerText += `${formState.errMessage}\n`;
+    if (!formState.state) {
+      this.errorField.innerText += `${formState.errMessage}\n`;
+      this.errorField.style.display = 'block';
+
+      this.email.setStatus(true);
+    }
   }
 
   validatePassword() {
     const formState = Validator.checkPassword(this.password.getData());
-    this.errorField.innerText += `${formState.errMessage}\n`;
+    if (!formState.state) {
+      this.errorField.innerText += `${formState.errMessage}\n`;
+      this.errorField.style.display = 'block';
+
+      this.password.setStatus(true);
+    }
   }
 }

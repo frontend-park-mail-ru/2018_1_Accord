@@ -2,7 +2,6 @@ import {selector} from '../../../config/selector.js';
 import BackButton from '../../buttons/backButton.js';
 import LinkedButton from '../../buttons/linkedButton.js';
 import MuteButton from '../../buttons/muteButton.js';
-import Logger from '../../../utils/logger.js';
 
 export default class NavBar {
 
@@ -14,7 +13,6 @@ export default class NavBar {
    */
   constructor(element, selectors, userdata) {
     this.navBar = element.querySelector(selector.NAV_BAR);
-    Logger.log(this.navBar);
 
     this.user = userdata;
     this.selectors = selectors;

@@ -23,11 +23,16 @@ export default class Input {
     return this.errorStatus;
   }
 
+  setStatus(errorStatus) {
+    this.errorStatus = errorStatus;
+  }
+
   onInput(callback, errField) {
     this.input.addEventListener('input', (event) => {
       event.preventDefault();
       if (this.errorStatus) {
         this.errorStatus = false;
+        errField.innerText = '';
         errField.style.display = 'none';
       }
     });
