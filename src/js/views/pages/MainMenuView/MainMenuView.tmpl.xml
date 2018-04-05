@@ -1,6 +1,6 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
     <div class="main__menu-view">
-        <fest:include context_name="data" src="../../../components/forms/Form.tmpl.xml"/>
+        <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
         <div class="main__menu-items">
             <div class="play-button">
                 <a> </a>

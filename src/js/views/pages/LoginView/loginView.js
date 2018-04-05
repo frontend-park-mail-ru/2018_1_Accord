@@ -10,19 +10,25 @@ import {inputData} from '../../../config/inputData.js';
 
 export default class LoginView extends BaseView {
   constructor() {
-
-    super('js/views/pages/LoginView/LoginView.tmpl', [
-      selector.BACK_BUTTON,
-      selector.MUTE_BUTTON,
-      selector.SETTINGS_BUTTON]
+    super('js/views/pages/LoginView/LoginView.tmpl',
+      {
+        form: [
+          inputData.email,
+          inputData.password
+        ],
+        submitText: 'Login'
+      }
     );
+
+    this.navBar = [selector.BACK_BUTTON,
+      selector.MUTE_BUTTON,
+      selector.SETTINGS_BUTTON];
 
     new NavBar(this.el, this.navBar, undefined);
 
     this.loginError = this.el.querySelector(selector.LOGIN_ERROR);
 
     this.loginForm = new LoginForm(this.el).render();
-    this.attrs = [inputData.email, inputData.password];
   }
 
   render() {
@@ -54,7 +60,7 @@ export default class LoginView extends BaseView {
 
     this.loginForm.onSubmit(submitCallback);
 
-    return this;
+    return this.el;
   }
 
 }

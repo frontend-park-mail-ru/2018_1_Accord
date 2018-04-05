@@ -9,7 +9,7 @@ import MenuItems from '../../../components/blocks/menuItems.js';
 
 export default class MenuView extends BaseView {
   constructor() {
-    super('js/views/pages/MainMenuView/MainMenuView.tmpl');
+    super('js/views/pages/MainMenuView/MainMenuView.tmpl',);
 
     this.navBar = [selector.MUTE_BUTTON, selector.SETTINGS_BUTTON];
     this.menuItems = [selector.PLAY_BUTTON, selector.HELP_BUTTON];
@@ -40,7 +40,7 @@ export default class MenuView extends BaseView {
         //this.textError.innerHTML = fetchFaildErrors.noConnection;
       });
 
-    return this;
+    return this.el;
   }
 
 }

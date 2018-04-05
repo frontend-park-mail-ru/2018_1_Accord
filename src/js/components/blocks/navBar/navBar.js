@@ -14,11 +14,12 @@ export default class NavBar {
    */
   constructor(element, selectors, userdata) {
     this.navBar = element.querySelector(selector.NAV_BAR);
+    Logger.log(this.navBar);
+
     this.user = userdata;
     this.selectors = selectors;
 
     this.selectors.forEach((value) => {
-      Logger.log(this.navBar);
       switch (value) {
         case selector.BACK_BUTTON:
           new BackButton(this.navBar);
