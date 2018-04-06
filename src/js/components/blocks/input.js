@@ -1,53 +1,46 @@
-export default class InputForm {
+import {selector} from '../../config/selector.js';
+
+export default class Input {
 
   /**
-   * inputData is an Object
-   * contains input type and placeholder
-   *
-   * @param {Object} inputData
+   * @param {HTMLElement} element
+   * @param {String} inputName
    */
-  constructor(inputData) {
-    this.inputDomElement = document.createElement('input');
-    this.inputDomElement.type = inputData.type;
-    this.inputDomElement.placeholder = inputData.placeholder;
-
-    this.divInputElement = document.createElement('div');
-    this.divInputElement.appendChild(this.inputDomElement);
-
-    this.state = false;
-    this.errorElement = document.createElement('div');
-    this.divInputElement.appendChild(this.errorElement);
+  constructor(element, inputName) {
+    this.input = element.querySelector(`${selector.INPUT} input[name=${inputName}]`);
+    this.errorStatus = false;
   }
 
   render() {
-    return this.divInputElement;
-  }
-
-  getState() {
-    return this.state;
+    return this;
   }
 
   getData() {
-    return this.inputDomElement.value;
+    return this.input.value;
   }
 
-  setError(error) {
-    if (error) {
-      this.state = false;
-      this.errorElement.innerHTML = error;
-      this.errorElement.style.display = 'block';
-    } else {
-      this.state = true;
-      this.errorElement.style.display = 'none';
-    }
+  getStatus() {
+    return this.errorStatus;
   }
 
-  onInputChange(callback) {
-    this.inputDomElement.addEventListener('change', (event) => {
+  setStatus(errorStatus) {
+    this.errorStatus = errorStatus;
+  }
+
+  onInput(callback, errField) {
+    this.input.addEventListener('input', (event) => {
+      event.preventDefault();
+      if (this.errorStatus) {
+        this.errorStatus = false;
+        errField.innerText = '';
+        errField.style.display = 'none';
+      }
+    });
+
+    this.input.addEventListener('change', (event) => {
       event.preventDefault();
       callback();
     });
-
   }
 
 }

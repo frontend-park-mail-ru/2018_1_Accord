@@ -1,18 +1,26 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-    <div class="main__menu-view">
-        <div class="nav__bar">
-            <a class="profile-button"></a>
-            <div class="mute-button"></div>
-            <a class="settings-button"></a>
-        </div>
+    <div class="view menu-view">
+        <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
+
+        <div class="main__title">Bubble Wars</div>
         <div class="main__menu-items">
-            <a class="play-button"></a>
-            <a class="sign-up-button"></a>
-            <a class="login-button"></a>
-            <div class="logout-button"></div>
-            <a class="help-button"></a>
-            <a class="leader-board-button"></a>
-            <div class="main__menu-error"></div>
+            <div class="play-button" style="display: none">
+                <a> </a>
+            </div>
+            <div class="sign-up-button" style="display: none">
+                <a> </a>
+            </div>
+            <div class="login-button" style="display: none">
+                <a> </a>
+            </div>
+            <div class="logout-button" style="display: none"> </div>
+            <div class="help-button" style="display: none">
+                <a> </a>
+            </div>
+            <div class="leader-board-button" style="display: none">
+                <a> </a>
+            </div>
+            <div class="main__menu-error" style="display: none"> </div>
         </div>
     </div>
 </fest:template>

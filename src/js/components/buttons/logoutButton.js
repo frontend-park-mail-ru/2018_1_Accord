@@ -1,7 +1,7 @@
 import userService from '../../services/UserService.js';
 import Router from '../../modules/router.js';
 import Logger from '../../utils/logger.js';
-import {selectorMap} from '../../config/selectorMap.js';
+import {selector} from '../../config/selector.js';
 
 export default class LogoutButton {
 
@@ -10,8 +10,11 @@ export default class LogoutButton {
    * @param {String} className
    */
   constructor(element, className) {
-    this.errorField = element.querySelector(selectorMap.MAIN_ERROR);
+    this.errorField = element.querySelector(selector.MAIN_ERROR);
+    this.errorField.style.display = 'block';
+
     this.logoutButton = element.querySelector(className);
+    this.logoutButton.style.display = 'block';
     this.logoutButton.innerText = 'Logout';
     this._onClick();
   }
@@ -29,7 +32,7 @@ export default class LogoutButton {
       event.preventDefault();
       userService.logout()
         .then(() => {
-          Router.changeSection('Menu');
+          history.pushState(null, '', '/');
           Logger.log('Logout successfully');
         })
         .catch((error) => {

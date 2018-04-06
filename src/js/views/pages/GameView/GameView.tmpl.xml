@@ -1,0 +1,19 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+    <div class="view game-view">
+
+        <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
+
+        <div class="game-unauth__info">
+        </div>
+
+        <div class="game-error">
+
+        </div>
+
+        <div class="play-area">
+            This is an area to play
+        </div>
+    </div>
+
+
+</fest:template>

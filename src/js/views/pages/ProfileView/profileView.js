@@ -1,10 +1,9 @@
-
 import TextField from '../../../components/blocks/textField.js';
 import userService from '../../../services/UserService.js';
 
 const userDataTemplate = window.fest['js/components/pages/Profile.tmpl'];
 
-export default class Profile  {
+export default class ProfileView  {
   constructor() {
   }
 

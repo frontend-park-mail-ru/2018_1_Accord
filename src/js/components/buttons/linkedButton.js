@@ -1,5 +1,3 @@
-import Router from '../../modules/router.js';
-
 export default class LinkedButton {
 
   /**
@@ -9,32 +7,21 @@ export default class LinkedButton {
    * @param {Object} data //ex: {username: 'kk111'} for profile
    *
    */
-  constructor(element, className, type, data) {
+  constructor(element, className, type, data, path = '') {
     this.linkedButton = element.querySelector(className);
+    this.linkedButton.style.display = 'block';
     this.type = type;
-    this.linkedButton.href = ''; //TODO router and routing paths file
+    this.a = this.linkedButton.getElementsByTagName('a')[0];
+    this.a.href = path; //TODO router and routing paths file
 
     if (this.type === 'Profile') {
-      this.linkedButton.innerText = data.username;
+      this.a.innerText = data.username;
+    } else {
+      this.a.innerText = type;
     }
-
-    this.linkedButton.innerText = type;
-
-    this._onClick();
   }
 
   render() {
     return this.linkedButton;
-  }
-
-  /**
-   * @private
-   */
-  _onClick() {
-    this.linkedButton.addEventListener('click', (event) => {
-      event.preventDefault();
-      //Router.goTo(PROFILE)
-      Router.changeSection(this.type);
-    });
   }
 }

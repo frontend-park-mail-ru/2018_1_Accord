@@ -1,0 +1,16 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+    <div class="nav__bar">
+        <div class="back-button">
+            <a></a>
+        </div>
+        <div class="profile-button">
+            <a></a>
+        </div>
+
+        <div class="mute-button"></div>
+
+        <div class="settings-button">
+            <a></a>
+        </div>
+    </div>
+</fest:template>
