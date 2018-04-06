@@ -3,6 +3,7 @@ import Input from '../blocks/input.js';
 import Validator from '../../modules/validation/validation.js';
 import {disposableListener} from '../../utils/helperFuncs.js';
 import {selector} from '../../config/selector.js';
+import Logger from '../../utils/logger.js';
 
 export default class SignUpForm {
 
@@ -38,15 +39,18 @@ export default class SignUpForm {
   getFormData() {
     return {
       email: this.email.getData(),
-      username: this.username.getData(),
       password: this.password.getData(),
-      passwordConfirm: this.passwordConfirm.getData()
+      nickname: this.username.getData(),
     };
   }
 
   checkFormState() {
     return new Promise((resolve, reject) => {
-      if (!this.email.getStatus() && !this.password.getStatus()) {
+      if (!this.email.getStatus() &&
+        !this.password.getStatus() &&
+        !this.username.getStatus() &&
+        !this.passwordConfirm.getStatus()) {
+
         resolve(this.getFormData());
       } else {
         reject();
@@ -75,7 +79,7 @@ export default class SignUpForm {
   }
 
   validateUsername() {
-    const formState = Validator.checkUsername(this.username);
+    const formState = Validator.checkUsername(this.username.getData());
     if (!formState.state) {
       this.errorField.innerText += `${formState.errMessage}\n`;
       this.errorField.style.display = 'block';
@@ -85,8 +89,9 @@ export default class SignUpForm {
   }
 
   confirmPassword() {
-    const formState = Validator.confirmPassword(this.password, this.passwordConfirm);
+    const formState = Validator.confirmPassword(this.password.getData(), this.passwordConfirm.getData());
     if (!formState.state) {
+      Logger.log(this.password, ' --- ', this.passwordConfirm);
       this.errorField.innerText += `${formState.errMessage}\n`;
       this.errorField.style.display = 'block';
 
