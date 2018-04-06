@@ -11,14 +11,15 @@ export default class LinkedButton {
    */
   constructor(element, className, type, data) {
     this.linkedButton = element.querySelector(className);
+    this.linkedButton.style.display = 'block';
     this.type = type;
     this.linkedButton.href = ''; //TODO router and routing paths file
 
     if (this.type === 'Profile') {
       this.linkedButton.innerText = data.username;
+    } else {
+      this.linkedButton.innerText = type;
     }
-
-    this.linkedButton.innerText = type;
 
     this._onClick();
   }

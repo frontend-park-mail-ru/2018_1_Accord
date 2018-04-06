@@ -11,7 +11,10 @@ export default class LogoutButton {
    */
   constructor(element, className) {
     this.errorField = element.querySelector(selector.MAIN_ERROR);
+    this.errorField.style.display = 'block';
+
     this.logoutButton = element.querySelector(className);
+    this.logoutButton.style.display = 'block';
     this.logoutButton.innerText = 'Logout';
     this._onClick();
   }

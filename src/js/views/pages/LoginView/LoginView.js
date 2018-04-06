@@ -6,31 +6,23 @@ import {serverErrors} from '../../../config/textErrors.js';
 import Router from '../../../modules/router.js';
 import Logger from '../../../utils/logger.js';
 import userService from '../../../services/UserService.js';
-import {inputData} from '../../../config/inputData.js';
 
 export default class LoginView extends BaseView {
   constructor() {
-    super('js/views/pages/LoginView/LoginView.tmpl',
-      {
-        form: [
-          inputData.email,
-          inputData.password
-        ],
-        submitText: 'Login'
-      }
-    );
+    super('js/views/pages/LoginView/LoginView.tmpl');
 
     this.navBar = [selector.BACK_BUTTON,
       selector.MUTE_BUTTON,
       selector.SETTINGS_BUTTON];
-
-    new NavBar(this.el, this.navBar, undefined);
-
-    this.error = this.el.querySelector(selector.LOGIN_ERROR);
-    this.signUpForm = new LoginForm(this.el).render();
   }
 
   render() {
+    super.render();
+
+    this.error = this.el.querySelector(selector.LOGIN_ERROR);
+    this.signUpForm = new LoginForm(this.el).render();
+    new NavBar(this.el, this.navBar, undefined);
+
     const submitCallback = (event) => {
       event.preventDefault();
 
@@ -47,16 +39,17 @@ export default class LoginView extends BaseView {
           } else {
             Router.changeSection('Menu');
           }
-          super.render();
+          new NavBar(this.el, this.navBar, undefined);
         })
         .catch((err) => {
           this.signUpForm.onSubmit(submitCallback);
 
           this.error.innerText = serverErrors.unexpected;
+          Logger.log(this.error);
           this.error.style.display = 'block';
 
+          new NavBar(this.el, this.navBar, undefined);
           Logger.error(err);
-          super.render();
           //TODO:Error dispatcher
         });
     };

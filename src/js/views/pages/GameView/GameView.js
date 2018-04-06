@@ -11,23 +11,35 @@ export default class GameView extends BaseView {
   constructor() {
     super('js/views/pages/GameView/GameView.tmpl');
 
-    this.navBar = [selector.MUTE_BUTTON, selector.BACK_BUTTON, selector.SETTINGS_BUTTON];
-    this.game = this.el.querySelector(selector.GAME_VIEW);
-    this.errorField = this.game.querySelector(selector.GAME_ERROR);
-    this.errorField.style.display = 'none';
+    this.navBar = [selector.MUTE_BUTTON,
+      selector.BACK_BUTTON,
+      selector.SETTINGS_BUTTON];
   }
 
   render() {
+    super.render();
+    this.game = this.el.querySelector(selector.GAME_VIEW);
+    this.unAuthInfo = this.game.querySelector(selector.GAME_UNAUTH_INFO);
+    this.unAuthInfo.style.display = 'none';
+
+    this.errorField = this.game.querySelector(selector.GAME_ERROR);
+    this.errorField.style.display = 'none';
+
     userService.getUser()
       .then((user) => {
         if (!user) {
           new NavBar(this.game, this.navBar, undefined);
-          this.unAuthInfo = this.game.querySelector(selector.GAME_UNAUTH_INFO);
           this.unAuthInfo.style.display = 'block';
           this.unAuthInfo.innerText = info.gameUnAuthInfo;
 
         } else {
-          this.navBar.push(selector.PROFILE_BUTTON);
+          this.navBar = [
+            selector.MUTE_BUTTON,
+            selector.BACK_BUTTON,
+            selector.SETTINGS_BUTTON,
+            selector.PROFILE_BUTTON
+          ];
+
           this.unAuthInfo.style.display = 'none';
           //TODO
         }

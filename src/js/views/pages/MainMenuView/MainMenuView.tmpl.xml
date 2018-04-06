@@ -4,23 +4,23 @@
 
         <div class="main__title">Bubble Wars</div>
         <div class="main__menu-items">
-            <div class="play-button">
+            <div class="play-button" style="display: none">
                 <a> </a>
             </div>
-            <div class="sign-up-button">
+            <div class="sign-up-button" style="display: none">
                 <a> </a>
             </div>
-            <div class="login-button">
+            <div class="login-button" style="display: none">
                 <a> </a>
             </div>
-            <div class="logout-button"> </div>
-            <div class="help-button">
+            <div class="logout-button" style="display: none"> </div>
+            <div class="help-button" style="display: none">
                 <a> </a>
             </div>
-            <div class="leader-board-button">
+            <div class="leader-board-button" style="display: none">
                 <a> </a>
             </div>
-            <div class="main__menu-error"> </div>
+            <div class="main__menu-error" style="display: none"> </div>
         </div>
     </div>
 </fest:template>

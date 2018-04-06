@@ -11,28 +11,30 @@ export default class MenuView extends BaseView {
   constructor() {
     super('js/views/pages/MainMenuView/MainMenuView.tmpl');
 
-    this.menu = this.el.querySelector(selector.MAIN_MENU_VIEW);
-    this.errorField = this.menu.querySelector(selector.MAIN_ERROR);
-    this.errorField.style.display = 'none';
-
     this.navBar = [selector.MUTE_BUTTON, selector.SETTINGS_BUTTON];
     this.menuItems = [selector.PLAY_BUTTON, selector.HELP_BUTTON, selector.LEADER_BOARD_BUTTON];
   }
 
   render() {
+    super.render();
+
+    this.menu = this.el.querySelector(selector.MAIN_MENU_VIEW);
+    this.errorField = this.menu.querySelector(selector.MAIN_ERROR);
+    this.errorField.style.display = 'none';
+
     userService.getUser()
       .then((user) => {
         if (!user) {
           this.menuItems.push(selector.LOGIN_BUTTON, selector.SIGN_UP_BUTTON);
         } else {
-          this.navBar.push(selector.PROFILE_BUTTON);
+          this.navBar = [selector.MUTE_BUTTON, selector.SETTINGS_BUTTON, selector.PROFILE_BUTTON];
+
           this.menuItems.push(selector.LOGOUT_BUTTON);
         }
 
         new NavBar(this.menu, this.navBar, user);
         new MenuItems(this.menu, this.menuItems);
 
-        super.render();
         //TODO: обработать неуспешный выход
       })
       .catch((error) => {
@@ -42,7 +44,6 @@ export default class MenuView extends BaseView {
 
         new NavBar(this.menu, this.navBar, undefined);
         new MenuItems(this.menu, this.menuItems);
-        super.render();
       });
 
     return this.el;
