@@ -45,7 +45,8 @@
     if (cp) for (var i in params) if (typeof params[i] == 'function' && params[i].param) params[i] = params[i]();
     return fn.call(__fest_self, params)
   }
-  __fest_buf += ('<div class="main__menu-view">');
+
+  __fest_buf += ('<div class="view menu-view">');
   (function (__fest_context) {
     __fest_buf += ('<div class="nav__bar"><div class="back-button"><a></a></div><div class="profile-button"><a></a></div><div class="mute-button"></div><div class="settings-button"><a></a></div></div>');
   })(__fest_context);

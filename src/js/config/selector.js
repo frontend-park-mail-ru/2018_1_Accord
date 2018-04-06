@@ -2,17 +2,23 @@ export const selector = {
   ROOT: '.root',
 
   //views
-  MAIN_MENU_VIEW: '.main__menu-view',
+  MAIN_MENU_VIEW: '.menu-view',
   LOGIN_VIEW: '.login-view',
   SIGNUP_VIEW: '.signup-view',
+  GAME_VIEW: '.game-view',
 
   //blocks for views
   NAV_BAR: '.nav__bar',
   MENU_ITEMS: '.main__menu-items',
 
+  //info fields
+  GAME_UNAUTH_INFO: '.game-unauth__info',
+
+  //errors
   MAIN_ERROR: '.main__menu-error',
   LOGIN_ERROR: '.login__error',
   SIGNUP_ERROR: '.signup__error',
+  GAME_ERROR: '.game-error',
   VALIDATE_ERR: '.validation-error',
 
   FORM: '.form',
