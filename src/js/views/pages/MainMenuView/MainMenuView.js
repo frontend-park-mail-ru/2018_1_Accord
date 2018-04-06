@@ -16,7 +16,7 @@ export default class MenuView extends BaseView {
     this.errorField.style.display = 'none';
 
     this.navBar = [selector.MUTE_BUTTON, selector.SETTINGS_BUTTON];
-    this.menuItems = [selector.PLAY_BUTTON, selector.HELP_BUTTON];
+    this.menuItems = [selector.PLAY_BUTTON, selector.HELP_BUTTON, selector.LEADER_BOARD_BUTTON];
   }
 
   render() {
@@ -26,7 +26,7 @@ export default class MenuView extends BaseView {
           this.menuItems.push(selector.LOGIN_BUTTON, selector.SIGN_UP_BUTTON);
         } else {
           this.navBar.push(selector.PROFILE_BUTTON);
-          this.menuItems.push(selector.LEADER_BOARD_BUTTON, selector.LOGOUT_BUTTON);
+          this.menuItems.push(selector.LOGOUT_BUTTON);
         }
 
         new NavBar(this.menu, this.navBar, user);

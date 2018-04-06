@@ -5,10 +5,15 @@ export default class BaseView {
   constructor(name, attrs) {
     this.tmpl = window.fest[name];
     this.el = document.createElement('div');
-    this.el.innerHTML = this.tmpl(attrs);
+    if (attrs !== 'LATER') {
+      this.el.innerHTML = this.tmpl(attrs);
+    }
   }
 
-  render() {
+  render(attrs) {
+    if (attrs) {
+      this.el.innerHTML = this.tmpl(attrs);
+    }
     return this;
   }
 

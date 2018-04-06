@@ -9,6 +9,7 @@ export const serverErrors = {
   login: 'Incorrect email or password',
   signup: 'Incorrect email or username',
   updateNotLogin: 'You are not login',
+  leaderBoard: 'Something is not ok,\n can not open leader board',
   unexpected: 'Something is not ok'
 };
 

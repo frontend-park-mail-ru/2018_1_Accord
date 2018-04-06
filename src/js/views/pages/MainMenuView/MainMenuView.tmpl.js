@@ -45,12 +45,11 @@
     if (cp) for (var i in params) if (typeof params[i] == 'function' && params[i].param) params[i] = params[i]();
     return fn.call(__fest_self, params)
   }
-
   __fest_buf += ('<div class="view menu-view">');
   (function (__fest_context) {
     __fest_buf += ('<div class="nav__bar"><div class="back-button"><a></a></div><div class="profile-button"><a></a></div><div class="mute-button"></div><div class="settings-button"><a></a></div></div>');
   })(__fest_context);
-  __fest_buf += ('<div class="main__menu-items"><div class="play-button"><a></a></div><div class="sign-up-button"><a></a></div><div class="login-button"><a></a></div><div class="logout-button"></div><div class="help-button"><a></a></div><div class="leader-board-button"><a></a></div><div class="main__menu-error"></div></div></div>');
+  __fest_buf += ('<div class="main__title">Bubble Wars</div><div class="main__menu-items"><div class="play-button"><a></a></div><div class="sign-up-button"><a></a></div><div class="login-button"><a></a></div><div class="logout-button"></div><div class="help-button"><a></a></div><div class="leader-board-button"><a></a></div><div class="main__menu-error"></div></div></div>');
   __fest_to = __fest_chunks.length;
   if (__fest_to) {
     __fest_iterator = 0;
