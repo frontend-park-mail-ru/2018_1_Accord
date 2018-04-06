@@ -7,6 +7,7 @@ export const selector = {
   SIGNUP_VIEW: '.signup-view',
   GAME_VIEW: '.game-view',
   LEADERBOARD_VIEW: '.leader-board-view',
+  HELP_VIEW: '.help-view',
 
   //blocks for views
   NAV_BAR: '.nav__bar',
@@ -21,6 +22,7 @@ export const selector = {
   SIGNUP_ERROR: '.signup__error',
   GAME_ERROR: '.game-error',
   LEADERBOARD_ERROR: '.leader-board__error',
+  HELP_ERROR: '.help-error',
   VALIDATE_ERR: '.validation-error',
 
   FORM: '.form',

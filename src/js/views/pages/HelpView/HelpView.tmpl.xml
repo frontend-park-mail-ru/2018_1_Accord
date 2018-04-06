@@ -1,0 +1,41 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+    <div class="view help-view">
+
+        <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
+
+        <div class="help-view__title">
+            About the game
+
+            <div class="help-view__text">
+                <fest:text>
+                    "This is the game for one or two players.
+                    <br></br>
+                    Blablablablabal
+                    <br></br>
+                    And it's really funny."
+                    <br></br>
+                </fest:text>
+            </div>
+        </div>
+
+        <div class="help-view__title">
+            Rules
+            <div class="help-view__text">
+                <fest:text>
+                    "You can controll the bubble with the mouse or touchpad.
+                    <br></br>
+                    The bubble moves vertically and it can shoot with bubbles to hit the enemy.
+                    <br></br>
+                    BlablaBLABLANLN
+                    <br></br>
+                    And you win!"
+                    <br></br>
+                </fest:text>
+
+            </div>
+        </div>
+
+        <div class="help-error"></div>
+    </div>
+
+</fest:template>

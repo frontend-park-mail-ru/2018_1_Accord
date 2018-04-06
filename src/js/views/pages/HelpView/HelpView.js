@@ -1,19 +1,18 @@
-import userService from '../../../services/UserService.js';
-import Logger from '../../../utils/logger.js';
 import BaseView from '../../view/baseView.js';
 import {selector} from '../../../config/selector.js';
+import userService from '../../../services/UserService.js';
 import NavBar from '../../../components/blocks/navBar/navBar.js';
-import {info} from '../../../config/textInfo.js';
+import Logger from '../../../utils/logger.js';
 import {fetchFaildErrors} from '../../../config/textErrors.js';
 
-
-export default class GameView extends BaseView {
+export default class HelpView extends BaseView {
   constructor() {
-    super('js/views/pages/GameView/GameView.tmpl');
+    super('js/views/pages/HelpView/HelpView.tmpl');
 
     this.navBar = [selector.MUTE_BUTTON, selector.BACK_BUTTON, selector.SETTINGS_BUTTON];
-    this.game = this.el.querySelector(selector.GAME_VIEW);
-    this.errorField = this.game.querySelector(selector.GAME_ERROR);
+    this.help = this.el.querySelector(selector.HELP_VIEW);
+
+    this.errorField = this.help.querySelector(selector.HELP_ERROR);
     this.errorField.style.display = 'none';
   }
 
@@ -21,15 +20,9 @@ export default class GameView extends BaseView {
     userService.getUser()
       .then((user) => {
         if (!user) {
-          new NavBar(this.game, this.navBar, undefined);
-          this.unAuthInfo = this.game.querySelector(selector.GAME_UNAUTH_INFO);
-          this.unAuthInfo.style.display = 'block';
-          this.unAuthInfo.innerText = info.gameUnAuthInfo;
-
+          new NavBar(this.help, this.navBar, undefined);
         } else {
           this.navBar.push(selector.PROFILE_BUTTON);
-          this.unAuthInfo.style.display = 'none';
-          //TODO
         }
       })
       .catch((err) => {

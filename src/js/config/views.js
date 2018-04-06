@@ -4,19 +4,22 @@ import Profile from '../views/pages/ProfileView/Profile.js';
 import LoginView from '../views/pages/LoginView/LoginView.js';
 import SignUpView from '../views/pages/SignUpView/SignUpView.js';
 import GameView from '../views/pages/GameView/GameView.js';
+import HelpView from '../views/pages/HelpView/HelpView.js';
 
-const menuSection = new Menu();
-const loginSection = new LoginView();
-const signUpSection = new SignUpView();
-const playSection = new GameView();
+const menuView = new Menu();
+const loginView = new LoginView();
+const signUpView = new SignUpView();
+const playView = new GameView();
 const leaderBoard = new LeaderBoard();
-const profileSection = new Profile();
+const profileView = new Profile();
+const helpView = new HelpView();
 
 export const Sections = {
-  'Menu': menuSection,
-  'Login': loginSection,
-  'Signup': signUpSection,
-  'Play': playSection,
+  'Menu': menuView,
+  'Login': loginView,
+  'Signup': signUpView,
+  'Play': playView,
   'LeaderBoard': leaderBoard,
-  'Profile': profileSection,
+  'Profile': profileView,
+  'Help': helpView
 };
