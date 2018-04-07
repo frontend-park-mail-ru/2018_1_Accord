@@ -10,7 +10,7 @@ export default class HelpView extends BaseView {
     super('js/views/pages/HelpView/HelpView.tmpl');
   }
 
-  render() {
+  async render() {
     super.render();
 
     this.help = this.el.querySelector(selector.HELP_VIEW);
@@ -24,23 +24,24 @@ export default class HelpView extends BaseView {
       selector.SETTINGS_BUTTON
     ];
 
-    userService.getUser()
-      .then((user) => {
-        if (user) {
-          this.navBar = [selector.MUTE_BUTTON,
-            selector.BACK_BUTTON,
-            selector.SETTINGS_BUTTON,
-            selector.PROFILE_BUTTON];
-        }
+    this.user = await userService.getUser();
 
-        new NavBar(this.help, this.navBar, undefined);
-      })
-      .catch((err) => {
-        new NavBar(this.help, this.navBar, undefined);
-        this.errorField.innerText = fetchFaildErrors.noConnection;
-        this.errorField.style.display = 'block';
-        Logger.error(err);
-      });
+    try {
+      if (this.user) {
+        this.navBar = [
+          selector.MUTE_BUTTON,
+          selector.BACK_BUTTON,
+          selector.SETTINGS_BUTTON,
+          selector.PROFILE_BUTTON
+        ];
+      }
+    } catch (err) {
+      this.errorField.innerText = fetchFaildErrors.noConnection;
+      this.errorField.style.display = 'block';
+      Logger.error(err);
+    }
+
+    new NavBar(this.help, this.navBar, this.user);
 
     return this.el;
   }

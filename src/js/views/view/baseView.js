@@ -7,7 +7,7 @@ export default class BaseView {
     this.el = document.createElement('div');
   }
 
-  render(attrs) {
+  async render(attrs) {
     this.el.innerHTML = this.tmpl(attrs);
     return this;
   }

@@ -10,7 +10,7 @@
                     <input class="form__field-input" type="email" name="email"
                            placeholder="Enter your e-mail..."/>
                     <input class="form__field-input" type="text" name="username"
-                           placeholder="Enter your password..."/>
+                           placeholder="Enter your username..."/>
                     <input class="form__field-input" type="password" name="password"
                            placeholder="Enter your password..."/>
                     <input class="form__field-input" type="password" name="password-confirm"

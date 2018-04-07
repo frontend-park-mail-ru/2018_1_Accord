@@ -16,45 +16,41 @@ export default class LoginView extends BaseView {
       selector.SETTINGS_BUTTON];
   }
 
-  render() {
+  async render() {
     super.render();
 
     this.error = this.el.querySelector(selector.LOGIN_ERROR);
-    this.signUpForm = new LoginForm(this.el).render();
-    new NavBar(this.el, this.navBar, undefined);
+    this.loginForm = new LoginForm(this.el).render();
 
-    const submitCallback = (event) => {
+    async function submitCallback(event) {
       event.preventDefault();
+      this.formStateData = await this.loginForm.checkFormState();
+      this.user = await userService.login(this.formStateData);
 
-      this.signUpForm.checkFormState()
-        .then((userData) => userService.login(userData))
-        .then((user) => {
-          if (!user) {
-            this.signUpForm.onSubmit(submitCallback);
-
-            this.error.innerText = serverErrors.login;
-            this.error.style.display = 'block';
-            Logger.log('Unsuccessful login');
-
-          } else {
-            Router.changeSection('Menu');
-          }
-          new NavBar(this.el, this.navBar, undefined);
-        })
-        .catch((err) => {
-          this.signUpForm.onSubmit(submitCallback);
-
-          this.error.innerText = serverErrors.unexpected;
-          Logger.log(this.error);
+      try {
+        if (!this.user) {
+          this.loginForm.onSubmit(submitCallback);
+          this.error.innerText = serverErrors.login;
           this.error.style.display = 'block';
+          Logger.log('Unsuccessful login');
 
-          new NavBar(this.el, this.navBar, undefined);
-          Logger.error(err);
-          //TODO:Error dispatcher
-        });
-    };
+        } else {
+          Router.changeSection('Menu');
+        }
 
-    this.signUpForm.onSubmit(submitCallback);
+      } catch (err) {
+        this.loginForm.onSubmit(submitCallback);
+
+        this.error.innerText = serverErrors.unexpected;
+        this.error.style.display = 'block';
+        Logger.error(err);
+        //TODO:Error dispatcher
+      }
+
+    }
+
+    this.loginForm.onSubmit(submitCallback);
+    new NavBar(this.el, this.navBar, this.user);
 
     return this.el;
   }
