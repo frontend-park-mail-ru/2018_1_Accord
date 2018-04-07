@@ -2,7 +2,7 @@
     <div class="view signup-view">
         <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
 
-        <div class="signup__error"> </div>
+        <div class="signup__error"></div>
 
         <div class="signup__form">
             <form class="form">
@@ -20,6 +20,7 @@
                 <button class="button_text submit-button" type="submit">
                     Sign up
                 </button>
+                <div class="validation-error"></div>
             </form>
         </div>
 

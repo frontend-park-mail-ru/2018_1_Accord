@@ -1,9 +1,7 @@
 import Input from '../blocks/input.js';
 
 import Validator from '../../modules/validation/validation.js';
-import {disposableListener} from '../../utils/helperFuncs.js';
 import {selector} from '../../config/selector.js';
-import Logger from '../../utils/logger.js';
 
 export default class SignUpForm {
 
@@ -20,7 +18,9 @@ export default class SignUpForm {
     this.passwordConfirm = new Input(this.form, 'password-confirm').render();
 
     this.submit = this.form.querySelector(selector.SUBMIT_BUTTON);
+
     this.errorField = this.form.querySelector(selector.VALIDATE_ERR);
+    this.errorField.style.display = 'none';
 
     this.email.onInput(this.validateEmail.bind(this), this.errorField);
     this.password.onInput(this.validatePassword.bind(this), this.errorField);
@@ -33,7 +33,10 @@ export default class SignUpForm {
   }
 
   onSubmit(callback) {
-    return disposableListener(this.form, 'submit', callback);
+    this.form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      callback();
+    });
   }
 
   getFormData() {
@@ -45,17 +48,13 @@ export default class SignUpForm {
   }
 
   checkFormState() {
-    return new Promise((resolve, reject) => {
-      if (!this.email.getStatus() &&
-        !this.password.getStatus() &&
-        !this.username.getStatus() &&
-        !this.passwordConfirm.getStatus()) {
+    if (!this.email.getStatus() &&
+      !this.password.getStatus() &&
+      !this.username.getStatus() &&
+      !this.passwordConfirm.getStatus()) {
 
-        resolve(this.getFormData());
-      } else {
-        reject();
-      }
-    });
+      return this.getFormData();
+    }
   }
 
   validateEmail() {
@@ -91,7 +90,6 @@ export default class SignUpForm {
   confirmPassword() {
     const formState = Validator.confirmPassword(this.password.getData(), this.passwordConfirm.getData());
     if (!formState.state) {
-      Logger.log(this.password, ' --- ', this.passwordConfirm);
       this.errorField.innerText += `${formState.errMessage}\n`;
       this.errorField.style.display = 'block';
 

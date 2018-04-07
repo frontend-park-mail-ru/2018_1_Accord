@@ -1,4 +1,4 @@
-import Router from '../../modules/router.js';
+import Router from '../../../modules/router.js';
 
 export default class LinkedButton {
 

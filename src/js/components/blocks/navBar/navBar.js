@@ -1,7 +1,7 @@
 import {selector} from '../../../config/selector.js';
-import BackButton from '../../buttons/backButton.js';
-import LinkedButton from '../../buttons/linkedButton.js';
-import MuteButton from '../../buttons/muteButton.js';
+import BackButton from '../buttons/backButton.js';
+import LinkedButton from '../buttons/linkedButton.js';
+import MuteButton from '../buttons/muteButton.js';
 
 export default class NavBar {
 

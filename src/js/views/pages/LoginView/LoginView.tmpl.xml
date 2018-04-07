@@ -17,8 +17,8 @@
                 <button class="button_text submit-button" type="submit">
                     Login
                 </button>
+                <div class="validation-error"> </div>
             </form>
-
         </div>
 
         <div class="please-signup">

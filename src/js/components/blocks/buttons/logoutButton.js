@@ -1,7 +1,7 @@
-import userService from '../../services/UserService.js';
-import Router from '../../modules/router.js';
-import Logger from '../../utils/logger.js';
-import {selector} from '../../config/selector.js';
+import userService from '../../../services/UserService.js';
+import Router from '../../../modules/router.js';
+import Logger from '../../../utils/logger.js';
+import {selector} from '../../../config/selector.js';
 
 export default class LogoutButton {
 

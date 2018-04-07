@@ -1,6 +1,6 @@
 import {selector} from '../../config/selector.js';
-import LinkedButton from '../buttons/linkedButton.js';
-import LogoutButton from '../buttons/logoutButton.js';
+import LinkedButton from './buttons/linkedButton.js';
+import LogoutButton from './buttons/logoutButton.js';
 
 export default class MenuItems {
 

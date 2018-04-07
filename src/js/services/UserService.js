@@ -2,7 +2,7 @@ import FetchService from './FetchService.js';
 import config from '../config/config.js';
 import User from '../models/User.js';
 import {errorTransformer} from '../utils/httpServiceHelpers.js';
-import Error from '../error/Error.js';
+import Error from '../utils/error/Error.js';
 
 
 class UserService {

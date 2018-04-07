@@ -1,6 +1,5 @@
-import renderDOM from '../components/render/render.js';
+import renderDOM from './render/render.js';
 import {Sections} from '../config/views.js';
-import Logger from '../utils/logger.js';
 
 export default class Router {
 
@@ -19,13 +18,11 @@ export default class Router {
       try {
         Sections[newSection].render()
           .then((elem) => {
-            Logger.log('Elem from Promise: ', elem);
             element = elem;
             renderDOM(element, document.getElementById('root'));
           });
       } catch (_) {
         element = Sections[newSection].render();
-        Logger.log('catch: ', element);
         renderDOM(element, document.getElementById('root'));
       }
 

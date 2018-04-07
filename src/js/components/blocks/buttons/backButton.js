@@ -1,4 +1,4 @@
-import {selector} from '../../config/selector.js';
+import {selector} from '../../../config/selector.js';
 
 export default class BackButton {
 

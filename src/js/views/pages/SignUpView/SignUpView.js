@@ -24,35 +24,32 @@ export default class SignUpView extends BaseView {
     this.error = this.el.querySelector(selector.SIGNUP_ERROR);
     this.loginForm = new SignUpForm(this.el).render();
 
-    async function submitCallback(event) {
-      event.preventDefault();
-
+    this.loginForm.onSubmit(async () => {
       this.formStateData = await this.loginForm.checkFormState();
-      this.user = await userService.signUp(this.user);
 
-      try {
-        if (!this.user) {
-          this.loginForm.onSubmit(submitCallback);
-          this.error.innerText = serverErrors.signup;
+      if (this.formStateData) {
+        //validation check
+        this.user = await userService.signUp(this.formStateData);
+
+        try {
+          if (!this.user) {
+            this.error.innerText = serverErrors.signup;
+            this.error.style.display = 'block';
+            Logger.log('Unsuccessful signup');
+
+          } else {
+            Router.changeSection('Menu');
+          }
+        } catch (err) {
+          this.error.innerText = serverErrors.unexpected;
           this.error.style.display = 'block';
-          Logger.log('Unsuccessful signup');
 
-        } else {
-          Router.changeSection('Menu');
+          Logger.error(err);
+          //TODO:Error dispatcher
         }
-      } catch (err) {
-        this.loginForm.onSubmit(submitCallback);
-
-        this.error.innerText = serverErrors.unexpected;
-        this.error.style.display = 'block';
-
-        Logger.error(err);
-        //TODO:Error dispatcher
-
       }
-    }
+    });
 
-    this.loginForm.onSubmit(submitCallback);
     new NavBar(this.el, this.navBar, this.user);
 
     return this.el;
