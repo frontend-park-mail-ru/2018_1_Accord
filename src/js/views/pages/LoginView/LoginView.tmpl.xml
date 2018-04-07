@@ -1,4 +1,4 @@
-<fest:template xmlns:fest="http://fest.mail.ru">
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
     <div class="view login-view">
 
         <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
@@ -24,7 +24,7 @@
         <div class="please-signup">
             If you haven't account yet, please
             <div class="please-signup__ref">
-                <a>sign up</a>
+                <a href="{data.signUpPath}">sign up</a>
             </div>
         </div>
 

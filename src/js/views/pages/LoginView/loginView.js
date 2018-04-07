@@ -5,6 +5,7 @@ import LoginForm from '../../../components/forms/loginForm.js';
 import {serverErrors} from '../../../config/textErrors.js';
 import Logger from '../../../utils/logger.js';
 import userService from '../../../services/UserService.js';
+import {pagePaths} from '../../../config/pagePaths.js';
 
 export default class LoginView extends BaseView {
   constructor() {
@@ -16,7 +17,9 @@ export default class LoginView extends BaseView {
   }
 
   render() {
-    super.render();
+    super.render({
+      signUpPath: pagePaths.SIGN_UP_PATH
+    });
 
     this.error = this.el.querySelector(selector.LOGIN_ERROR);
     this.signUpForm = new LoginForm(this.el).render();
@@ -36,7 +39,7 @@ export default class LoginView extends BaseView {
             Logger.log('Unsuccessful login');
 
           } else {
-            window.history.pushState(null, '', '/');
+            window.history.pushState(null, '', pagePaths.START_PATH);
           }
           new NavBar(this.el, this.navBar, undefined);
         })

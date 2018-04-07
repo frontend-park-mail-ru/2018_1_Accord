@@ -9,7 +9,7 @@ import LeaderBoardView from './views/pages/LeaderBoard/leaderBoardView.js';
 import SignUpView from './views/pages/SignUpView/signUpView.js';
 import GameView from './views/pages/GameView/gameView.js';
 //import ProfileView from './views/pages/ProfileView/profileView.js';
-
+import {pagePaths} from './config/pagePaths.js';
 
 
 export default class Application {
@@ -19,13 +19,13 @@ export default class Application {
 
   run() {
     new Router(this.root)
-      .add('/', MenuView)
-      .add('/login/', LoginView)
-      .add('/help/', HelpView)
-      .add('/leaderboard/', LeaderBoardView)
-      .add('/signup/', SignUpView)
-      .add('/game/', GameView)
-      //.add('/profile/', ProfileView)
+      .add(pagePaths.START_PATH, MenuView)
+      .add(pagePaths.LOGIN_PATH, LoginView)
+      .add(pagePaths.HELP_PATH, HelpView)
+      .add(pagePaths.LEADER_BOARD_PATH, LeaderBoardView)
+      .add(pagePaths.SIGN_UP_PATH, SignUpView)
+      .add(pagePaths.GAME_PATH, GameView)
+      //.add(pagePaths.PROFILE_PATH, ProfileView)
       .start();
   }
 }

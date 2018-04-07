@@ -26,7 +26,7 @@
         <div class="please-login">
             Have an account?
             <div class="please-login__ref">
-                <a>login</a>
+                <a href = "{data.loginPath}">login</a>
             </div>
         </div>
 

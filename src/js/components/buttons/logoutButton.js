@@ -2,6 +2,7 @@ import userService from '../../services/UserService.js';
 import Router from '../../modules/router.js';
 import Logger from '../../utils/logger.js';
 import {selector} from '../../config/selector.js';
+import {pagePaths} from '../../config/pagePaths.js';
 
 export default class LogoutButton {
 
@@ -32,7 +33,7 @@ export default class LogoutButton {
       event.preventDefault();
       userService.logout()
         .then(() => {
-          history.pushState(null, '', '/');
+          history.pushState(null, '', pagePaths.START_PATH);
           Logger.log('Logout successfully');
         })
         .catch((error) => {
