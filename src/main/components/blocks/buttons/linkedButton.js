@@ -1,3 +1,6 @@
+import Router from '../../../modules/router.js';
+
+
 export default class LinkedButton {
 
   /**
@@ -19,6 +22,7 @@ export default class LinkedButton {
     } else {
       this.a.innerText = type;
     }
+    this._onClick();
   }
 
   render() {

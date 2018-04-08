@@ -1,5 +1,5 @@
 export const selector = {
-  ROOT: 'root',
+  ROOT: '.root',
 
   //views
   MAIN_MENU_VIEW: '.menu-view',

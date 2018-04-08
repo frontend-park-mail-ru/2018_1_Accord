@@ -8,7 +8,7 @@ export default class BaseView {
     this.hide();
   }
 
-  render(attrs) {
+  async render(attrs) {
     this.el.innerHTML = this.tmpl(attrs);
     return this;
   }
@@ -38,6 +38,7 @@ export default class BaseView {
   }
 
   /**
+   *
    * @param {HTMLElement} root
    */
   renderTo(root) {

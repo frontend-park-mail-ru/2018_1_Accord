@@ -66,5 +66,26 @@ export default class Router {
     })
 
     this.open(window.location.pathname);
+  /**
+   * @param {String} newSection
+   
+  static changeSection(newSection) {
+    if (Sections[newSection]) {
+
+      let element;
+
+      try {
+        Sections[newSection].render()
+          .then((elem) => {
+            element = elem;
+            renderDOM(element, document.getElementById('root'));
+          });
+      } catch (_) {
+        element = Sections[newSection].render();
+        renderDOM(element, document.getElementById('root'));
+      }
+
+    }
+  */
   }
 }

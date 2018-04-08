@@ -20,6 +20,7 @@
                 <button class="button_text submit-button" type="submit">
                     Sign up
                 </button>
+                <div class="validation-error"></div>
             </form>
         </div>
 

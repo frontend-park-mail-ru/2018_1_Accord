@@ -17,8 +17,8 @@
                 <button class="button_text submit-button" type="submit">
                     Login
                 </button>
+                <div class="validation-error"> </div>
             </form>
-
         </div>
 
         <div class="please-signup">
@@ -27,6 +27,5 @@
                 <a href="{data.signUpPath}">sign up</a>
             </div>
         </div>
-
     </div>
 </fest:template>

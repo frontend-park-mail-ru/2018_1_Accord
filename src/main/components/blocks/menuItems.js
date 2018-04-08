@@ -3,6 +3,7 @@ import LinkedButton from './buttons/linkedButton.js';
 import LogoutButton from './buttons/logoutButton.js';
 import {pagePaths} from '../../config/pagePaths.js';
 
+
 export default class MenuItems {
 
   /**
@@ -22,7 +23,6 @@ export default class MenuItems {
 
         case selector.HELP_BUTTON:
           new LinkedButton(this.menu, selector.HELP_BUTTON, 'Help', undefined, pagePaths.HELP_PATH);
-
           break;
 
         case selector.LOGIN_BUTTON:

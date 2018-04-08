@@ -2,6 +2,7 @@
 
 import Router from './modules/router.js';
 import {selector} from './config/selector.js';
+
 import MenuView from './views/pages/MainMenuView/mainMenuView.js';
 import LoginView from './views/pages/LoginView/loginView.js';
 import HelpView from './views/pages/HelpView/helpView.js';
