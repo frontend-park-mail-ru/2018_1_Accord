@@ -31,7 +31,7 @@ export const selector = {
   FORM_FIELDS: '.form__fields',
 
   //little components
-  BUTTON: '.js-button',
+  BUTTON: '.main-button',
   INPUT: '.form__field',
   SUBMIT_BUTTON: '.submit-button',
 

@@ -9,7 +9,7 @@ import {fetchFaildErrors} from '../../../config/textErrors.js';
 
 export default class GameView extends BaseView {
   constructor() {
-    super('js/views/pages/GameView/GameView.tmpl');
+    super('main/views/pages/GameView/GameView.tmpl');
 
     this.navBar = [selector.MUTE_BUTTON,
       selector.BACK_BUTTON,

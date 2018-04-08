@@ -9,7 +9,7 @@ import userService from '../../../services/UserService.js';
 
 export default class LoginView extends BaseView {
   constructor() {
-    super('js/views/pages/LoginView/LoginView.tmpl');
+    super('main/views/pages/LoginView/LoginView.tmpl');
 
     this.navBar = [selector.BACK_BUTTON,
       selector.MUTE_BUTTON,

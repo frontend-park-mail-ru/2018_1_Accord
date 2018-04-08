@@ -9,7 +9,7 @@ import SignUpForm from '../../../components/forms/signUpForm.js';
 
 export default class SignUpView extends BaseView {
   constructor() {
-    super('js/views/pages/SignUpView/SignUpView.tmpl');
+    super('main/views/pages/SignUpView/SignUpView.tmpl');
 
     this.navBar = [
       selector.BACK_BUTTON,

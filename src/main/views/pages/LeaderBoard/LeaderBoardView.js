@@ -6,7 +6,7 @@ import {serverErrors} from '../../../config/textErrors.js';
 
 export default class LeaderBoard extends BaseView {
   constructor() {
-    super('js/views/pages/LeaderBoard/LeaderBoard.tmpl');
+    super('main/views/pages/LeaderBoard/LeaderBoard.tmpl');
     this.page = 1;
   }
 

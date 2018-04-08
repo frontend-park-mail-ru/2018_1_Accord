@@ -9,7 +9,7 @@ import MenuItems from '../../../components/blocks/menuItems.js';
 
 export default class MenuView extends BaseView {
   constructor() {
-    super('js/views/pages/MainMenuView/MainMenuView.tmpl');
+    super('main/views/pages/MainMenuView/MainMenuView.tmpl');
 
     this.navBar = [
       selector.MUTE_BUTTON,

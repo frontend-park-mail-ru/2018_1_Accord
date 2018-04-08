@@ -7,7 +7,7 @@ import {fetchFaildErrors} from '../../../config/textErrors.js';
 
 export default class HelpView extends BaseView {
   constructor() {
-    super('js/views/pages/HelpView/HelpView.tmpl');
+    super('main/views/pages/HelpView/HelpView.tmpl');
   }
 
   async render() {
