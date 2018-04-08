@@ -9,6 +9,7 @@ const logger = debug('mylogger');
 logger('Starting app');
 const app = express();
 
+
 app.use(express.static(path.resolve(__dirname, '..', 'src')));
 app.use(body.json());
 app.use('/login', express.static('src'));
