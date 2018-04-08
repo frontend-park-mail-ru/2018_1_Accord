@@ -43,6 +43,6 @@ export default class HelpView extends BaseView {
 
     new NavBar(this.help, this.navBar, this.user);
 
-    return this.el;
+    return this;
   }
 }

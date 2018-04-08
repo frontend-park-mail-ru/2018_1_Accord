@@ -3,12 +3,12 @@
 import Router from './modules/router.js';
 import {selector} from './config/selector.js';
 
-import MenuView from './views/pages/MainMenuView/mainMenuView.js';
-import LoginView from './views/pages/LoginView/loginView.js';
-import HelpView from './views/pages/HelpView/helpView.js';
-import LeaderBoardView from './views/pages/LeaderBoard/leaderBoardView.js';
-import SignUpView from './views/pages/SignUpView/signUpView.js';
-import GameView from './views/pages/GameView/gameView.js';
+import MenuView from './views/pages/MainMenuView/MainMenuView.js';
+import LoginView from './views/pages/LoginView/LoginView.js';
+import HelpView from './views/pages/HelpView/HelpView.js';
+import LeaderBoardView from './views/pages/LeaderBoard/LeaderBoardView.js';
+import SignUpView from './views/pages/SignUpView/SignUpView.js';
+import GameView from './views/pages/GameView/GameView.js';
 //import ProfileView from './views/pages/ProfileView/profileView.main';
 import {pagePaths} from './config/pagePaths.js';
 

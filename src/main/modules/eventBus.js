@@ -6,25 +6,26 @@ class Bus {
   /**
    *
    * @param {String} event
-   * @param {} listener
+   * @param listener
+   * @param {String} scope
    * @return {Bus}
    */
   on(event, listener, scope) {
-    (this.listeners[event] || (this.listeners[event] = [])).push(listener);
+    (this.listeners[scope][event] || (this.listeners[scope][event] = [])).push(listener);
     return this;
   }
 
   off(event, listener, scope) {
     if (listener) {
-      this.listeners[event] = (this.listeners[event] || []).filter(l => l !== listener);
+      this.listeners[scope][event] = (this.listeners[scope][event] || []).filter(l => l !== listener);
     } else {
-      this.listeners[event] = [];
+      this.listeners[scope][event] = [];
     }
     return this;
   }
 
   emit(event, data, scope) {
-    (this.listeners[event] || (this.listeners[event] = [])).forEach(l => l(data));
+    (this.listeners[scope][event] || (this.listeners[scope][event] = [])).forEach(l => l(data));
     return this;
   }
 }

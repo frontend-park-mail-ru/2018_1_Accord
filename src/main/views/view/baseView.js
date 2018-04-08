@@ -25,10 +25,10 @@ export default class BaseView {
     return this;
   }
 
-  create() {
-    return this
-      .render()
-      .show();
+  async create() {
+    const thisView = await this.render();
+
+    return thisView.show();
   }
 
   destroy() {

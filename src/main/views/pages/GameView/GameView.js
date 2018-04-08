@@ -52,6 +52,6 @@ export default class GameView extends BaseView {
 
     new NavBar(this.el, this.navBar, this.user);
 
-    return this.el;
+    return this;
   }
 }

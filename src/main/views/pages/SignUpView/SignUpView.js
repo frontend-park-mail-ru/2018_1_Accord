@@ -2,10 +2,10 @@ import BaseView from '../../view/baseView.js';
 import {selector} from '../../../config/selector.js';
 import NavBar from '../../../components/blocks/navBar/navBar.js';
 import {serverErrors} from '../../../config/textErrors.js';
-import Router from '../../../modules/router.js';
 import Logger from '../../../utils/logger.js';
 import userService from '../../../services/UserService.js';
 import SignUpForm from '../../../components/forms/signUpForm.js';
+import {pagePaths} from '../../../config/pagePaths.js';
 
 export default class SignUpView extends BaseView {
   constructor() {
@@ -19,13 +19,15 @@ export default class SignUpView extends BaseView {
   }
 
   async render() {
-    super.render();
+    super.render({
+      loginPath: pagePaths.LOGIN_PATH
+    });
 
     this.error = this.el.querySelector(selector.SIGNUP_ERROR);
-    this.loginForm = new SignUpForm(this.el).render();
+    this.signUpForm = new SignUpForm(this.el).render();
 
-    this.loginForm.onSubmit(async () => {
-      this.formStateData = await this.loginForm.checkFormState();
+    this.signUpForm.onSubmit(async () => {
+      this.formStateData = await this.signUpForm.checkFormState();
 
       if (this.formStateData) {
         //validation check
@@ -38,7 +40,7 @@ export default class SignUpView extends BaseView {
             Logger.log('Unsuccessful signup');
 
           } else {
-            Router.changeSection('Menu');
+            window.history.pushState(null, '', pagePaths.START_PATH);
           }
         } catch (err) {
           this.error.innerText = serverErrors.unexpected;
@@ -52,7 +54,7 @@ export default class SignUpView extends BaseView {
 
     new NavBar(this.el, this.navBar, this.user);
 
-    return this.el;
+    return this;
   }
 
 }

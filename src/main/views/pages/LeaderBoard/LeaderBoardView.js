@@ -36,6 +36,6 @@ export default class LeaderBoard extends BaseView {
   render() {
     this.updateLeaderboard(this.page);
 
-    return this.el;
+    return this;
   }
 }

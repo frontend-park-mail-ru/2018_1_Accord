@@ -15,11 +15,11 @@ export default class Router {
   /**
    * Добавляет новый route
    * @param {string} path
-   * @param {View} View
+   * @param {BaseView} BaseView
    * @return {Router}
    */
-  add(path, View) {
-    this.map[path] = new View().renderTo(this.root);
+  add(path, BaseView) {
+    this.map[path] = new BaseView().renderTo(this.root);
     return this;
   }
 
@@ -57,13 +57,13 @@ export default class Router {
     window.onpopstate = () => {
       //TODO: проверку можно ли перейти
       this.open(window.location.pathname);
-    }
+    };
     this.root.addEventListener('click', (event) => {
       if (event.target instanceof HTMLAnchorElement) {
         event.preventDefault();
         this.open(event.target.getAttribute('href'));
       }
-    })
+    });
 
     this.open(window.location.pathname);
   /**

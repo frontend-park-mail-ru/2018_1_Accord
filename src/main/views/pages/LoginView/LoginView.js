@@ -3,9 +3,9 @@ import {selector} from '../../../config/selector.js';
 import NavBar from '../../../components/blocks/navBar/navBar.js';
 import LoginForm from '../../../components/forms/loginForm.js';
 import {serverErrors} from '../../../config/textErrors.js';
-import Router from '../../../modules/router.js';
 import Logger from '../../../utils/logger.js';
 import userService from '../../../services/UserService.js';
+import {pagePaths} from '../../../config/pagePaths.js';
 
 export default class LoginView extends BaseView {
   constructor() {
@@ -36,7 +36,7 @@ export default class LoginView extends BaseView {
             Logger.log('Unsuccessful login');
 
           } else {
-            Router.changeSection('Menu');
+            window.history.pushState(null, '', pagePaths.START_PATH);
           }
 
         } catch (err) {
@@ -50,7 +50,7 @@ export default class LoginView extends BaseView {
 
     new NavBar(this.el, this.navBar, this.user);
 
-    return this.el;
+    return this;
   }
 
 }

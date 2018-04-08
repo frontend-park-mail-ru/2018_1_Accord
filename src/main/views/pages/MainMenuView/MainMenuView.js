@@ -69,7 +69,7 @@ export default class MenuView extends BaseView {
     new NavBar(this.menu, this.navBar, this.user);
     new MenuItems(this.menu, this.menuItems);
 
-    return this.el;
+    return this;
   }
 
 }

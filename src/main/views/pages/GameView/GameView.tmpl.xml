@@ -10,8 +10,8 @@
 
         </div>
 
-        <div class="play-area">
-            This is an area to play
+        <div class="game-view__area">
+            <canvas class="game-view__canvas" height="800" width="900"> </canvas>
         </div>
     </div>
 
