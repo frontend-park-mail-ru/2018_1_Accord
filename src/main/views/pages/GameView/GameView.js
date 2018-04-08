@@ -3,6 +3,7 @@ import Logger from '../../../utils/logger.js';
 import BaseView from '../../view/baseView.js';
 import {selector} from '../../../config/selector.js';
 import NavBar from '../../../components/blocks/navBar/navBar.js';
+import Game from '../../../modules/game/game.js';
 import {info} from '../../../config/textInfo.js';
 import {fetchFaildErrors} from '../../../config/textErrors.js';
 
@@ -51,6 +52,11 @@ export default class GameView extends BaseView {
     }
 
     new NavBar(this.el, this.navBar, this.user);
+
+    const canvas = this.el.querySelector(selector.CANVAS);
+    Logger.log(canvas, ' from game view file');
+    this.gameProc = new Game(canvas);
+    this.gameProc.start();
 
     return this;
   }

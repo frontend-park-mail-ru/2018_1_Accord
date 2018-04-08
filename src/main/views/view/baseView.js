@@ -35,8 +35,6 @@ export default class BaseView {
         thisView = viewElem;
       });
 
-    Logger.log(thisView);
-
     return this.show();
   }
 

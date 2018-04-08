@@ -1,12 +1,12 @@
 import GameScene from './scene/gameScene.js';
 
-class Game {
+export default class Game {
   constructor(canvas) {
     this.scene = new GameScene(canvas);
   }
 
   start() {
-
+    this.scene.init();
   }
 
   destroy() {
