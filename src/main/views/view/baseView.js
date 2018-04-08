@@ -1,6 +1,8 @@
 'use strict';
 
 
+import Logger from '../../utils/logger.js';
+
 export default class BaseView {
   constructor(name) {
     this.tmpl = window.fest[name];
@@ -25,10 +27,17 @@ export default class BaseView {
     return this;
   }
 
-  async create() {
-    const thisView = await this.render();
+  create() {
+    let thisView = this.el;
 
-    return thisView.show();
+    this.render()
+      .then((viewElem) => {
+        thisView = viewElem;
+      });
+
+    Logger.log(thisView);
+
+    return this.show();
   }
 
   destroy() {
