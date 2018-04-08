@@ -5,6 +5,7 @@ export default class BaseView {
   constructor(name) {
     this.tmpl = window.fest[name];
     this.el = document.createElement('div');
+    this.hide();
   }
 
   async render(attrs) {
@@ -14,15 +15,24 @@ export default class BaseView {
 
   hide() {
     this.el.setAttribute('hidden', 'hidden');
+    this.active = false;
     return this;
   }
 
   show() {
     this.el.removeAttribute('hidden');
+    this.active = true;
     return this;
   }
 
+  create() {
+    return this
+      .render()
+      .show();
+  }
+
   destroy() {
+    this.hide();
     this.el.innerHTML = '';
     return this;
   }

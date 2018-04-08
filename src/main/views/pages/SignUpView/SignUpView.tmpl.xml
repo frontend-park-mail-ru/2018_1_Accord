@@ -2,7 +2,7 @@
     <div class="view signup-view">
         <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
 
-        <div class="signup__error"></div>
+        <div class="signup__error"> </div>
 
         <div class="signup__form">
             <form class="form">
@@ -27,7 +27,7 @@
         <div class="please-login">
             Have an account?
             <div class="please-login__ref">
-                <a>login</a>
+                <a href = "{data.loginPath}">login</a>
             </div>
         </div>
 

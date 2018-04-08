@@ -26,9 +26,9 @@ class UserService {
   }
 
   /**
-     * @private
-     * @returns {Promise<User | undefined>}
-     */
+   * @private
+   * @returns {Promise<User | undefined>}
+   */
   load() {
     return FetchService.get(config.APIMethods.user)
       .then(UserService.responseDispatcher)
@@ -41,10 +41,10 @@ class UserService {
   }
 
   /**
-     *
-     * @param {Object} userData
-     * @returns {Promise<User | undefined>}
-     */
+   *
+   * @param {Object} userData
+   * @returns {Promise<User | undefined>}
+   */
   login(userData) {
     this.user = FetchService.post(config.APIMethods.login, JSON.stringify(userData))
       .then(UserService.responseDispatcher)
@@ -59,10 +59,10 @@ class UserService {
   }
 
   /**
-     *
-     * @param {Object} userData
-     * @returns {Promise<User | undefined>}
-     */
+   *
+   * @param {Object} userData
+   * @returns {Promise<User | undefined>}
+   */
   signUp(userData) {
     this.user = FetchService.post(config.APIMethods.signup, JSON.stringify(userData))
       .then(UserService.responseDispatcher)
@@ -100,9 +100,9 @@ class UserService {
   }
 
   /**
-     *
-     * @returns {Promise<Response>}
-     */
+   *
+   * @returns {Promise<Response>}
+   */
   logout() {
     return FetchService.delete(config.APIMethods.logout)
       .then((response) => {
@@ -127,4 +127,3 @@ class UserService {
 
 const userService = new UserService();
 export default userService;
-

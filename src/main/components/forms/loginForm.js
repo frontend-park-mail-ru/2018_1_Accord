@@ -16,7 +16,6 @@ export default class LoginForm {
     this.password = new Input(this.form, 'password').render();
 
     this.submit = this.form.querySelector(selector.SUBMIT_BUTTON);
-
     this.errorField = this.form.querySelector(selector.VALIDATE_ERR);
     this.errorField.style.display = 'none';
 
