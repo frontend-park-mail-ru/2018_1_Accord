@@ -1,30 +1,54 @@
 import EventBus from '../../eventBus.js';
-import Entity from './entity.js';
-import Logger from '../../../utils/logger.js';
-import Scene from '../graphics/scene.js'
+import Donut from './Donut.js';
+import Homer from './Homer.js';
 
 export default class GameScene {
   constructor(canvas) {
     this.bus = EventBus;
-    Logger.log(canvas, ' from game scene file');
     this.ctx = canvas.getContext('2d');
-    Logger.log(this.ctx);
-    this.scene = new Scene(this.ctx);
 
     this.requestFrameId = null;
     this.lastFrameTime = 0;
 
-    this.state = null;
+    this.firstDonut = null;
+    this.homer = null;
 
-    this.rightPlayer = null;
   }
 
   init() {
-    this.rightPlayer = new Entity(this.ctx);
-    this.rightPlayer.x = 30;
-    this.rightPlayer.y = 200;
-    this.rightPlayer.id = this.scene.push(this.rightPlayer);
-    this.rightPlayer.draw();
+    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    this.firstDonut = new Donut(this.ctx, 100, 70);
+    this.firstDonut.draw();
+
+    this.homer = new Homer(this.ctx, 200, 200);
+    this.homer.draw();
+
+    //this.renderScene(Date.now());
+  }
+
+  //
+  // renderScene(now) {
+  //   const scene = this.scene;
+  //   const delay = now - this.lastFrameTime;
+  //   this.lastFrameTime = now;
+  //
+  //   scene.render();
+  //
+  //   this.requestFrameId = requestAnimationFrame(this.renderScene);
+  // }
+
+  start() {
+    this.lastFrameTime = performance.now();
+    this.requestFrameId = requestAnimationFrame(this.renderScene);
+  }
+
+  stop() {
+    if (this.requestFrameId) {
+      window.cancelAnimationFrame(this.requestFrameId);
+      this.requestFrameId = null;
+    }
+
+    this.scene.clear();
   }
 }
 

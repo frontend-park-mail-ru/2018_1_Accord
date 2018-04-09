@@ -5,22 +5,15 @@ export default class Circle extends Figure {
     super(ctx);
     this.radius = radius;
     this.color = color;
+    ctx.fillStyle = this.color;
   }
 
   draw() {
     const ctx = this.ctx;
     ctx.beginPath();
-    ctx.fillStyle = this.color;
-    ctx.arc(0, 0, this.radius, 0, 2 * Math.PI);
-
-    ctx.closePath();
+    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
     ctx.fill();
+    ctx.closePath();
   }
 
-  setup() {
-    const ctx = this.ctx;
-
-    ctx.translate(this.x, this.y);
-    ctx.scale(this.radius, this.radius);
-  }
 }
