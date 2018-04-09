@@ -27,9 +27,9 @@ export default class GameView extends BaseView {
     this.errorField = this.game.querySelector(selector.GAME_ERROR);
     this.errorField.style.display = 'none';
 
-    this.user = await userService.getUser();
-
     try {
+      this.user = await userService.getUser();
+
       if (!this.user) {
         this.unAuthInfo.style.display = 'block';
         this.unAuthInfo.innerText = info.gameUnAuthInfo;
@@ -46,6 +46,11 @@ export default class GameView extends BaseView {
       }
 
     } catch (err) {
+      this.navBar = [
+        selector.MUTE_BUTTON,
+        selector.BACK_BUTTON,
+        selector.SETTINGS_BUTTON,
+      ];
       this.errorField.innerText = fetchFaildErrors.noConnection;
       this.errorField.style.display = 'block';
       Logger.error(err);

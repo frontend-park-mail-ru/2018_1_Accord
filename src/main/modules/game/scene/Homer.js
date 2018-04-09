@@ -6,7 +6,7 @@ export default class Entity extends Figure{
     super(ctx);
     this.x = x;
     this.y = y;
-    this.body = new Rect(ctx, 100, 80, '#FFD633');
+    this.body = new Rect(ctx, 100, 60, '#FFD633');
   }
 
   draw() {

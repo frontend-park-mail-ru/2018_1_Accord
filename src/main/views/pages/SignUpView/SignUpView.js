@@ -31,9 +31,9 @@ export default class SignUpView extends BaseView {
 
       if (this.formStateData) {
         //validation check
-        this.user = await userService.signUp(this.formStateData);
-
         try {
+          this.user = await userService.signUp(this.formStateData);
+
           if (!this.user) {
             this.error.innerText = serverErrors.signup;
             this.error.style.display = 'block';
