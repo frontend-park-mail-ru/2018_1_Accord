@@ -10,7 +10,7 @@ export default class HelpView extends BaseView {
     super('main/views/pages/HelpView/HelpView.tmpl');
   }
 
-  render() {
+  async render() {
     super.render();
 
     this.help = this.el.querySelector(selector.HELP_VIEW);
