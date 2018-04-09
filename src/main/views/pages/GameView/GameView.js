@@ -45,6 +45,11 @@ export default class GameView extends BaseView {
       }
 
     } catch (err) {
+      this.navBar = [
+        selector.MUTE_BUTTON,
+        selector.BACK_BUTTON,
+        selector.SETTINGS_BUTTON,
+      ];
       this.errorField.innerText = fetchFaildErrors.noConnection;
       this.errorField.style.display = 'block';
       Logger.error(err);
