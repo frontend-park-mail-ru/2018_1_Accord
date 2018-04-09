@@ -16,9 +16,8 @@ export default class GameView extends BaseView {
       selector.SETTINGS_BUTTON];
   }
 
-  async render() {
+  render() {
     super.render();
-
     this.game = this.el.querySelector(selector.GAME_VIEW);
     this.unAuthInfo = this.game.querySelector(selector.GAME_UNAUTH_INFO);
     this.unAuthInfo.style.display = 'none';
@@ -26,32 +25,31 @@ export default class GameView extends BaseView {
     this.errorField = this.game.querySelector(selector.GAME_ERROR);
     this.errorField.style.display = 'none';
 
-    this.user = await userService.getUser();
+    userService.getUser()
+      .then((user) => {
+        if (!user) {
+          new NavBar(this.game, this.navBar, undefined);
+          this.unAuthInfo.style.display = 'block';
+          this.unAuthInfo.innerText = info.gameUnAuthInfo;
 
-    try {
-      if (!this.user) {
-        this.unAuthInfo.style.display = 'block';
-        this.unAuthInfo.innerText = info.gameUnAuthInfo;
+        } else {
+          this.navBar = [
+            selector.MUTE_BUTTON,
+            selector.BACK_BUTTON,
+            selector.SETTINGS_BUTTON,
+            selector.PROFILE_BUTTON
+          ];
 
-      } else {
-        this.navBar = [
-          selector.MUTE_BUTTON,
-          selector.BACK_BUTTON,
-          selector.SETTINGS_BUTTON,
-          selector.PROFILE_BUTTON
-        ];
+          this.unAuthInfo.style.display = 'none';
+          //TODO
+        }
+      })
+      .catch((err) => {
+        this.errorField.innerText = fetchFaildErrors.noConnection;
+        this.errorField.style.display = 'block';
+        Logger.error(err);
+      });
 
-        this.unAuthInfo.style.display = 'none';
-      }
-
-    } catch (err) {
-      this.errorField.innerText = fetchFaildErrors.noConnection;
-      this.errorField.style.display = 'block';
-      Logger.error(err);
-    }
-
-    new NavBar(this.el, this.navBar, this.user);
-
-    return this.el;
+    return this;
   }
 }

@@ -3,9 +3,9 @@ import {selector} from '../../../config/selector.js';
 import NavBar from '../../../components/blocks/navBar/navBar.js';
 import LoginForm from '../../../components/forms/loginForm.js';
 import {serverErrors} from '../../../config/textErrors.js';
-import Router from '../../../modules/router.js';
 import Logger from '../../../utils/logger.js';
 import userService from '../../../services/UserService.js';
+import {pagePaths} from '../../../config/pagePaths.js';
 
 export default class LoginView extends BaseView {
   constructor() {
@@ -16,41 +16,49 @@ export default class LoginView extends BaseView {
       selector.SETTINGS_BUTTON];
   }
 
-  async render() {
-    super.render();
+  render() {
+    super.render({
+      signUpPath: pagePaths.SIGN_UP_PATH
+    });
 
     this.error = this.el.querySelector(selector.LOGIN_ERROR);
-    this.loginForm = new LoginForm(this.el).render();
+    this.signUpForm = new LoginForm(this.el).render();
+    new NavBar(this.el, this.navBar, undefined);
 
-    this.loginForm.onSubmit(async () => {
-      //validation check
-      this.formStateData = this.loginForm.checkFormState();
+    const submitCallback = (event) => {
+      event.preventDefault();
 
-      if (this.formStateData) {
-        this.user = await userService.login(this.formStateData);
+      this.signUpForm.checkFormState()
+        .then((userData) => userService.login(userData))
+        .then((user) => {
+          if (!user) {
+            this.signUpForm.onSubmit(submitCallback);
 
-        try {
-          if (!this.user) {
             this.error.innerText = serverErrors.login;
             this.error.style.display = 'block';
             Logger.log('Unsuccessful login');
 
           } else {
-            Router.changeSection('Menu');
+            window.history.pushState(null, '', pagePaths.START_PATH);
           }
+          new NavBar(this.el, this.navBar, undefined);
+        })
+        .catch((err) => {
+          this.signUpForm.onSubmit(submitCallback);
 
-        } catch (err) {
           this.error.innerText = serverErrors.unexpected;
+          Logger.log(this.error);
           this.error.style.display = 'block';
+
+          new NavBar(this.el, this.navBar, undefined);
           Logger.error(err);
           //TODO:Error dispatcher
-        }
-      }
-    });
+        });
+    };
 
-    new NavBar(this.el, this.navBar, this.user);
+    this.signUpForm.onSubmit(submitCallback);
 
-    return this.el;
+    return this;
   }
 
 }

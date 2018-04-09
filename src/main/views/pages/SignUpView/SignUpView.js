@@ -5,54 +5,59 @@ import {serverErrors} from '../../../config/textErrors.js';
 import Router from '../../../modules/router.js';
 import Logger from '../../../utils/logger.js';
 import userService from '../../../services/UserService.js';
-import SignUpForm from '../../../components/forms/signUpForm.js';
+import SignUpForm from '../../../components/forms/signUpForm.main';
+import {pagePaths} from '../../../config/pagePaths.js';
 
 export default class SignUpView extends BaseView {
   constructor() {
     super('main/views/pages/SignUpView/SignUpView.tmpl');
 
-    this.navBar = [
-      selector.BACK_BUTTON,
+    this.navBar = [selector.BACK_BUTTON,
       selector.MUTE_BUTTON,
-      selector.SETTINGS_BUTTON
-    ];
+      selector.SETTINGS_BUTTON];
   }
 
-  async render() {
-    super.render();
+  render() {
+    super.render({
+      loginPath: pagePaths.LOGIN_PATH
+    });
 
+    new NavBar(this.el, this.navBar, undefined);
     this.error = this.el.querySelector(selector.SIGNUP_ERROR);
-    this.loginForm = new SignUpForm(this.el).render();
+    this.signUpForm = new SignUpForm(this.el).render();
 
-    this.loginForm.onSubmit(async () => {
-      this.formStateData = await this.loginForm.checkFormState();
+    const submitCallback = (event) => {
+      event.preventDefault();
 
-      if (this.formStateData) {
-        //validation check
-        this.user = await userService.signUp(this.formStateData);
+      this.signUpForm.checkFormState()
+        .then((userData) => userService.signUp(userData))
+        .then((user) => {
+          if (!user) {
+            this.signUpForm.onSubmit(submitCallback);
 
-        try {
-          if (!this.user) {
             this.error.innerText = serverErrors.signup;
             this.error.style.display = 'block';
+
             Logger.log('Unsuccessful signup');
 
           } else {
-            Router.changeSection('Menu');
+            window.history.pushState(null, '', pagePaths.START_PATH);
           }
-        } catch (err) {
+        })
+        .catch((err) => {
+          this.signUpForm.onSubmit(submitCallback);
+
           this.error.innerText = serverErrors.unexpected;
           this.error.style.display = 'block';
 
           Logger.error(err);
           //TODO:Error dispatcher
-        }
-      }
-    });
+        });
+    };
 
-    new NavBar(this.el, this.navBar, this.user);
+    this.signUpForm.onSubmit(submitCallback);
 
-    return this.el;
+    return this;
   }
 
 }

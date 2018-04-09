@@ -4,7 +4,7 @@ import BaseView from '../../view/baseView.js';
 import {selector} from '../../../config/selector.js';
 import {serverErrors} from '../../../config/textErrors.js';
 
-export default class LeaderBoard extends BaseView {
+export default class LeaderBoardView extends BaseView {
   constructor() {
     super('main/views/pages/LeaderBoard/LeaderBoard.tmpl');
     this.page = 1;
@@ -36,6 +36,6 @@ export default class LeaderBoard extends BaseView {
   render() {
     this.updateLeaderboard(this.page);
 
-    return this.el;
+    return this;
   }
 }
