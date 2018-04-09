@@ -17,7 +17,9 @@ export default class LoginView extends BaseView {
   }
 
   async render() {
-    super.render();
+    super.render({
+      signUpPath: pagePaths.SIGN_UP_PATH
+    });
 
     this.error = this.el.querySelector(selector.LOGIN_ERROR);
     this.loginForm = new LoginForm(this.el).render();

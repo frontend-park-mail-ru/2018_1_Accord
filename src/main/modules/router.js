@@ -1,3 +1,7 @@
+import userService from '../services/UserService.js';
+import {pagePaths} from '../config/pagePaths.js';
+import Logger from '../utils/logger.js';
+
 export default class Router {
 
   constructor(root) {
@@ -31,11 +35,11 @@ export default class Router {
    */
   open(path) {
     const view = this.map[path];
-    if(!view || view === this.active) {
+    if (!view || view === this.active) {
       return this;
     }
 
-    if(this.active) {
+    if (this.active) {
       this.active.destroy();
       this.active = null;
     }
@@ -48,6 +52,28 @@ export default class Router {
     return this;
   }
 
+  analysePath(path, isLogged) {
+    if (isLogged) {
+      [pagePaths.SIGN_UP_PATH, pagePaths.LOGIN_PATH,
+        pagePaths.PROFILE_PATH].includes(path) ? this.open(pagePaths.START_PATH) : this.open(path);
+    }
+    else {
+      this.open(path);
+    }
+  }
+
+  validate(path) {
+    userService.getUser().then((user) => {
+      if (!user) {
+        this.analysePath(path, false);
+      } else {
+        this.analysePath(path, true);
+      }
+    }).catch((err) => {
+      this.analysePath(pagePaths.START_PATH, false);
+      Logger.error(err);
+    });
+  }
 
   /**
    * Запускает Router
@@ -55,8 +81,7 @@ export default class Router {
    */
   start() {
     window.onpopstate = () => {
-      //TODO: проверку можно ли перейти
-      this.open(window.location.pathname);
+      this.validate(window.location.pathname);
     };
     this.root.addEventListener('click', (event) => {
       if (event.target instanceof HTMLAnchorElement) {
@@ -64,28 +89,6 @@ export default class Router {
         this.open(event.target.getAttribute('href'));
       }
     });
-
-    this.open(window.location.pathname);
-  /**
-   * @param {String} newSection
-   
-  static changeSection(newSection) {
-    if (Sections[newSection]) {
-
-      let element;
-
-      try {
-        Sections[newSection].render()
-          .then((elem) => {
-            element = elem;
-            renderDOM(element, document.getElementById('root'));
-          });
-      } catch (_) {
-        element = Sections[newSection].render();
-        renderDOM(element, document.getElementById('root'));
-      }
-
-    }
-  */
+    this.validate(window.location.pathname);
   }
 }
