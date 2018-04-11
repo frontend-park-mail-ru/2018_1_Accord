@@ -3,9 +3,11 @@ import {events} from './events.js';
 import Logger from '../../../utils/logger.js';
 
 const KEYS = {
-  FIRE: [' ', 'Enter'],
+  FIRE: ['Enter'],
   LEFT: ['a', 'A', 'ф', 'Ф', 'ArrowLeft'],
   RIGHT: ['d', 'D', 'в', 'В', 'ArrowRight'],
+
+  START: [' '],
   FINISH: ['z'],
 };
 
@@ -27,6 +29,9 @@ export default class GameEngine {
   }
 
   start() {
+    this.controller.start();
+    this.scene.init();
+
     EventBus.on(events.GAME.START, this.onGameStarted);
     EventBus.on(events.CONTROL.PRESSED, this.onControllPressed);
     EventBus.on(events.GAME.FINISH, this.onGameFinished);
@@ -38,11 +43,10 @@ export default class GameEngine {
       const actions = controller.diff();
 
       if (Object.keys(actions).some(k => actions[k])) {
+        Logger.log(actions, 'PRESSED');
         EventBus.emit(events.CONTROL.PRESSED, actions);
       }
     }, 50);
-
-    EventBus.emit(events.GAME.START);
   }
 
   destroy() {
@@ -63,9 +67,6 @@ export default class GameEngine {
   }
 
   onGameStarted(event) {
-    this.controller.start();
-    this.scene.init();
-
     this.lastFrame = performance.now();
     this.gameLoopRequestId = requestAnimationFrame(this.gameLoop);
   }
@@ -78,6 +79,10 @@ export default class GameEngine {
 
     } else if (this._pressed('FIRE', event)) {
       Logger.log('V ATAKUUUUU');
+
+    } else if (this._pressed('START', event)) {
+      EventBus.emit(events.GAME.START);
+
     } else if (this._pressed('FINISH', event)) {
       EventBus.emit(events.GAME.FINISH);
     }
