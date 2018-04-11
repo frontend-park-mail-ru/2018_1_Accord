@@ -65,11 +65,9 @@ export default class GameView extends BaseView {
       Logger.error(err);
     }
 
-    Logger.log(this.navBar);
     new NavBar(this.el, this.navBar, this.user);
 
     const canvas = this.el.querySelector(selector.CANVAS);
-    Logger.log(canvas, ' from game view file');
     this.gameProc = new Game(canvas);
     this.gameProc.start();
 

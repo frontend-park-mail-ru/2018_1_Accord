@@ -2,6 +2,8 @@ import EventBus from '../../eventBus.js';
 import Donut from './Donut.js';
 import Homer from './Homer.js';
 import {gameObjects} from '../graphics/gameObjects.js';
+import {events} from '../core/events.js';
+import Logger from '../../../utils/logger.js';
 
 export default class GameScene {
   constructor(canvas) {
@@ -15,9 +17,12 @@ export default class GameScene {
     this.homer = null;
 
     this.renderScene = this.renderScene.bind(this);
+    this.mouseClicked = this.mouseClicked.bind(this);
   }
 
   init() {
+    EventBus.on(events.GAME.STATE_CHANGED, this.mouseClicked);
+
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     this.firstDonut = new Donut(this.ctx, gameObjects.DONUT.x, gameObjects.DONUT.y);
     this.firstDonut.draw();
@@ -55,5 +60,16 @@ export default class GameScene {
     }
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);    //this.scene.clear();
   }
+
+  /**
+   *
+   * @param {{x: number, y: number}} mousePos
+   */
+  mouseClicked(mousePos) {
+    Logger.log(mousePos.x, mousePos.y, 'Scene: Mouse clicked');
+    this.firstDonut.countAngle(mousePos);
+  }
+
+
 }
 

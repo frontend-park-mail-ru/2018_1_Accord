@@ -6,6 +6,7 @@ export const events = {
   },
 
   CONTROL: {
-    PRESSED: 'PRESSED'
+    PRESSED: 'PRESSED',
+    CLICKED: 'ON_CANVAS_CLICKED',
   }
 };

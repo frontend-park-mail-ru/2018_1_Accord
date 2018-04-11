@@ -1,3 +1,6 @@
+import EventBus from '../eventBus.js';
+import {events} from './core/events.js';
+
 export default class GameControllers {
   constructor() {
     this.root = document.getElementById('root');
@@ -6,6 +9,7 @@ export default class GameControllers {
 
     this._onPress = this._keyHandler.bind(this, 'press');
     this._onUp = this._keyHandler.bind(this, 'up');
+    this._onClicked = this._mouseClicked.bind(this);
   }
 
   /**
@@ -14,6 +18,7 @@ export default class GameControllers {
   start() {
     document.addEventListener('keydown', this._onPress);
     document.addEventListener('keyup', this._onUp);
+    document.addEventListener('click', this._onClicked);
   }
 
   /**
@@ -22,6 +27,7 @@ export default class GameControllers {
   destroy() {
     document.removeEventListener('keydown', this._onPress);
     document.removeEventListener('keyup', this._onUp);
+    document.removeEventListener('click', this._onClicked);
   }
 
   /**
@@ -31,6 +37,12 @@ export default class GameControllers {
    */
   is(key) {
     return this.keys[key];
+  }
+
+  _mouseClicked(event) {
+    if (event.target.tagName === 'CANVAS') {
+      EventBus.emit(events.CONTROL.CLICKED, event);
+    }
   }
 
   /**

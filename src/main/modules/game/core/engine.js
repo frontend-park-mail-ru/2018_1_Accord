@@ -21,9 +21,20 @@ export default class GameEngine {
 
     this.controllersLoopIntervalId = null;
 
+    this.gameState = {
+      DONAT: {
+        angle: 0,
+        v: 0,
+        count: 5
+      },
+
+      HOMER: {}
+    };
+
     this.onGameStarted = this.onGameStarted.bind(this);
     this.onControllPressed = this.onControllPressed.bind(this);
     this.onGameFinished = this.onGameFinished.bind(this);
+    this.onMouseClicked = this.onMouseClicked.bind(this);
   }
 
   start() {
@@ -33,6 +44,7 @@ export default class GameEngine {
     EventBus.on(events.GAME.START, this.onGameStarted);
     EventBus.on(events.CONTROL.PRESSED, this.onControllPressed);
     EventBus.on(events.GAME.FINISH, this.onGameFinished);
+    EventBus.on(events.CONTROL.CLICKED, this.onMouseClicked);
 
     Logger.log('Engine: start');
 
@@ -71,12 +83,19 @@ export default class GameEngine {
     this.gameLoopRequestId = requestAnimationFrame(this.gameLoop);
   }
 
+  onMouseClicked(event) {
+    const mousePos = this._getMousePos(event);
+
+    EventBus.emit(events.GAME.STATE_CHANGED, mousePos);
+  }
+
   onControllPressed(event) {
     if (this._pressed('FIRE', event)) {
       Logger.log('V ATAKUUUUU');
 
     } else if (this._pressed('START', event)) {
       EventBus.emit(events.GAME.START);
+      //EventBus.off(event.GAME.START);
 
     } else if (this._pressed('FINISH', event)) {
       EventBus.emit(events.GAME.FINISH);
@@ -86,11 +105,22 @@ export default class GameEngine {
   onGameFinished(event) {
     Logger.log('onGameFinished');
     cancelAnimationFrame(this.gameLoopRequestId);
-
-    EventBus.emit(events.GAME.FINISH);
   }
 
   _pressed(name, data) {
     return KEYS[name].some(k => data[k.toLowerCase()]);
+  }
+
+  /**
+   * @private
+   * @param event
+   * @returns {{x: number, y: number}}
+   */
+  _getMousePos(event) {
+    const rect = this.scene.ctx.canvas.getBoundingClientRect();
+    return {
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top
+    };
   }
 }
