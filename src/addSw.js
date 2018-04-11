@@ -1,3 +1,5 @@
+import Logger from 'main/utils/logger.js';
+
 (function() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js', {scope: '/'})
@@ -5,7 +7,7 @@
         console.log('sw registation on scope:', registration.scope);
       })
       .catch((err) => {
-        console.error(err);
+        Logger.error(err);
       });
   }
 })();
