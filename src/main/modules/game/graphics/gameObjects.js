@@ -1,7 +1,7 @@
 export const gameObjects = {
   CANVAS: {
-    height: 600,
-    width: 800,
+    height: 500,
+    width: 900,
     color: '',
   },
 
@@ -12,7 +12,7 @@ export const gameObjects = {
     color: '#FFD633',
 
     x: 370,
-    y: 450
+    y: 370,
   },
 
   DONUT: {
@@ -22,7 +22,7 @@ export const gameObjects = {
     x: 100,
     y: 100,
 
-    vX: 0,
-    vY: 0
+    vX: 3,
+    vY: 3,
   }
 };

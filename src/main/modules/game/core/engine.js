@@ -4,8 +4,6 @@ import Logger from '../../../utils/logger.js';
 
 const KEYS = {
   FIRE: ['Enter'],
-  LEFT: ['a', 'A', 'ф', 'Ф', 'ArrowLeft'],
-  RIGHT: ['d', 'D', 'в', 'В', 'ArrowRight'],
 
   START: [' '],
   FINISH: ['z'],
@@ -74,12 +72,7 @@ export default class GameEngine {
   }
 
   onControllPressed(event) {
-    if (this._pressed('LEFT', event)) {
-      Logger.log('LEFT');
-    } else if (this._pressed('RIGHT', event)) {
-      Logger.log('RIGHT');
-
-    } else if (this._pressed('FIRE', event)) {
+    if (this._pressed('FIRE', event)) {
       Logger.log('V ATAKUUUUU');
 
     } else if (this._pressed('START', event)) {

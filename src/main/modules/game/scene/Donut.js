@@ -14,6 +14,23 @@ export default class Donut extends Figure {
     this.body = new Circle(ctx, gameObjects.DONUT.radius, gameObjects.DONUT.color);
   }
 
+  //Лети, бро
+  fly(dt) {
+    let dx = this.vX * dt * 0.05;
+    const dy = 9.8 * dt * 0.05;
+
+    if (this.y + gameObjects.DONUT.radius + dy < this.ctx.canvas.height) {
+      this.y += dy;
+    } else {
+      dx = 0;
+    }
+
+    if (this.x + gameObjects.DONUT.radius + dx < this.ctx.canvas.width) {
+      this.x += dx;
+
+    }
+  }
+
   draw() {
     this.body.x = this.x;
     this.body.y = this.y;

@@ -32,8 +32,13 @@ export default class GameScene {
     this.lastFrameTime = now;
 
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-    this.homer.move();
+
+    this.homer.move(delay);
+    this.firstDonut.fly(delay);
+    //this.firstDonat actions
+
     this.homer.render();
+    this.firstDonut.render();
 
     this.requestFrameId = requestAnimationFrame(this.renderScene);
   }

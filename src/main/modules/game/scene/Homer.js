@@ -3,7 +3,7 @@ import Rect from '../graphics/rect.js';
 import {gameObjects} from '../graphics/gameObjects.js';
 import Logger from '../../../utils/logger.js';
 
-export default class Entity extends Figure {
+export default class Homer extends Figure {
   constructor(ctx, x, y) {
     super(ctx);
     this.x = x;
@@ -22,25 +22,27 @@ export default class Entity extends Figure {
     this.body.render();
   }
 
-  move() {
+  move(dt) {
     Logger.log('Homer is moving', this.x);
+
+    const dx = this.vX * dt * 0.01;
 
     switch (this.direction) {
       case 'left':
-        if (this.x + gameObjects.HOMER.width + this.vX < gameObjects.CANVAS.width - 10) {
-          this.x += this.vX;
+        if (this.x + gameObjects.HOMER.width + dx < this.ctx.canvas.width - 10) {
+          this.x += dx;
         } else {
           this.direction = 'right';
-          this.x -= this.vX;
+          this.x -= dx;
         }
         break;
 
       case 'right':
-        if (this.x - this.vX > 10) {
-          this.x -= this.vX;
+        if (this.x - dx > 10) {
+          this.x -= dx;
         } else {
           this.direction = 'left';
-          this.x += this.vX;
+          this.x += dx;
         }
         break;
     }
