@@ -1,12 +1,13 @@
 'use strict';
 
 
-import Logger from '../../utils/logger.js';
+import EventBus from '../../modules/eventBus.js';
 
 export default class BaseView {
   constructor(name) {
     this.tmpl = window.fest[name];
     this.el = document.createElement('div');
+    this.bus = EventBus;
     this.hide();
   }
 

@@ -1,5 +1,6 @@
 import Figure from '../graphics/figure.js';
 import Circle from '../graphics/circle.js';
+import {gameObjects} from '../graphics/gameObjects.js';
 
 export default class Donut extends Figure {
   constructor(ctx, x, y) {
@@ -7,7 +8,10 @@ export default class Donut extends Figure {
     this.x = x;
     this.y = y;
 
-    this.body = new Circle(ctx, 20, '#FF4DA6');
+    this.vX = gameObjects.DONUT.vX;
+    this.vY = gameObjects.DONUT.vY;
+
+    this.body = new Circle(ctx, gameObjects.DONUT.radius, gameObjects.DONUT.color);
   }
 
   draw() {

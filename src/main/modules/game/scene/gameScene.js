@@ -1,6 +1,7 @@
 import EventBus from '../../eventBus.js';
 import Donut from './Donut.js';
 import Homer from './Homer.js';
+import {gameObjects} from '../graphics/gameObjects.js';
 
 export default class GameScene {
   constructor(canvas) {
@@ -17,10 +18,10 @@ export default class GameScene {
 
   init() {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-    this.firstDonut = new Donut(this.ctx, 100, 70);
+    this.firstDonut = new Donut(this.ctx, gameObjects.DONUT.x, gameObjects.DONUT.y);
     this.firstDonut.draw();
 
-    this.homer = new Homer(this.ctx, 200, 200);
+    this.homer = new Homer(this.ctx, gameObjects.HOMER.x, gameObjects.HOMER.y);
     this.homer.draw();
 
     //this.renderScene(Date.now());
@@ -39,7 +40,7 @@ export default class GameScene {
 
   start() {
     this.lastFrameTime = performance.now();
-    this.requestFrameId = requestAnimationFrame(this.renderScene);
+    this.requestFrameId = requestAnimationFrame(this.homer.move1);
   }
 
   stop() {
@@ -48,7 +49,7 @@ export default class GameScene {
       this.requestFrameId = null;
     }
 
-    this.scene.clear();
+    //this.scene.clear();
   }
 }
 

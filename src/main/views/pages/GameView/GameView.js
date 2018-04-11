@@ -6,6 +6,7 @@ import NavBar from '../../../components/blocks/navBar/navBar.js';
 import Game from '../../../modules/game/game.js';
 import {info} from '../../../config/textInfo.js';
 import {fetchFaildErrors} from '../../../config/textErrors.js';
+import {events} from '../../../modules/game/core/events.js';
 
 
 export default class GameView extends BaseView {
@@ -15,6 +16,14 @@ export default class GameView extends BaseView {
     this.navBar = [selector.MUTE_BUTTON,
       selector.BACK_BUTTON,
       selector.SETTINGS_BUTTON];
+
+    this.bus.on(events.GAME.FINISH, function () {
+      if (this.active) {
+        //window.history.back();
+        Logger.log('Finish game from game view');
+        this.gameProc.destroy();
+      }
+    }.bind(this));
   }
 
   async render() {
