@@ -3,28 +3,43 @@
 
         <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
 
-        <div class="login__error"> </div>
+        <div class="menu bubbles">
+            <div class="menu-center-block">
+                <div class="lowermenu">
+                    <div class="title">
+                        Donuts Wars
+                        <a></a>
+                    </div>
 
-        <div class="login__form">
-            <form class="form">
-                <div class="form__field">
-                    <input class="form__field-input" type="email" name="email"
-                           placeholder="Enter your e-mail..."/>
-                    <input class="form__field-input" type="password" name="password"
-                           placeholder="Enter your password..."/>
+                    <div class="login__error title__sub-error"></div>
+                    <div class="login__form">
+                        <form class="form">
+                            <div class="validation-error"> </div>
+
+                            <div class="form__field input_block">
+                                <input class="form__field-input" type="email" name="email"
+                                    placeholder="Enter your e-mail"/>
+                            </div>
+                            <div class="form__field input_block">
+                                <input class="form__field-input" type="password" name="password"
+                                    placeholder="Enter your password"/>
+                            </div>
+
+                            <button class="button_text submit-button mainmenu__button-button" type="submit">
+                                Login
+                            </button>
+                        </form>
+                    </div>
+
+                        <div class="go-to-sigup">
+                            If you haven't account yet, just 
+                            <a href="{data.signUpPath}">
+                                <div class="go-to-sigup__button">
+                                     sign up
+                                </div>
+                            </a>
+                        </div>
                 </div>
-
-                <button class="button_text submit-button" type="submit">
-                    Login
-                </button>
-                <div class="validation-error"> </div>
-            </form>
-        </div>
-
-        <div class="please-signup">
-            If you haven't account yet, please
-            <div class="please-signup__ref">
-                <a href="{data.signUpPath}">sign up</a>
             </div>
         </div>
     </div>

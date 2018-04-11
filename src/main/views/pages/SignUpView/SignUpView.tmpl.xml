@@ -2,34 +2,49 @@
     <div class="view signup-view">
         <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
 
-        <div class="signup__error"> </div>
+        <div class="menu bubbles">
+            <div class="menu-center-block">
+                <div class="lowermenu">
+                    <div class="title">
+                        Donuts Wars
+                        <a></a>
+                    </div>
 
-        <div class="signup__form">
-            <form class="form">
-                <div class="form__field">
-                    <input class="form__field-input" type="email" name="email"
-                           placeholder="Enter your e-mail..."/>
-                    <input class="form__field-input" type="text" name="username"
-                           placeholder="Enter your username..."/>
-                    <input class="form__field-input" type="password" name="password"
-                           placeholder="Enter your password..."/>
-                    <input class="form__field-input" type="password" name="password-confirm"
-                           placeholder="Confirm password..."/>
+                    <div class="signup__error title__sub-error"> </div>
+                    <div class="signup__form">
+                        <form class="form">
+                            <div class="validation-error"></div>
+
+                            <div class="form__field input_block">
+                                <input class="form__field-input" type="email" name="email"
+                                    placeholder="Enter your e-mail..."/>
+                            </div>
+                            <div class="form__field input_block">
+                                <input class="form__field-input" type="text" name="username"
+                                    placeholder="Enter your username..."/>
+                            </div>
+                            <div class="form__field input_block">
+                                <input class="form__field-input" type="password" name="password"
+                                    placeholder="Enter your password..."/>
+                            </div>
+                            <div class="form__field input_block">
+                                <input class="form__field-input" type="password" name="password-confirm"
+                                    placeholder="Confirm password..."/>
+                            </div>
+
+                            <button class="button_text submit-button mainmenu__button-button" type="submit">
+                                Sign up
+                            </button>
+                        </form>
+
+                        <div class="go-to-login">If you have account , just
+                            <a href="{data.loginPath}">
+                                <div class="go-to-login__button">login</div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-
-                <button class="button_text submit-button" type="submit">
-                    Sign up
-                </button>
-                <div class="validation-error"></div>
-            </form>
-        </div>
-
-        <div class="please-login">
-            Have an account?
-            <div class="please-login__ref">
-                <a href = "{data.loginPath}">login</a>
             </div>
         </div>
-
     </div>
 </fest:template>
