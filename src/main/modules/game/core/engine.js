@@ -56,6 +56,7 @@ export default class GameEngine {
     EventBus.off(events.CONTROL.PRESSED, this.onControllPressed);
 
     this.controller.destroy();
+    this.scene.stop();
     //TODO
   }
 
@@ -68,6 +69,7 @@ export default class GameEngine {
 
   onGameStarted(event) {
     this.lastFrame = performance.now();
+    this.scene.startScene();
     this.gameLoopRequestId = requestAnimationFrame(this.gameLoop);
   }
 

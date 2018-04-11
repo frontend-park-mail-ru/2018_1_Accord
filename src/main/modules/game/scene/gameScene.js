@@ -14,6 +14,7 @@ export default class GameScene {
     this.firstDonut = null;
     this.homer = null;
 
+    this.renderScene = this.renderScene.bind(this);
   }
 
   init() {
@@ -23,24 +24,23 @@ export default class GameScene {
 
     this.homer = new Homer(this.ctx, gameObjects.HOMER.x, gameObjects.HOMER.y);
     this.homer.draw();
-
-    //this.renderScene(Date.now());
   }
 
-  //
-  // renderScene(now) {
-  //   const scene = this.scene;
-  //   const delay = now - this.lastFrameTime;
-  //   this.lastFrameTime = now;
-  //
-  //   scene.render();
-  //
-  //   this.requestFrameId = requestAnimationFrame(this.renderScene);
-  // }
 
-  start() {
+  renderScene(now) {
+    const delay = now - this.lastFrameTime;
+    this.lastFrameTime = now;
+
+    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    this.homer.move();
+    this.homer.render();
+
+    this.requestFrameId = requestAnimationFrame(this.renderScene);
+  }
+
+  startScene() {
     this.lastFrameTime = performance.now();
-    this.requestFrameId = requestAnimationFrame(this.homer.move1);
+    this.requestFrameId = requestAnimationFrame(this.renderScene);
   }
 
   stop() {
@@ -48,8 +48,7 @@ export default class GameScene {
       window.cancelAnimationFrame(this.requestFrameId);
       this.requestFrameId = null;
     }
-
-    //this.scene.clear();
+    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);    //this.scene.clear();
   }
 }
 
