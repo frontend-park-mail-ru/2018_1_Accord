@@ -16,11 +16,12 @@ export const gameObjects = {
   },
 
   DONUT: {
-    radius: 20,
+    radius: 25,
     color: '#FF4DA6',
+    count: 10,
 
-    x: 100,
-    y: 100,
+    x: 60,
+    y: 60,
 
     v: 50,
   }

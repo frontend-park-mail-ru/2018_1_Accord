@@ -16,7 +16,9 @@ export default class Donut extends Figure {
     this.angle = 0;
     this.onBottom = false;
 
-    this.body = new Circle(ctx, gameObjects.DONUT.radius, gameObjects.DONUT.color);
+    this.radius = gameObjects.DONUT.radius;
+
+    this.body = new Circle(ctx, this.radius);
   }
 
   //Лети, бро
@@ -34,16 +36,19 @@ export default class Donut extends Figure {
     let dx = this.vX * dt * 0.01;
     let dy = this.vY * dt * 0.0001;
 
-    if (this.y + gameObjects.DONUT.radius + dy < this.ctx.canvas.height) {
+    if (this.y + this.radius * 2 + dy < this.ctx.canvas.height) {
       this.y += dy;
       this.onBottom = false;
 
-      if (this.x + gameObjects.DONUT.radius + dx < this.ctx.canvas.width) {
+      if (this.x + this.radius * 2 + dx < this.ctx.canvas.width) {
         this.x += dx;
       }
 
-      if (this.x >= collCoords.x && this.x <= collCoords.x + gameObjects.HOMER.width / 2
-        && this.y >= collCoords.y && this.y <= collCoords.y + gameObjects.HOMER.height / 3) {
+      if (this.x + this.radius >= collCoords.x &&
+        this.x + this.radius <= collCoords.x + gameObjects.HOMER.width / 2 &&
+        this.y + this.radius >= collCoords.y &&
+        this.y + this.radius <= collCoords.y + gameObjects.HOMER.height / 3) {
+
         this.onBottom = false;
         this.collision = true;
       } else {
@@ -72,7 +77,11 @@ export default class Donut extends Figure {
    */
   countAngle(mousePos) {
     Logger.log('New angle for Donut: ', this.angle);
-    this.angle = Math.atan((mousePos.y - this.y) / (mousePos.x - this.x));
+    this.angle = Math.atan((mousePos.y - this.y) / (mousePos.x - this.x)) || 0;
+  }
+
+  countVelocity(mousePos) {
+
   }
 
   reset() {

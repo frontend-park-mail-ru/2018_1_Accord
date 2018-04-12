@@ -10,6 +10,7 @@ export default class GameControllers {
     this._onPress = this._keyHandler.bind(this, 'press');
     this._onUp = this._keyHandler.bind(this, 'up');
     this._onClicked = this._mouseClicked.bind(this);
+    this._onMoved = this._mouseMoved.bind(this);
   }
 
   /**
@@ -19,6 +20,7 @@ export default class GameControllers {
     document.addEventListener('keydown', this._onPress);
     document.addEventListener('keyup', this._onUp);
     document.addEventListener('click', this._onClicked);
+    document.addEventListener('mousemove', this._onMoved);
   }
 
   /**
@@ -28,6 +30,7 @@ export default class GameControllers {
     document.removeEventListener('keydown', this._onPress);
     document.removeEventListener('keyup', this._onUp);
     document.removeEventListener('click', this._onClicked);
+    document.removeEventListener('mousemove', this._onMoved);
   }
 
   /**
@@ -42,6 +45,12 @@ export default class GameControllers {
   _mouseClicked(event) {
     if (event.target.tagName === 'CANVAS') {
       EventBus.emit(events.CONTROL.CLICKED, event);
+    }
+  }
+
+  _mouseMoved(event) {
+    if (event.target.tagName === 'CANVAS') {
+      EventBus.emit(events.CONTROL.MOUSE_MOVED, event);
     }
   }
 

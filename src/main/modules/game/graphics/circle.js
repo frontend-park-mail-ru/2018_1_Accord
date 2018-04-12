@@ -1,19 +1,21 @@
 import Figure from './figure.js';
 
 export default class Circle extends Figure {
-  constructor(ctx, radius, color) {
+  constructor(ctx, radius) {
     super(ctx);
     this.radius = radius;
-    this.color = color;
-    ctx.fillStyle = this.color;
+    this.width = radius * 2;
+
+    this.img = new Image(this.width, this.width);
+    this.img.src = '../../images/donut2.png';
   }
 
   draw() {
     const ctx = this.ctx;
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-    ctx.fill();
+    this.ctx.drawImage(this.img, this.x, this.y, this.img.width, this.img.height);
     ctx.closePath();
+    ctx.fill();
   }
 
 }

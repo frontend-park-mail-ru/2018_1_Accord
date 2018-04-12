@@ -5,11 +5,8 @@ export default class Rect extends Figure {
     super(ctx);
     this.width = width;
     this.height = height;
-    this.ctx.fillStyle = color;
-  }
-
-  rotate(degrees) {
-    this.rotation = degrees * Math.PI / 180;
+    this.color = color;
+    this.ctx.fillStyle = this.color;
   }
 
   /**
@@ -17,6 +14,7 @@ export default class Rect extends Figure {
    */
   draw() {
     this.ctx.beginPath();
+    this.ctx.fillStyle = this.color;
     this.ctx.rect(this.x, this.y, this.width, this.height);
 
     this.ctx.closePath();

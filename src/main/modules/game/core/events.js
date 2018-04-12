@@ -11,5 +11,6 @@ export const events = {
   CONTROL: {
     PRESSED: 'PRESSED',
     CLICKED: 'ON_CANVAS_CLICKED',
+    MOUSE_MOVED: 'MOUSE_MOVED',
   }
 };
