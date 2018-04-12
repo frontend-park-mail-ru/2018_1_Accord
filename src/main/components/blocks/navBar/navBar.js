@@ -24,8 +24,7 @@ export default class NavBar {
           break;
 
         case selector.PROFILE_BUTTON:
-          new LinkedButton(this.navBar, selector.PROFILE_BUTTON,
-            'Profile', this.user.getProfileData());
+          new LinkedButton(this.navBar, selector.PROFILE_BUTTON, undefined, this.user.getProfileData());
           break;
 
         case selector.MUTE_BUTTON:
@@ -33,7 +32,7 @@ export default class NavBar {
           break;
 
         case selector.SETTINGS_BUTTON:
-          new LinkedButton(this.navBar, selector.SETTINGS_BUTTON, 'Settings', undefined);
+          new LinkedButton(this.navBar, selector.SETTINGS_BUTTON);
           break;
       }
     });

@@ -1,6 +1,5 @@
 'use strict';
 
-
 import EventBus from '../../modules/eventBus.js';
 import Logger from '../../utils/logger.js';
 
@@ -30,11 +29,7 @@ export default class BaseView {
   }
 
   create() {
-    this.render()
-      .then((viewElem) => {
-        Logger.log(viewElem);
-      });
-
+    this.render();
     return this.show();
   }
 

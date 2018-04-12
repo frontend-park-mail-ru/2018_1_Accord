@@ -116,5 +116,5 @@ typings/
 
 .DS_Store
 *.tmpl.js
-
 package-lock.json
+dist
