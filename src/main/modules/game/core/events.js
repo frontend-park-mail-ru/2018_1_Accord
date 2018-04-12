@@ -6,6 +6,7 @@ export const events = {
     ON_BOTTOM: 'ON_BOTTOM',
     COLLISION: 'COLLISION',
     LAUNCH_DONUT: 'LAUNCH_DONUT',
+    POSITION_CHANGED: 'POSITION_CHANGED',
   },
 
   CONTROL: {

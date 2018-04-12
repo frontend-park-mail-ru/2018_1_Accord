@@ -12,6 +12,8 @@ export default class Donut extends Figure {
     this.y = y;
 
     this.v = gameObjects.DONUT.v;
+    this.vX = gameObjects.DONUT.vX;
+    this.changedX = this.x;
 
     this.angle = 0;
     this.onBottom = false;
@@ -85,7 +87,7 @@ export default class Donut extends Figure {
   }
 
   reset() {
-    this.x = gameObjects.DONUT.x;
+    this.x = this.changedX;
     this.y = gameObjects.DONUT.y;
 
     this.v = gameObjects.DONUT.v;

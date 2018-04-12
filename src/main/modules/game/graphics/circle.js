@@ -18,4 +18,10 @@ export default class Circle extends Figure {
     ctx.fill();
   }
 
+  render() {
+    this.ctx.save();
+    this.draw();
+    this.ctx.restore();
+  }
+
 }

@@ -24,5 +24,6 @@ export const gameObjects = {
     y: 60,
 
     v: 50,
+    vX: 40,
   }
 };

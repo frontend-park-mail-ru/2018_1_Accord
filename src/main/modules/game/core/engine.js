@@ -6,6 +6,8 @@ import {gameObjects} from '../graphics/gameObjects.js';
 const KEYS = {
   START: [' '],
   FINISH: ['z'],
+  LEFT: ['ArrowLeft', 'a', 'A', 'ф', 'Ф'],
+  RIGHT: ['ArrowRight', 'd', 'D', 'в', 'В'],
 };
 
 export default class GameEngine {
@@ -29,6 +31,8 @@ export default class GameEngine {
         donutCount: gameObjects.DONUT.count,
         donutInFlight: false,
         launchTime: 0,
+        v: gameObjects.DONUT.v,
+        vX: gameObjects.DONUT.vX,
       },
 
       MOUSE_POS: {},
@@ -117,12 +121,19 @@ export default class GameEngine {
   }
 
   onControllPressed(event) {
-    if (this._pressed('START', event)) {
+    if (this._pressed('START', event) && !this.gameStarted) {
       this.gameStarted = true;
       EventBus.emit(events.GAME.START);
 
     } else if (this._pressed('FINISH', event)) {
+      this.gameStarted = false;
       EventBus.emit(events.GAME.FINISH);
+
+    } else if (this._pressed('LEFT', event) && this.gameStarted) {
+      EventBus.emit(events.GAME.POSITION_CHANGED, 'LEFT');
+
+    } else if (this._pressed('RIGHT', event) && this.gameStarted) {
+      EventBus.emit(events.GAME.POSITION_CHANGED, 'RIGHT');
     }
   }
 

@@ -26,11 +26,13 @@ export default class GameScene {
     this.renderScene = this.renderScene.bind(this);
     this.onStateChanged = this.onStateChanged.bind(this);
     this.stop = this.stop.bind(this);
+    this.donutMove = this.donutMove.bind(this);
   }
 
   init() {
     EventBus.on(events.GAME.STATE_CHANGED, this.onStateChanged);
     EventBus.on(events.GAME.FINISH, this.stop);
+    EventBus.on(events.GAME.POSITION_CHANGED, this.donutMove);
 
     this.state = {
       SCORE: 0,
@@ -39,6 +41,8 @@ export default class GameScene {
         donutCount: gameObjects.DONUT.count,
         donutInFlight: false,
         launchTime: 0,
+        v: gameObjects.DONUT.v,
+        vX: gameObjects.DONUT.vX,
       },
 
       MOUSE_POS: {},
@@ -68,7 +72,7 @@ export default class GameScene {
 
     this.livesValue = new CanvasText(this.ctx, '10',
       this.ctx.canvas.width - 65,
-      this.livesImg.y + this.livesImg.radius);
+      this.livesImg.y + this.livesImg.radius + 10);
 
     this.livesValue.draw();
   }
@@ -83,7 +87,7 @@ export default class GameScene {
     this.homer.move(delay);
 
     if (this.state.DONUT.donutInFlight) {
-      this.donutMove(delay, now);
+      this.donutFly(delay, now);
     }
 
     this.scoreText.setText(`Score: ${this.state.SCORE}`);
@@ -113,10 +117,23 @@ export default class GameScene {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 
     EventBus.off(events.GAME.STATE_CHANGED, this.onStateChanged);
+    EventBus.off(events.GAME.POSITION_CHANGED, this.donutMove);
     EventBus.off(events.GAME.FINISH, this.stop);
   }
 
-  donutMove(delay, now) {
+  donutMove(direction) {
+    if (direction === 'RIGHT' && this.donut.x + this.donut.vX < this.ctx.canvas.width - 140) {
+      this.donut.x += this.donut.vX;
+    }
+
+    if (direction === 'LEFT' && this.donut.x - this.donut.vX > 10) {
+      this.donut.x -= this.donut.vX;
+    }
+
+    this.donut.changedX = this.donut.x;
+  }
+
+  donutFly(delay, now) {
     this.donut.v = gameObjects.DONUT.v;
     const t = now - this.state.DONUT.launchTime;
 
