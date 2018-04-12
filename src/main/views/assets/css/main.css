@@ -136,6 +136,7 @@ a {
 }
 
 .topmenu__button-settings {
+    display: inline-block !important;
     background-image: url('../icons/i-settings.png');
 }
 
@@ -250,7 +251,6 @@ a {
     color: gray;
     transition: transform 0.5s;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
-    padding: 25px 0px 10px 0px;
     background: transparent;
     border: transparent;
 }
@@ -258,7 +258,6 @@ a {
 .mainmenu__button-button:hover {
     opacity: 0.9;
     transform: scale(1.2);
-    padding: 25px 0px 10px 0px;
 }
 
 /*цвет текста?*/

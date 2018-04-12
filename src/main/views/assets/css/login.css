@@ -16,6 +16,7 @@
 }
 
 .go-to-sigup__button {
+    margin-left: 5px;
     color: gold;
     display: inline-block;
     text-decoration: underline;

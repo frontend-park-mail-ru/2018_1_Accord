@@ -16,22 +16,22 @@
     
     <div class="nav__bar topmenu">
         <div class="topmenu__buttons-left_container">
-            <div class="back-button topmenu__button topmenu__button-back">
+            <div class="back-button topmenu__button topmenu__button-back" style="display: none">
                 <a> </a>
             </div>
         </div>
 
         <div class="topmenu_user__left-position">
-            <div class="profile-button topmenu__user__avatar">
+            <div class="profile-button topmenu__user__avatar" style="display: none">
                 <a> </a>
             </div>
             <!-- <div class="topmenu__user__name">samokhina</div> -->
         </div>
 
         <div class="topmenu__buttons-right_container">
-            <div class="mute-button topmenu__button topmenu__button-mute m-unmuted"></div>
+            <div class="mute-button topmenu__button topmenu__button-mute m-unmuted" style="display: none"></div>
 
-            <div class="settings-button topmenu__button topmenu__button-settings">
+            <div class="settings-button topmenu__button topmenu__button-settings" style="display: none">
                 <a> </a>
             </div>
         </div>

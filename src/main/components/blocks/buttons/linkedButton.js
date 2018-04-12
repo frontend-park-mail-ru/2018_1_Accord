@@ -1,3 +1,4 @@
+import {selector} from '../../../config/selector.js';
 
 export default class LinkedButton {
 
@@ -8,17 +9,16 @@ export default class LinkedButton {
    * @param {Object} data //ex: {username: 'kk111'} for profile
    *
    */
-  constructor(element, className, type, data, path = '') {
+  constructor(element, className, text='', data, path = '') {
     this.linkedButton = element.querySelector(className);
     this.linkedButton.style.display = 'block';
-    this.type = type;
     this.a = this.linkedButton.getElementsByTagName('a')[0];
-    this.a.href = path; //TODO router and routing paths file
+    this.a.href = path;
 
-    if (this.type === 'Profile') {
+    if (this.className === selector.PROFILE_BUTTON) {
       this.a.innerText = data.username;
     } else {
-      this.a.innerText = type;
+      this.a.innerText = text;
     }
   }
 

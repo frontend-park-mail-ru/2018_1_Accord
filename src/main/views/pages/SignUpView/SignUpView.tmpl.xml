@@ -5,7 +5,7 @@
         <div class="menu bubbles">
             <div class="menu-center-block">
                 <div class="lowermenu">
-                    <div class="title">
+                    <div class="title__up">
                         Donuts Wars
                         <a></a>
                     </div>
@@ -32,9 +32,11 @@
                                     placeholder="Confirm password..."/>
                             </div>
 
-                            <button class="button_text submit-button mainmenu__button-button" type="submit">
-                                Sign up
-                            </button>
+                            <div class="mainmenu__button">
+                                <button class="button_text submit-button mainmenu__button-button" type="submit">
+                                    Sign up
+                                </button>
+                            </div>
                         </form>
 
                         <div class="go-to-login">If you have account , just

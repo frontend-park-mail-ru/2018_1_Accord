@@ -3,7 +3,7 @@
 
         <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
 
-        <div class="game-unauth__info title__error">
+        <div class="game-unauth__info title-error">
         </div>
 
         <div class="game-error">
