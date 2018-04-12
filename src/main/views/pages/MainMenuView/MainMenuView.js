@@ -62,6 +62,14 @@ export default class MenuView extends BaseView {
 
     } catch (error) {
       Logger.error(error);
+      this.navBar = [
+        selector.MUTE_BUTTON,
+        selector.SETTINGS_BUTTON
+      ];
+      this.menuItems = [
+        selector.PLAY_BUTTON,
+        selector.HELP_BUTTON,
+      ];
       this.errorField.innerText = fetchFaildErrors.noConnection;
       this.errorField.style.display = 'block';
     }
@@ -73,3 +81,4 @@ export default class MenuView extends BaseView {
   }
 
 }
+

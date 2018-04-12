@@ -1,6 +1,7 @@
 import Input from '../blocks/input.js';
 
 import Validator from '../../modules/validation/validation.js';
+import {disposableListener} from '../../utils/helperFuncs.js';
 import {selector} from '../../config/selector.js';
 
 export default class SignUpForm {
@@ -18,9 +19,7 @@ export default class SignUpForm {
     this.passwordConfirm = new Input(this.form, 'password-confirm').render();
 
     this.submit = this.form.querySelector(selector.SUBMIT_BUTTON);
-
     this.errorField = this.form.querySelector(selector.VALIDATE_ERR);
-    this.errorField.style.display = 'none';
 
     this.email.onInput(this.validateEmail.bind(this), this.errorField);
     this.password.onInput(this.validatePassword.bind(this), this.errorField);
@@ -33,10 +32,7 @@ export default class SignUpForm {
   }
 
   onSubmit(callback) {
-    this.form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      callback();
-    });
+    return disposableListener(this.form, 'submit', callback);
   }
 
   getFormData() {
@@ -48,13 +44,17 @@ export default class SignUpForm {
   }
 
   checkFormState() {
-    if (!this.email.getStatus() &&
-      !this.password.getStatus() &&
-      !this.username.getStatus() &&
-      !this.passwordConfirm.getStatus()) {
+    return new Promise((resolve, reject) => {
+      if (!this.email.getStatus() &&
+        !this.password.getStatus() &&
+        !this.username.getStatus() &&
+        !this.passwordConfirm.getStatus()) {
 
-      return this.getFormData();
-    }
+        resolve(this.getFormData());
+      } else {
+        reject();
+      }
+    });
   }
 
   validateEmail() {

@@ -4,7 +4,7 @@ export const pagePaths = {
   SIGN_UP_PATH: '/signup/',
   HELP_PATH: '/help/',
   GAME_PATH: '/game/',
-  LEADER_BOARD_PATH: '/leaderbord/',
+  LEADER_BOARD_PATH: '/leaderboard/',
   PROFILE_PATH: '/profile/',
   SETTINGS_PATH: '/settings/'
 };

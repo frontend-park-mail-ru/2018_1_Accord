@@ -114,6 +114,7 @@ typings/
 # next.js build output
 .next
 
-.idea
 .DS_Store
 *.tmpl.js
+package-lock.json
+dist
