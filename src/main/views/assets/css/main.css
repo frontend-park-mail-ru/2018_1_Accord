@@ -23,6 +23,8 @@ body {
     height: 100%;
     margin: 0;
     background-color: #0fc7ef;
+    background: url("../donuts_font.png");
+    background-size: cover;
 }
 
 .menu {
