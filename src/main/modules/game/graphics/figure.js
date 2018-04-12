@@ -7,16 +7,11 @@ export default class Figure {
 
   render() {
     this.ctx.save();
-    this.setup();
     this.draw();
     this.ctx.restore();
   }
 
   draw() {
-
-  }
-
-  setup() {
 
   }
 }

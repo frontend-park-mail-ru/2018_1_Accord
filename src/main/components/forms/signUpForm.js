@@ -3,7 +3,6 @@ import Input from '../blocks/input.js';
 import Validator from '../../modules/validation/validation.js';
 import {disposableListener} from '../../utils/helperFuncs.js';
 import {selector} from '../../config/selector.js';
-import Logger from '../../utils/logger.js';
 
 export default class SignUpForm {
 
@@ -91,7 +90,6 @@ export default class SignUpForm {
   confirmPassword() {
     const formState = Validator.confirmPassword(this.password.getData(), this.passwordConfirm.getData());
     if (!formState.state) {
-      Logger.log(this.password, ' --- ', this.passwordConfirm);
       this.errorField.innerText += `${formState.errMessage}\n`;
       this.errorField.style.display = 'block';
 

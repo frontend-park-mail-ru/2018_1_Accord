@@ -11,7 +11,7 @@
         </div>
 
         <div class="game-view__area">
-            <canvas class="game-view__canvas" height="400" width="500"> </canvas>
+            <canvas class="game-view__canvas" height="500" width="900"></canvas>
         </div>
     </div>
 

@@ -1,15 +1,17 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
     <!-- <div class="nav__bar">
         <div class="back-button">
+    <div class="nav__bar">
+        <div class="back-button" style="display: none">
             <a></a>
         </div>
-        <div class="profile-button">
+        <div class="profile-button" style="display: none">
             <a></a>
         </div>
 
-        <div class="mute-button"></div>
+        <div class="mute-button" style="display: none"></div>
 
-        <div class="settings-button">
+        <div class="settings-button" style="display: none">
             <a></a>
         </div>
     </div> -->

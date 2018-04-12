@@ -24,9 +24,9 @@ export default class HelpView extends BaseView {
       selector.SETTINGS_BUTTON
     ];
 
-    this.user = await userService.getUser();
-
     try {
+      this.user = await userService.getUser();
+
       if (this.user) {
         this.navBar = [
           selector.MUTE_BUTTON,

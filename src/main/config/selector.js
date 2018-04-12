@@ -13,6 +13,8 @@ export const selector = {
   NAV_BAR: '.nav__bar',
   MENU_ITEMS: '.main__menu-items',
 
+  CANVAS: '.game-view__canvas',
+
   //info fields
   GAME_UNAUTH_INFO: '.game-unauth__info',
 

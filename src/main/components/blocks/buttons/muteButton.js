@@ -1,5 +1,3 @@
-import Logger from '../../../utils/logger.js';
-
 export default class MuteButton {
 
   /**
@@ -22,7 +20,6 @@ export default class MuteButton {
   _onClick() {
     this.muteButton.addEventListener('click', (event) => {
       event.preventDefault();
-      Logger.log('Mute !!!');
     });
   }
 }

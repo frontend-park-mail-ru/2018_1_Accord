@@ -27,4 +27,80 @@
 	},__fest_param = function __fest_param(fn) {
 		fn.param = true;
 		return fn;
-	},i18n=__fest_self && typeof __fest_self.i18n === "function" ? __fest_self.i18n : function (str) {return str;},___fest_log_error;if(typeof __fest_error === "undefined"){___fest_log_error = (typeof console !== "undefined" && console.error) ? function(){return Function.prototype.apply.call(console.error, console, arguments)} : function(){};}else{___fest_log_error=__fest_error};function __fest_log_error(msg){___fest_log_error(msg+"\nin block \""+__fest_debug_block+"\" at line: "+__fest_debug_line+"\nfile: "+__fest_debug_file)}function __fest_call(fn, params,cp){if(cp)for(var i in params)if(typeof params[i]=="function"&&params[i].param)params[i]=params[i]();return fn.call(__fest_self,params)}var data=__fest_context;__fest_buf+=("<div class=\"view leader-board-view\">");(function(__fest_context){__fest_buf+=("<div class=\"nav__bar topmenu\"><div class=\"topmenu__buttons-left_container\"><div class=\"back-button topmenu__button topmenu__button-back\" style=\"display: none\"><a></a></div></div><div class=\"topmenu_user__left-position\"><div class=\"profile-button topmenu__user__avatar\" style=\"display: none\"><a></a></div></div><div class=\"topmenu__buttons-right_container\"><div class=\"mute-button topmenu__button topmenu__button-mute m-unmuted\" style=\"display: none\"></div><div class=\"settings-button topmenu__button topmenu__button-settings\" style=\"display: none\"><a></a></div></div></div>");})(__fest_context);__fest_buf+=("<div class=\"menu\"><div class=\"menu-center-block\"><div class=\"lowermenu\"><div class=\"title__up\">Donuts Wars<a></a></div><div class=\"leader-board__title title__sub\">Leaderboard</div><div class=\"leader-board__table\"><div class=\"leader-board__error\"></div><table class=\"items\"><tbody>");var i,v,__fest_to0,__fest_iterator0;try{__fest_iterator0=data.scoreBoard || [];__fest_to0=__fest_iterator0.length;}catch(e){__fest_iterator0=[];__fest_to0=0;__fest_log_error(e.message);}for(i=0;i<__fest_to0;i++){v=__fest_iterator0[i];__fest_buf+=("<tr><td>");try{__fest_buf+=(__fest_escapeHTML(i + 1))}catch(e){__fest_log_error(e.message + "23");}__fest_buf+=("</td><td>");try{__fest_buf+=(__fest_escapeHTML(v.nickname))}catch(e){__fest_log_error(e.message + "26");}__fest_buf+=("</td><td>");try{__fest_buf+=(__fest_escapeHTML(v.rating))}catch(e){__fest_log_error(e.message + "29");}__fest_buf+=("</td></tr>");}__fest_buf+=("</tbody></table></div></div></div></div></div>");__fest_to=__fest_chunks.length;if (__fest_to) {__fest_iterator = 0;for (;__fest_iterator<__fest_to;__fest_iterator++) {__fest_chunk=__fest_chunks[__fest_iterator];if (typeof __fest_chunk==="string") {__fest_html+=__fest_chunk;} else {__fest_fn=__fest_blocks[__fest_chunk.name];if (__fest_fn) __fest_html+=__fest_call(__fest_fn,__fest_chunk.params,__fest_chunk.cp);}}return __fest_html+__fest_buf;} else {return __fest_buf;}}})();
+}, i18n = __fest_self && typeof __fest_self.i18n === 'function' ? __fest_self.i18n : function (str) {
+  return str;
+}, ___fest_log_error;
+  if (typeof __fest_error === 'undefined') {
+    ___fest_log_error = (typeof console !== 'undefined' && console.error) ? function () {
+      return Function.prototype.apply.call(console.error, console, arguments)
+    } : function () {
+    };
+  } else {
+    ___fest_log_error = __fest_error
+  }
+
+  function __fest_log_error(msg) {
+    ___fest_log_error(msg + '\nin block "' + __fest_debug_block + '" at line: ' + __fest_debug_line + '\nfile: ' + __fest_debug_file)
+  }
+
+  function __fest_call(fn, params, cp) {
+    if (cp) for (var i in params) if (typeof params[i] == 'function' && params[i].param) params[i] = params[i]();
+    return fn.call(__fest_self, params)
+  }
+
+  var data = __fest_context;
+  __fest_buf += ('<div class="view leader-board-view">');
+  (function (__fest_context) {
+    __fest_buf += ('<div class="nav__bar topmenu"><div class="topmenu__buttons-left_container"><div class="back-button topmenu__button topmenu__button-back" style="display: none"><a></a></div></div><div class="topmenu_user__left-position"><div class="profile-button topmenu__user__avatar" style="display: none"><a></a></div></div><div class="topmenu__buttons-right_container"><div class="mute-button topmenu__button topmenu__button-mute m-unmuted" style="display: none"></div><div class="settings-button topmenu__button topmenu__button-settings" style="display: none"><a></a></div></div></div>');
+  })(__fest_context);
+  __fest_buf += ('<div class="menu"><div class="menu-center-block"><div class="lowermenu"><div class="title__up">Donuts Wars<a></a></div><div class="leader-board__title title__sub">Leaderboard</div><div class="leader-board__table"><div class="leader-board__error"></div><table class="items"><tbody>');
+  var i, v, __fest_to0, __fest_iterator0;
+  try {
+    __fest_iterator0 = data.scoreBoard || [];
+    __fest_to0 = __fest_iterator0.length;
+  } catch (e) {
+    __fest_iterator0 = [];
+    __fest_to0 = 0;
+    __fest_log_error(e.message);
+  }
+  for (i = 0; i < __fest_to0; i++) {
+    v = __fest_iterator0[i];
+    __fest_buf += ('<tr><td>');
+    try {
+      __fest_buf += (__fest_escapeHTML(i + 1))
+    } catch (e) {
+      __fest_log_error(e.message + '23');
+    }
+    __fest_buf += ('</td><td>');
+    try {
+      __fest_buf += (__fest_escapeHTML(v.nickname))
+    } catch (e) {
+      __fest_log_error(e.message + '26');
+    }
+    __fest_buf += ('</td><td>');
+    try {
+      __fest_buf += (__fest_escapeHTML(v.rating))
+    } catch (e) {
+      __fest_log_error(e.message + '29');
+    }
+    __fest_buf += ('</td></tr>');
+  }
+  __fest_buf += ('</tbody></table></div></div></div></div></div>');
+  __fest_to = __fest_chunks.length;
+  if (__fest_to) {
+    __fest_iterator = 0;
+    for (; __fest_iterator < __fest_to; __fest_iterator++) {
+      __fest_chunk = __fest_chunks[__fest_iterator];
+      if (typeof __fest_chunk === 'string') {
+        __fest_html += __fest_chunk;
+      } else {
+        __fest_fn = __fest_blocks[__fest_chunk.name];
+        if (__fest_fn) __fest_html += __fest_call(__fest_fn, __fest_chunk.params, __fest_chunk.cp);
+      }
+    }
+    return __fest_html + __fest_buf;
+  } else {
+    return __fest_buf;
+  }
+}
+})();
