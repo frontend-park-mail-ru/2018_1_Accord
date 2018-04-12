@@ -1,5 +1,4 @@
 import Figure from '../graphics/figure.js';
-import Rect from '../graphics/rect.js';
 import {gameObjects} from '../graphics/gameObjects.js';
 
 export default class Homer extends Figure {
@@ -11,14 +10,20 @@ export default class Homer extends Figure {
     this.vX = 5;
     this.direction = 'left';
 
-    this.body = new Rect(ctx, gameObjects.HOMER.height, gameObjects.HOMER.width, gameObjects.HOMER.color);
+    this.width = gameObjects.HOMER.width;
+    this.height = gameObjects.HOMER.height;
+
+    this.imgLeft = new Image(this.width, this.height);
+    this.imgLeft.src = '/images/homer_simpson_left.png';
+
+    this.imgRight = new Image(this.width, this.height);
+    this.imgRight.src = '/images/homer_simpson_right.png';
+
+    this.curImg = this.imgRight;
   }
 
   draw() {
-    this.body.x = this.x;
-    this.body.y = this.y;
-
-    this.body.render();
+    this.ctx.drawImage(this.curImg, this.x, this.y, this.width, this.height);
   }
 
   move(dt) {
@@ -29,6 +34,7 @@ export default class Homer extends Figure {
         if (this.x + gameObjects.HOMER.width + dx < this.ctx.canvas.width - 10) {
           this.x += dx;
         } else {
+          this.curImg = this.imgRight;
           this.direction = 'right';
           this.x -= dx;
         }
@@ -38,12 +44,12 @@ export default class Homer extends Figure {
         if (this.x - dx > 10) {
           this.x -= dx;
         } else {
+          this.curImg = this.imgLeft;
           this.direction = 'left';
           this.x += dx;
         }
         break;
     }
-    this.body.x = this.x;
   }
 
 }

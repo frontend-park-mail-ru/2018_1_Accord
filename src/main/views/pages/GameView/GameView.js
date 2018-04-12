@@ -20,7 +20,6 @@ export default class GameView extends BaseView {
     this.bus.on(events.GAME.FINISH, function () {
       if (this.active) {
         //window.history.back();
-        Logger.log('Finish game from game view');
         this.gameProc.destroy();
       }
     }.bind(this));
