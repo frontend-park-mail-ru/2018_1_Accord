@@ -7,7 +7,7 @@ export default class BackButton {
    */
   constructor(element) {
     this.backButton = element.querySelector(selector.BACK_BUTTON);
-    this.backButton.style.display = 'block';
+    this.backButton.style.display = 'inline-block';
     this._onClick();
   }
 

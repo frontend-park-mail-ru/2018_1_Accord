@@ -3,7 +3,7 @@
 
         <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
 
-        <div class="game-unauth__info">
+        <div class="game-unauth__info title-error">
         </div>
 
         <div class="game-error">
@@ -11,7 +11,7 @@
         </div>
 
         <div class="game-view__area">
-            <canvas class="game-view__canvas" height="400" width="500"> </canvas>
+            <canvas class="game-view__canvas" height="500" width="900"></canvas>
         </div>
     </div>
 

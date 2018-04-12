@@ -3,7 +3,36 @@
 
         <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
 
-        <div class="help-view__title">
+        <div class="menu bubbles">
+            <div class="menu-center-block">
+                <div class="lowermenu">
+                        <div class="title__up">
+                            Donuts Wars
+                            <a></a>
+                        </div>
+                    <div class="help-view__title title__sub">
+                        About us
+                    </div>
+
+                    <div class="help-view__text container_about">
+                        <p>This game is a web version of the Auralux for two players. The game is played on the field, which
+                            is an abstract space. Single-user mode is implemented using a bot. Every player has a bubble
+                            at the beginning of the game. Any bubble occupied by the player can generate units with a certain
+                            speed. The goal of the game is to capture all the located bubbles on the map. For each bubble
+                            belonging to the player that generated a certain number of units can used to capture both enemy
+                            and neutral bubbles. With the help of units, you can also to improve the bubbles already in the
+                            possession of the player.</p>
+                        <div class="help-view__title title__sub">Authors</div>
+                        <p>Kamoldinova Victoria
+                            <br/> Samokhina Marina
+                            <br/> Vanyashkin Yury
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="help-view__title">
             About the game
 
             <div class="help-view__text">
@@ -33,7 +62,7 @@
                 </fest:text>
 
             </div>
-        </div>
+        </div> -->
 
         <div class="help-error"></div>
     </div>

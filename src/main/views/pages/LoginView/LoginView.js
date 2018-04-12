@@ -29,9 +29,10 @@ export default class LoginView extends BaseView {
       this.formStateData = this.loginForm.checkFormState();
 
       if (this.formStateData) {
-        this.user = await userService.login(this.formStateData);
 
         try {
+          this.user = await userService.login(this.formStateData);
+
           if (!this.user) {
             this.error.innerText = serverErrors.login;
             this.error.style.display = 'block';
