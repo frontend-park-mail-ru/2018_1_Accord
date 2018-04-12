@@ -21,12 +21,12 @@ this.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
       .then((cachedResponse) => {
-        return fetch(event.request).then((serverResponse) => {
+        return cachedResponse || fetch(event.request).then((serverResponse) => {
           return caches.open(CACHE_NAME).then((cache) => {
             cache.put(event.request, serverResponse.clone());
             return serverResponse;
           });
-        }) || cachedResponse;
+        });
       })
       .catch((err) => {
         console.error(err);
