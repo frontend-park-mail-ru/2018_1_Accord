@@ -1,7 +1,6 @@
 import Figure from '../graphics/figure.js';
 import Rect from '../graphics/rect.js';
 import {gameObjects} from '../graphics/gameObjects.js';
-import Logger from '../../../utils/logger.js';
 
 export default class Homer extends Figure {
   constructor(ctx, x, y) {
@@ -23,8 +22,6 @@ export default class Homer extends Figure {
   }
 
   move(dt) {
-    Logger.log('Homer is moving', this.x);
-
     const dx = this.vX * dt * 0.01;
 
     switch (this.direction) {

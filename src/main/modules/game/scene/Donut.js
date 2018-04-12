@@ -3,7 +3,7 @@ import Circle from '../graphics/circle.js';
 import {gameObjects} from '../graphics/gameObjects.js';
 import Logger from '../../../utils/logger.js';
 
-const g = 9.8;
+const g = 9.81;
 
 export default class Donut extends Figure {
   constructor(ctx, x, y) {
@@ -11,37 +11,41 @@ export default class Donut extends Figure {
     this.x = x;
     this.y = y;
 
-    this.vX = gameObjects.DONUT.vX;
-    this.vY = gameObjects.DONUT.vY;
+    this.v = gameObjects.DONUT.v;
 
     this.angle = 0;
-    this.getHighestPoint = false;
+    this.onBottom = false;
 
     this.body = new Circle(ctx, gameObjects.DONUT.radius, gameObjects.DONUT.color);
   }
 
   //Лети, бро
-  fly(dt) {
-    let dx = this.vX * dt * 0.05;
-    const dy = 9.8 * dt * 0.05;
+  fly(dt, flightTime) {
+    this.vY = g * flightTime - this.v * Math.sin(this.angle);
+    this.vX = this.v * Math.cos(this.angle);
 
-    Logger.log(this.angle);
-    //
-    // if (this.angle >= 0) {
-    //   const hMax = this.vY ** 2 / (2 * g);
-    //   if (this.vY > )
-    // }
+    let dx = this.vX * dt * 0.01;
+    let dy = this.vY * dt * 0.0001;
+
+    Logger.log('Donat dx, dy:', dx, dy);
 
     if (this.y + gameObjects.DONUT.radius + dy < this.ctx.canvas.height) {
       this.y += dy;
+      this.onBottom = false;
     } else {
       dx = 0;
+      this.onBottom = true;
     }
 
     if (this.x + gameObjects.DONUT.radius + dx < this.ctx.canvas.width) {
       this.x += dx;
-
     }
+
+    Logger.log('Donat coords: ', this.x, this.y);
+
+    return {
+      onBottom: this.onBottom,
+    };
   }
 
   draw() {
@@ -56,6 +60,17 @@ export default class Donut extends Figure {
    * @param {{x: number, y: number}} mousePos
    */
   countAngle(mousePos) {
-    this.angle = Math.atan((this.y - mousePos.y) / (mousePos.x - this.x));
+    Logger.log('New angle for Donut: ', this.angle);
+    this.angle = Math.atan((mousePos.y - this.y) / (mousePos.x - this.x));
+  }
+
+  reset() {
+    this.x = gameObjects.DONUT.x;
+    this.y = gameObjects.DONUT.y;
+
+    this.v = gameObjects.DONUT.v;
+
+    this.angle = 0;
+
   }
 }

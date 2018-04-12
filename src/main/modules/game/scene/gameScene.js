@@ -3,7 +3,6 @@ import Donut from './Donut.js';
 import Homer from './Homer.js';
 import {gameObjects} from '../graphics/gameObjects.js';
 import {events} from '../core/events.js';
-import Logger from '../../../utils/logger.js';
 
 export default class GameScene {
   constructor(canvas) {
@@ -16,12 +15,26 @@ export default class GameScene {
     this.firstDonut = null;
     this.homer = null;
 
+    this.state = null;
+
     this.renderScene = this.renderScene.bind(this);
-    this.mouseClicked = this.mouseClicked.bind(this);
+    this.onStateChanged = this.onStateChanged.bind(this);
   }
 
   init() {
-    EventBus.on(events.GAME.STATE_CHANGED, this.mouseClicked);
+    EventBus.on(events.GAME.STATE_CHANGED, this.onStateChanged);
+
+    this.state = {
+      SCORE: 0,
+
+      DONUT: {
+        donutCount: 5,
+        donutInFlight: false,
+        launchTime: 0,
+      },
+
+      MOUSE_POS: {},
+    };
 
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     this.firstDonut = new Donut(this.ctx, gameObjects.DONUT.x, gameObjects.DONUT.y);
@@ -39,8 +52,10 @@ export default class GameScene {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 
     this.homer.move(delay);
-    this.firstDonut.fly(delay);
-    //this.firstDonat actions
+
+    if (this.state.DONUT.donutInFlight) {
+      this.donutMove(delay, now);
+    }
 
     this.homer.render();
     this.firstDonut.render();
@@ -54,6 +69,8 @@ export default class GameScene {
   }
 
   stop() {
+    //EventBus.off(events.GAME.STATE_CHANGED, this.onStateChanged);
+
     if (this.requestFrameId) {
       window.cancelAnimationFrame(this.requestFrameId);
       this.requestFrameId = null;
@@ -61,15 +78,22 @@ export default class GameScene {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);    //this.scene.clear();
   }
 
-  /**
-   *
-   * @param {{x: number, y: number}} mousePos
-   */
-  mouseClicked(mousePos) {
-    Logger.log(mousePos.x, mousePos.y, 'Scene: Mouse clicked');
-    this.firstDonut.countAngle(mousePos);
+  donutMove(delay, now) {
+    this.firstDonut.v = gameObjects.DONUT.v;
+    const t = now - this.state.DONUT.launchTime;
+
+    this.flightState = this.firstDonut.fly(delay, t);
+
+    if (this.flightState.onBottom) {
+      this.firstDonut.reset();
+      EventBus.emit(events.GAME.ON_BOTTOM);
+    }
   }
 
+  onStateChanged(state) {
+    this.state = state;
+    this.firstDonut.countAngle(this.state.MOUSE_POS);
+  }
 
 }
 

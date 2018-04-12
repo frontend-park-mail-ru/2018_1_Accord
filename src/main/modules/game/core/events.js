@@ -2,7 +2,9 @@ export const events = {
   GAME: {
     START: 'START',
     STATE_CHANGED: 'STATE_CHANGED',
-    FINISH: 'FINISH'
+    FINISH: 'FINISH',
+    ON_BOTTOM: 'ON_BOTTOM',
+    LAUNCH_DONUT: 'LAUNCH_DONUT',
   },
 
   CONTROL: {

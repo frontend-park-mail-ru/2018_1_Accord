@@ -21,20 +21,23 @@ export default class GameEngine {
 
     this.controllersLoopIntervalId = null;
 
-    this.gameState = {
-      DONAT: {
-        angle: 0,
-        v: 0,
-        count: 5
+    this.state = {
+      SCORE: 0,
+
+      DONUT: {
+        donutCount: 5,
+        donutInFlight: false,
+        launchTime: 0,
       },
 
-      HOMER: {}
+      MOUSE_POS: {},
     };
 
     this.onGameStarted = this.onGameStarted.bind(this);
     this.onControllPressed = this.onControllPressed.bind(this);
     this.onGameFinished = this.onGameFinished.bind(this);
     this.onMouseClicked = this.onMouseClicked.bind(this);
+    this.onBottomFall = this.onBottomFall.bind(this);
   }
 
   start() {
@@ -45,6 +48,7 @@ export default class GameEngine {
     EventBus.on(events.CONTROL.PRESSED, this.onControllPressed);
     EventBus.on(events.GAME.FINISH, this.onGameFinished);
     EventBus.on(events.CONTROL.CLICKED, this.onMouseClicked);
+    EventBus.on(events.GAME.ON_BOTTOM, this.onBottomFall);
 
     Logger.log('Engine: start');
 
@@ -64,6 +68,10 @@ export default class GameEngine {
 
     EventBus.off(events.GAME.START, this.onGameStarted);
     EventBus.off(events.CONTROL.PRESSED, this.onControllPressed);
+    EventBus.off(events.GAME.FINISH, this.onGameFinished);
+    EventBus.off(events.CONTROL.CLICKED, this.onMouseClicked);
+    EventBus.off(events.GAME.ON_BOTTOM, this.onBottomFall);
+
 
     this.controller.destroy();
     this.scene.stop();
@@ -84,18 +92,20 @@ export default class GameEngine {
   }
 
   onMouseClicked(event) {
-    const mousePos = this._getMousePos(event);
-
-    EventBus.emit(events.GAME.STATE_CHANGED, mousePos);
+    if (!this.state.DONUT.donutInFlight) {
+      this.state.MOUSE_POS = this._getMousePos(event);
+      EventBus.emit(events.GAME.STATE_CHANGED, this.state);
+    }
   }
 
   onControllPressed(event) {
     if (this._pressed('FIRE', event)) {
-      Logger.log('V ATAKUUUUU');
+      this.state.DONUT.launchTime = performance.now();
+      this.state.DONUT.donutInFlight = true;
+      EventBus.emit(events.GAME.STATE_CHANGED, this.state);
 
     } else if (this._pressed('START', event)) {
       EventBus.emit(events.GAME.START);
-      //EventBus.off(event.GAME.START);
 
     } else if (this._pressed('FINISH', event)) {
       EventBus.emit(events.GAME.FINISH);
@@ -104,7 +114,23 @@ export default class GameEngine {
 
   onGameFinished(event) {
     Logger.log('onGameFinished');
+    this.controller.destroy();
+    this.scene.stop();
     cancelAnimationFrame(this.gameLoopRequestId);
+  }
+
+  onBottomFall() {
+    this.state.DONUT.launchTime = 0;
+    this.state.DONUT.donutInFlight = false;
+
+    if (this.state.DONUT.donutCount > 0) {
+      --this.state.DONUT.donutCount;
+      EventBus.emit(events.GAME.STATE_CHANGED, this.state);
+    } else {
+      EventBus.emit(events.GAME.STATE_CHANGED, this.state);
+      EventBus.emit(events.GAME.FINISH);
+    }
+
   }
 
   _pressed(name, data) {
