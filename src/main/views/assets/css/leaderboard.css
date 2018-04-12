@@ -47,18 +47,18 @@ col.place, col.score {
     height: 2.8rem;
     line-height: 2.8rem;
     text-align: center;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid white;
     transition: transform 550ms;
 }
 
 .items tr:hover td {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #ffd403;
 }
 
 .items tr:hover td {
     transform: scale(1.1);
     text-shadow: 
-    0 0 30px #fff,
+    0 0 30px #ffd403,
     0 0 10px red;
 }
 

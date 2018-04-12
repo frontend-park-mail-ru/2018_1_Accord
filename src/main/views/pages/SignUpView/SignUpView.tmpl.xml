@@ -10,26 +10,25 @@
                         <a></a>
                     </div>
 
-                    <div class="signup__error title__sub-error"> </div>
                     <div class="signup__form">
                         <form class="form">
-                            <div class="validation-error"></div>
+                            <div class="validation-error login__error title__sub-error"></div>
 
                             <div class="form__field input_block">
                                 <input class="form__field-input" type="email" name="email"
-                                    placeholder="Enter your e-mail..."/>
+                                    placeholder="Enter your e-mail"/>
                             </div>
                             <div class="form__field input_block">
                                 <input class="form__field-input" type="text" name="username"
-                                    placeholder="Enter your username..."/>
+                                    placeholder="Enter your username"/>
                             </div>
                             <div class="form__field input_block">
                                 <input class="form__field-input" type="password" name="password"
-                                    placeholder="Enter your password..."/>
+                                    placeholder="Enter your password"/>
                             </div>
                             <div class="form__field input_block">
                                 <input class="form__field-input" type="password" name="password-confirm"
-                                    placeholder="Confirm password..."/>
+                                    placeholder="Confirm password"/>
                             </div>
 
                             <div class="mainmenu__button">

@@ -31,7 +31,7 @@ body {
     /* display: flex;
     align-items: center;
     justify-content: center; */
-    background: url("../blue_font.png");
+    /* background: url("../blue_font.png"); */
     background-size: cover;
     z-index: 0;
     background-size: 100%;
@@ -45,7 +45,7 @@ body {
 
 a {
     text-decoration: none;
-    color: gray;
+    color: white;
 }
 
 .topmenu {
@@ -145,7 +145,6 @@ a {
 }
 
 /* стили для центрального меню */
-
 .lowermenu {
     display: table-cell;
     align-items: center;
@@ -156,8 +155,9 @@ a {
     text-align: center;
     font-family: 'LuckiestGuy';
     /* color: rgb(255, 130, 186); */
-    color: rgb(189, 186, 186);
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.4);
+    /* color: rgb(189, 186, 186); */
+    color: #ffd304;
+    text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
     font-size: 800%;
     margin: 0px 40px 50px 40px;
     user-select: none;
@@ -168,8 +168,9 @@ a {
     text-align: center;
     font-family: 'LuckiestGuy';
     /* color: rgb(255, 130, 186); */
-    color: rgb(189, 186, 186);
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.4);
+    /* color: rgb(189, 186, 186); */
+    color: #ffd304;
+    text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
     font-size: 800%;
     margin: 0px 40px 0px 40px;
     user-select: none;
@@ -191,7 +192,7 @@ a {
     font-family: "LuckiestGuy";
     color: red;
     text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
-    font-size: 300%;
+    font-size: 200%;
     user-select: none;
 }
 
@@ -202,10 +203,9 @@ a {
     font-family: "LuckiestGuy";
     color: red;
     text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
-    font-size: 300%;
+    font-size: 200%;
     user-select: none;
 }
-
 
 .mainmenu__button-play {
     text-align: center;
@@ -213,7 +213,7 @@ a {
     font-size: 70px;
     font-family: "LuckiestGuy";
     user-select: none;
-    color: rgb(155, 155, 155);
+    color: orange;
     transition: transform 0.5s;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
 }
@@ -242,13 +242,14 @@ a {
 }
 
 /* cтиль для типа button */
+
 .mainmenu__button-button {
     text-align: center;
     cursor: pointer;
     font-size: 45px;
     font-family: "LuckiestGuy";
     user-select: none;
-    color: gray;
+    color: white;
     transition: transform 0.5s;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
     background: transparent;
@@ -345,7 +346,6 @@ input.correct_input {
 }
 
 /* unuse in present moment*/
-
 .individual-bubble:hover {
     transform: scale(1.2, 1.2);
 }

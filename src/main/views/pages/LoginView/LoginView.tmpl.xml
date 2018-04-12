@@ -11,10 +11,10 @@
                         <a></a>
                     </div>
 
-                    <div class="login__error title__sub-error"></div>
                     <div class="login__form">
                         <form class="form">
-                            <div class="validation-error"> </div>
+                            <!-- <div class="validation-error title__sub-error"></div> -->
+                            <div class="validation-error login__error title__sub-error"></div>
 
                             <div class="form__field input_block">
                                 <input class="form__field-input" type="email" name="email"
@@ -31,7 +31,6 @@
                                 </button>
                             </div>
                         </form>
-                    </div>
 
                         <div class="go-to-sigup">
                             If you haven't account yet, just 
@@ -41,6 +40,7 @@
                                 </div>
                             </a>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
