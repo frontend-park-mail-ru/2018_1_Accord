@@ -33,10 +33,11 @@
 /* ------------------------------------------- */
 .items {
     font-family: Nunito;
+    font-size: 22px;
     color: white;
     width: 0;
     min-width: 20rem;
-    margin: 1em auto auto;
+    margin: 1.2em auto auto;
 }
 
 col.place, col.score {
@@ -47,7 +48,7 @@ col.place, col.score {
     height: 2.8rem;
     line-height: 2.8rem;
     text-align: center;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #ffd403;
     transition: transform 550ms;
 }
 
@@ -57,9 +58,10 @@ col.place, col.score {
 
 .items tr:hover td {
     transform: scale(1.1);
-    text-shadow: 
-    0 0 30px #ffd403,
-    0 0 10px red;
+    /* text-shadow: 
+    0 0 30px black,
+    0 0 10px red; */
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 .you {
