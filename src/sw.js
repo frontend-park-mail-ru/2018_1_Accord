@@ -1,8 +1,7 @@
-import Logger from 'main/utils/logger.js';
-
 const CACHE_NAME = 'donuts-wars_sw';
 const cacheUrls = [
-  '/swResponse.png'
+  '/swResponse.png',
+  '/sw.js'
 ];
 
 this.addEventListener('install', (event) => {
@@ -12,7 +11,7 @@ this.addEventListener('install', (event) => {
         return cache.addAll(cacheUrls);
       })
       .catch((err) => {
-        Logger.error('smth went wrong with caches.open: ', err);
+        console.error('smth went wrong with caches.open: ', err);
       })
   );
 });
@@ -30,7 +29,7 @@ this.addEventListener('fetch', (event) => {
         }) || cachedResponse;
       })
       .catch((err) => {
-        Logger.error(err);
+        console.error(err);
         return caches.match('/swResponse.png');
       })
   );
