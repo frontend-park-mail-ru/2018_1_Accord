@@ -1,7 +1,14 @@
 const CACHE_NAME = 'donuts-wars_sw';
 const cacheUrls = [
-  '/swResponse.png',
-  '/sw.js'
+  '/sw.js',
+  '/',
+  '/login/',
+  '/signup/',
+  '/help/',
+  '/game/',
+  //'/profile/',
+  //'/settings/',
+  'leaderboard'
 ];
 
 this.addEventListener('install', (event) => {
@@ -21,16 +28,19 @@ this.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
       .then((cachedResponse) => {
-        return cachedResponse || fetch(event.request).then((serverResponse) => {
-          return caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, serverResponse.clone());
-            return serverResponse;
+        if (navigator.onLine) {
+          return fetch(event.request).then((serverResponse) => {
+            return caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, serverResponse.clone());
+              return serverResponse;
+            });
           });
-        });
+        } else {
+          return cachedResponse;
+        }
       })
       .catch((err) => {
         console.error(err);
-        return caches.match('/swResponse.png');
       })
   );
 });
