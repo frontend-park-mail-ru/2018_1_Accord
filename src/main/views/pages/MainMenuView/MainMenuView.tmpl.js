@@ -38,16 +38,13 @@
   } else {
     ___fest_log_error = __fest_error
   }
-
   function __fest_log_error(msg) {
     ___fest_log_error(msg + '\nin block "' + __fest_debug_block + '" at line: ' + __fest_debug_line + '\nfile: ' + __fest_debug_file)
   }
-
   function __fest_call(fn, params, cp) {
     if (cp) for (var i in params) if (typeof params[i] == 'function' && params[i].param) params[i] = params[i]();
     return fn.call(__fest_self, params)
   }
-
   __fest_buf += ('<div class="view menu-view">');
   (function (__fest_context) {
     __fest_buf += ('<div class="nav__bar topmenu"><div class="topmenu__buttons-left_container"><div class="back-button topmenu__button topmenu__button-back" style="display: none"><a></a></div></div><div class="topmenu_user__left-position"><div class="profile-button topmenu__user__avatar" style="display: none"><a></a></div></div><div class="topmenu__buttons-right_container"><div class="mute-button topmenu__button topmenu__button-mute m-unmuted" style="display: none"></div><div class="settings-button topmenu__button topmenu__button-settings" style="display: none"><a></a></div></div></div>');
