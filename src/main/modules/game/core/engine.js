@@ -61,14 +61,11 @@ export default class GameEngine {
     EventBus.on(events.GAME.ON_BOTTOM, this.onBottomFall);
     EventBus.on(events.GAME.COLLISION, this.collision);
 
-    Logger.log('Engine: start');
-
     const controller = this.controller;
     this.controllersLoopIntervalId = setInterval(function () {
       const actions = controller.diff();
 
       if (Object.keys(actions).some(k => actions[k])) {
-        Logger.log(actions, 'PRESSED');
         EventBus.emit(events.CONTROL.PRESSED, actions);
       }
     }, 50);
@@ -139,7 +136,6 @@ export default class GameEngine {
   }
 
   onGameFinished() {
-    Logger.log('onGameFinished');
     this.controller.destroy();
     cancelAnimationFrame(this.gameLoopRequestId);
   }

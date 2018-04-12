@@ -1,8 +1,8 @@
 export const validationErrors = {
-  email: 'Invalid e-mail!',
-  username: 'Username need to contain 3-20 symbols!',
+  email: 'Invalid e-mail',
+  username: 'Username need to contain 3-20 symbols',
   password: 'Password contains 4-30 symbols with letters and digits',
-  passwordConfirm: 'Password do not match!'
+  passwordConfirm: 'Password do not match'
 };
 
 export const serverErrors = {

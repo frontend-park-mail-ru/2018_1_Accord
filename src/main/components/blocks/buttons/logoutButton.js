@@ -33,7 +33,6 @@ export default class LogoutButton {
       userService.logout()
         .then(() => {
           history.pushState(null, '', pagePaths.START_PATH);
-          Logger.log('Logout successfully');
         })
         .catch((error) => {
           this.errorField.innerText = error.message;

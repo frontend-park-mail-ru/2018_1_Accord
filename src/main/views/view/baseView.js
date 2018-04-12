@@ -1,7 +1,6 @@
 'use strict';
 
 import EventBus from '../../modules/eventBus.js';
-import Logger from '../../utils/logger.js';
 
 export default class BaseView {
   constructor(name) {

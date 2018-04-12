@@ -1,0 +1,14 @@
+.container_about {
+    min-width: 20rem;
+    margin: 0em 18em 18em;
+}
+
+.container_about p {
+    font-family: "Nunito";
+    color: white;
+    font-size: 115%;
+    text-align: center;
+    display: block;
+    margin: 1rem 0;
+    padding-bottom: 1rem;
+}

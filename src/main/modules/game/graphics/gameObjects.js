@@ -7,7 +7,7 @@ export const gameObjects = {
 
   HOMER: {
     height: 100,
-    width: 60,
+    width: 100,
 
     color: '#FFD633',
 

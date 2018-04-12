@@ -1,7 +1,6 @@
 import Figure from '../graphics/figure.js';
 import Circle from '../graphics/circle.js';
 import {gameObjects} from '../graphics/gameObjects.js';
-import Logger from '../../../utils/logger.js';
 
 const g = 9.81;
 
@@ -78,7 +77,6 @@ export default class Donut extends Figure {
    * @param {{x: number, y: number}} mousePos
    */
   countAngle(mousePos) {
-    Logger.log('New angle for Donut: ', this.angle);
     this.angle = Math.atan((mousePos.y - this.y) / (mousePos.x - this.x)) || 0;
   }
 
