@@ -82,11 +82,15 @@ export default class GameScene {
     this.firstDonut.v = gameObjects.DONUT.v;
     const t = now - this.state.DONUT.launchTime;
 
-    this.flightState = this.firstDonut.fly(delay, t);
+    this.flightState = this.firstDonut.fly(delay, t, {x: this.homer.x, y: this.homer.y});
 
     if (this.flightState.onBottom) {
       this.firstDonut.reset();
       EventBus.emit(events.GAME.ON_BOTTOM);
+
+    } else if (this.flightState.collision) {
+      this.firstDonut.reset();
+      EventBus.emit(events.GAME.COLLISION);
     }
   }
 

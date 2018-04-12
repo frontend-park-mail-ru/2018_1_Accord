@@ -38,6 +38,7 @@ export default class GameEngine {
     this.onGameFinished = this.onGameFinished.bind(this);
     this.onMouseClicked = this.onMouseClicked.bind(this);
     this.onBottomFall = this.onBottomFall.bind(this);
+    this.collision = this.collision.bind(this);
   }
 
   start() {
@@ -49,6 +50,7 @@ export default class GameEngine {
     EventBus.on(events.GAME.FINISH, this.onGameFinished);
     EventBus.on(events.CONTROL.CLICKED, this.onMouseClicked);
     EventBus.on(events.GAME.ON_BOTTOM, this.onBottomFall);
+    EventBus.on(events.GAME.COLLISION, this.collision);
 
     Logger.log('Engine: start');
 
@@ -71,7 +73,7 @@ export default class GameEngine {
     EventBus.off(events.GAME.FINISH, this.onGameFinished);
     EventBus.off(events.CONTROL.CLICKED, this.onMouseClicked);
     EventBus.off(events.GAME.ON_BOTTOM, this.onBottomFall);
-
+    EventBus.off(events.GAME.COLLISION, this.collision);
 
     this.controller.destroy();
     this.scene.stop();
@@ -117,6 +119,21 @@ export default class GameEngine {
     this.controller.destroy();
     this.scene.stop();
     cancelAnimationFrame(this.gameLoopRequestId);
+  }
+
+  collision() {
+    this.state.DONUT.launchTime = 0;
+    this.state.DONUT.donutInFlight = false;
+    ++this.state.SCORE;
+    Logger.log('Score: ', this.state.SCORE);
+
+    if (this.state.DONUT.donutCount > 0) {
+      --this.state.DONUT.donutCount;
+      EventBus.emit(events.GAME.STATE_CHANGED, this.state);
+    } else {
+      EventBus.emit(events.GAME.STATE_CHANGED, this.state);
+      EventBus.emit(events.GAME.FINISH);
+    }
   }
 
   onBottomFall() {

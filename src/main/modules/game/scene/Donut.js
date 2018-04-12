@@ -20,31 +20,42 @@ export default class Donut extends Figure {
   }
 
   //Лети, бро
-  fly(dt, flightTime) {
+  /**
+   *
+   * @param {Number} dt
+   * @param {Number} flightTime
+   * @param {{x: number, y: number}} collCoords - collision object coordinates
+   * @returns {{onBottom: boolean, collision: boolean}}
+   */
+  fly(dt, flightTime, collCoords) {
     this.vY = g * flightTime - this.v * Math.sin(this.angle);
     this.vX = this.v * Math.cos(this.angle);
 
     let dx = this.vX * dt * 0.01;
     let dy = this.vY * dt * 0.0001;
 
-    Logger.log('Donat dx, dy:', dx, dy);
-
     if (this.y + gameObjects.DONUT.radius + dy < this.ctx.canvas.height) {
       this.y += dy;
       this.onBottom = false;
+
+      if (this.x + gameObjects.DONUT.radius + dx < this.ctx.canvas.width) {
+        this.x += dx;
+      }
+
+      if (this.x >= collCoords.x && this.x <= collCoords.x + gameObjects.HOMER.width / 2
+        && this.y >= collCoords.y && this.y <= collCoords.y + gameObjects.HOMER.height / 3) {
+        this.onBottom = false;
+        this.collision = true;
+      } else {
+        this.collision = false;
+      }
     } else {
-      dx = 0;
       this.onBottom = true;
     }
 
-    if (this.x + gameObjects.DONUT.radius + dx < this.ctx.canvas.width) {
-      this.x += dx;
-    }
-
-    Logger.log('Donat coords: ', this.x, this.y);
-
     return {
       onBottom: this.onBottom,
+      collision: this.collision
     };
   }
 
