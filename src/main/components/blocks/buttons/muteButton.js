@@ -6,7 +6,7 @@ export default class MuteButton {
    */
   constructor(element, className) {
     this.muteButton = element.querySelector(className);
-    this.muteButton.style.display = 'block';
+    this.muteButton.style.display = 'inline-block';
     this._onClick();
   }
 

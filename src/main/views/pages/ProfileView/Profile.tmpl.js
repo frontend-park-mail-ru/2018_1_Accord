@@ -38,13 +38,16 @@
   } else {
     ___fest_log_error = __fest_error
   }
+
   function __fest_log_error(msg) {
     ___fest_log_error(msg + '\nin block "' + __fest_debug_block + '" at line: ' + __fest_debug_line + '\nfile: ' + __fest_debug_file)
   }
+
   function __fest_call(fn, params, cp) {
     if (cp) for (var i in params) if (typeof params[i] == 'function' && params[i].param) params[i] = params[i]();
     return fn.call(__fest_self, params)
   }
+
   var user = __fest_context;
   __fest_buf += ('<div>Email: ');
   try {

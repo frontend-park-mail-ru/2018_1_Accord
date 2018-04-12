@@ -17,7 +17,7 @@ export default class LoginForm {
 
     this.submit = this.form.querySelector(selector.SUBMIT_BUTTON);
     this.errorField = this.form.querySelector(selector.VALIDATE_ERR);
-    this.errorField.style.display = 'none';
+    this.errorField.style.display = 'block';
 
     this.email.onInput(this.validateEmail.bind(this), this.errorField);
     this.password.onInput(this.validatePassword.bind(this), this.errorField);
@@ -50,7 +50,7 @@ export default class LoginForm {
   validateEmail() {
     const formState = Validator.checkEmail(this.email.getData());
     if (!formState.state) {
-      this.errorField.innerText += `${formState.errMessage}\n`;
+      this.errorField.innerText = `${formState.errMessage}\n`;
       this.errorField.style.display = 'block';
 
       this.email.setStatus(true);
@@ -60,7 +60,7 @@ export default class LoginForm {
   validatePassword() {
     const formState = Validator.checkPassword(this.password.getData());
     if (!formState.state) {
-      this.errorField.innerText += `${formState.errMessage}\n`;
+      this.errorField.innerText = `${formState.errMessage}\n`;
       this.errorField.style.display = 'block';
 
       this.password.setStatus(true);

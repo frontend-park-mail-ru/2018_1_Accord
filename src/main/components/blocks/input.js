@@ -33,7 +33,8 @@ export default class Input {
       if (this.errorStatus) {
         this.errorStatus = false;
         errField.innerText = '';
-        errField.style.display = 'none';
+        // errField.style.display = 'none';
+        errField.style.display = 'block';
       }
     });
 

@@ -1,4 +1,4 @@
-;(function(){var x=Function('return this')();if(!x.fest)x.fest={};x.fest['main/views/pages/LeaderBoard/LeaderBoard.tmpl']=function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_element_stack = [],__fest_short_tags = {"area": true, "base": true, "br": true, "col": true, "command": true, "embed": true, "hr": true, "img": true, "input": true, "keygen": true, "link": true, "meta": true, "param": true, "source": true, "wbr": true},__fest_jschars = /[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test = /[\\'"\/\n\r\t\b\f<>]/,__fest_htmlchars = /[&<>"]/g,__fest_htmlchars_test = /[&<>"]/,__fest_jshash = {"\"": "\\\"", "\\": "\\\\", "/": "\\/", "\n": "\\n", "\r": "\\r", "\t": "\\t", "\b": "\\b", "\f": "\\f", "'": "\\'", "<": "\\u003C", ">": "\\u003E"},__fest_htmlhash = {"&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;"},__fest_escapeJS = function __fest_escapeJS(value) {
+;(function(){var x=Function('return this')();if(!x.fest)x.fest={};x.fest['main/views/pages/MainMenuView/MainMenuView.tmpl']=function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_element_stack = [],__fest_short_tags = {"area": true, "base": true, "br": true, "col": true, "command": true, "embed": true, "hr": true, "img": true, "input": true, "keygen": true, "link": true, "meta": true, "param": true, "source": true, "wbr": true},__fest_jschars = /[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test = /[\\'"\/\n\r\t\b\f<>]/,__fest_htmlchars = /[&<>"]/g,__fest_htmlchars_test = /[&<>"]/,__fest_jshash = {"\"": "\\\"", "\\": "\\\\", "/": "\\/", "\n": "\\n", "\r": "\\r", "\t": "\\t", "\b": "\\b", "\f": "\\f", "'": "\\'", "<": "\\u003C", ">": "\\u003E"},__fest_htmlhash = {"&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;"},__fest_escapeJS = function __fest_escapeJS(value) {
 		if (typeof value === 'string') {
 			if (__fest_jschars_test.test(value)) {
 				return value.replace(__fest_jschars, __fest_replaceJS);
@@ -48,44 +48,11 @@
     return fn.call(__fest_self, params)
   }
 
-  var data = __fest_context;
-  __fest_buf += ('<div class="view leader-board-view">');
+  __fest_buf += ('<div class="view menu-view">');
   (function (__fest_context) {
     __fest_buf += ('<div class="nav__bar topmenu"><div class="topmenu__buttons-left_container"><div class="back-button topmenu__button topmenu__button-back" style="display: none"><a></a></div></div><div class="topmenu_user__left-position"><div class="profile-button topmenu__user__avatar" style="display: none"><a></a></div></div><div class="topmenu__buttons-right_container"><div class="mute-button topmenu__button topmenu__button-mute m-unmuted" style="display: none"></div><div class="settings-button topmenu__button topmenu__button-settings" style="display: none"><a></a></div></div></div>');
   })(__fest_context);
-  __fest_buf += ('<div class="menu"><div class="menu-center-block"><div class="lowermenu"><div class="title__up">Donuts Wars<a></a></div><div class="leader-board__title title__sub">Leaderboard</div><div class="leader-board__table"><div class="leader-board__error"></div><table class="items"><tbody>');
-  var i, v, __fest_to0, __fest_iterator0;
-  try {
-    __fest_iterator0 = data.scoreBoard || [];
-    __fest_to0 = __fest_iterator0.length;
-  } catch (e) {
-    __fest_iterator0 = [];
-    __fest_to0 = 0;
-    __fest_log_error(e.message);
-  }
-  for (i = 0; i < __fest_to0; i++) {
-    v = __fest_iterator0[i];
-    __fest_buf += ('<tr><td>');
-    try {
-      __fest_buf += (__fest_escapeHTML(i + 1))
-    } catch (e) {
-      __fest_log_error(e.message + '23');
-    }
-    __fest_buf += ('</td><td>');
-    try {
-      __fest_buf += (__fest_escapeHTML(v.nickname))
-    } catch (e) {
-      __fest_log_error(e.message + '26');
-    }
-    __fest_buf += ('</td><td>');
-    try {
-      __fest_buf += (__fest_escapeHTML(v.rating))
-    } catch (e) {
-      __fest_log_error(e.message + '29');
-    }
-    __fest_buf += ('</td></tr>');
-  }
-  __fest_buf += ('</tbody></table></div></div></div></div></div>');
+  __fest_buf += ('<div class="menu bubbles"><div class="menu-center-block"><div class="main__menu-items lowermenu"><div class="main__menu-error title-error" style="display: none"></div><div class="main__title title">Donuts Wars</div><div class="play-button mainmenu__button-play" style="display: none"><a></a></div><div class="leader-board-button mainmenu__button" style="display: none"><a></a></div><div class="login-button mainmenu__button" style="display: none"><a></a></div><div class="sign-up-button mainmenu__button" style="display: none"><a></a></div><div class="help-button mainmenu__button" style="display: none"><a></a></div><div class="logout-button mainmenu__button" style="display: none"></div></div></div></div></div>');
   __fest_to = __fest_chunks.length;
   if (__fest_to) {
     __fest_iterator = 0;
