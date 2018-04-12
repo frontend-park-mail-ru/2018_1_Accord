@@ -93,18 +93,19 @@ export default class GameEngine {
 
   gameLoop(now) {
     const delay = now - this.lastFrame;
+    Logger.log(delay);
     this.lastFrame = now;
 
     this.gameLoopRequestId = requestAnimationFrame(this.gameLoop);
   }
 
-  onGameStarted(event) {
+  onGameStarted() {
     this.lastFrame = performance.now();
     this.scene.startScene();
     this.gameLoopRequestId = requestAnimationFrame(this.gameLoop);
   }
 
-  onMouseClicked(event) {
+  onMouseClicked() {
     if (!this.state.DONUT.donutInFlight && this.state.DONUT.donutCount > 0 && this.gameStarted) {
       --this.state.DONUT.donutCount;
       this.state.DONUT.launchTime = performance.now();
@@ -137,7 +138,7 @@ export default class GameEngine {
     }
   }
 
-  onGameFinished(event) {
+  onGameFinished() {
     Logger.log('onGameFinished');
     this.controller.destroy();
     cancelAnimationFrame(this.gameLoopRequestId);

@@ -82,10 +82,6 @@ export default class Donut extends Figure {
     this.angle = Math.atan((mousePos.y - this.y) / (mousePos.x - this.x)) || 0;
   }
 
-  countVelocity(mousePos) {
-
-  }
-
   reset() {
     this.x = this.changedX;
     this.y = gameObjects.DONUT.y;

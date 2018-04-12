@@ -1,5 +1,4 @@
 import userService from '../../../services/UserService.js';
-import Router from '../../../modules/router.js';
 import Logger from '../../../utils/logger.js';
 import {selector} from '../../../config/selector.js';
 import {pagePaths} from '../../../config/pagePaths.js';

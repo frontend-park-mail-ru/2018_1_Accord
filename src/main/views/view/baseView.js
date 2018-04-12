@@ -2,6 +2,7 @@
 
 
 import EventBus from '../../modules/eventBus.js';
+import Logger from '../../utils/logger.js';
 
 export default class BaseView {
   constructor(name) {
@@ -29,11 +30,9 @@ export default class BaseView {
   }
 
   create() {
-    let thisView = this.el;
-
     this.render()
       .then((viewElem) => {
-        thisView = viewElem;
+        Logger.log(viewElem);
       });
 
     return this.show();
