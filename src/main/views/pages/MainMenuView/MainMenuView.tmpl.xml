@@ -1,0 +1,40 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+    <div class="view menu-view">
+        <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
+
+        <div class="menu bubbles">
+            <div class="menu-center-block">
+                <div class="main__menu-items lowermenu">
+                    <div class="main__menu-error title-error" style="display: none"> </div>
+
+                    <div class="main__title title">
+                        Donuts Wars
+                    </div>
+
+                    <div class="play-button mainmenu__button-play" style="display: none">
+                        <a> </a>
+                    </div>
+
+                    <div class="leader-board-button mainmenu__button" style="display: none">
+                        <a> </a>
+                    </div>
+
+                    <div class="login-button mainmenu__button" style="display: none">
+                        <a> </a>
+                    </div>
+
+                    <div class="sign-up-button mainmenu__button" style="display: none">
+                        <a> </a>
+                    </div>
+
+                    <div class="help-button mainmenu__button" style="display: none">
+                        <a> </a>
+                    </div>
+
+                    <div class="logout-button mainmenu__button" style="display: none">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</fest:template>

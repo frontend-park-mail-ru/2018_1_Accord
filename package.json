@@ -4,9 +4,15 @@
   "description": "Accord team's first SPA",
   "main": "index.js",
   "scripts": {
-    "test": "eslint public --fix",
-    "start": "node server"
+    "build": "npm run build-fest && npm run build-babel",
+    "build-fest": "./node_modules/.bin/fest-build --dir=src",
+    "test": "eslint src --fix",
+    "build-babel": "babel src --out-dir dist",
+    "start": "npm run build & node server"
   },
+  "files": [
+    "dist"
+  ],
   "author": "Yury, Victoria, Marina",
   "license": "ISC",
   "dependencies": {
@@ -21,6 +27,10 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.18.2"
   }
 }

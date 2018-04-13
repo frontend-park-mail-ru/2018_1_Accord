@@ -1,0 +1,41 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="data">    
+    <div class="view leader-board-view">
+        <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
+        
+        <div class="menu">
+            <div class="menu-center-block">
+                <div class="lowermenu">
+                    <div class="title__up">
+                        Donuts Wars
+                        <a></a>
+                    </div>
+        
+                    <div class="leader-board__title title__sub">
+                        Leaderboard
+                    </div>
+                    <div class="leader-board__table">
+                        <div class="leader-board__error">
+                        </div>
+                        <table class="items">
+                            <tbody>
+                                <fest:for iterate="data.scoreBoard" index="i" value="v">
+                                    <tr>
+                                        <td>
+                                            <fest:value>i + 1</fest:value>
+                                        </td>
+                                        <td>
+                                            <fest:value>v.nickname</fest:value>
+                                        </td>
+                                        <td>
+                                            <fest:value>v.rating</fest:value>
+                                        </td>
+                                    </tr>
+                                </fest:for>
+                            </tbody>
+                        </table>                                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</fest:template>
