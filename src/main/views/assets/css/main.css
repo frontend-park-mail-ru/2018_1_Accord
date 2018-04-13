@@ -191,7 +191,6 @@ a {
 }
 
 /* title для ошибок */
-
 .title-error {
     text-align: center;
     font-family: "LuckiestGuy";
@@ -247,7 +246,6 @@ a {
 }
 
 /* cтиль для типа button */
-
 .mainmenu__button-button {
     text-align: center;
     cursor: pointer;
@@ -264,6 +262,18 @@ a {
     outline: none;
 }
 
+/* cтиль для input */
+input:focus, input:focus:invalid, input:focus:valid {
+    border-style: solid 2px #4360a1;
+}
+
+input:invalid {
+    border: solid 2px #F5192F;
+}
+
+input:valid {
+    border: solid 2px green;
+}
 
 input {
     outline: none;
@@ -277,27 +287,7 @@ input {
     border-radius: 50px;
     border: none;
     margin: 0;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 1px;
-}
-
-input:focus {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #4360a1;
-}
-
-input.error_input {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #a10918;
-}
-
-input.correct_input {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #246919;
+    border: solid 2px transparent;
 }
 
 .input_block {
@@ -333,7 +323,6 @@ input.correct_input {
 }
 
 /* Essential CSS - Makes the effect bubble work */
-
 .bubbles {
     display: inline-block;
     position: relative;
