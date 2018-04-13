@@ -23,7 +23,6 @@ body {
     height: 100%;
     margin: 0;
     background-color: #0fc7ef;
-    background: url("../donuts_font.png");
     background-size: cover;
 }
 
@@ -34,9 +33,10 @@ body {
     align-items: center;
     justify-content: center; */
     /* background: url("../blue_font.png"); */
+    background-size: 100%;
+    /*background: url("../donuts_font.png");*/
     background-size: cover;
     z-index: 0;
-    background-size: 100%;
 }
 
 .menu-center-block {
