@@ -7,6 +7,7 @@ import Game from '../../../modules/game/game.js';
 import {info} from '../../../config/textInfo.js';
 import {fetchFaildErrors} from '../../../config/textErrors.js';
 import {events} from '../../../modules/game/core/events.js';
+import {gameObjects} from '../../../modules/game/graphics/gameObjects.js';
 
 
 export default class GameView extends BaseView {
@@ -67,6 +68,8 @@ export default class GameView extends BaseView {
     new NavBar(this.el, this.navBar, this.user);
 
     const canvas = this.el.querySelector(selector.CANVAS);
+    canvas.height = gameObjects.CANVAS.height;
+    canvas.width = gameObjects.CANVAS.width;
     this.gameProc = new Game(canvas);
     this.gameProc.start();
 

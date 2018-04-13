@@ -5,6 +5,7 @@ import {gameObjects} from '../graphics/gameObjects.js';
 import {events} from '../core/events.js';
 import CanvasText from '../graphics/text.js';
 import Circle from '../graphics/circle.js';
+import StartText from '../graphics/startText.js';
 
 export default class GameScene {
   constructor(canvas) {
@@ -14,25 +15,17 @@ export default class GameScene {
     this.requestFrameId = null;
     this.lastFrameTime = 0;
 
+    this.startText = null;
+
     this.donut = null;
     this.homer = null;
+
     this.scoreText = null;
     this.angleText = null;
     this.livesImg = null;
     this.livesValue = null;
 
     this.state = null;
-
-    this.renderScene = this.renderScene.bind(this);
-    this.onStateChanged = this.onStateChanged.bind(this);
-    this.stop = this.stop.bind(this);
-    this.donutMove = this.donutMove.bind(this);
-  }
-
-  init() {
-    EventBus.on(events.GAME.STATE_CHANGED, this.onStateChanged);
-    EventBus.on(events.GAME.FINISH, this.stop);
-    EventBus.on(events.GAME.POSITION_CHANGED, this.donutMove);
 
     this.state = {
       SCORE: 0,
@@ -48,33 +41,43 @@ export default class GameScene {
       MOUSE_POS: {},
     };
 
+    this.renderScene = this.renderScene.bind(this);
+    this.onStateChanged = this.onStateChanged.bind(this);
+    this.stop = this.stop.bind(this);
+    this.donutMove = this.donutMove.bind(this);
+  }
+
+  init() {
+    EventBus.on(events.GAME.STATE_CHANGED, this.onStateChanged);
+    EventBus.on(events.GAME.FINISH, this.stop);
+    EventBus.on(events.GAME.POSITION_CHANGED, this.donutMove);
+
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+
+    this.startText = new StartText(this.ctx, gameObjects.TEXT.startText,
+      gameObjects.TEXT.centerX, gameObjects.TEXT.centerY);
+    this.startText.draw();
+
     this.donut = new Donut(this.ctx, gameObjects.DONUT.x, gameObjects.DONUT.y);
-    this.donut.draw();
 
     this.homer = new Homer(this.ctx, gameObjects.HOMER.x, gameObjects.HOMER.y);
     this.homer.draw();
 
     this.scoreText = new CanvasText(this.ctx, 'Score: 0',
-      this.ctx.canvas.width - 120, 30);
-
-    this.scoreText.draw();
+      gameObjects.TEXT.x, gameObjects.TEXT.y);
 
     this.angleText = new CanvasText(this.ctx, 'Angle: 0',
-      this.ctx.canvas.width - 120, 60);
+      gameObjects.TEXT.x, gameObjects.TEXT.y + gameObjects.TEXT.dy);
 
-    this.angleText.draw();
-
-    this.livesImg = new Circle(this.ctx, gameObjects.DONUT.radius);
-    this.livesImg.x = this.ctx.canvas.width - 120;
-    this.livesImg.y = 75;
-    this.livesImg.draw();
+    this.livesImg = new Circle(this.ctx, gameObjects.DONUT.radius * 0.9);
+    this.livesImg.x = gameObjects.TEXT.x - 20;
+    this.livesImg.y = gameObjects.TEXT.y + gameObjects.TEXT.dy * 2;
 
     this.livesValue = new CanvasText(this.ctx, '10',
-      this.ctx.canvas.width - 65,
-      this.livesImg.y + this.livesImg.radius + 10);
+      this.livesImg.x + this.livesImg.radius * 2 + 10,
+      this.livesImg.y + this.livesImg.radius + 15);
 
-    this.livesValue.draw();
+    //this.livesValue.draw();
   }
 
 

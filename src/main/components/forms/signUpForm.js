@@ -1,7 +1,6 @@
 import Input from '../blocks/input.js';
 
 import Validator from '../../modules/validation/validation.js';
-import {disposableListener} from '../../utils/helperFuncs.js';
 import {selector} from '../../config/selector.js';
 
 export default class SignUpForm {
@@ -32,7 +31,10 @@ export default class SignUpForm {
   }
 
   onSubmit(callback) {
-    return disposableListener(this.form, 'submit', callback);
+    this.form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      callback();
+    });
   }
 
   getFormData() {

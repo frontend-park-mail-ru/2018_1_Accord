@@ -7,8 +7,8 @@ export default class Homer extends Figure {
     this.x = x;
     this.y = y;
 
-    this.vX = 5;
-    this.direction = 'left';
+    this.vX = 15;
+    this.direction = 'right';
 
     this.width = gameObjects.HOMER.width;
     this.height = gameObjects.HOMER.height;
@@ -30,23 +30,23 @@ export default class Homer extends Figure {
     const dx = this.vX * dt * 0.01;
 
     switch (this.direction) {
-      case 'left':
-        if (this.x + gameObjects.HOMER.width + dx < this.ctx.canvas.width - 10) {
+      case 'right':
+        if (this.x + gameObjects.HOMER.width + dx < this.ctx.canvas.width) {
           this.x += dx;
         } else {
-          this.curImg = this.imgRight;
-          this.direction = 'right';
+          this.direction = 'left';
           this.x -= dx;
+          this.curImg = this.imgLeft;
         }
         break;
 
-      case 'right':
+      case 'left':
         if (this.x - dx > 10) {
           this.x -= dx;
         } else {
-          this.curImg = this.imgLeft;
-          this.direction = 'left';
+          this.direction = 'right';
           this.x += dx;
+          this.curImg = this.imgRight;
         }
         break;
     }

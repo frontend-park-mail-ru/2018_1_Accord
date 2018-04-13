@@ -23,7 +23,7 @@ export default class SignUpView extends BaseView {
       loginPath: pagePaths.LOGIN_PATH
     });
 
-    this.error = this.el.querySelector(selector.SIGNUP_ERROR);
+    this.error = this.el.querySelector(selector.VALIDATE_ERR);
     this.signUpForm = new SignUpForm(this.el).render();
 
     this.signUpForm.onSubmit(async () => {
@@ -40,6 +40,7 @@ export default class SignUpView extends BaseView {
             Logger.log('Unsuccessful signup');
 
           } else {
+            Logger.log('signup');
             window.history.pushState(null, '', pagePaths.START_PATH);
           }
         } catch (err) {
