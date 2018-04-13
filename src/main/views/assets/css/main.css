@@ -32,14 +32,6 @@ body {
     width: 100%;
 }
 
-/* .game-view, .login-view, .signup-view {
-    height: 100%;
-    width: 100%;
-    background-size: 100%;
-    background: url("../donuts_font.png");
-    background-size: cover;
-}  */
-
 .game-view {
     height: 100%;
     margin: 0;
@@ -53,6 +45,9 @@ body {
     align-items: center;
     justify-content: center; */
     /* background: url("../blue_font.png"); */
+    background-size: 100%;
+    /*background: url("../donuts_font.png");*/
+    background-size: cover;
     z-index: 0;
 }
 
