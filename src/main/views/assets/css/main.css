@@ -35,19 +35,12 @@ body {
 .game-view {
     height: 100%;
     margin: 0;
-    background-color: #0fc7ef;
+    background-color: #5fbce3;
 }
 
 .menu {
     height: 100%;
     width: 100%;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-    /* background: url("../blue_font.png"); */
-    background-size: 100%;
-    /*background: url("../donuts_font.png");*/
-    background-size: cover;
     z-index: 0;
 }
 
@@ -169,11 +162,8 @@ a {
 .title {
     text-align: center;
     font-family: 'LuckiestGuy';
-    /* color: rgb(255, 130, 186); */
-    /* color: rgb(189, 186, 186); */
     color: #ffd304;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
-    /* text-shadow: black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0; */
     font-size: 800%;
     margin: 0px 40px 50px 40px;
     user-select: none;
@@ -183,8 +173,6 @@ a {
 .title__up {
     text-align: center;
     font-family: 'LuckiestGuy';
-    /* color: rgb(255, 130, 186); */
-    /* color: rgb(189, 186, 186); */
     color: #ffd304;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
     font-size: 800%;
@@ -276,7 +264,6 @@ a {
     outline: none;
 }
 
-/*цвет текста?*/
 
 input {
     outline: none;

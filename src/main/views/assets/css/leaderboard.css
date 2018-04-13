@@ -1,36 +1,3 @@
-.pagination {
-    padding-left: 16px;
-    margin: 10px 0;
-    border-radius: 4px;
-}
-
-.pagination>li {
-    display: inline;
-    position: relative;
-    float: left;
-    padding: 6px 12px;
-    line-height: 1.42857143;
-    color: #337ab7;
-    background-color: rgba(255, 255, 255, 0.5);
-    border: 1px solid #ddd;
-    margin-left: 0;
-}
-
-.pagination>li:hover {
-    background-color: #cdff90;
-}
-
-.pagination__first {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
-
-.pagination__last {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-}
-
-/* ------------------------------------------- */
 .items {
     font-family: Nunito;
     font-size: 22px;
