@@ -29,6 +29,6 @@
 
 .go-to-sigup__button:hover {
     /* transform: scale(1.2); */
-    color: #fff;
-    text-shadow: gold 0 0 10px;
+    color: #ffd304;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
