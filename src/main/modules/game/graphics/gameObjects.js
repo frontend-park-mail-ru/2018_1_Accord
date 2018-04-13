@@ -1,4 +1,4 @@
-const canvasWidth = window.innerWidth - 100;
+const canvasWidth = window.innerWidth;
 const canvasHeight = window.innerHeight - 120;
 
 export const gameObjects = {
@@ -23,7 +23,7 @@ export const gameObjects = {
     color: '#FF4DA6',
     count: 10,
 
-    x: canvasWidth * 0.1,
+    x: canvasWidth * 0.45,
     y: canvasHeight * 0.09,
 
     v: 50,
