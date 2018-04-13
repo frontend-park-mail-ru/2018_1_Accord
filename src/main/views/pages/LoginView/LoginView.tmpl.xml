@@ -12,8 +12,7 @@
                     </div>
 
                     <div class="login__form">
-                        <form class="form">
-                            <!-- <div class="validation-error title__sub-error"></div> -->
+                        <form class="form" autocomplete="off">
                             <div class="validation-error login__error title__sub-error"></div>
 
                             <div class="form__field input_block">

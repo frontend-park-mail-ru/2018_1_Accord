@@ -11,7 +11,7 @@
                     </div>
 
                     <div class="signup__form">
-                        <form class="form">
+                        <form class="form" autocomplete="off">
                             <div class="validation-error login__error title__sub-error"></div>
 
                             <div class="form__field input_block">
