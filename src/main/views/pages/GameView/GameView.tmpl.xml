@@ -6,7 +6,7 @@
         <div class="game-unauth__info game__title-error">
         </div>
 
-        <div class="game-error">
+        <div class="game-error game__title-error">
 
         </div>
 
