@@ -1,4 +1,5 @@
 import Figure from './figure.js';
+import {gameObjects} from './gameObjects.js';
 
 export default class CanvasText extends Figure {
   constructor(ctx, text, x, y) {
@@ -8,11 +9,12 @@ export default class CanvasText extends Figure {
 
     this.text = text;
 
-    this.ctx.font = '20px Arial';
+    this.ctx.font = `${gameObjects.TEXT.size}px sans-serif`;
   }
 
   draw() {
     this.ctx.beginPath();
+    this.ctx.textAlign = 'left';
     this.ctx.fillStyle = '#000000';
     this.ctx.fillText(this.text, this.x, this.y);
     this.ctx.closePath();
