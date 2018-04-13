@@ -70,11 +70,11 @@ export default class GameScene {
       gameObjects.TEXT.x, gameObjects.TEXT.y + gameObjects.TEXT.dy);
 
     this.livesImg = new Circle(this.ctx, gameObjects.DONUT.radius * 0.9);
-    this.livesImg.x = gameObjects.TEXT.x;
+    this.livesImg.x = gameObjects.TEXT.x - 20;
     this.livesImg.y = gameObjects.TEXT.y + gameObjects.TEXT.dy * 2;
 
     this.livesValue = new CanvasText(this.ctx, '10',
-      this.livesImg.x + this.livesImg.radius * 2,
+      this.livesImg.x + this.livesImg.radius * 2 + 10,
       this.livesImg.y + this.livesImg.radius + 15);
 
     //this.livesValue.draw();

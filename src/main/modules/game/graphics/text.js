@@ -13,12 +13,22 @@ export default class CanvasText extends Figure {
   }
 
   draw() {
+    this.ctx.save();
     this.ctx.beginPath();
+
     this.ctx.textAlign = 'left';
-    this.ctx.fillStyle = '#000000';
+    this.ctx.fillStyle = '#FFFFFF';
+
+    this.ctx.shadowColor = '#808080';
+    this.ctx.shadowOffsetX = 3;
+    this.ctx.shadowOffsetY = 3;
+    this.ctx.shadowBlur = 3;
+
     this.ctx.fillText(this.text, this.x, this.y);
     this.ctx.closePath();
     this.ctx.fill();
+
+    this.ctx.restore();
   }
 
   setText(text) {

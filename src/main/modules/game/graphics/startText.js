@@ -16,7 +16,9 @@ export default class StartText extends Figure {
   draw() {
     this.ctx.save();
     this.ctx.beginPath();
+
     this.ctx.textAlign = 'center';
+
     this.ctx.shadowColor = '#808080';
     this.ctx.shadowOffsetX = 3;
     this.ctx.shadowOffsetY = 3;
