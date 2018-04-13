@@ -6,6 +6,8 @@ import Logger from '../../../utils/logger.js';
 import userService from '../../../services/UserService.js';
 import SignUpForm from '../../../components/forms/signUpForm.js';
 import {pagePaths} from '../../../config/pagePaths.js';
+import EventBus from '../../../modules/eventBus.js';
+import {events} from '../../../modules/game/core/events.js';
 
 export default class SignUpView extends BaseView {
   constructor() {
@@ -41,7 +43,9 @@ export default class SignUpView extends BaseView {
 
           } else {
             Logger.log('signup');
-            window.history.pushState(null, '', pagePaths.START_PATH);
+            EventBus.emit(events.AUTH.SIGN_UP);
+            //window.history.pushState(null, '', pagePaths.START_PATH);
+            //window.history.go(1);
           }
         } catch (err) {
           this.error.innerText = serverErrors.unexpected;

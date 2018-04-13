@@ -6,6 +6,8 @@ import {serverErrors} from '../../../config/textErrors.js';
 import Logger from '../../../utils/logger.js';
 import userService from '../../../services/UserService.js';
 import {pagePaths} from '../../../config/pagePaths.js';
+import EventBus from '../../../modules/eventBus.js';
+import {events} from '../../../modules/game/core/events.js';
 
 export default class LoginView extends BaseView {
   constructor() {
@@ -40,6 +42,7 @@ export default class LoginView extends BaseView {
             Logger.log('Unsuccessful login');
 
           } else {
+            EventBus.emit(events.AUTH.LOGIN);
             window.history.pushState(null, '', pagePaths.START_PATH);
           }
 

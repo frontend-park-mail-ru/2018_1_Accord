@@ -1,6 +1,8 @@
 import userService from '../services/UserService.js';
 import {pagePaths} from '../config/pagePaths.js';
 import Logger from '../utils/logger.js';
+import EventBus from './eventBus.js';
+import {events} from './game/core/events.js';
 
 export default class Router {
 
@@ -80,6 +82,16 @@ export default class Router {
    * @return {Router}
    */
   start() {
+    EventBus.on(events.AUTH.SIGN_UP, () => {
+      this.open(pagePaths.START_PATH);
+    });
+    EventBus.on(events.AUTH.LOGIN, () => {
+      this.open(pagePaths.START_PATH);
+    });
+    EventBus.on(events.AUTH.LOGOUT, () => {
+      this.open(pagePaths.START_PATH);
+    });
+
     window.onpopstate = () => {
       this.validate(window.location.pathname);
     };
