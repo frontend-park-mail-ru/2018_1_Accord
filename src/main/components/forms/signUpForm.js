@@ -62,7 +62,7 @@ export default class SignUpForm {
   validateEmail() {
     const formState = Validator.checkEmail(this.email.getData());
     if (!formState.state) {
-      this.errorField.innerText += `${formState.errMessage}\n`;
+      this.errorField.innerText = `${formState.errMessage}\n`;
       this.errorField.style.display = 'block';
 
       this.email.setStatus(true);
@@ -72,7 +72,9 @@ export default class SignUpForm {
   validatePassword() {
     const formState = Validator.checkPassword(this.password.getData());
     if (!formState.state) {
-      this.errorField.innerText += `${formState.errMessage}\n`;
+      // if(this.errorField.textContent === '') {
+      this.errorField.innerText = `${formState.errMessage}\n`;
+      // }
       this.errorField.style.display = 'block';
 
       this.password.setStatus(true);
@@ -82,7 +84,7 @@ export default class SignUpForm {
   validateUsername() {
     const formState = Validator.checkUsername(this.username.getData());
     if (!formState.state) {
-      this.errorField.innerText += `${formState.errMessage}\n`;
+      this.errorField.innerText = `${formState.errMessage}\n`;
       this.errorField.style.display = 'block';
 
       this.username.setStatus(true);
@@ -92,7 +94,7 @@ export default class SignUpForm {
   confirmPassword() {
     const formState = Validator.confirmPassword(this.password.getData(), this.passwordConfirm.getData());
     if (!formState.state) {
-      this.errorField.innerText += `${formState.errMessage}\n`;
+      this.errorField.innerText = `${formState.errMessage}\n`;
       this.errorField.style.display = 'block';
 
       this.passwordConfirm.setStatus(true);
