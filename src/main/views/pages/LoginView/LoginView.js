@@ -25,6 +25,7 @@ export default class LoginView extends BaseView {
     this.loginForm = new LoginForm(this.el).render();
 
     this.loginForm.onSubmit(async () => {
+
       //validation check
       this.formStateData = this.loginForm.checkFormState();
 

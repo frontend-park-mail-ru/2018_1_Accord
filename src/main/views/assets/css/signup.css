@@ -27,7 +27,7 @@
 }
 
 .go-to-login__button:hover {
-    color: #fff;
-    text-shadow: gold 0 0 10px;
+    color: #ffd304;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
