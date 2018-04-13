@@ -22,8 +22,8 @@ html {
 body {
     height: 100%;
     margin: 0;
-    background-size: 100%;
-    background: url("../donuts_font.png");
+    background: #fff url('../donuts_font.png') 100% 100%;
+    background-position: center;
     background-size: cover;
 }
 
@@ -35,7 +35,7 @@ body {
 .game-view {
     height: 100%;
     margin: 0;
-    background-color: #5fbce3;
+    background-color: #59c4eb ;
 }
 
 .menu {
@@ -45,14 +45,14 @@ body {
 }
 
 .menu-center-block {
-    height: 90%;
+    height: 100%;
     width: 100%;
     display: table;
 }
 
 a {
     text-decoration: none;
-    color: white;
+    color: #fff;
 }
 
 .topmenu {
@@ -254,7 +254,7 @@ a {
     font-size: 45px;
     font-family: "LuckiestGuy";
     user-select: none;
-    color: white;
+    color: #fff;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
     background: transparent;
     border: transparent;
@@ -309,7 +309,7 @@ input.correct_input {
 .error_text {
     width: 200px;
     background-color: #a10918;
-    color: white;
+    color: #fff;
     font-family: 'Nunito';
     border-radius: 5px;
     display: flex;
