@@ -14,38 +14,36 @@
 }
 
 html {
-    height: 100%;
     width: 100%;
     min-width: 25rem;
 }
 
 body {
-    height: 100%;
+    height: min-content;
     margin: 0;
     background: #fff url('../donuts_font.png') 100% 100%;
-    background-position: center;
     background-size: cover;
 }
 
 #root {
-    height: 100%;
+    height: min-content;
     width: 100%;
 }
 
 .game-view {
-    height: 100%;
+    height: min-content;
     margin: 0;
     background-color: #59c4eb ;
 }
 
 .menu {
-    height: 100%;
+    height: min-content;
     width: 100%;
     z-index: 0;
 }
 
 .menu-center-block {
-    height: 100%;
+    height: min-content;
     width: 100%;
     display: table;
 }
@@ -58,6 +56,7 @@ a {
 .topmenu {
     height: 60px;
     width: 100%;
+    min-width: 25rem;
     position: relative;
     z-index: 1;
 }
@@ -75,7 +74,7 @@ a {
     margin: 5px;
     height: 40px;
     width: 40px;
-    background: url("../avatar.jpg");
+    /* background: url("../avatar.jpg"); */
     background-size: cover;
     border-radius: 100%;
     transition: transform 0.5s;
@@ -213,36 +212,53 @@ a {
 
 .mainmenu__button-play {
     text-align: center;
+    height: 70px;
+}
+
+.mainmenu__button-play a {
+    text-align: center;
     cursor: pointer;
     font-size: 70px;
     font-family: "LuckiestGuy";
     user-select: none;
-    color: orange;
-    transition: transform 0.5s;
+    color: #fff;
+    transition: font-size 0.5s;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
 }
 
-.mainmenu__button-play:hover {
+.mainmenu__button-play a:hover {
     opacity: 0.9;
-    transform: scale(1.2);
+    font-size: 80px;
+}
+
+.mainmenu__button-play a:focus {
+    outline: none;
 }
 
 .mainmenu__button {
+    text-align: center;
+    height: 60px;
+    padding: 25px 0px 10px 0px;
+}
+
+.mainmenu__button a {
     text-align: center;
     cursor: pointer;
     font-size: 45px;
     font-family: "LuckiestGuy";
     user-select: none;
     color: #fff;
-    transition: transform 0.5s;
+    transition: font-size 0.5s;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
-    padding: 25px 0px 10px 0px;
 }
 
-.mainmenu__button:hover {
+.mainmenu__button a:hover {
     opacity: 0.9;
-    transform: scale(1.2);
-    padding: 25px 0px 10px 0px;
+    font-size: 55px;
+}
+
+.mainmenu__button a:focus {
+    outline: none;
 }
 
 /* cтиль для типа button */
@@ -352,4 +368,12 @@ input {
     text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
     font-size: 200%;
     user-select: none;
+}
+
+.game-view__area {
+    height: 100% !important;
+}
+
+.game-view__canvas {
+    height: 100% !important;
 }
