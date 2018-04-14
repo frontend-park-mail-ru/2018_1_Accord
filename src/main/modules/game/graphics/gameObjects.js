@@ -32,7 +32,7 @@ export const gameObjects = {
 
   TEXT: {
     size: canvasHeight * 0.03,
-    x: canvasWidth * 0.92,
+    x: canvasWidth * 0.9,
     y: canvasHeight * 0.05,
     dy: canvasHeight * 0.04,
 
