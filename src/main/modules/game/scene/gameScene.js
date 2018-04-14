@@ -15,17 +15,28 @@ export default class GameScene {
     this.requestFrameId = null;
     this.lastFrameTime = 0;
 
-    this.startText = null;
+    this.startText = new StartText(this.ctx, gameObjects.TEXT.startText,
+      gameObjects.TEXT.centerX, gameObjects.TEXT.centerY);
 
-    this.donut = null;
-    this.homer = null;
+    this.donut = new Donut(this.ctx, gameObjects.DONUT.x, gameObjects.DONUT.y);
+    this.homer = new Homer(this.ctx, gameObjects.HOMER.x, gameObjects.HOMER.y);
 
-    this.scoreText = null;
-    this.angleText = null;
-    this.livesImg = null;
-    this.livesValue = null;
+    this.scoreText = new CanvasText(this.ctx, 'Score: 0',
+      gameObjects.TEXT.x, gameObjects.TEXT.y);
 
-    this.state = null;
+    this.velocityText = new CanvasText(this.ctx, 'Velocity: 0',
+      gameObjects.TEXT.x, gameObjects.TEXT.y + gameObjects.TEXT.dy * 2);
+
+    this.angleText = new CanvasText(this.ctx, 'Angle: 0',
+      gameObjects.TEXT.x, gameObjects.TEXT.y + gameObjects.TEXT.dy * 3);
+
+    this.livesImg = new Circle(this.ctx, gameObjects.DONUT.radius * 0.9);
+    this.livesImg.x = gameObjects.TEXT.x - 20;
+    this.livesImg.y = gameObjects.TEXT.y + gameObjects.TEXT.dy * 4;
+
+    this.livesValue = new CanvasText(this.ctx, '10',
+      this.livesImg.x + this.livesImg.radius * 2 + 10,
+      this.livesImg.y + this.livesImg.radius + 15);
 
     this.state = {
       SCORE: 0,
@@ -34,11 +45,10 @@ export default class GameScene {
         donutCount: gameObjects.DONUT.count,
         donutInFlight: false,
         launchTime: 0,
-        v: gameObjects.DONUT.v,
         vX: gameObjects.DONUT.vX,
       },
 
-      MOUSE_POS: {},
+      MOUSE_POS: {x: 200, y: 20},
     };
 
     this.renderScene = this.renderScene.bind(this);
@@ -53,31 +63,8 @@ export default class GameScene {
     EventBus.on(events.GAME.POSITION_CHANGED, this.donutMove);
 
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-
-    this.startText = new StartText(this.ctx, gameObjects.TEXT.startText,
-      gameObjects.TEXT.centerX, gameObjects.TEXT.centerY);
     this.startText.draw();
-
-    this.donut = new Donut(this.ctx, gameObjects.DONUT.x, gameObjects.DONUT.y);
-
-    this.homer = new Homer(this.ctx, gameObjects.HOMER.x, gameObjects.HOMER.y);
     this.homer.draw();
-
-    this.scoreText = new CanvasText(this.ctx, 'Score: 0',
-      gameObjects.TEXT.x, gameObjects.TEXT.y);
-
-    this.angleText = new CanvasText(this.ctx, 'Angle: 0',
-      gameObjects.TEXT.x, gameObjects.TEXT.y + gameObjects.TEXT.dy);
-
-    this.livesImg = new Circle(this.ctx, gameObjects.DONUT.radius * 0.9);
-    this.livesImg.x = gameObjects.TEXT.x - 20;
-    this.livesImg.y = gameObjects.TEXT.y + gameObjects.TEXT.dy * 2;
-
-    this.livesValue = new CanvasText(this.ctx, '10',
-      this.livesImg.x + this.livesImg.radius * 2 + 10,
-      this.livesImg.y + this.livesImg.radius + 15);
-
-    //this.livesValue.draw();
   }
 
 
@@ -94,12 +81,14 @@ export default class GameScene {
     }
 
     this.scoreText.setText(`Score: ${this.state.SCORE}`);
+    this.velocityText.setText(`Velocity: ${this.donut.v}`);
     this.angleText.setText(`Angle: ${-Math.round(this.donut.angle * 180 / Math.PI)}`);
     this.livesValue.setText(`${this.state.DONUT.donutCount}`);
 
     this.homer.render();
     this.donut.render();
     this.scoreText.render();
+    this.velocityText.render();
     this.angleText.render();
     this.livesImg.render();
     this.livesValue.render();
@@ -137,7 +126,6 @@ export default class GameScene {
   }
 
   donutFly(delay, now) {
-    this.donut.v = gameObjects.DONUT.v;
     const t = now - this.state.DONUT.launchTime;
 
     this.flightState = this.donut.fly(delay, t, {x: this.homer.x, y: this.homer.y});
@@ -155,7 +143,7 @@ export default class GameScene {
   onStateChanged(state) {
     this.state = state;
     this.donut.countAngle(this.state.MOUSE_POS);
+    this.donut.countVelocity(this.state.MOUSE_POS);
   }
 
 }
-
