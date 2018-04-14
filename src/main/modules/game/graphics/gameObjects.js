@@ -1,4 +1,4 @@
-const canvasWidth = window.innerWidth - 100;
+const canvasWidth = window.innerWidth;
 const canvasHeight = window.innerHeight - 120;
 
 export const gameObjects = {
