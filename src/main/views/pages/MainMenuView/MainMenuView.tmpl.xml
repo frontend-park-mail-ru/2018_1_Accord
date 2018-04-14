@@ -31,7 +31,7 @@
                         <a> </a>
                     </div>
 
-                    <div class="logout-button mainmenu__button" style="display: none">
+                    <div class="logout-button mainmenu__button-logout" style="display: none">
                     </div>
                 </div>
             </div>
