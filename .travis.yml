@@ -6,6 +6,7 @@ branches:
   only:
   - master
   - develop
+  - yury
 deploy:
   provider: heroku
   app:
