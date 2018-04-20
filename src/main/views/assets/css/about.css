@@ -1,5 +1,5 @@
 .container_about {
-    margin: 0em 18em 0em;
+    margin: 0em 5em 0em;
 }
 
 .container_about p {
@@ -7,7 +7,6 @@
     color: white;
     font-size: 115%;
     text-align: center;
-    display: block;
-    margin: 1rem 0;
+    /* margin: 1rem 0; */
     padding-bottom: 1rem;
 }
