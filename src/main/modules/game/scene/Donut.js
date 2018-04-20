@@ -83,6 +83,7 @@ export default class Donut extends Figure {
   countVelocity(mousePos) {
     const a = Math.abs(mousePos.y - this.y);
     const b = Math.abs(mousePos.x - this.x);
+
     this.v = Math.round(Math.sqrt(a ** 2 + b ** 2) * 0.2);
   }
 

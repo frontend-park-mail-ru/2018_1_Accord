@@ -12,11 +12,15 @@
                     </div>
 
                     <div class="play-button mainmenu__button-play" style="display: none">
-                        <a> </a>
+                        <span class="mainmenu__button-play">
+                            <a> </a>
+                        </span>
                     </div>
 
                     <div class="leader-board-button mainmenu__button" style="display: none">
-                        <a> </a>
+                        <span class="mainmenu__button">
+                            <a> </a>
+                        </span>
                     </div>
 
                     <div class="login-button mainmenu__button" style="display: none">
@@ -28,7 +32,9 @@
                     </div>
 
                     <div class="help-button mainmenu__button" style="display: none">
-                        <a> </a>
+                        <span class="mainmenu__button">
+                            <a> </a>
+                        </span>
                     </div>
 
                     <div class="logout-button mainmenu__button-logout" style="display: none">

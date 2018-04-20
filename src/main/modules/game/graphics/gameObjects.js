@@ -21,7 +21,7 @@ export const gameObjects = {
   DONUT: {
     radius: canvasHeight * 0.05,
     color: '#FF4DA6',
-    count: 10,
+    count: 100,
 
     x: canvasWidth * 0.45,
     y: canvasHeight * 0.09,
