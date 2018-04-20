@@ -34,6 +34,7 @@ export default class GameScene {
     this.livesImg.x = gameObjects.TEXT.x - 20;
     this.livesImg.y = gameObjects.TEXT.y + gameObjects.TEXT.dy * 4;
 
+
     this.livesValue = new CanvasText(this.ctx, '10',
       this.livesImg.x + this.livesImg.radius * 2 + 10,
       this.livesImg.y + this.livesImg.radius + 15);

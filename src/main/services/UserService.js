@@ -20,6 +20,8 @@ class UserService {
         return response.json();
       case 401:
         return;
+      case 500:
+        return;
       default:
         throw {status: 'Error', message: 'Unexpected error'};
     }

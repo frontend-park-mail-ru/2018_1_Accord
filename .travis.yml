@@ -10,7 +10,7 @@ branches:
 deploy:
   provider: heroku
   app:
-    master: donuts
+    master: donuts-accord
     develop: donuts-dev
     yury: donutswars
   skip_cleanup: true

@@ -7,6 +7,7 @@ export default class Game {
     this.scene = new GameScene(canvas);
     this.controller = new GameControllers();
     this.gameEngine = new GameEngine(this.scene, this.controller);
+
   }
 
   start() {
