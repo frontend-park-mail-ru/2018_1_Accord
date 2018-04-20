@@ -14,57 +14,49 @@
 }
 
 html {
-    height: 100%;
     width: 100%;
     min-width: 25rem;
 }
 
 body {
-    height: 100%;
+    height: min-content;
     margin: 0;
-    background-size: 100%;
-    background: url("../donuts_font.png");
+    background: #fff url('../donuts_font.png') 100% 100%;
     background-size: cover;
 }
 
 #root {
-    height: 100%;
+    height: min-content;
     width: 100%;
 }
 
 .game-view {
-    height: 100%;
+    height: min-content;
     margin: 0;
-    background-color: #0fc7ef;
+    background-color: #59c4eb ;
 }
 
 .menu {
-    height: 100%;
+    height: min-content;
     width: 100%;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-    /* background: url("../blue_font.png"); */
-    background-size: 100%;
-    /*background: url("../donuts_font.png");*/
-    background-size: cover;
     z-index: 0;
 }
 
 .menu-center-block {
-    height: 90%;
+    height: min-content;
     width: 100%;
     display: table;
 }
 
 a {
     text-decoration: none;
-    color: white;
+    color: #fff;
 }
 
 .topmenu {
     height: 60px;
     width: 100%;
+    min-width: 25rem;
     position: relative;
     z-index: 1;
 }
@@ -82,7 +74,7 @@ a {
     margin: 5px;
     height: 40px;
     width: 40px;
-    background: url("../avatar.jpg");
+    /* background: url("../avatar.jpg"); */
     background-size: cover;
     border-radius: 100%;
     transition: transform 0.5s;
@@ -137,7 +129,7 @@ a {
 }
 
 .topmenu__button:hover {
-    opacity: 0.8;
+    opacity: 0.9;
     transform: scale(1.2);
 }
 
@@ -169,11 +161,8 @@ a {
 .title {
     text-align: center;
     font-family: 'LuckiestGuy';
-    /* color: rgb(255, 130, 186); */
-    /* color: rgb(189, 186, 186); */
     color: #ffd304;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
-    /* text-shadow: black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0; */
     font-size: 800%;
     margin: 0px 40px 50px 40px;
     user-select: none;
@@ -183,8 +172,6 @@ a {
 .title__up {
     text-align: center;
     font-family: 'LuckiestGuy';
-    /* color: rgb(255, 130, 186); */
-    /* color: rgb(189, 186, 186); */
     color: #ffd304;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
     font-size: 800%;
@@ -203,7 +190,6 @@ a {
 }
 
 /* title для ошибок */
-
 .title-error {
     text-align: center;
     font-family: "LuckiestGuy";
@@ -226,47 +212,81 @@ a {
 
 .mainmenu__button-play {
     text-align: center;
+    height: 70px;
+    padding: 25px 0px 10px 0px;
+}
+
+.mainmenu__button-play a {
+    text-align: center;
     cursor: pointer;
     font-size: 70px;
     font-family: "LuckiestGuy";
     user-select: none;
-    color: orange;
-    transition: transform 0.5s;
+    color: #fff;
+    transition: font-size 0.5s;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
 }
 
-.mainmenu__button-play:hover {
+.mainmenu__button-play a:hover {
     opacity: 0.9;
-    transform: scale(1.2);
+    font-size: 80px;
+}
+
+.mainmenu__button-play a:focus {
+    outline: none;
 }
 
 .mainmenu__button {
+    text-align: center;
+    height: 60px;
+    padding: 25px 0px 10px 0px;
+}
+
+.mainmenu__button a {
     text-align: center;
     cursor: pointer;
     font-size: 45px;
     font-family: "LuckiestGuy";
     user-select: none;
     color: #fff;
-    transition: transform 0.5s;
+    transition: font-size 0.5s;
+    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.mainmenu__button a:hover {
+    opacity: 0.9;
+    font-size: 55px;
+}
+
+.mainmenu__button a:focus {
+    outline: none;
+}
+
+.mainmenu__button-logout {
+    text-align: center;
+    cursor: pointer;
+    font-size: 45px;
+    font-family: "LuckiestGuy";
+    user-select: none;
+    color: #fff;
+    transition: font-size 0.5s;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
     padding: 25px 0px 10px 0px;
 }
 
-.mainmenu__button:hover {
+.mainmenu__button-logout:hover {
     opacity: 0.9;
-    transform: scale(1.2);
-    padding: 25px 0px 10px 0px;
+    font-size: 55px;
 }
 
 /* cтиль для типа button */
-
 .mainmenu__button-button {
     text-align: center;
     cursor: pointer;
     font-size: 45px;
     font-family: "LuckiestGuy";
     user-select: none;
-    color: white;
+    color: #fff;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
     background: transparent;
     border: transparent;
@@ -276,7 +296,18 @@ a {
     outline: none;
 }
 
-/*цвет текста?*/
+/* cтиль для input */
+input:focus, input:focus:invalid, input:focus:valid {
+    border-style: solid 2px #4360a1;
+}
+
+input:invalid {
+    border: solid 2px #F5192F;
+}
+
+input:valid {
+    border: solid 2px green;
+}
 
 input {
     outline: none;
@@ -290,27 +321,7 @@ input {
     border-radius: 50px;
     border: none;
     margin: 0;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 1px;
-}
-
-input:focus {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #4360a1;
-}
-
-input.error_input {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #a10918;
-}
-
-input.correct_input {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #246919;
+    border: solid 2px transparent;
 }
 
 .input_block {
@@ -322,7 +333,7 @@ input.correct_input {
 .error_text {
     width: 200px;
     background-color: #a10918;
-    color: white;
+    color: #fff;
     font-family: 'Nunito';
     border-radius: 5px;
     display: flex;
@@ -346,7 +357,6 @@ input.correct_input {
 }
 
 /* Essential CSS - Makes the effect bubble work */
-
 .bubbles {
     display: inline-block;
     position: relative;
@@ -376,4 +386,12 @@ input.correct_input {
     text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
     font-size: 200%;
     user-select: none;
+}
+
+.game-view__area {
+    height: 100% !important;
+}
+
+.game-view__canvas {
+    height: 100% !important;
 }
