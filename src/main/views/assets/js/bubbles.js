@@ -28,12 +28,7 @@
 
         for (let i = 0; i < individualDonutsSelector.length; i++) {
             let oldBottomStr = individualDonutsSelector[i].style.bottom.valueOf();
-            //TODO переделать под parseFloat
-            let oldBottomNum = +(oldBottomStr.slice(0, oldBottomStr.length - 2));
-            // var oldBottomNum;
-            // oldBottomNum = parseFloat(oldBottomStr);
-            // console.log(oldBottomStr);
-            // console.log(oldBottomNum);
+            let oldBottomNum = parseFloat(oldBottomStr);
 
             if (oldBottomNum >= window.innerHeight) {
                 individualDonutsSelector[i].style.bottom = '0px';
@@ -51,14 +46,31 @@
         // Left value is set through getting a random value from bArray
         $('.donuts').append('<div class="individual-donut" ' +
             'style="left: ' + randomValue(bArray) + 'px; ' +
+            'bottom: ' + 0 + 'px; ' +
             'width: ' + size + 'px; ' +
             'height:' + size + 'px;"></div>');
-
-        // animationFrameCreationDonuts = window.requestAnimationFrame(createDonuts);
     }, 550);
+
+    // (function createDonuts() {
+    //     // Get a random size, defined as variable so it can be used for both width and height
+    //     let size = randomValue(sArray);
+    //
+    //     // New bubble appeneded to div with it's size and left position being set inline
+    //     // Left value is set through getting a random value from bArray
+    //     $('.donuts').append('<div class="individual-donut" ' +
+    //         'style="left: ' + randomValue(bArray) + 'px; ' +
+    //         'bottom: ' + 0 + 'px; ' +
+    //         'width: ' + size + 'px; ' +
+    //         'height:' + size + 'px;"></div>');
+    //
+    //     animationFrameCreationDonuts = window.requestAnimationFrame(createDonuts);
+    // })();
 
     (function animation() {
         redrawIndividualDonut(); // перерисовываем кадр
         animationFrameMovingDonuts = window.requestAnimationFrame(animation);
     })();
+    // setInterval(function () {
+    //     redrawIndividualDonut();
+    // }, 0.01);
 })();
