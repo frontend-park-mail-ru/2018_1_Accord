@@ -170,17 +170,18 @@ a {
     font-family: 'LuckiestGuy';
     color: #ffd304;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
-    font-size: 16vw;
+    /* font-size: 16vw; */
+    font-size: 16vmin;
     margin: 0px 40px 50px 40px;
     user-select: none;
     padding-top: 70px;
 }
 
-@media screen and (min-width: 800px) {
+/* @media screen and (min-width: 800px) {
     .title {
        font-size: 800%;
     }
-}
+} */
 
 .title__up {
     text-align: center;
