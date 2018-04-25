@@ -1,6 +1,7 @@
 'use strict';
 
 import EventBus from '../../modules/eventBus.js';
+import Logger from '../../utils/logger.js';
 
 export default class BaseView {
   constructor(name) {
@@ -10,7 +11,7 @@ export default class BaseView {
     this.hide();
   }
 
-  async render(attrs) {
+  render(attrs) {
     this.el.innerHTML = this.tmpl(attrs);
     return this;
   }
@@ -28,7 +29,11 @@ export default class BaseView {
   }
 
   create() {
-    this.render();
+    this.render()
+      .then(() => {
+        Logger.log('lol');
+      });
+
     return this.show();
   }
 

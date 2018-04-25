@@ -13,5 +13,10 @@ export const events = {
     PRESSED: 'PRESSED',
     CLICKED: 'ON_CANVAS_CLICKED',
     MOUSE_MOVED: 'MOUSE_MOVED',
+  },
+  AUTH: {
+    SIGN_UP: 'SIGN_UP',
+    LOGIN: 'LOGIN',
+    LOGOUT: 'LOGOUT',
   }
 };

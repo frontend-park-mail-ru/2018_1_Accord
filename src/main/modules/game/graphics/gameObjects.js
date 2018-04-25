@@ -23,7 +23,7 @@ export const gameObjects = {
     color: '#FF4DA6',
     count: 100,
 
-    x: canvasWidth * 0.1,
+    x: canvasWidth * 0.45,
     y: canvasHeight * 0.09,
 
     v: 50,
