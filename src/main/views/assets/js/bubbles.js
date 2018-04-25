@@ -18,7 +18,7 @@
   console.log("window.innerHeight = " + window.innerHeight);
   console.log("donutsSelector.offsetWidth = " + donutsSelector.offsetWidth);
 
-  for (let i = 0; i < donutsSelector.offsetWidth - 60; i += 10) {
+  for (let i = 0; i < donutsSelector.offsetWidth - Math.max.apply(null, sArray); i += 10) {
     bArray.push(i);
   }
 
