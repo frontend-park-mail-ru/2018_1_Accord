@@ -18,7 +18,7 @@
   console.log("window.innerHeight = " + window.innerHeight);
   console.log("donutsSelector.offsetWidth = " + donutsSelector.offsetWidth);
 
-  for (let i = 0; i < donutsSelector.offsetWidth - 60; i+=10) {
+  for (let i = 0; i < donutsSelector.offsetWidth - 60; i += 10) {
     bArray.push(i);
   }
 
@@ -41,7 +41,7 @@
       let oldBottomStr = individualDonutsSelector[i].style.bottom.valueOf();
       let oldBottomNum = parseFloat(oldBottomStr);
 
-      if (individualDonutsSelector[i] != undefined) {        
+      if (individualDonutsSelector[i] != undefined) {
         individualDonutsSelector[i].style.bottom = oldBottomNum + 1.5 + 'px';
 
         if (oldBottomNum > window.innerHeight) {
@@ -60,34 +60,29 @@
 
     // New bubble appeneded to div with it's size and left position being set inline
     // Left value is set through getting a random value from bArray
-    $('.donuts').append('<div class="individual-donut" ' +
-            'style="left: ' + randomValue(bArray) + 'px; ' +
-            'bottom: ' + 0 + 'px; ' +
-            'width: ' + size + 'px; ' +
-            'height: ' + size + 'px;"></div>');
-
-    // let individual_donut = document.createElement('div');
-    // individual_donut.className = 'individual-donut';
-    // individual_donut.setAttribute('style',
-    //   '"left: ' + randomValue(bArray) + 'px; ' +
-    //         'bottom: ' + 0 + 'px; ' +
-    //         'width: ' + size + 'px; ' +
-    //         'height: ' + size + 'px;"');
-    // donutsSelector.appendChild(individual_donut);
+    let individual_donut = document.createElement('div');
+    individual_donut.className = 'individual-donut';
+    individual_donut.setAttribute('style',
+      'left: ' + randomValue(bArray) + 'px; ' +
+      'bottom: ' + 0 + 'px; ' +
+      'width: ' + size + 'px; ' +
+      'height: ' + size + 'px;');
+    donutsSelector.appendChild(individual_donut);
   }, 550);
 
   // (function createDonuts() {
   //   // Get a random size, defined as variable so it can be used for both width and height
   //   let size = randomValue(sArray);
-  
-  //   // New bubble appeneded to div with it's size and left position being set inline
-  //   // Left value is set through getting a random value from bArray
-  //   $('.donuts').append('<div class="individual-donut" ' +
-  //         'style="left: ' + randomValue(bArray) + 'px; ' +
-  //         'bottom: ' + 0 + 'px; ' +
-  //         'width: ' + size + 'px; ' +
-  //         'height:' + size + 'px;"></div>');
-  
+
+  // let individual_donut = document.createElement('div');
+  // individual_donut.className = 'individual-donut';
+  // individual_donut.setAttribute('style',
+  //   'left: ' + randomValue(bArray) + 'px; ' +
+  //   'bottom: ' + 0 + 'px; ' +
+  //   'width: ' + size + 'px; ' +
+  //   'height: ' + size + 'px;');
+  // donutsSelector.appendChild(individual_donut);
+
   //   animationFrameCreationDonuts = window.requestAnimationFrame(createDonuts);
   // })();
 
