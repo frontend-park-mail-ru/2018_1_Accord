@@ -1,5 +1,9 @@
 'use strict';
 
+// TODO подписаться на события изменения экрана
+// стопить анимацию в эти моменты
+// рассчитывать количество отображаемых пончиков в зависимости от высоты экрана
+
 (window.onload = function animateDonats() {
   // Define a blank array for the effect positions. This will be populated based on width of the title.
   let bArray = [];
@@ -31,12 +35,6 @@
   function redrawIndividualDonut() {
     let individualDonutsSelector = document.getElementsByClassName('individual-donut');
 
-    if (individualDonutsSelector.length >= 20) {
-      console.log('Overfall donuts: ' + individualDonutsSelector.length);
-      // window.cancelAnimationFrame(animationFrameCreationDonuts);
-      window.clearInterval(setTimeoutCreationDonuts);
-    }
-
     for (let i = 0; i < individualDonutsSelector.length; i++) {
       let oldBottomStr = individualDonutsSelector[i].style.bottom.valueOf();
       let oldBottomNum = parseFloat(oldBottomStr);
@@ -45,7 +43,9 @@
         individualDonutsSelector[i].style.bottom = oldBottomNum + 1.5 + 'px';
 
         if (oldBottomNum > window.innerHeight) {
+          // if bubble go over display move it for bottom of the screen
           individualDonutsSelector[i].style.bottom = 0 + 'px';
+          // move bubble for new place
           individualDonutsSelector[i].style.left = randomValue(bArray);
           // individualDonutsSelector[i].remove();
           // individualDonutsSelector[i].parentNode.removeChild(individualDonutsSelector[i]);
@@ -68,6 +68,11 @@
       'width: ' + size + 'px; ' +
       'height: ' + size + 'px;');
     donutsSelector.appendChild(individual_donut);
+
+    let individualDonutsSelector = document.getElementsByClassName('individual-donut');
+    if (individualDonutsSelector.length >= 20) {
+      window.clearInterval(setTimeoutCreationDonuts);
+    }
   }, 550);
 
   // (function createDonuts() {
@@ -90,9 +95,4 @@
     redrawIndividualDonut(); // перерисовываем кадр
     animationFrameMovingDonuts = window.requestAnimationFrame(animation);
   })();
-
-  // вариант через setInterval вместо requestAnimationFrame(animation)
-  // setInterval(function () {
-  //     redrawIndividualDonut();
-  // }, 0.01);
 });

@@ -103,8 +103,8 @@ a {
 }
 
 .topmenu__buttons-right_container {
+    position: fixed;
     right: 0;
-    position: absolute;
     margin-top: 10px;
     height: 50px;
     width: 120px;
