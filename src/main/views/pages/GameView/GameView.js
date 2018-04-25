@@ -6,7 +6,7 @@ import NavBar from '../../../components/blocks/navBar/navBar.js';
 import Game from '../../../modules/game/game.js';
 import {info} from '../../../config/textInfo.js';
 import {fetchFaildErrors} from '../../../config/textErrors.js';
-import {events} from '../../../modules/game/core/events.js';
+import {events} from '../../../modules/events.js';
 import {gameObjects} from '../../../modules/game/graphics/gameObjects.js';
 
 
