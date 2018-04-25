@@ -2,7 +2,7 @@ import EventBus from '../../eventBus.js';
 import Donut from './Donut.js';
 import Homer from './Homer.js';
 import {gameObjects} from '../graphics/gameObjects.js';
-import {events} from '../core/events.js';
+import {events} from '../../events.js';
 import CanvasText from '../graphics/text.js';
 import Circle from '../graphics/circle.js';
 import StartText from '../graphics/startText.js';

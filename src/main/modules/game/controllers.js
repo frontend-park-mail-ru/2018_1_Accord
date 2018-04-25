@@ -1,5 +1,5 @@
 import EventBus from '../eventBus.js';
-import {events} from './core/events.js';
+import {events} from '../events.js';
 
 export default class GameControllers {
   constructor() {

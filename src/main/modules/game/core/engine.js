@@ -1,5 +1,5 @@
 import EventBus from '../../eventBus.js';
-import {events} from './events.js';
+import {events} from '../../events.js';
 import Logger from '../../../utils/logger.js';
 import {gameObjects} from '../graphics/gameObjects.js';
 
@@ -31,7 +31,6 @@ export default class GameEngine {
         donutCount: gameObjects.DONUT.count,
         donutInFlight: false,
         launchTime: 0,
-        v: gameObjects.DONUT.v,
         vX: gameObjects.DONUT.vX,
       },
 
@@ -102,7 +101,7 @@ export default class GameEngine {
     this.gameLoopRequestId = requestAnimationFrame(this.gameLoop);
   }
 
-  onMouseClicked() {
+  onMouseClicked(event) {
     if (!this.state.DONUT.donutInFlight && this.state.DONUT.donutCount > 0 && this.gameStarted) {
       --this.state.DONUT.donutCount;
       this.state.DONUT.launchTime = performance.now();
