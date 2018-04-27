@@ -14,13 +14,13 @@
   let donutsSelector = document.getElementsByClassName('donuts')[0];
   // let animationFrameCreationDonuts = null;
   let setTimeoutCreationDonuts = null;
-  let animationFrameMovingDonuts = null;
+  // let animationFrameMovingDonuts = null;
 
 
   // Push the header width values to bArray
-  console.log("window.innerWidth = " + window.innerWidth);
-  console.log("window.innerHeight = " + window.innerHeight);
-  console.log("donutsSelector.offsetWidth = " + donutsSelector.offsetWidth);
+  console.log('window.innerWidth = ' + window.innerWidth);
+  console.log('window.innerHeight = ' + window.innerHeight);
+  console.log('donutsSelector.offsetWidth = ' + donutsSelector.offsetWidth);
 
   for (let i = 0; i < donutsSelector.offsetWidth - Math.max.apply(null, sArray); i += 10) {
     bArray.push(i);
@@ -93,6 +93,7 @@
 
   (function animation() {
     redrawIndividualDonut(); // перерисовываем кадр
-    animationFrameMovingDonuts = window.requestAnimationFrame(animation);
+    window.requestAnimationFrame(animation);
+    // animationFrameMovingDonuts = window.requestAnimationFrame(animation);
   })();
 });
