@@ -281,6 +281,15 @@ a {
     outline: none;
 }
 
+.mainmenu__button button {
+    transition: font-size 0.5s;
+}
+
+.mainmenu__button button:hover {
+    opacity: 0.9;
+    font-size: 55px;
+}
+
 .mainmenu__button-logout {
     text-align: center;
     cursor: pointer;
@@ -316,20 +325,19 @@ a {
 }
 
 /* cтиль для input */
-input:focus, input:focus:invalid, input:focus:valid {
-    border-style: solid 2px #4360a1;
-}
+/* input:focus, input:focus:invalid, input:focus:valid {
+    border-style: solid 2px transparent !important;
+} */
 
-input:invalid {
+/* input:invalid {
     border: solid 2px #F5192F;
 }
 
 input:valid {
     border: solid 2px green;
-}
+} */
 
 input {
-    outline: none;
     height: 50px;
     width: 280px;
     font-size: medium;
@@ -348,6 +356,23 @@ input {
     margin-bottom: 10px;
     text-align: center;
 }
+
+/* .input-invalid {
+    border: solid 2px #F5192F;
+}
+
+.input-invalid:focus  {
+    border-style: solid 2px transparent;
+}
+
+.input-valid {
+    border: solid 2px green;
+}
+
+.input-valid:focus  {
+    border-style: solid 2px transparent;
+} */
+/***************************************************/
 
 .error_text {
     width: 200px;
@@ -384,7 +409,7 @@ input {
 .individual-donut {
     width: 200px;
     height: 200px;
-    background: url("../donut2.png");
+    background: url("../donut.png");
     background-size: cover;
     position: absolute;
     bottom: -100px;

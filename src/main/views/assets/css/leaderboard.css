@@ -1,6 +1,7 @@
 .items {
     font-family: Nunito;
-    font-size: 22px;
+    font-size: 140%;
+    font-weight: bold;
     color: white;
     width: 0;
     min-width: 20rem;
