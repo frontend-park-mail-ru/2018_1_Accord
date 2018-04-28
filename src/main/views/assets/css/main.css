@@ -326,10 +326,10 @@ a {
 
 /* cтиль для input */
 /* input:focus, input:focus:invalid, input:focus:valid {
-    border-style: solid 2px transparent !important;
-} */
+    border-style: solid 2px transparent;
+}
 
-/* input:invalid {
+input:invalid {
     border: solid 2px #F5192F;
 }
 
