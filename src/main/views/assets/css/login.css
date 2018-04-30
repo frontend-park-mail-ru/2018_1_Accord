@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'Nunito';
-    src: url('../assets/fonts/Nunito-ExtraLight.ttf');
+    src: url('../fonts/Nunito-ExtraLight.ttf');
 }
 
 @font-face {
     font-family: 'LuckiestGuy';
-    src: url('../assets/fonts/LuckiestGuy-Regular.ttf');
+    src: url('../fonts/LuckiestGuy-Regular.ttf');
 }
 
 .login__form {

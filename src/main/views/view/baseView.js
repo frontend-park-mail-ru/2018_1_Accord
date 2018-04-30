@@ -32,13 +32,7 @@ export default class BaseView {
   }
 
   create() {
-    try {
-      this.render();
-    } catch (_) {
-      this.render().then();
-    }
-
-    return this.show();
+    return this.render().show();
   }
 
   destroy() {

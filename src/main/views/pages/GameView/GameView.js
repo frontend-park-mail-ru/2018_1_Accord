@@ -26,8 +26,10 @@ export default class GameView extends BaseView {
     }.bind(this));
   }
 
-  async render() {
+  render() {
     super.render();
+
+    this.loader.style.display = 'none';
 
     this.game = this.el.querySelector(selector.GAME_VIEW);
     this.unAuthInfo = this.game.querySelector(selector.GAME_UNAUTH_INFO);
@@ -36,36 +38,15 @@ export default class GameView extends BaseView {
     this.errorField = this.game.querySelector(selector.GAME_ERROR);
     this.errorField.style.display = 'none';
 
-    try {
-      this.user = await userService.getUser();
-
-      if (!this.user) {
-        this.unAuthInfo.style.display = 'block';
-        this.unAuthInfo.innerText = info.gameUnAuthInfo;
-
-      } else {
-        this.navBar = [
-          selector.MUTE_BUTTON,
-          selector.BACK_BUTTON,
-          selector.SETTINGS_BUTTON,
-          selector.PROFILE_BUTTON
-        ];
-
-        this.unAuthInfo.style.display = 'none';
-      }
-
-    } catch (err) {
-      this.navBar = [
-        selector.MUTE_BUTTON,
-        selector.BACK_BUTTON,
-        selector.SETTINGS_BUTTON,
-      ];
-      this.errorField.innerText = fetchFaildErrors.noConnection;
-      this.errorField.style.display = 'block';
-      Logger.error(err);
-    }
-
-    new NavBar(this.el, this.navBar, this.user);
+    userService.getUser()
+      .then((user) => {
+        this._resolveUser(user);
+        new NavBar(this.el, this.navBar, this.user);
+      })
+      .catch((error) => {
+        this._rejectUser(error);
+        new NavBar(this.el, this.navBar, this.user);
+      });
 
     const canvas = this.el.querySelector(selector.CANVAS);
     canvas.height = gameObjects.CANVAS.height;
@@ -74,5 +55,33 @@ export default class GameView extends BaseView {
     this.gameProc.start();
 
     return this;
+  }
+
+  _resolveUser(user) {
+    if (!user) {
+      this.unAuthInfo.style.display = 'block';
+      this.unAuthInfo.innerText = info.gameUnAuthInfo;
+
+    } else {
+      this.navBar = [
+        selector.MUTE_BUTTON,
+        selector.BACK_BUTTON,
+        selector.SETTINGS_BUTTON,
+        selector.PROFILE_BUTTON
+      ];
+
+      this.unAuthInfo.style.display = 'none';
+    }
+  }
+
+  _rejectUser(error) {
+    this.navBar = [
+      selector.MUTE_BUTTON,
+      selector.BACK_BUTTON,
+      selector.SETTINGS_BUTTON,
+    ];
+    this.errorField.innerText = fetchFaildErrors.noConnection;
+    this.errorField.style.display = 'block';
+    Logger.error(error);
   }
 }
