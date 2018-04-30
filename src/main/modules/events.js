@@ -15,6 +15,11 @@ export const events = {
     MOUSE_MOVED: 'MOUSE_MOVED',
   },
 
+  AUTH: {
+    GET_USER: 'GET_USER',
+    USER: 'USER',
+  },
+
   ROUTE: {
     SIGN_UP: 'SIGN_UP',
     LOGIN: 'LOGIN',

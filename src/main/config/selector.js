@@ -11,6 +11,7 @@ export const selector = {
 
   //blocks for views
   NAV_BAR: '.nav__bar',
+  LOADER: '.doughnut',
   MENU_ITEMS: '.main__menu-items',
 
   CANVAS: '.game-view__canvas',
