@@ -20,10 +20,10 @@ export default class SignUpForm {
     this.submit = this.form.querySelector(selector.SUBMIT_BUTTON);
     this.errorField = this.form.querySelector(selector.VALIDATE_ERR);
 
-    this.email.onInput(this.validateEmail.bind(this), this.errorField);
-    this.password.onInput(this.validatePassword.bind(this), this.errorField);
-    this.username.onInput(this.validateUsername.bind(this), this.errorField);
-    this.passwordConfirm.onInput(this.confirmPassword.bind(this), this.errorField);
+    this.email.onInput(this.validateEmail.bind(this), this.email.input, this.errorField);
+    this.password.onInput(this.validatePassword.bind(this), this.password.input, this.errorField);
+    this.username.onInput(this.validateUsername.bind(this), this.username.input, this.errorField);
+    this.passwordConfirm.onInput(this.confirmPassword.bind(this), this.confirmPassword.input, this.errorField);
   }
 
   render() {
@@ -64,20 +64,34 @@ export default class SignUpForm {
     if (!formState.state) {
       this.errorField.innerText = `${formState.errMessage}\n`;
       this.errorField.style.display = 'block';
+      this.email.input.style.border = 'solid 2px #F5192F';
 
       this.email.setStatus(true);
+    } else {
+      this.email.input.style.border = 'solid 2px green';
+      // this.email.input.className = 'form__field-input input-valid';
+
+      if( this.checkFormState() ) {
+        this.errorField.innerText = '';
+      }
     }
   }
 
   validatePassword() {
     const formState = Validator.checkPassword(this.password.getData());
     if (!formState.state) {
-      // if(this.errorField.textContent === '') {
       this.errorField.innerText = `${formState.errMessage}\n`;
-      // }
       this.errorField.style.display = 'block';
+      this.password.input.style.border = 'solid 2px #F5192F';
 
       this.password.setStatus(true);
+    } else {
+      this.password.input.style.border = 'solid 2px green';
+      // this.password.input.className = 'form__field-input input-valid';
+
+      if( this.checkFormState() ) {
+        this.errorField.innerText = '';
+      }
     }
   }
 
@@ -88,6 +102,14 @@ export default class SignUpForm {
       this.errorField.style.display = 'block';
 
       this.username.setStatus(true);
+      this.username.input.style.border = 'solid 2px #F5192F';
+    }  else {
+      this.username.input.style.border = 'solid 2px green';
+      // this.password.input.className = 'form__field-input input-valid';
+
+      if( this.checkFormState() ) {
+        this.errorField.innerText = '';
+      }
     }
   }
 
@@ -98,6 +120,14 @@ export default class SignUpForm {
       this.errorField.style.display = 'block';
 
       this.passwordConfirm.setStatus(true);
+      this.passwordConfirm.input.style.border = 'solid 2px #F5192F';
+    }  else {
+      this.passwordConfirm.input.style.border = 'solid 2px green';
+      // this.password.input.className = 'form__field-input input-valid';
+
+      if( this.checkFormState() ) {
+        this.errorField.innerText = '';
+      }
     }
   }
 }

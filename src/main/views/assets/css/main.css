@@ -4,30 +4,33 @@
 }
 
 @font-face {
-    font-family: 'Dunkin';
-    src: url('../fonts/Dunkin.otf');
-}
-
-@font-face {
     font-family: 'Nunito';
     src: url('../fonts/Nunito-ExtraLight.ttf');
 }
 
+* {
+    outline: none;
+}
+
 html {
+    min-width: 400px;
     width: 100%;
-    min-width: 25rem;
+    height: 100%;
 }
 
 body {
-    height: min-content;
+    min-width: 400px;
+    height: 100%;
     margin: 0;
-    background: #fff url('../donuts_font.png') 100% 100%;
-    background-size: cover;
+    /* background: #fff url('../donuts_font.png') 100% 100%;
+    background-size: cover; */
+    background-color: #59c4eb;
 }
 
 #root {
-    height: min-content;
+    min-width: 400px;
     width: 100%;
+    height: 100%;
 }
 
 .game-view {
@@ -37,7 +40,6 @@ body {
 }
 
 .menu {
-    height: min-content;
     width: 100%;
     z-index: 0;
 }
@@ -54,10 +56,10 @@ a {
 }
 
 .topmenu {
-    height: 60px;
+    min-width: 400px;
     width: 100%;
-    min-width: 25rem;
-    position: relative;
+    height: 60px;
+    /* position: relative; */
     z-index: 1;
 }
 
@@ -101,8 +103,8 @@ a {
 }
 
 .topmenu__buttons-right_container {
+    position: fixed;
     right: 0;
-    position: absolute;
     margin-top: 10px;
     height: 50px;
     width: 120px;
@@ -151,9 +153,14 @@ a {
 }
 
 /* стили для центрального меню */
+.view {
+    min-width: 400px;
+}
+
 
 .lowermenu {
     display: table-cell;
+    text-align: center;
     align-items: center;
     padding: 1rem 0;
 }
@@ -163,21 +170,34 @@ a {
     font-family: 'LuckiestGuy';
     color: #ffd304;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
-    font-size: 800%;
+    /* font-size: 16vw; */
+    font-size: 16vmin;
     margin: 0px 40px 50px 40px;
     user-select: none;
     padding-top: 70px;
 }
+
+/* @media screen and (min-width: 800px) {
+    .title {
+       font-size: 800%;
+    }
+} */
 
 .title__up {
     text-align: center;
     font-family: 'LuckiestGuy';
     color: #ffd304;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
-    font-size: 800%;
+    font-size: 16vw;
     margin: 0px 40px 0px 40px;
     user-select: none;
     padding-top: 20px;
+}
+
+@media screen and (min-width: 800px) {
+    .title__up {
+        font-size: 800%;
+    }
 }
 
 .title__sub {
@@ -213,7 +233,6 @@ a {
 .mainmenu__button-play {
     text-align: center;
     height: 70px;
-    padding: 25px 0px 10px 0px;
 }
 
 .mainmenu__button-play a {
@@ -232,9 +251,9 @@ a {
     font-size: 80px;
 }
 
-.mainmenu__button-play a:focus {
+/* .mainmenu__button-play a:focus {
     outline: none;
-}
+} */
 
 .mainmenu__button {
     text-align: center;
@@ -260,6 +279,15 @@ a {
 
 .mainmenu__button a:focus {
     outline: none;
+}
+
+.mainmenu__button button {
+    transition: font-size 0.5s;
+}
+
+.mainmenu__button button:hover {
+    opacity: 0.9;
+    font-size: 55px;
 }
 
 .mainmenu__button-logout {
@@ -297,8 +325,8 @@ a {
 }
 
 /* cтиль для input */
-input:focus, input:focus:invalid, input:focus:valid {
-    border-style: solid 2px #4360a1;
+/* input:focus, input:focus:invalid, input:focus:valid {
+    border-style: solid 2px transparent;
 }
 
 input:invalid {
@@ -307,10 +335,9 @@ input:invalid {
 
 input:valid {
     border: solid 2px green;
-}
+} */
 
 input {
-    outline: none;
     height: 50px;
     width: 280px;
     font-size: medium;
@@ -329,6 +356,23 @@ input {
     margin-bottom: 10px;
     text-align: center;
 }
+
+/* .input-invalid {
+    border: solid 2px #F5192F;
+}
+
+.input-invalid:focus  {
+    border-style: solid 2px transparent;
+}
+
+.input-valid {
+    border: solid 2px green;
+}
+
+.input-valid:focus  {
+    border-style: solid 2px transparent;
+} */
+/***************************************************/
 
 .error_text {
     width: 200px;
@@ -357,15 +401,15 @@ input {
 }
 
 /* Essential CSS - Makes the effect bubble work */
-.bubbles {
+.donuts {
     display: inline-block;
     position: relative;
 }
 
-.individual-bubble {
+.individual-donut {
     width: 200px;
     height: 200px;
-    background: url("../donut2.png");
+    background: url("../donut.png");
     background-size: cover;
     position: absolute;
     bottom: -100px;
@@ -373,11 +417,6 @@ input {
     transition: transform 550ms;
 }
 
-/* unuse in present moment*/
-
-.individual-bubble:hover {
-    transform: scale(1.2, 1.2);
-}
 
 .game__title-error {
     text-align: center;
