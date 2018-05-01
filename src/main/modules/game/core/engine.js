@@ -107,6 +107,7 @@ export default class GameEngine {
       --this.state.DONUT.donutCount;
       this.state.DONUT.launchTime = performance.now();
       this.state.DONUT.donutInFlight = true;
+      this.state.MOUSE_POS = this._getMousePos(event);
       EventBus.emit(events.GAME.STATE_CHANGED, this.state);
     }
   }
