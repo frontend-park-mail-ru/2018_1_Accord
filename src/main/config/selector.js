@@ -13,6 +13,7 @@ export const selector = {
   NAV_BAR: '.nav__bar',
   LOADER: '.loader',
   MENU_ITEMS: '.main__menu-items',
+  START_GAME: '.start_game',
 
   CANVAS: '.game-view__canvas',
 
@@ -50,5 +51,11 @@ export const selector = {
   LOGIN_BUTTON: '.login-button',
   LOGOUT_BUTTON: '.logout-button',
   HELP_BUTTON: '.help-button',
-  LEADER_BOARD_BUTTON: '.leader-board-button'
+  LEADER_BOARD_BUTTON: '.leader-board-button',
+
+  //start game view elements
+  SELECT: '.start_game__select-select',
+  SINGLE_BUTTON: '.start_game__buttons-single',
+  BATTLE_BUTTON: '.start_game__buttons-battle',
+
 };
