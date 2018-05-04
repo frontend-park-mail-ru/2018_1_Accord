@@ -6,19 +6,27 @@
 
     <title>Donuts</title>
     <link rel="shortcut icon" href="main/views/assets/donut.ico" type="image/x-icon">
-
+  
+    <link rel="stylesheet" href="main/views/assets/css/main.css">
     <link rel="stylesheet" href="main/views/assets/css/signup.css">
+    <link rel="stylesheet" href="main/views/assets/css/game.css">
     <link rel="stylesheet" href="main/views/assets/css/login.css">
     <link rel="stylesheet" href="main/views/assets/css/leaderboard.css">
     <link rel="stylesheet" href="main/views/assets/css/about.css">
-    <link rel="stylesheet" href="main/views/assets/css/main.css">
+    <link rel="stylesheet" href="main/views/assets/css/Loader.css">
 </head>
 
 <body>
-    <div id="root"></div>
+    <div class="loader">
+        <div class="doughnut"></div>
+        <div class="loading-text">Loading</div>
+    </div>
+
+    <div id="root" class="donuts"></div>
 </body>
 
-<script src="addSw.js"></script>
+<!--<script src="addSw.js"></script>-->
+
 <script src="main/components/blocks/navBar/NavBar.tmpl.js"></script>
 <script src="main/views/pages/MainMenuView/MainMenuView.tmpl.js"></script>
 <script src="main/views/pages/GameView/GameView.tmpl.js"></script>
@@ -29,4 +37,5 @@
 <script src="main/views/pages/HelpView/HelpView.tmpl.js"></script>
 
 <script type="module" src="main/main.js"></script>
+<script type="text/javascript" src="main/views/assets/js/bubbles.js"></script>
 </html>

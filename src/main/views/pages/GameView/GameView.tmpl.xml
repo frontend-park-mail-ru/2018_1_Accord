@@ -10,6 +10,8 @@
 
         </div>
 
+        <fest:include src="../../../components/blocks/startGame/StartGame.tmpl.xml"/>
+
         <div class="game-view__area">
             <canvas class="game-view__canvas"></canvas>
         </div>

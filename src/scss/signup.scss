@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fonts/Nunito-ExtraLight.ttf');
+}
+
+@font-face {
+    font-family: 'LuckiestGuy';
+    src: url('../fonts/LuckiestGuy-Regular.ttf');
+}
+
+.signup__form {
+    margin-top: 20px;
+}
+
+.go-to-login {
+    text-align: center;
+    font-family: Nunito;
+    color: #f3f8f0;
+    font-size: 22px;
+}
+
+.go-to-login__button {
+    margin-left: 5px;
+    color: gold;
+    display: inline-block;
+    text-decoration: underline;
+}
+
+.go-to-login__button:hover {
+    color: #ffd304;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+

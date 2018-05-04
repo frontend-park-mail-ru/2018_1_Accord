@@ -8,40 +8,43 @@ import {fetchFaildErrors} from '../../../config/textErrors.js';
 export default class HelpView extends BaseView {
   constructor() {
     super('main/views/pages/HelpView/HelpView.tmpl');
-  }
-
-  async render() {
-    super.render();
-
-    this.help = this.el.querySelector(selector.HELP_VIEW);
-
-    this.errorField = this.help.querySelector(selector.HELP_ERROR);
-    this.errorField.style.display = 'none';
 
     this.navBar = [
       selector.MUTE_BUTTON,
       selector.BACK_BUTTON,
       selector.SETTINGS_BUTTON
     ];
+  }
 
-    try {
-      this.user = await userService.getUser();
+  render() {
+    super.render();
 
-      if (this.user) {
-        this.navBar = [
-          selector.MUTE_BUTTON,
-          selector.BACK_BUTTON,
-          selector.SETTINGS_BUTTON,
-          selector.PROFILE_BUTTON
-        ];
-      }
-    } catch (err) {
-      this.errorField.innerText = fetchFaildErrors.noConnection;
-      this.errorField.style.display = 'block';
-      Logger.error(err);
-    }
+    this.loader.style.display = 'none';
+    this.help = this.el.querySelector(selector.HELP_VIEW);
 
-    new NavBar(this.help, this.navBar, this.user);
+    this.errorField = this.help.querySelector(selector.HELP_ERROR);
+    this.errorField.style.display = 'none';
+
+    userService.getUser()
+      .then((user) => {
+        if (user) {
+          this.navBar = [
+            selector.MUTE_BUTTON,
+            selector.BACK_BUTTON,
+            selector.SETTINGS_BUTTON,
+            selector.PROFILE_BUTTON
+          ];
+        }
+        new NavBar(this.help, this.navBar, this.user);
+      })
+      .catch((error) => {
+        this.errorField.innerText = fetchFaildErrors.noConnection;
+        this.errorField.style.display = 'block';
+        Logger.error(error);
+
+        new NavBar(this.help, this.navBar, this.user);
+      });
+
     return this;
   }
 }

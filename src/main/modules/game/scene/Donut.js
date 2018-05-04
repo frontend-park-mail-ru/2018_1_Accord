@@ -31,6 +31,10 @@ export default class Donut extends Figure {
    * @returns {{onBottom: boolean, collision: boolean}}
    */
   fly(dt, flightTime, collCoords) {
+    //
+    // if (this.angle < 0) {
+    //
+    // }
     this.vY = g * flightTime - this.v * Math.sin(this.angle);
     this.vX = this.v * Math.cos(this.angle);
 
@@ -78,6 +82,13 @@ export default class Donut extends Figure {
    */
   countAngle(mousePos) {
     this.angle = Math.atan((mousePos.y - this.y) / (mousePos.x - this.x)) || 0;
+  }
+
+  countVelocity(mousePos) {
+    const a = Math.abs(mousePos.y - this.y);
+    const b = Math.abs(mousePos.x - this.x);
+
+    this.v = Math.round(Math.sqrt(a ** 2 + b ** 2) * 0.2);
   }
 
   reset() {

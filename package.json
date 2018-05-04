@@ -4,10 +4,11 @@
   "description": "Accord team's first SPA",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build-fest && npm run build-babel",
+    "build": "npm run style && npm run build-fest && npm run build-babel",
     "build-fest": "./node_modules/.bin/fest-build --dir=src",
     "test": "eslint src --fix",
     "build-babel": "babel src --out-dir dist",
+    "style": "gulp style",
     "start": "npm run build & node server"
   },
   "files": [
@@ -24,13 +25,17 @@
     "morgan": "^1.9.0",
     "path": "^0.12.7",
     "pug": "^2.0.1",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "webpack": "^4.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
-    "eslint": "^4.18.2"
+    "eslint": "^4.18.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-sass": "^4.0.1"
   }
 }

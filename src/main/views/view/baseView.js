@@ -1,13 +1,16 @@
 'use strict';
 
 import EventBus from '../../modules/eventBus.js';
-import Logger from '../../utils/logger.js';
+import {selector} from '../../config/selector.js';
 
 export default class BaseView {
   constructor(name) {
     this.tmpl = window.fest[name];
     this.el = document.createElement('div');
     this.bus = EventBus;
+
+    this.loader = document.querySelector(selector.LOADER);
+
     this.hide();
   }
 
@@ -29,12 +32,7 @@ export default class BaseView {
   }
 
   create() {
-    this.render()
-      .then(() => {
-        Logger.log('lol');
-      });
-
-    return this.show();
+    return this.render().show();
   }
 
   destroy() {

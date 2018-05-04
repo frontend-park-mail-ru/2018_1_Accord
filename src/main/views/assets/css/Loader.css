@@ -1,0 +1,42 @@
+@keyframes CounterRotate {
+    from {
+        transform: rotate(360deg)
+    }
+    to {
+        transform: rotate(0deg)
+    }
+}
+
+.loader {
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.loading-text {
+    display: block;
+    margin-top: 5%;
+
+    text-align: center;
+    font-family: "LuckiestGuy";
+    color: #f3f8f0;
+    font-size: 2.3em;
+}
+
+.doughnut {
+    display: inline-block;
+
+    background-image: url("../donut.ico");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 150px;
+    width: 150px;
+    transform: translate(-50%, -50%);
+
+    animation-name: CounterRotate;
+    animation-duration: 2s;
+    animation-direction: forwards;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+}

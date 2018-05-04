@@ -1,11 +1,16 @@
+:root {
+    --color-text-gold: gold;
+    --color-text-hover: #ffd304;
+}
+
 @font-face {
     font-family: 'Nunito';
-    src: url('../assets/fonts/Nunito-ExtraLight.ttf');
+    src: url('../fonts/Nunito-ExtraLight.ttf');
 }
 
 @font-face {
     font-family: 'LuckiestGuy';
-    src: url('../assets/fonts/LuckiestGuy-Regular.ttf');
+    src: url('../fonts/LuckiestGuy-Regular.ttf');
 }
 
 .login__form {
@@ -21,14 +26,12 @@
 
 .go-to-sigup__button {
     margin-left: 10px;
-    color: gold;
+    color: var(--color-text-gold);
     display: inline-block;
     text-decoration: underline;
-    /* transition: transform 550ms; */
 }
 
 .go-to-sigup__button:hover {
-    /* transform: scale(1.2); */
-    color: #ffd304;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    color: var(--color-text-hover);
+    text-shadow: 2px 2px 2px var(--color-text-shadow-grey);
 }
