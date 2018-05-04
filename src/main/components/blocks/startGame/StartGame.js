@@ -36,5 +36,10 @@ export default class StartGameView {
     if (!this.userData) {
       this.battleButton.style.display = 'none';
     }
+
+  }
+
+  render() {
+    return this.startGame;
   }
 }

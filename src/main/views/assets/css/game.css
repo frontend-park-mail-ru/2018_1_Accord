@@ -1,7 +1,5 @@
 .game-view {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
 
     background-color: #59c4eb ;
@@ -15,8 +13,8 @@
     align-items: center;
     justify-content: center;
 
-    height: 70%;
-    width: 40%;
+    height: 40%;
+    width: 99%;
 
     flex-direction: column;
     margin-top: 15%;
@@ -32,10 +30,15 @@
     background-size: cover;
     position: absolute;
 
-    width: 250px;
-    height: 417px;
+    width: 15%;
+    height: 40%;
+    min-height: 275px;
+    min-width: 200px;
+    max-height: 417px;
+    max-width: 250px;
 
-    margin: 0 0 0 300px;
+    margin: 15% 0 0 20%;
+
 }
 
 .start_game__select {
@@ -43,8 +46,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    width: 100%;
-    height: 40%;
+    width: 50%;
+    height: 30%;
 }
 
 .start_game__select-text {
@@ -148,9 +151,7 @@
 }
 
 .game-view__area {
-    height: 100% !important;
 }
 
 .game-view__canvas {
-    height: 100% !important;
 }
