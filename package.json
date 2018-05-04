@@ -4,7 +4,8 @@
   "description": "Accord team's first SPA",
   "main": "index.js",
   "scripts": {
-    "build": "npm run sass && npm run build-fest && npm run build-babel",
+    "autoprefixer": "gulp autoprefixer",
+    "build": "npm run sass && npm run autoprefixer && npm run build-fest && npm run build-babel",
     "build-fest": "./node_modules/.bin/fest-build --dir=src",
     "test": "eslint src --fix",
     "build-babel": "babel src --out-dir dist",
@@ -35,6 +36,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.18.2",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
     "gulp-sass": "^4.0.1"
   }
 }
