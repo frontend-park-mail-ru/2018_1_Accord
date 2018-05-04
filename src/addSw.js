@@ -4,8 +4,7 @@
       .then((registration) => {
         console.log('sw registation on scope:', registration.scope);
       })
-      .catch((err) => {
-        console.error(err);
+      .catch(() => {
       });
   }
 })();
