@@ -1,8 +1,3 @@
-:root {
-    --color-text-gold: gold;
-    --color-text-hover: #ffd304;
-}
-
 @font-face {
     font-family: 'Nunito';
     src: url('../fonts/Nunito-ExtraLight.ttf');
@@ -26,12 +21,12 @@
 
 .go-to-sigup__button {
     margin-left: 10px;
-    color: var(--color-text-gold);
+    color: gold;
     display: inline-block;
     text-decoration: underline;
 }
 
 .go-to-sigup__button:hover {
-    color: var(--color-text-hover);
-    text-shadow: 2px 2px 2px var(--color-text-shadow-grey);
+    color: #ffd304;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }

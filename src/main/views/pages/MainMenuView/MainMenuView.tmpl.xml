@@ -3,7 +3,7 @@
 
         <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
 
-        <div class="menu bubbles">
+        <div class="menu">
             <div class="menu-center-block">
                 <div class="main__menu-items lowermenu">
                     <div class="main__menu-error title-error" style="display: none"> </div>

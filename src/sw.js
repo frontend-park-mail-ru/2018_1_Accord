@@ -25,22 +25,25 @@ this.addEventListener('install', (event) => {
 
 
 this.addEventListener('fetch', (event) => {
+  const path = event.request.url;
+
   event.respondWith(
     caches.match(event.request)
       .then((cachedResponse) => {
         if (navigator.onLine) {
           return fetch(event.request).then((serverResponse) => {
-            return caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, serverResponse.clone());
-              return serverResponse;
-            });
+            if (!~path.indexOf('https://backend-accord-02-2018.herokuapp.com/')) {
+              let serverResponseClone = serverResponse.clone();
+              caches.open(CACHE_NAME).then((cache) => {
+                cache.put(event.request, serverResponseClone);
+              });
+            }
+            return serverResponse;
           });
-        } else {
+        }
+        else {
           return cachedResponse;
         }
-      })
-      .catch((err) => {
-        console.error(err);
       })
   );
 });
