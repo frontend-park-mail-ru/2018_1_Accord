@@ -1,8 +1,14 @@
+:root {
+    --color-text: white;
+    --color-border-bottom: #ffd403;
+    --color-shadow: red;
+}
+
 .items {
     font-family: Nunito;
     font-size: 140%;
     font-weight: bold;
-    color: white;
+    color: var(--color-text);
     width: 0;
     min-width: 20rem;
     margin: 1.2em auto auto;
@@ -16,22 +22,22 @@ col.place, col.score {
     height: 2.8rem;
     line-height: 2.8rem;
     text-align: center;
-    border-bottom: 2px solid #ffd403;
+    border-bottom: 2px solid var(--color-border-bottom);
     transition: transform 550ms;
 }
 
 .items tr:hover td {
-    border-bottom: 3px solid #ffd403;
+    border-bottom: 3px solid var(--color-border-bottom);
 }
 
 .items tr:hover td {
     transform: scale(1.1);
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: 2px 2px 2px var(--color-text-shadow-grey);
 }
 
 .you {
     text-shadow: 
-    0 0 30px #fff,
-    0 0 10px red;
+    0 0 30px var(--color-text),
+    0 0 10px var(--color-shadow);
     font-weight: bold;
 }
