@@ -17,11 +17,6 @@
   // let animationFrameMovingDonuts = null;
 
 
-  // Push the header width values to bArray
-  console.log('window.innerWidth = ' + window.innerWidth);
-  console.log('window.innerHeight = ' + window.innerHeight);
-  console.log('donutsSelector.offsetWidth = ' + donutsSelector.offsetWidth);
-
   for (let i = 0; i < donutsSelector.offsetWidth - Math.max.apply(null, sArray); i += 10) {
     bArray.push(i);
   }

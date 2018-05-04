@@ -6,7 +6,9 @@
 
     <title>Donuts</title>
     <link rel="shortcut icon" href="main/views/assets/donut.ico" type="image/x-icon">
-
+  
+    <link rel="stylesheet" href="main/views/assets/css/game.css">
+    <link rel="stylesheet" href="main/views/assets/css/Loader.css">
     <link rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/leaderboard.css">
@@ -15,8 +17,12 @@
 </head>
 
 <body>
-    <!--<div id="root"></div>-->
-     <div id="root" class="donuts"></div>
+    <div class="loader">
+        <div class="doughnut"></div>
+        <div class="loading-text">Loading</div>
+    </div>
+
+    <div id="root" class="donuts"></div>
 </body>
 
 <!--<script src="addSw.js"></script>-->

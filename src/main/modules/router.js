@@ -2,7 +2,7 @@ import userService from '../services/UserService.js';
 import {pagePaths} from '../config/pagePaths.js';
 import Logger from '../utils/logger.js';
 import EventBus from './eventBus.js';
-import {events} from './game/core/events.js';
+import {events} from './events.js';
 
 export default class Router {
 
@@ -82,13 +82,13 @@ export default class Router {
    * @return {Router}
    */
   start() {
-    EventBus.on(events.AUTH.SIGN_UP, () => {
+    EventBus.on(events.ROUTE.SIGN_UP, () => {
       this.open(pagePaths.START_PATH);
     });
-    EventBus.on(events.AUTH.LOGIN, () => {
+    EventBus.on(events.ROUTE.LOGIN, () => {
       this.open(pagePaths.START_PATH);
     });
-    EventBus.on(events.AUTH.LOGOUT, () => {
+    EventBus.on(events.ROUTE.LOGOUT, () => {
       this.open(pagePaths.START_PATH);
     });
 

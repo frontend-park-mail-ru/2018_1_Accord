@@ -30,12 +30,6 @@ body {
   height: 100%;
 }
 
-.game-view {
-  height: min-content;
-  margin: 0;
-  background-color: #59c4eb;
-}
-
 .menu {
   width: 100%;
   z-index: 0;
@@ -314,21 +308,4 @@ input {
   bottom: -100px;
   z-index: -1;
   transition: transform 550ms;
-}
-
-.game__title-error {
-  text-align: center;
-  font-family: "LuckiestGuy";
-  color: #f92397;
-  text-shadow: 2px 3px 2px $color-text-shadow-grey;
-  font-size: 200%;
-  user-select: none;
-}
-
-.game-view__area {
-  height: 100% !important;
-}
-
-.game-view__canvas {
-  height: 100% !important;
 }
