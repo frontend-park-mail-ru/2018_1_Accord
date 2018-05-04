@@ -54,11 +54,6 @@ export default class GameView extends BaseView {
         this._showStartMenu();
       });
 
-    // canvas.height = gameObjects.CANVAS.height;
-    // canvas.width = gameObjects.CANVAS.width;
-    // this.gameProc = new Game(canvas);
-    // this.gameProc.start();
-
     return this;
   }
 
@@ -72,6 +67,12 @@ export default class GameView extends BaseView {
     this.bus.on(events.START_GAME.SINGLE_CLICKED, () => {
       this.gameSettings.player = gameSettings.player.SINGLE_PLAYER;
       Logger.log('game settings: ', this.gameSettings);
+
+
+      this.canvas.height = gameObjects.CANVAS.height;
+      this.canvas.width = gameObjects.CANVAS.width;
+      this.gameProc = new Game(this.canvas);
+      this.gameProc.start();
     });
 
     this.bus.on(events.START_GAME.BATTLE_CLICKED, () => {
