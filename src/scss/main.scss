@@ -1,180 +1,73 @@
-@font-face {
-    font-family: 'LuckiestGuy';
-    src: url('../fonts/LuckiestGuy-Regular.ttf');
-}
+@import 'fonts';
+@import 'topmenu';
 
-@font-face {
-    font-family: 'Nunito';
-    src: url('../fonts/Nunito-ExtraLight.ttf');
-}
+$color-text-shadow: rgba(0, 0, 0, 1);
+$color-text-shadow-grey: rgba(0, 0, 0, 0.4);
+$color-text-shadow-grey-light: rgba(0, 0, 0, 0.2);
 
 * {
-    outline: none;
+  outline: none;
 }
 
 html {
-    min-width: 400px;
-    width: 100%;
-    height: 100%;
+  min-width: 400px;
+  width: 100%;
+  height: 100%;
 }
 
 body {
-    min-width: 400px;
-    height: 100%;
-    margin: 0;
-    /* background: #fff url('../donuts_font.png') 100% 100%;
-    background-size: cover; */
-    background-color: #59c4eb;
+  min-width: 400px;
+  height: 100%;
+  margin: 0;
+  /* background: #fff url('../donuts_font.png') 100% 100%;
+  background-size: cover; */
+  background-color: #59c4eb;
 }
 
 #root {
-    min-width: 400px;
-    width: 100%;
-    height: 100%;
+  min-width: 400px;
+  width: 100%;
+  height: 100%;
 }
-//
-//.game-view {
-//    height: min-content;
-//    margin: 0;
-//    background-color: #59c4eb ;
-//}
 
 .menu {
-    width: 100%;
-    z-index: 0;
+  width: 100%;
+  z-index: 0;
 }
 
 .menu-center-block {
-    height: min-content;
-    width: 100%;
-    display: table;
+  height: min-content;
+  width: 100%;
+  display: table;
 }
 
 a {
-    text-decoration: none;
-    color: #fff;
-}
-
-.topmenu {
-    min-width: 400px;
-    width: 100%;
-    height: 60px;
-    /* position: relative; */
-    z-index: 1;
-}
-
-.topmenu__user {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-}
-
-.topmenu__user__avatar {
-    margin: 5px;
-    height: 40px;
-    width: 40px;
-    /* background: url("../avatar.jpg"); */
-    background-size: cover;
-    border-radius: 100%;
-    transition: transform 0.5s;
-}
-
-.topmenu__user__avatar:hover {
-    transform: scale(1.2);
-}
-
-.topmenu__user__name {
-    padding: 10px 0 0 8px;
-    font-family: "Nunito";
-    color: #f3f8f0;
-    font-size: 20px;
-}
-
-.topmenu_user__left-position {
-    position: absolute;
-    top: 10px;
-    left: 70px;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-}
-
-.topmenu__buttons-right_container {
-    position: fixed;
-    right: 0;
-    margin-top: 10px;
-    height: 50px;
-    width: 120px;
-}
-
-.topmenu__buttons-left_container {
-    position: absolute;
-    top: 10px;
-    left: 0;
-    height: 50px;
-    width: 70px;
-    padding: 0 0 0 20px;
-}
-
-.topmenu__button {
-    height: 40px;
-    width: 40px;
-    margin: 5px;
-    display: inline-block;
-    cursor: pointer;
-    background-size: cover;
-    user-select: none;
-    transition: transform 0.5s;
-}
-
-.topmenu__button:hover {
-    opacity: 0.9;
-    transform: scale(1.2);
-}
-
-.topmenu__button-mute.m-unmuted {
-    background-image: url('../icons/i-unmuted.png');
-}
-
-.topmenu__button-mute.m-muted {
-    background-image: url('../icons/i-muted.png');
-}
-
-.topmenu__button-settings {
-    display: inline-block !important;
-    background-image: url('../icons/i-settings.png');
-}
-
-.topmenu__button-back {
-    background-image: url('../icons/i-back.png');
+  text-decoration: none;
+  color: #fff;
 }
 
 /* стили для центрального меню */
 .view {
-    min-width: 400px;
+  min-width: 400px;
 }
 
-
 .lowermenu {
-    display: table-cell;
-    text-align: center;
-    align-items: center;
-    padding: 1rem 0;
+  display: table-cell;
+  text-align: center;
+  align-items: center;
+  padding: 1rem 0;
 }
 
 .title {
-    text-align: center;
-    font-family: 'LuckiestGuy';
-    color: #ffd304;
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
-    /* font-size: 16vw; */
-    font-size: 16vmin;
-    margin: 0px 40px 50px 40px;
-    user-select: none;
-    padding-top: 70px;
+  text-align: center;
+  font-family: 'LuckiestGuy';
+  color: #ffd304;
+  text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
+  /* font-size: 16vw; */
+  font-size: 16vmin;
+  margin: 0px 40px 50px 40px;
+  user-select: none;
+  padding-top: 70px;
 }
 
 /* @media screen and (min-width: 800px) {
@@ -184,58 +77,59 @@ a {
 } */
 
 .title__up {
-    text-align: center;
-    font-family: 'LuckiestGuy';
-    color: #ffd304;
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
-    font-size: 16vw;
-    margin: 0px 40px 0px 40px;
-    user-select: none;
-    padding-top: 20px;
+  text-align: center;
+  font-family: 'LuckiestGuy';
+  color: #ffd304;
+  text-shadow: 2px 5px 2px $color-text-shadow;
+  font-size: 16vw;
+  margin: 0px 40px 0px 40px;
+  user-select: none;
+  padding-top: 20px;
 }
 
 @media screen and (min-width: 800px) {
-    .title__up {
-        font-size: 800%;
-    }
+  .title__up {
+    font-size: 800%;
+  }
 }
 
 .title__sub {
-    text-align: center;
-    font-family: "LuckiestGuy";
-    color: #fff;
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
-    font-size: 300%;
-    user-select: none;
+  text-align: center;
+  font-family: "LuckiestGuy";
+  color: #fff;
+  text-shadow: 2px 3px 2px $color-text-shadow-grey;
+  font-size: 300%;
+  user-select: none;
 }
 
 /* title для ошибок */
 .title-error {
-    text-align: center;
-    font-family: "LuckiestGuy";
-    color: red;
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
-    font-size: 200%;
-    user-select: none;
+  text-align: center;
+  font-family: "LuckiestGuy";
+  color: red;
+  text-shadow: 2px 3px 2px $color-text-shadow-grey;
+  font-size: 200%;
+  user-select: none;
 }
 
 .title__sub-error {
-    height: 50px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-family: "LuckiestGuy";
-    color: red;
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
-    font-size: 200%;
-    user-select: none;
+  height: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "LuckiestGuy";
+  color: red;
+  text-shadow: 2px 3px 2px $color-text-shadow-grey;
+  font-size: 200%;
+  user-select: none;
 }
 
 .mainmenu__button-play {
-    text-align: center;
-    height: 70px;
+  text-align: center;
+  height: 70px;
 }
 
-.mainmenu__button-play a {
+.mainmenu__button-play {
+  a {
     text-align: center;
     cursor: pointer;
     font-size: 70px;
@@ -243,12 +137,12 @@ a {
     user-select: none;
     color: #fff;
     transition: font-size 0.5s;
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
-}
-
-.mainmenu__button-play a:hover {
+    text-shadow: 2px 5px 2px $color-text-shadow-grey-light;
+  }
+  a:hover {
     opacity: 0.9;
     font-size: 80px;
+  }
 }
 
 /* .mainmenu__button-play a:focus {
@@ -256,12 +150,13 @@ a {
 } */
 
 .mainmenu__button {
-    text-align: center;
-    height: 60px;
-    padding: 25px 0px 10px 0px;
+  text-align: center;
+  height: 60px;
+  padding: 25px 0px 10px 0px;
 }
 
-.mainmenu__button a {
+.mainmenu__button {
+  a {
     text-align: center;
     cursor: pointer;
     font-size: 45px;
@@ -269,59 +164,57 @@ a {
     user-select: none;
     color: #fff;
     transition: font-size 0.5s;
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
-}
-
-.mainmenu__button a:hover {
+    text-shadow: 2px 5px 2px $color-text-shadow-grey-light;
+  }
+  a:hover {
     opacity: 0.9;
     font-size: 55px;
-}
-
-.mainmenu__button a:focus {
+  }
+  a:focus {
     outline: none;
-}
+  }
 
-.mainmenu__button button {
+  button {
     transition: font-size 0.5s;
-}
-
-.mainmenu__button button:hover {
+  }
+  button:hover {
     opacity: 0.9;
     font-size: 55px;
+  }
 }
 
 .mainmenu__button-logout {
-    text-align: center;
-    cursor: pointer;
-    font-size: 45px;
-    font-family: "LuckiestGuy";
-    user-select: none;
-    color: #fff;
-    transition: font-size 0.5s;
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
-    padding: 25px 0px 10px 0px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 45px;
+  font-family: "LuckiestGuy";
+  user-select: none;
+  color: #fff;
+  transition: font-size 0.5s;
+  text-shadow: 2px 5px 2px $color-text-shadow-grey-light;
+  padding: 25px 0px 10px 0px;
 }
 
 .mainmenu__button-logout:hover {
-    opacity: 0.9;
-    font-size: 55px;
+  opacity: 0.9;
+  font-size: 55px;
 }
 
 /* cтиль для типа button */
 .mainmenu__button-button {
-    text-align: center;
-    cursor: pointer;
-    font-size: 45px;
-    font-family: "LuckiestGuy";
-    user-select: none;
-    color: #fff;
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
-    background: transparent;
-    border: transparent;
+  text-align: center;
+  cursor: pointer;
+  font-size: 45px;
+  font-family: "LuckiestGuy";
+  user-select: none;
+  color: #fff;
+  text-shadow: 2px 5px 2px $color-text-shadow-grey-light;
+  background: transparent;
+  border: transparent;
 }
 
 .mainmenu__button-button:focus {
-    outline: none;
+  outline: none;
 }
 
 /* cтиль для input */
@@ -338,23 +231,23 @@ input:valid {
 } */
 
 input {
-    height: 50px;
-    width: 280px;
-    font-size: medium;
-    font-family: "Nunito";
-    padding: 0 0 0 20px;
-    margin: 8px;
-    opacity: 0.8;
-    border-radius: 50px;
-    border: none;
-    margin: 0;
-    border: solid 2px transparent;
+  height: 50px;
+  width: 280px;
+  font-size: medium;
+  font-family: "Nunito";
+  padding: 0 0 0 20px;
+  margin: 8px;
+  opacity: 0.8;
+  border-radius: 50px;
+  border: none;
+  margin: 0;
+  border: solid 2px transparent;
 }
 
 .input_block {
-    flex-direction: row;
-    margin-bottom: 10px;
-    text-align: center;
+  flex-direction: row;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 /* .input-invalid {
@@ -375,44 +268,44 @@ input {
 /***************************************************/
 
 .error_text {
-    width: 200px;
-    background-color: #a10918;
-    color: #fff;
-    font-family: 'Nunito';
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+  width: 200px;
+  background-color: #a10918;
+  color: #fff;
+  font-family: 'Nunito';
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .arrow_block {
-    width: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  width: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .arrow {
-    width: 15px;
-    height: 15px;
-    background-image: url("../icons/arrow.png");
-    background-size: cover;
+  width: 15px;
+  height: 15px;
+  background-image: url("../icons/arrow.png");
+  background-size: cover;
 }
 
 /* Essential CSS - Makes the effect bubble work */
 .donuts {
-    display: inline-block;
-    position: relative;
+  display: inline-block;
+  position: relative;
 }
 
 .individual-donut {
-    width: 200px;
-    height: 200px;
-    background: url("../img/donut.png");
-    background-size: cover;
-    position: absolute;
-    bottom: -100px;
-    z-index: -1;
-    transition: transform 550ms;
+  width: 200px;
+  height: 200px;
+  background: url("../img/donut.png");
+  background-size: cover;
+  position: absolute;
+  bottom: -100px;
+  z-index: -1;
+  transition: transform 550ms;
 }
