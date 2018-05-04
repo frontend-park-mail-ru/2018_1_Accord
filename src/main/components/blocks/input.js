@@ -27,14 +27,27 @@ export default class Input {
     this.errorStatus = errorStatus;
   }
 
-  onInput(callback, errField) {
+  // onInput(callback, errField) {
+  //   this.input.addEventListener('input', (event) => {
+  //     event.preventDefault();
+  //     if (this.errorStatus) {
+  //       this.errorStatus = false;
+
+  //       // выключим демострацию ошибки
+  //       // на время редактирования информации внутри input
+  //       errField.innerText = '';
+  //     }
+  //   });
+
+  onInput(callback, inputField, errField) {
     this.input.addEventListener('input', (event) => {
       event.preventDefault();
       if (this.errorStatus) {
         this.errorStatus = false;
+
+        // выключим демострацию ошибки
         errField.innerText = '';
-        // errField.style.display = 'none';
-        errField.style.display = 'block';
+        inputField.style.border = 'solid 2px transparent';
       }
     });
 

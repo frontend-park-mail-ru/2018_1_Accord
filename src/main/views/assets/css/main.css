@@ -1,11 +1,17 @@
-@font-face {
-    font-family: 'LuckiestGuy';
-    src: url('../fonts/LuckiestGuy-Regular.ttf');
+:root {
+    --color-text: white;
+    --color-text-gold: #ffd304;
+    --color-text-pink: #f92397;
+    --color-text-red: red;
+    --color-text-shadow: rgba(0, 0, 0, 1);
+    --color-text-shadow-grey: rgba(0, 0, 0, 0.4);
+    --color-text-shadow-grey-light: rgba(0, 0, 0, 0.2);
+    --background-color: #59c4eb;
 }
 
 @font-face {
-    font-family: 'Dunkin';
-    src: url('../fonts/Dunkin.otf');
+    font-family: 'LuckiestGuy';
+    src: url('../fonts/LuckiestGuy-Regular.ttf');
 }
 
 @font-face {
@@ -13,31 +19,37 @@
     src: url('../fonts/Nunito-ExtraLight.ttf');
 }
 
+* {
+    outline: none;
+}
+
 html {
+    min-width: 400px;
     width: 100%;
-    min-width: 25rem;
+    height: 100%;
 }
 
 body {
-    height: min-content;
+    min-width: 400px;
+    height: 100%;
     margin: 0;
-    background: #59c4eb 100% 100%;
-    background-size: cover;
-}
+    /* background: #fff url('../donuts_font.png') 100% 100%;
+    background-size: cover; */
+    background-color: var(--background-color);}
 
 #root {
-    height: min-content;
+    min-width: 400px;
     width: 100%;
+    height: 100%;
 }
 
 .game-view {
     height: min-content;
     margin: 0;
-    background-color: #59c4eb ;
+    background-color: var(--background-color);
 }
 
 .menu {
-    height: min-content;
     width: 100%;
     z-index: 0;
 }
@@ -54,10 +66,10 @@ a {
 }
 
 .topmenu {
-    height: 60px;
+    min-width: 400px;
     width: 100%;
-    min-width: 25rem;
-    position: relative;
+    height: 60px;
+    /* position: relative; */
     z-index: 1;
 }
 
@@ -87,7 +99,7 @@ a {
 .topmenu__user__name {
     padding: 10px 0 0 8px;
     font-family: "Nunito";
-    color: #f3f8f0;
+    color: var(--color-text);
     font-size: 20px;
 }
 
@@ -101,8 +113,8 @@ a {
 }
 
 .topmenu__buttons-right_container {
+    position: fixed;
     right: 0;
-    position: absolute;
     margin-top: 10px;
     height: 50px;
     width: 120px;
@@ -152,8 +164,13 @@ a {
 
 /* стили для центрального меню */
 
+.view {
+    min-width: 400px;
+}
+
 .lowermenu {
     display: table-cell;
+    text-align: center;
     align-items: center;
     padding: 1rem 0;
 }
@@ -161,40 +178,55 @@ a {
 .title {
     text-align: center;
     font-family: 'LuckiestGuy';
-    color: #ffd304;
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
-    font-size: 800%;
+    color: var(--color-text-gold);
+    text-shadow: 2px 5px 2px var(--color-text-shadow);
+    /* font-size: 16vw; */
+    font-size: 16vmin;
     margin: 0px 40px 50px 40px;
     user-select: none;
     padding-top: 70px;
 }
 
+/* @media screen and (min-width: 800px) {
+    .title {
+       font-size: 800%;
+    }
+} */
+
 .title__up {
     text-align: center;
     font-family: 'LuckiestGuy';
-    color: #ffd304;
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 1);
-    font-size: 800%;
+    color: var(--color-text-gold);
+    ;
+    text-shadow: 2px 5px 2px var(--color-text-shadow);
+    font-size: 16vw;
     margin: 0px 40px 0px 40px;
     user-select: none;
     padding-top: 20px;
 }
 
+@media screen and (min-width: 800px) {
+    .title__up {
+        font-size: 800%;
+    }
+}
+
 .title__sub {
     text-align: center;
     font-family: "LuckiestGuy";
-    color: #fff;
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
+    color: var(--color-text);
+    text-shadow: 2px 3px 2px var(--color-text-shadow-grey);
     font-size: 300%;
     user-select: none;
 }
 
 /* title для ошибок */
+
 .title-error {
     text-align: center;
     font-family: "LuckiestGuy";
-    color: red;
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
+    color: var(--color-text-red);
+    text-shadow: 2px 3px 2px var(--color-text-shadow-grey);
     font-size: 200%;
     user-select: none;
 }
@@ -204,8 +236,8 @@ a {
     margin-bottom: 20px;
     text-align: center;
     font-family: "LuckiestGuy";
-    color: red;
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
+    color: var(--color-text-red);
+    text-shadow: 2px 3px 2px var(--color-text-shadow-grey);
     font-size: 200%;
     user-select: none;
 }
@@ -213,7 +245,6 @@ a {
 .mainmenu__button-play {
     text-align: center;
     height: 70px;
-    padding: 25px 0px 10px 0px;
 }
 
 .mainmenu__button-play a {
@@ -222,9 +253,9 @@ a {
     font-size: 70px;
     font-family: "LuckiestGuy";
     user-select: none;
-    color: #fff;
+    color: var(--color-text);
     transition: font-size 0.5s;
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 5px 2px var(--color-text-shadow-grey-light);
 }
 
 .mainmenu__button-play a:hover {
@@ -232,9 +263,9 @@ a {
     font-size: 80px;
 }
 
-.mainmenu__button-play a:focus {
+/* .mainmenu__button-play a:focus {
     outline: none;
-}
+} */
 
 .mainmenu__button {
     text-align: center;
@@ -248,9 +279,9 @@ a {
     font-size: 45px;
     font-family: "LuckiestGuy";
     user-select: none;
-    color: #fff;
+    color: var(--color-text);
     transition: font-size 0.5s;
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 5px 2px var(--color-text-shadow-grey-light);
 }
 
 .mainmenu__button a:hover {
@@ -262,15 +293,24 @@ a {
     outline: none;
 }
 
+.mainmenu__button button {
+    transition: font-size 0.5s;
+}
+
+.mainmenu__button button:hover {
+    opacity: 0.9;
+    font-size: 55px;
+}
+
 .mainmenu__button-logout {
     text-align: center;
     cursor: pointer;
     font-size: 45px;
     font-family: "LuckiestGuy";
     user-select: none;
-    color: #fff;
+    color: var(--color-text);
     transition: font-size 0.5s;
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 5px 2px var(--color-text-shadow-grey-light);
     padding: 25px 0px 10px 0px;
 }
 
@@ -280,14 +320,15 @@ a {
 }
 
 /* cтиль для типа button */
+
 .mainmenu__button-button {
     text-align: center;
     cursor: pointer;
     font-size: 45px;
     font-family: "LuckiestGuy";
     user-select: none;
-    color: #fff;
-    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
+    color: var(--color-text);
+    text-shadow: 2px 5px 2px var(--color-text-shadow-grey-light);
     background: transparent;
     border: transparent;
 }
@@ -296,9 +337,10 @@ a {
     outline: none;
 }
 
-/* cтиль для input */
-input:focus, input:focus:invalid, input:focus:valid {
-    border-style: solid 2px #4360a1;
+/*************** cтиль для input ***************/
+
+/* input:focus, input:focus:invalid, input:focus:valid {
+    border-style: solid 2px transparent;
 }
 
 input:invalid {
@@ -307,10 +349,9 @@ input:invalid {
 
 input:valid {
     border: solid 2px green;
-}
+} */
 
 input {
-    outline: none;
     height: 50px;
     width: 280px;
     font-size: medium;
@@ -330,42 +371,35 @@ input {
     text-align: center;
 }
 
-.error_text {
-    width: 200px;
-    background-color: #a10918;
-    color: #fff;
-    font-family: 'Nunito';
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+/* .input-invalid {
+    border: solid 2px #F5192F;
 }
 
-.arrow_block {
-    width: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.input-invalid:focus  {
+    border-style: solid 2px transparent;
 }
 
-.arrow {
-    width: 15px;
-    height: 15px;
-    background-image: url("../icons/arrow.png");
-    background-size: cover;
+.input-valid {
+    border: solid 2px green;
 }
+
+.input-valid:focus  {
+    border-style: solid 2px transparent;
+} */
+
+/***************************************************/
 
 /* Essential CSS - Makes the effect bubble work */
-.bubbles {
+
+.donuts {
     display: inline-block;
     position: relative;
 }
 
-.individual-bubble {
+.individual-donut {
     width: 200px;
     height: 200px;
-    background: url("../donut2.png");
+    background: url("../donut.png");
     background-size: cover;
     position: absolute;
     bottom: -100px;
@@ -373,25 +407,15 @@ input {
     transition: transform 550ms;
 }
 
-/* unuse in present moment*/
-
-.individual-bubble:hover {
-    transform: scale(1.2, 1.2);
-}
-
 .game__title-error {
     text-align: center;
     font-family: "LuckiestGuy";
-    color: #f92397;
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
+    color: var(--color-text-pink);
+    text-shadow: 2px 3px 2px var(--color-text-shadow-grey);
     font-size: 200%;
     user-select: none;
 }
 
 .game-view__area {
-    height: 100% !important;
-}
-
-.game-view__canvas {
     height: 100% !important;
 }

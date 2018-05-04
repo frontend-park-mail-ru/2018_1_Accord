@@ -2,6 +2,7 @@ import Input from '../blocks/input.js';
 
 import Validator from '../../modules/validation/validation.js';
 import {selector} from '../../config/selector.js';
+import {validationErrors} from '../../config/textErrors.js';
 
 export default class LoginForm {
 
@@ -19,8 +20,8 @@ export default class LoginForm {
     this.errorField = this.form.querySelector(selector.VALIDATE_ERR);
     this.errorField.style.display = 'block';
 
-    this.email.onInput(this.validateEmail.bind(this), this.errorField);
-    this.password.onInput(this.validatePassword.bind(this), this.errorField);
+    this.email.onInput(this.validateEmail.bind(this), this.email.input, this.errorField);
+    this.password.onInput(this.validatePassword.bind(this), this.password.input, this.errorField);
   }
 
   render() {
@@ -52,8 +53,11 @@ export default class LoginForm {
     if (!formState.state) {
       this.errorField.innerText = `${formState.errMessage}\n`;
       this.errorField.style.display = 'block';
+      this.email.input.style.border = 'solid 2px #F5192F';
 
       this.email.setStatus(true);
+    } else {
+      this.email.input.style.border = 'solid 2px green';
     }
   }
 
@@ -62,8 +66,11 @@ export default class LoginForm {
     if (!formState.state) {
       this.errorField.innerText = `${formState.errMessage}\n`;
       this.errorField.style.display = 'block';
+      this.password.input.style.border = 'solid 2px #F5192F';
 
       this.password.setStatus(true);
+    } else {
+      this.password.input.style.border = 'solid 2px green';
     }
   }
 }
