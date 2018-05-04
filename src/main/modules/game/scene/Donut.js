@@ -31,6 +31,10 @@ export default class Donut extends Figure {
    * @returns {{onBottom: boolean, collision: boolean}}
    */
   fly(dt, flightTime, collCoords) {
+    //
+    // if (this.angle < 0) {
+    //
+    // }
     this.vY = g * flightTime - this.v * Math.sin(this.angle);
     this.vX = this.v * Math.cos(this.angle);
 

@@ -1,5 +1,6 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
     <div class="view menu-view">
+
         <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
 
         <div class="menu">

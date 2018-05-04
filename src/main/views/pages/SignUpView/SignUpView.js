@@ -20,44 +20,41 @@ export default class SignUpView extends BaseView {
     ];
   }
 
-  async render() {
+  render() {
     super.render({
       loginPath: pagePaths.LOGIN_PATH
     });
 
+    this.loader.style.display = 'none';
+
+    new NavBar(this.el, this.navBar, this.user);
+
     this.error = this.el.querySelector(selector.VALIDATE_ERR);
     this.signUpForm = new SignUpForm(this.el).render();
 
-    this.signUpForm.onSubmit(async () => {
-      this.formStateData = await this.signUpForm.checkFormState();
+    this.signUpForm.onSubmit(() => {
+      this.formStateData = this.signUpForm.checkFormState();
 
       if (this.formStateData) {
-        //validation check
-        try {
-          this.user = await userService.signUp(this.formStateData);
-
-          if (!this.user) {
-            this.error.innerText = serverErrors.signup;
+        userService.signUp(this.formStateData)
+          .then((user) => {
+            if (!user) {
+              this.error.innerText = serverErrors.signup;
+              this.error.style.display = 'block';
+              Logger.log('Unsuccessful signup');
+            } else {
+              Logger.log('signup');
+              EventBus.emit(events.ROUTE.SIGN_UP);
+            }
+          })
+          .catch((error) => {
+            this.error.innerText = serverErrors.unexpected;
             this.error.style.display = 'block';
-            Logger.log('Unsuccessful signup');
-
-          } else {
-            Logger.log('signup');
-            EventBus.emit(events.ROUTE.SIGN_UP);
-            //window.history.pushState(null, '', pagePaths.START_PATH);
-            //window.history.go(1);
-          }
-        } catch (err) {
-          this.error.innerText = serverErrors.unexpected;
-          this.error.style.display = 'block';
-
-          Logger.error(err);
-          //TODO:Error dispatcher
-        }
+            Logger.error(error);
+            //TODO:Error dispatcher
+          });
       }
     });
-
-    new NavBar(this.el, this.navBar, this.user);
 
     return this;
   }

@@ -17,24 +17,25 @@ export default class LeaderBoardView extends BaseView {
     ];
   }
 
-  async render() {
-    try {
-      this.data = await leaderBoardService.getLeaderBoard(this.page);
-
-      if (!this.data) {
+  render() {
+    leaderBoardService.getLeaderBoard(this.page)
+      .then((data) => {
+        if (!data) {
+          this.errorField = this.el.querySelector(selector.LEADERBOARD_ERROR);
+          this.errorField.innerText = `Can't open leader board on page ${this.page}`;
+        }
+      })
+      .catch((error) => {
         this.errorField = this.el.querySelector(selector.LEADERBOARD_ERROR);
-        this.errorField.innerText = `Can't open leader board on page ${this.page}`;
-      }
-    } catch (err) {
-      this.errorField = this.el.querySelector(selector.LEADERBOARD_ERROR);
-      this.errorField.innerText = serverErrors.leaderBoard;
-      Logger.error(err);
-      //TODO: error dispatcher
-    }
-    super.render(this.data);
+        this.errorField.innerText = serverErrors.leaderBoard;
+        Logger.error(error);
+        //TODO: error dispatcher
+      });
 
+    this.loader.style.display = 'none';
+    super.render(this.data);
     new NavBar(this.el, this.navBar, this.user);
-    
+
     return this;
   }
 }

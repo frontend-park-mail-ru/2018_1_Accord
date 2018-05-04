@@ -46,17 +46,13 @@ export default class SignUpForm {
   }
 
   checkFormState() {
-    return new Promise((resolve, reject) => {
-      if (!this.email.getStatus() &&
-        !this.password.getStatus() &&
-        !this.username.getStatus() &&
-        !this.passwordConfirm.getStatus()) {
+    if (!this.email.getStatus() &&
+      !this.password.getStatus() &&
+      !this.username.getStatus() &&
+      !this.passwordConfirm.getStatus()) {
 
-        resolve(this.getFormData());
-      } else {
-        reject();
-      }
-    });
+      return this.getFormData;
+    }
   }
 
   validateEmail() {

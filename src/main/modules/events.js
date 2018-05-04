@@ -9,10 +9,21 @@ export const events = {
     POSITION_CHANGED: 'POSITION_CHANGED',
   },
 
+  START_GAME: {
+    LEVEL_SELECTED: 'SELECTED',
+    SINGLE_CLICKED: 'SINGLE',
+    BATTLE_CLICKED: 'BATTLE',
+  },
+
   CONTROL: {
     PRESSED: 'PRESSED',
     CLICKED: 'ON_CANVAS_CLICKED',
     MOUSE_MOVED: 'MOUSE_MOVED',
+  },
+
+  AUTH: {
+    GET_USER: 'GET_USER',
+    USER: 'USER',
   },
 
   ROUTE: {
