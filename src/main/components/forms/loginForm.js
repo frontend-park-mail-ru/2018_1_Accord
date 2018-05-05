@@ -2,7 +2,7 @@ import Input from '../blocks/input.js';
 
 import Validator from '../../modules/validation/validation.js';
 import {selector} from '../../config/selector.js';
-import {validationErrors} from '../../config/textErrors.js';
+// import {validationErrors} from '../../config/textErrors.js';
 
 export default class LoginForm {
 
