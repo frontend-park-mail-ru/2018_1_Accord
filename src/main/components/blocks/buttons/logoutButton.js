@@ -2,7 +2,7 @@ import userService from '../../../services/UserService.js';
 import Logger from '../../../utils/logger.js';
 import {selector} from '../../../config/selector.js';
 import EventBus from '../../../modules/eventBus.js';
-import {events} from '../../../modules/game/core/events.js';
+import {events} from '../../../modules/events.js';
 
 export default class LogoutButton {
 
@@ -33,7 +33,7 @@ export default class LogoutButton {
       event.preventDefault();
       userService.logout()
         .then(() => {
-          EventBus.emit(events.AUTH.LOGOUT);
+          EventBus.emit(events.ROUTE.LOGOUT);
         })
         .catch((error) => {
           this.errorField.innerText = error.message;

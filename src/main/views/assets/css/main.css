@@ -35,8 +35,7 @@ body {
     margin: 0;
     /* background: #fff url('../donuts_font.png') 100% 100%;
     background-size: cover; */
-    background-color: var(--background-color);
-}
+    background-color: var(--background-color);}
 
 #root {
     min-width: 400px;

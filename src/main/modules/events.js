@@ -14,9 +14,12 @@ export const events = {
     CLICKED: 'ON_CANVAS_CLICKED',
     MOUSE_MOVED: 'MOUSE_MOVED',
   },
-  AUTH: {
+
+  ROUTE: {
     SIGN_UP: 'SIGN_UP',
     LOGIN: 'LOGIN',
     LOGOUT: 'LOGOUT',
+    PROFILE: 'PROFILE',
+    HELP: 'HELP',
   }
 };
