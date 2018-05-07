@@ -1,0 +1,157 @@
+.game-view {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #59c4eb ;
+
+    height: 100%;
+    width: 100%;
+}
+
+.start_game {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 40%;
+    width: 99%;
+
+    flex-direction: column;
+    margin-top: 15%;
+    margin-right: 30px;
+
+    min-width: 300px;
+    min-height: 250px;
+
+}
+
+.start_game__image {
+    background-image: url("../img/homer_startGame.png");
+    background-size: cover;
+    position: absolute;
+
+    width: 15%;
+    height: 40%;
+    min-height: 275px;
+    min-width: 200px;
+    max-height: 417px;
+    max-width: 250px;
+
+    margin: 15% 0 0 20%;
+
+}
+
+.start_game__select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 50%;
+    height: 30%;
+}
+
+.start_game__select-text {
+    text-align: center;
+    font-family: 'LuckiestGuy';
+    color: #ffd304;
+    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
+    font-size: 2.5em;
+    margin: 20px;
+    user-select: none;
+
+}
+
+.start_game__select-select {
+    overflow: hidden;
+    width: 10%;
+    height: 40%;
+    margin: 20px;
+
+    min-width: 100px;
+}
+
+.start_game__select select {
+    /*display: none;*/
+    height: 100%;
+    width: 100%;
+
+    border-radius: 20px;
+    border: transparent;
+    background-color: #fff;
+    outline: none;
+
+    text-align: center;
+    font-family: 'Nunito';
+    font-size: 1.6em;
+}
+
+.start_game__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    width: 50%;
+    height: 40%;
+
+    padding: 2%;
+}
+
+.start_game__buttons-single {
+    display: block;
+    width: 30%;
+
+    min-width: 100px;
+
+    margin: 50px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 2.5em;
+    font-family: "LuckiestGuy";
+    user-select: none;
+    color: #fff;
+    transition: font-size 0.5s;
+    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.start_game__buttons-battle {
+    display: block;
+    width: 30%;
+
+    min-width: 100px;
+
+    margin: 50px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 2.5em;
+    font-family: "LuckiestGuy";
+    user-select: none;
+    color: #fff;
+    transition: font-size 0.5s;
+    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.start_game__buttons-single:hover {
+    opacity: 0.9;
+    font-size: 2.7em;
+}
+
+.start_game__buttons-battle:hover {
+    opacity: 0.9;
+    font-size: 2.7em;
+}
+
+.game__title-error {
+    text-align: center;
+    font-family: "LuckiestGuy";
+    color: #f92397;
+    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
+    font-size: 200%;
+    user-select: none;
+}
+
+.game-view__area {
+}
+
+.game-view__canvas {
+}
