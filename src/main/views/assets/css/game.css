@@ -11,18 +11,24 @@
 .start_game {
     display: flex;
     align-items: center;
+
+    flex-direction: row;
+
+}
+
+.start_game-container {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
 
     height: 40%;
-    width: 99%;
+    width: 100%;
 
-    flex-direction: column;
-    margin-top: 15%;
-    margin-right: 30px;
+    margin-top: 12%;
 
     min-width: 300px;
     min-height: 250px;
-
 }
 
 .start_game__image {
@@ -30,14 +36,14 @@
     background-size: cover;
     position: absolute;
 
-    width: 15%;
-    height: 40%;
+    width: 10%;
+    height: 45%;
     min-height: 275px;
     min-width: 200px;
     max-height: 417px;
     max-width: 250px;
 
-    margin: 15% 0 0 20%;
+    margin: 40% 10px 10px 10%;
 
 }
 
@@ -103,7 +109,7 @@
 
     min-width: 100px;
 
-    margin: 50px;
+    margin: 30px;
     text-align: center;
     cursor: pointer;
     font-size: 2.5em;
@@ -120,7 +126,7 @@
 
     min-width: 100px;
 
-    margin: 50px;
+    margin: 30px;
     text-align: center;
     cursor: pointer;
     font-size: 2.5em;
