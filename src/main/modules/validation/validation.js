@@ -6,7 +6,7 @@ export default class Validator {
    * @param {String} email
    */
   static checkEmail(email) {
-    if (!email || !email.match(/@/)) {
+    if (!email) {
       return {
         state: false,
         errMessage: validationErrors.email

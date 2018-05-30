@@ -8,6 +8,7 @@ import Error from '../utils/error/Error.js';
 class UserService {
   constructor() {
     this.user = this.load();
+    console.log('constructor: init user ', this.user);
   }
 
   /**
@@ -15,9 +16,12 @@ class UserService {
    * @returns {*|{jsonchars, jsonchars_test, jsonhash, replaceJSON, escapeJSON}|JSON|Promise<any>}
    */
   static responseDispatcher(response) {
+    console.log('response dispatcher: ', response);
     switch (response.status) {
       case 200:
         return response.json();
+      case 400:
+        return;
       case 401:
         return;
       case 500:

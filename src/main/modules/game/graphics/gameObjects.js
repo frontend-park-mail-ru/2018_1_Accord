@@ -9,13 +9,13 @@ export const gameObjects = {
   },
 
   HOMER: {
-    height: canvasHeight * 0.27,
-    width: canvasWidth * 0.12,
+    height: 208,
+    width: 180,
 
     color: '#FFD633',
 
-    x: canvasWidth * 0.2,
-    y: canvasHeight * 0.7,
+    x: canvasWidth * 0.5 - 90,
+    y: canvasHeight * 0.5,
   },
 
   DONUT: {
@@ -23,17 +23,19 @@ export const gameObjects = {
     color: '#FF4DA6',
     count: 100,
 
-    x: canvasWidth * 0.45,
-    y: canvasHeight * 0.09,
+    xLeft: 30,
+    xRight: canvasWidth - canvasHeight * 0.1 - 30,
+    y: canvasHeight * 0.45,
 
     v: 50,
     vX: 40,
+    dYMove: 50,
   },
 
   TEXT: {
     size: canvasHeight * 0.03,
-    x: canvasWidth * 0.9,
-    y: canvasHeight * 0.05,
+    x: canvasWidth * 0.5,
+    y: 20,
     dy: canvasHeight * 0.04,
 
     centerSize: canvasHeight * 0.05,

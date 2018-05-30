@@ -27,12 +27,12 @@ export default class GameView extends BaseView {
       level: gameSettings.level.EASY
     };
 
-    this.bus.on(events.GAME.FINISH, function () {
-      if (this.active) {
-        //window.history.back();
-        this.gameProc.destroy();
-      }
-    }.bind(this));
+    // this.bus.on(events.GAME.FINISH, function () {
+    //   if (this.active) {
+    //     //window.history.back();
+    //     this.gameProc.destroy();
+    //   }
+    // }.bind(this));
   }
 
   render() {
@@ -54,16 +54,12 @@ export default class GameView extends BaseView {
         this._showStartMenu();
       });
 
-    // canvas.height = gameObjects.CANVAS.height;
-    // canvas.width = gameObjects.CANVAS.width;
-    // this.gameProc = new Game(canvas);
-    // this.gameProc.start();
-
     return this;
   }
 
   _showStartMenu() {
     this.startMenu = new StartGameView(this.game, this.user);
+
     this.bus.on(events.START_GAME.LEVEL_SELECTED, (value) => {
       this.gameSettings.level = value;
       Logger.log('level: ', value);
@@ -72,6 +68,13 @@ export default class GameView extends BaseView {
     this.bus.on(events.START_GAME.SINGLE_CLICKED, () => {
       this.gameSettings.player = gameSettings.player.SINGLE_PLAYER;
       Logger.log('game settings: ', this.gameSettings);
+
+      this.gameProc = new Game(this.canvas, this.gameSettings);
+      this.startMenu.style.display = 'none';
+      this.unAuthInfo.style.display = 'none';
+      this.errorField.style.display = 'none';
+      this.canvas.style.display = 'block';
+      this.gameProc.start();
     });
 
     this.bus.on(events.START_GAME.BATTLE_CLICKED, () => {
@@ -89,6 +92,9 @@ export default class GameView extends BaseView {
     this.unAuthInfo.style.display = 'none';
     this.errorField.style.display = 'none';
     this.canvas.style.display = 'none';
+
+    this.canvas.height = gameObjects.CANVAS.height;
+    this.canvas.width = gameObjects.CANVAS.width;
 
     this.game.parentElement.style.height = '100%';
   }

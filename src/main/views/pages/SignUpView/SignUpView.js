@@ -41,16 +41,16 @@ export default class SignUpView extends BaseView {
             if (!user) {
               this.error.innerText = serverErrors.signup;
               this.error.style.display = 'block';
-              Logger.log('Unsuccessful signup');
+              Logger.log('Unsuccessful signup', user);
             } else {
-              Logger.log('signup');
+              Logger.log('successful signup', user);
               EventBus.emit(events.ROUTE.SIGN_UP);
             }
           })
           .catch((error) => {
             this.error.innerText = serverErrors.unexpected;
             this.error.style.display = 'block';
-            Logger.error(error);
+            Logger.error('error in catch of signup: ', error);
             //TODO:Error dispatcher
           });
       }
