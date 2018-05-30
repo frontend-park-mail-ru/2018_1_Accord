@@ -2,45 +2,45 @@ class WebSocketService {
   constructor() {
     this.isConnected = false;
 
-    var webSocket = new WebSocket("ws://backend-accord-02-2018.herokuapp.com/mgame");
-    let isConnected = false;
-
-    function sendMsg(msgToSend) {
-      webSocket.send(JSON.stringify(msgToSend));
-    }
-
-    webSocket.onmessage = function (message) {
-      console.log(message.data);
-    }.bind(this);
-
-    webSocket.onopen = function () {
-      console.log("connection opened");
-      isConnected = true;
+    this.ws = new WebSocket('ws://backend-accord-02-2018.herokuapp.com/mgame');
+    this.ws.onopen = (event) => {
+      this.isConnected = true;
+      console.log('connection opened', event, 'isConnected: ', this.isConnected);
     };
 
-    webSocket.onclose = function () {
-      console.log("connection closed");
-      isConnected = false;
+    this.ws.onmessage = (event) => {
+      console.log('message: ', event);
     };
 
-    webSocket.onerror = function wserror(message) {
-      console.log("error: " + message);
+    this.ws.onclose = (event) => {
+      if (event.wasClean) {
+        console.log('Соединение закрыто чисто');
+      } else {
+        console.log('Обрыв соединения');
+      }
+      console.log('Код: ' + event.code + ' причина: ' + event.reason);
+      this.isConnected = false;
+    };
+
+    this.ws.onerror = (error) => {
+      console.log('error: ', error);
     };
 
     setInterval(() => {
-      if (isConnected) {
-        sendMsg({
-          'velocity': 22.0,
-          'angle': 0.0,
-          'position': {
-            'x': 0.99,
-            'y': 1.0
-          },
-          'isShoot': false
-        })
+      if (this.isConnected) {
+        this.sendMsg(json);
       }
-    }, 1000);
+    }, 100);
 
+    const json = {
+      'velocity': 22.0,
+      'angle': 0.0,
+      'position': {
+        'x': 0.99,
+        'y': 1.0
+      },
+      'isShoot': false
+    };
   }
 
   sendMsg(msg) {
