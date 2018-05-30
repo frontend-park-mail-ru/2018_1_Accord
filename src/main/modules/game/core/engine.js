@@ -5,7 +5,7 @@ import {gameObjects} from '../graphics/gameObjects.js';
 
 const KEYS = {
   START: [' '],
-  FINISH: ['z'],
+  FINISH: ['z', 'я'],
   UP: ['ArrowUp', 'w', 'W', 'ц', 'Ц'],
   DOWN: ['ArrowDown', 's', 'S', 'ы', 'Ы'],
 };
@@ -56,6 +56,8 @@ export default class GameEngine {
     EventBus.off(events.CONTROL.PRESSED, this.onControllPressed);
     EventBus.off(events.CONTROL.CLICKED, this.onMouseClicked);
     EventBus.off(events.CONTROL.MOUSE_MOVED, this.onMouseMoved);
+
+    Logger.log('game view: game finished');
 
     //TODO controller scene ??
   }

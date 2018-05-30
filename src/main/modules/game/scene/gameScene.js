@@ -114,9 +114,9 @@ export default class GameScene {
     this.donutLeft.countVelocity(this.state.mousePos);
   }
 
-  set enemyState(state) {
-    this.enemyState = state;
-  }
+  // set enemyState(state) {
+  //   this.enemyState = state;
+  // }
 
   renderAll() {
     this.homer.render();

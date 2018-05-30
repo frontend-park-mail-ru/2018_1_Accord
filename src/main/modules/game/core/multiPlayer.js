@@ -1,47 +1,44 @@
 import GameEngine from './engine.js';
-// const WebSocket = require('ws');
+import WebSocketService from '../../../services/WebSocketService.js';
+import EventBus from '../../eventBus.js';
+import {events} from '../../events.js';
 
 export default class MultiPlayer extends GameEngine {
   constructor(scene, controller) {
     super(scene, controller);
+
+    this.isPlaying = true;
   }
 
   start() {
     super.start();
-    console.log('start');
-    this.ws = new WebSocket('ws://backend-accord-02-2018.herokuapp.com:5000/mgame');
-
-    this.ws.onopen = (event) => {
-      console.log('connection opened', event);
-    };
-
-    this.ws.onmessage = (event) => {
-      console.log('message: ', event);
-    };
-    this.ws.onclose = (event) => {
-      if (event.wasClean) {
-        console.log('Соединение закрыто чисто');
-      } else {
-        console.log('Обрыв соединения');
-      }
-      console.log('Код: ' + event.code + ' причина: ' + event.reason);
-    };
-
-    const json = {
-      'velocity': 22.0,
-      'angle': 0.0,
-      'position': {
-        'x': 0.99,
-        'y': 1.0
-      },
-      'isShoot': false
-    };
-
-    // this.ws.send(JSON.stringify(json));
+    this.ws = new WebSocketService();
   }
 
   destroy() {
     super.destroy();
     this.ws.close();
+  }
+
+  onGameStarted() {
+    this.scene.startScene();
+  }
+
+  onControllPressed(event) {
+    if (this._pressed('START', event) && !this.gameStarted) {
+      this.gameStarted = true;
+      EventBus.emit(events.GAME.START);
+      console.log('start clicked');
+
+    } else if (this._pressed('FINISH', event)) {
+      this.gameStarted = false;
+      EventBus.emit(events.GAME.FINISH);
+
+    } else if (this._pressed('UP', event) && this.gameStarted) {
+      EventBus.emit(events.GAME.POSITION_CHANGED, 'UP');
+
+    } else if (this._pressed('DOWN', event) && this.gameStarted) {
+      EventBus.emit(events.GAME.POSITION_CHANGED, 'DOWN');
+    }
   }
 }
