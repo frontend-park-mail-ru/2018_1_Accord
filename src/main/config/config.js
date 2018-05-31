@@ -1,12 +1,12 @@
-const serverUrl = 'https://backend-accord-02-2018.herokuapp.com';
+const serverUrl = 'https://донуц.рф';
 
 const APIMethods = {
-  login: '/login',
-  signup: '/register',
-  logout: '/logout',
-  user: '/getUser',
-  updateUser: '/updateUser',
-  leaderBoard: '/scoreboard',
+  login: '/api/login',
+  signup: '/api/register',
+  logout: '/api/logout',
+  user: '/api/getUser',
+  updateUser: '/api/updateUser',
+  leaderBoard: '/api/scoreboard',
 };
 
 export const config = {

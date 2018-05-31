@@ -5,7 +5,7 @@ class WebSocketService {
   constructor() {
     this.isConnected = false;
 
-    this.ws = new WebSocket('wss://backend-accord-02-2018.herokuapp.com/mgame');
+    this.ws = new WebSocket('wss://донуц.рф/api/mgame');
     this.ws.onopen = (event) => {
       this.isConnected = true;
       EventBus.emit(events.WS.START_GAME);
