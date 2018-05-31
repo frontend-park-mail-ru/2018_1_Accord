@@ -75,7 +75,6 @@ export default class GameView extends BaseView {
       this.canvas.style.display = 'block';
       this.gameProc.start();
     };
-
     this.bus.on(events.START_GAME.LEVEL_SELECTED, (value) => {
       this.gameSettings.level = value;
       Logger.log('level: ', value);
@@ -83,7 +82,17 @@ export default class GameView extends BaseView {
 
     this.bus.on(events.START_GAME.SINGLE_CLICKED, () => {
       this.gameSettings.player = gameSettings.player.SINGLE_PLAYER;
-      handleStart();
+      Logger.log('game settings: ', this.gameSettings);
+
+      this.startMenu.style.display = 'none';
+      const imgHomer = this.el.querySelector('.start_game__image');
+      imgHomer.style.display = 'none';
+
+      this.canvas.style.display = 'block';
+      this.canvas.height = gameObjects.CANVAS.height;
+      this.canvas.width = gameObjects.CANVAS.width;
+      this.gameProc = new Game(this.canvas);
+      this.gameProc.start();
     });
 
     this.bus.on(events.START_GAME.BATTLE_CLICKED, () => {

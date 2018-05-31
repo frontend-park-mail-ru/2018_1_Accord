@@ -17,11 +17,6 @@
   // let animationFrameMovingDonuts = null;
 
 
-  // Push the header width values to bArray
-  console.log('window.innerWidth = ' + window.innerWidth);
-  console.log('window.innerHeight = ' + window.innerHeight);
-  console.log('donutsSelector.offsetWidth = ' + donutsSelector.offsetWidth);
-
   for (let i = 0; i < donutsSelector.offsetWidth - Math.max.apply(null, sArray); i += 10) {
     bArray.push(i);
   }
@@ -64,7 +59,7 @@
     individual_donut.className = 'individual-donut';
     individual_donut.setAttribute('style',
       'left: ' + randomValue(bArray) + 'px; ' +
-      'bottom: ' + 0 + 'px; ' +
+      'bottom: ' + -100 + 'px; ' +
       'width: ' + size + 'px; ' +
       'height: ' + size + 'px;');
     donutsSelector.appendChild(individual_donut);
