@@ -15,7 +15,7 @@ export default class ScoreBoard extends Figure {
       this.scores[1] = new CanvasText(ctx, '0', gameObjects.TEXT.x + 30, gameObjects.TEXT.y + gameObjects.TEXT.dy);
     }
 
-    this.split = new CanvasText(ctx, ':', gameObjects.TEXT.x + 15, gameObjects.TEXT.y + gameObjects.TEXT.dy)
+    this.split = new CanvasText(ctx, ':', gameObjects.TEXT.x + 15, gameObjects.TEXT.y + gameObjects.TEXT.dy);
 
   }
 

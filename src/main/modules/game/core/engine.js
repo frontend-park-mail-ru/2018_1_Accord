@@ -1,7 +1,6 @@
 import EventBus from '../../eventBus.js';
 import {events} from '../../events.js';
 import Logger from '../../../utils/logger.js';
-import {gameObjects} from '../graphics/gameObjects.js';
 
 const KEYS = {
   START: [' '],

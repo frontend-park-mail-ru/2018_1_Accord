@@ -3,7 +3,6 @@ import GameControllers from './controllers.js';
 import {gameSettings} from '../../config/gameSettings.js';
 import SinglePlayer from './core/singlePlayer.js';
 import MultiPlayer from './core/multiPlayer.js';
-import Logger from '../../utils/logger.js';
 
 export default class Game {
   /**
