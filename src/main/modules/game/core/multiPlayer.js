@@ -26,7 +26,9 @@ export default class MultiPlayer extends GameEngine {
   destroy() {
     super.destroy();
     EventBus.off(events.WS.MESSAGE, this.receiveMessage);
-    this.ws.close();
+    if (this.ws) {
+      this.ws.close();
+    }
   }
 
   onGameStarted() {
