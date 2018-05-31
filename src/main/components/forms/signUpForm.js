@@ -39,9 +39,9 @@ export default class SignUpForm {
 
   getFormData() {
     return {
-      email: this.email.getData(),
-      password: this.password.getData(),
-      nickname: this.username.getData(),
+      email: `${this.email.getData()}`,
+      password: `${this.password.getData()}`,
+      nickname: `${this.username.getData()}`,
     };
   }
 
@@ -51,7 +51,7 @@ export default class SignUpForm {
       !this.username.getStatus() &&
       !this.passwordConfirm.getStatus()) {
 
-      return this.getFormData;
+      return this.getFormData();
     }
   }
 

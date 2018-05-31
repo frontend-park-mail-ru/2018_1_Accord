@@ -2,71 +2,48 @@ import Figure from '../graphics/figure.js';
 import Circle from '../graphics/circle.js';
 import {gameObjects} from '../graphics/gameObjects.js';
 
-const g = 9.81;
-
 export default class Donut extends Figure {
-  constructor(ctx, x, y) {
+  constructor(ctx, position) {
     super(ctx);
-    this.x = x;
-    this.y = y;
+    this.y = gameObjects.DONUT.y;
+    this.position = position;
+
+    if (this.position === 'LEFT') {
+      this.startX = this.x = gameObjects.DONUT.xLeft;
+    } else if (this.position === 'RIGHT') {
+      this.startX = this.x = gameObjects.DONUT.xRight;
+    }
 
     this.v = gameObjects.DONUT.v;
-    this.vX = gameObjects.DONUT.vX;
-    this.changedX = this.x;
-
     this.angle = 0;
-    this.onBottom = false;
+    this.dYMove = gameObjects.DONUT.dYMove;
 
     this.radius = gameObjects.DONUT.radius;
-
     this.body = new Circle(ctx, this.radius);
+
+    this.result = {
+      missed: false,
+      hit: false,
+    };
   }
 
   //Лети, бро
   /**
    *
    * @param {Number} dt
-   * @param {Number} flightTime
    * @param {{x: number, y: number}} collCoords - collision object coordinates
-   * @returns {{onBottom: boolean, collision: boolean}}
+   *
    */
-  fly(dt, flightTime, collCoords) {
-    //
-    // if (this.angle < 0) {
-    //
-    // }
-    this.vY = g * flightTime - this.v * Math.sin(this.angle);
-    this.vX = this.v * Math.cos(this.angle);
+  fly(dt, collCoords) {
+    const dx = dt * this.v * Math.cos(this.angle) * 0.01;
+    const dy = dt * this.v * Math.sin(this.angle) * 0.01;
 
-    let dx = this.vX * dt * 0.01;
-    let dy = this.vY * dt * 0.0001;
+    this.x += this.position === 'LEFT' ? dx : -dx;
+    this.y -= dy;
 
-    if (this.y + this.radius * 2 + dy < this.ctx.canvas.height) {
-      this.y += dy;
-      this.onBottom = false;
+    this.checkCollision(collCoords);
 
-      if (this.x + this.radius * 2 + dx < this.ctx.canvas.width) {
-        this.x += dx;
-      }
-
-      if (this.x + this.radius >= collCoords.x &&
-        this.x + this.radius <= collCoords.x + gameObjects.HOMER.width / 2 &&
-        this.y + this.radius >= collCoords.y &&
-        this.y + this.radius <= collCoords.y + gameObjects.HOMER.height / 3) {
-
-        this.onBottom = false;
-        this.collision = true;
-      } else {
-        this.collision = false;
-      }
-    } else {
-      this.onBottom = true;
-    }
-
-    return {
-      onBottom: this.onBottom,
-      collision: this.collision
-    };
+    return this.result;
   }
 
   draw() {
@@ -81,7 +58,10 @@ export default class Donut extends Figure {
    * @param {{x: number, y: number}} mousePos
    */
   countAngle(mousePos) {
-    this.angle = Math.atan((mousePos.y - this.y) / (mousePos.x - this.x)) || 0;
+    const dy = mousePos.y - this.y;
+    const dx = mousePos.x - this.x;
+
+    this.angle = -Math.atan(dy / dx) || 0; //?????//??
   }
 
   countVelocity(mousePos) {
@@ -89,15 +69,40 @@ export default class Donut extends Figure {
     const b = Math.abs(mousePos.x - this.x);
 
     this.v = Math.round(Math.sqrt(a ** 2 + b ** 2) * 0.2);
+    if (this.v > 100) {
+      this.v = 100;
+    }
+  }
+
+  checkCollision(collCoords) {
+    if (this.x > this.ctx.canvas.width || this.x + this.radius * 2 < 0 || this.y > this.ctx.canvas.height || this.y < 0) {
+      this.result.missed = true;
+      this.result.hit = false;
+      console.log('missed', collCoords, this.x, this.y);
+      this.reset();
+      return;
+    }
+
+    if (this.y <= collCoords.y
+      && this.x >= collCoords.x
+      && this.x <= collCoords.x + gameObjects.HOMER.width) {
+
+      this.result.hit = true;
+      this.result.missed = false;
+      console.log('hit!', collCoords, this.x, this.y);
+      this.reset();
+    }
   }
 
   reset() {
-    this.x = this.changedX;
+    console.log('reset');
     this.y = gameObjects.DONUT.y;
+    this.x = this.startX;
 
     this.v = gameObjects.DONUT.v;
 
-    this.angle = 0;
+    console.log(this.x, this.y, gameObjects.DONUT);
 
+    this.angle = 0;
   }
 }

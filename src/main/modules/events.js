@@ -3,7 +3,7 @@ export const events = {
     START: 'START',
     STATE_CHANGED: 'STATE_CHANGED',
     FINISH: 'FINISH',
-    ON_BOTTOM: 'ON_BOTTOM',
+    MISSED: 'MISSED',
     COLLISION: 'COLLISION',
     LAUNCH_DONUT: 'LAUNCH_DONUT',
     POSITION_CHANGED: 'POSITION_CHANGED',
@@ -24,6 +24,11 @@ export const events = {
   AUTH: {
     GET_USER: 'GET_USER',
     USER: 'USER',
+  },
+
+  WS: {
+    MESSAGE: 'MSG',
+    START_GAME: 'START_MULTIPLAYER',
   },
 
   ROUTE: {

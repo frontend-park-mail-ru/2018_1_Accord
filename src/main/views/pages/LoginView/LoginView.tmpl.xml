@@ -16,7 +16,7 @@
                             <div class="validation-error login__error title__sub-error"></div>
 
                             <div class="form__field input_block">
-                                <input class="form__field-input" name="email"
+                                <input class="form__field-input" type="text" name="email"
                                     placeholder="Enter your e-mail"/>
                             </div>
                             <div class="form__field input_block">
