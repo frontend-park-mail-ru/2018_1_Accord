@@ -26,6 +26,11 @@ export const events = {
     USER: 'USER',
   },
 
+  WS: {
+    MESSAGE: 'MSG',
+    START_GAME: 'START_MULTIPLAYER',
+  },
+
   ROUTE: {
     SIGN_UP: 'SIGN_UP',
     LOGIN: 'LOGIN',

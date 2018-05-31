@@ -69,11 +69,16 @@ export default class Donut extends Figure {
     const b = Math.abs(mousePos.x - this.x);
 
     this.v = Math.round(Math.sqrt(a ** 2 + b ** 2) * 0.2);
+    if (this.v > 100) {
+      this.v = 100;
+    }
   }
 
   checkCollision(collCoords) {
-    if (this.x > this.ctx.canvas.width || this.x + this.radius * 2 < 0) {
+    if (this.x > this.ctx.canvas.width || this.x + this.radius * 2 < 0 || this.y > this.ctx.canvas.height || this.y < 0) {
       this.result.missed = true;
+      this.result.hit = false;
+      console.log('missed', collCoords, this.x, this.y);
       this.reset();
       return;
     }
@@ -84,14 +89,19 @@ export default class Donut extends Figure {
 
       this.result.hit = true;
       this.result.missed = false;
+      console.log('hit!', collCoords, this.x, this.y);
+      this.reset();
     }
   }
 
   reset() {
+    console.log('reset');
     this.y = gameObjects.DONUT.y;
     this.x = this.startX;
 
     this.v = gameObjects.DONUT.v;
+
+    console.log(this.x, this.y, gameObjects.DONUT);
 
     this.angle = 0;
   }

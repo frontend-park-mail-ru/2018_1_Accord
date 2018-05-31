@@ -1,24 +1,13 @@
 import GameEngine from './engine.js';
 import EventBus from '../../eventBus.js';
 import {events} from '../../events.js';
+import {state} from '../graphics/gameObjects.js';
 
 export default class SinglePlayer extends GameEngine {
   constructor(scene, controller) {
     super(scene, controller);
-
     this.gameStarted = false;
-
-    this.state = {
-      isPlaying: true,
-      inFlight: false,
-      win: false,
-      angle: 0,
-      velocity: 0,
-      lives: 100,
-      score: 0,
-      mousePos: {x: 0, y: 0},
-      flightState: {missed: false, hit: false},
-    };
+    this.state = state;
   }
 
   start() {
@@ -52,12 +41,17 @@ export default class SinglePlayer extends GameEngine {
   }
 
   onMouseClicked(event) {
-    if (this.state.isPlaying && !this.state.inFlight) {
+    if (this.state.isPlaying && !this.state.inFlight && this.gameStarted) {
       this.state.mousePos = this._getMousePos(event);
       this.state.inFlight = true;
       this.state.flightState.hit = this.state.flightState.missed = false;
       this.state.lives--;
+
       EventBus.emit(events.GAME.STATE_CHANGED, this.state);
     }
+  }
+
+  onCollision(state) {
+    this.state = state;
   }
 }

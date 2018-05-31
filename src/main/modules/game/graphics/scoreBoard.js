@@ -40,7 +40,7 @@ export default class ScoreBoard extends Figure {
 
   /**
    *
-   * @param {{player_1: number, player_2: number} | {player_1: number}} scores
+   * @param {{player_1: number, player_2: number} || {player_1: number}} scores
    */
   setScore(scores) {
     this.scores[0].setText(`${scores.player_1}`);

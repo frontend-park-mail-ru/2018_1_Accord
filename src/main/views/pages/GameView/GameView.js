@@ -34,6 +34,14 @@ export default class GameView extends BaseView {
     }.bind(this));
   }
 
+  destroy() {
+    if (this.gameProc) {
+      this.gameProc.destroy();
+      this.gameProc = null;
+    }
+    super.destroy();
+  }
+
   render() {
     super.render();
 
@@ -66,7 +74,7 @@ export default class GameView extends BaseView {
       this.errorField.style.display = 'none';
       this.canvas.style.display = 'block';
       this.gameProc.start();
-    } ;
+    };
 
     this.bus.on(events.START_GAME.LEVEL_SELECTED, (value) => {
       this.gameSettings.level = value;

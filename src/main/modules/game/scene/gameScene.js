@@ -1,7 +1,7 @@
 import EventBus from '../../eventBus.js';
 import Donut from './Donut.js';
 import Homer from './Homer.js';
-import {gameObjects} from '../graphics/gameObjects.js';
+import {gameObjects, state, enemyState} from '../graphics/gameObjects.js';
 import {events} from '../../events.js';
 import StartText from '../graphics/startText.js';
 import ScoreBoard from '../graphics/scoreBoard.js';
@@ -22,21 +22,11 @@ export default class GameScene {
     this.scoreboard = new ScoreBoard(this.ctx, 1);
     this.lives = new CanvasLives(this.ctx, 50);
 
-    this.state = {
-      isPlaying: true,
-      inFlight: false,
-      win: false,
-      angle: 0,
-      velocity: 0,
-      lives: 100,
-      score: 0,
-      mousePos: {x: 0, y: 0},
-      flightState: {missed: false, hit: false},
-    };
+    this.state = state;
 
     if (withEnemy) {
       this.donutRight = new Donut(this.ctx, 'RIGHT');
-      this.enemyState = {};
+      this.enemyState = enemyState;
     }
 
     this.renderScene = this.renderScene.bind(this);
@@ -53,16 +43,12 @@ export default class GameScene {
 
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     this.startText.draw();
-    this.homer.draw();
   }
-
 
   renderScene(now) {
     const delay = now - this.lastFrameTime;
     this.lastFrameTime = now;
-
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-
     this.homer.move(delay);
 
     if (this.state.inFlight) {
@@ -92,6 +78,11 @@ export default class GameScene {
     EventBus.off(events.GAME.STATE_CHANGED, this.onStateChanged);
     EventBus.off(events.GAME.POSITION_CHANGED, this.donutMove);
     EventBus.off(events.GAME.FINISH, this.stop);
+
+    this.donutLeft = this.donutRight = null;
+    this.homer = null;
+    this.state = this.enemyState = null;
+    this.ctx = null;
   }
 
   donutMove(direction) {
@@ -102,10 +93,30 @@ export default class GameScene {
     if (direction === 'UP' && this.donutLeft.y - this.donutLeft.dYMove > 10) {
       this.donutLeft.y -= this.donutLeft.dYMove;
     }
+
+    const min = Math.min(this.ctx.canvas.width, this.ctx.canvas.height);
+    this.state.positionX = this.donutLeft.x * min / 100;
+    this.state.positionY = this.donutLeft.y * min / 100;
+    EventBus.emit(events.GAME.STATE_CHANGED, this.state);
   }
 
   donutFly(delay) {
     const flightState = this.donutLeft.fly(delay, {x: this.homer.x, y: this.homer.y});
+
+    if (flightState.hit) {
+      this.state.score++;
+      this.state.inFlight = false;
+      this.state.flightState = flightState;
+      this.scoreboard.setScore({player_1: `${this.state.score}`});
+      EventBus.emit(events.GAME.COLLISION, this.state);
+      return;
+    }
+
+    if (flightState.missed) {
+      this.state.inFlight = false;
+      this.state.flightState = flightState;
+      EventBus.emit(events.GAME.COLLISION, this.state);
+    }
   }
 
   onStateChanged(state) {
@@ -113,10 +124,6 @@ export default class GameScene {
     this.donutLeft.countAngle(this.state.mousePos);
     this.donutLeft.countVelocity(this.state.mousePos);
   }
-
-  // set enemyState(state) {
-  //   this.enemyState = state;
-  // }
 
   renderAll() {
     this.homer.render();

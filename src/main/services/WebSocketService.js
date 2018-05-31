@@ -1,15 +1,26 @@
+import EventBus from '../modules/eventBus.js';
+import {events} from '../modules/events.js';
+
 class WebSocketService {
   constructor() {
     this.isConnected = false;
 
-    this.ws = new WebSocket('ws://backend-accord-02-2018.herokuapp.com/mgame');
+    this.ws = new WebSocket('wss://backend-accord-02-2018.herokuapp.com/mgame');
     this.ws.onopen = (event) => {
       this.isConnected = true;
-      console.log('connection opened', event, 'isConnected: ', this.isConnected);
+      EventBus.emit(events.WS.START_GAME);
+      console.log('connection opened', event);
     };
 
     this.ws.onmessage = (event) => {
-      console.log('message: ', event);
+      console.log(event.data);
+      try {
+        const msg = JSON.parse(event.data);
+        EventBus.emit(events.WS.MESSAGE, msg);
+      } catch (error) {
+        console.log(error);
+      }
+
     };
 
     this.ws.onclose = (event) => {
@@ -24,22 +35,6 @@ class WebSocketService {
 
     this.ws.onerror = (error) => {
       console.log('error: ', error);
-    };
-
-    setInterval(() => {
-      if (this.isConnected) {
-        this.sendMsg(json);
-      }
-    }, 100);
-
-    const json = {
-      'velocity': 22.0,
-      'angle': 0.0,
-      'position': {
-        'x': 0.99,
-        'y': 1.0
-      },
-      'isShoot': false
     };
   }
 

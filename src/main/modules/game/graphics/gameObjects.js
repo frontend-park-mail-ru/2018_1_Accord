@@ -1,6 +1,36 @@
 const canvasWidth = window.innerWidth;
 const canvasHeight = window.innerHeight - 120;
 
+export const state = {
+  user: 'me',
+  isPlaying: true,
+  inFlight: false,
+  win: false,
+  angle: 0,
+  velocity: 1,
+  positionX: 30,
+  positionY: canvasHeight * 0.45,
+  lives: 10,
+  score: 0,
+  mousePos: {x: 0, y: 0},
+  flightState: {missed: false, hit: false},
+};
+
+export const enemyState = {
+  user: 'enemy',
+  isPlaying: true,
+  inFlight: false,
+  win: false,
+  angle: 0,
+  velocity: 0,
+  positionX: canvasWidth - canvasHeight * 0.1 - 30,
+  positionY: canvasHeight * 0.45,
+  lives: 10,
+  score: 0,
+  mousePos: {x: 0, y: 0},
+  flightState: {missed: false, hit: false},
+};
+
 export const gameObjects = {
   CANVAS: {
     height: canvasHeight,
