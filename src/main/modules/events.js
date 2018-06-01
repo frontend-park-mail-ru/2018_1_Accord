@@ -39,5 +39,6 @@ export const events = {
     LOGOUT: 'LOGOUT',
     PROFILE: 'PROFILE',
     HELP: 'HELP',
+    GAME: 'GAME',
   }
 };

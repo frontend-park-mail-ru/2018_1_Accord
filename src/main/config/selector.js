@@ -14,6 +14,7 @@ export const selector = {
   LOADER: '.loader',
   MENU_ITEMS: '.main__menu-items',
   START_GAME: '.start_game',
+  END_GAME: '.end-game',
 
   CANVAS: '.game-view__canvas',
 
@@ -57,5 +58,11 @@ export const selector = {
   SELECT: '.start_game__select-select',
   SINGLE_BUTTON: '.start_game__buttons-single',
   BATTLE_BUTTON: '.start_game__buttons-battle',
+
+  //end game elements
+  TRY_AGAIN: '.end-game__text-line_pink',
+  ENEMY_TEXT: '.end-game__text-line_enemy',
+  USER_TEXT: '.end-game__text-line_white',
+  RESULT_TEXT: '.end-game__text-line_yellow',
 
 };

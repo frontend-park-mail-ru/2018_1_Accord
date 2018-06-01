@@ -85,11 +85,17 @@ export default class Router {
     EventBus.on(events.ROUTE.SIGN_UP, () => {
       this.open(pagePaths.START_PATH);
     });
+
     EventBus.on(events.ROUTE.LOGIN, () => {
       this.open(pagePaths.START_PATH);
     });
+
     EventBus.on(events.ROUTE.LOGOUT, () => {
       this.open(pagePaths.START_PATH);
+    });
+
+    EventBus.on(events.ROUTE.GAME, () => {
+      this.open(pagePaths.GAME_PATH);
     });
 
     window.onpopstate = () => {

@@ -10,6 +10,7 @@ import {gameSettings} from '../../../config/gameSettings.js';
 import {events} from '../../../modules/events.js';
 import {gameObjects} from '../../../modules/game/graphics/gameObjects.js';
 import StartGameView from '../../../components/blocks/startGame/StartGame.js';
+import EndGameView from '../../../components/blocks/endGame/EndGameView.js';
 
 
 export default class GameView extends BaseView {
@@ -53,7 +54,6 @@ export default class GameView extends BaseView {
     super.render();
 
     this.loader.style.display = 'none';
-
     this._getElements();
 
     userService.getUser()
@@ -84,10 +84,12 @@ export default class GameView extends BaseView {
     this.unAuthInfo = this.game.querySelector(selector.GAME_UNAUTH_INFO);
     this.errorField = this.game.querySelector(selector.GAME_ERROR);
     this.canvas = this.el.querySelector(selector.CANVAS);
+    this.endGame = this.game.querySelector(selector.END_GAME);
 
     this.unAuthInfo.style.display = 'none';
     this.errorField.style.display = 'none';
     this.canvas.style.display = 'none';
+    this.endGame.style.display = 'none';
 
     this.canvas.height = gameObjects.CANVAS.height;
     this.canvas.width = gameObjects.CANVAS.width;
@@ -130,9 +132,11 @@ export default class GameView extends BaseView {
     Logger.error(error);
   }
 
-  _onGameFinish() {
+  _onGameFinish(result) {
+    console.log('finish', result);
     if (this.active) {
       this.gameProc.destroy();
+      this.endGame = new EndGameView(this.game, result);
     }
   }
 

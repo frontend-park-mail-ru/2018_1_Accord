@@ -73,10 +73,6 @@ export default class MultiPlayer extends GameEngine {
       EventBus.emit(events.GAME.START);
       console.log('start clicked');
 
-    } else if (this._pressed('FINISH', event)) {
-      this.gameStarted = false;
-      EventBus.emit(events.GAME.FINISH);
-
     } else if (this._pressed('UP', event) && this.gameStarted && !this.state.inFlight) {
       EventBus.emit(events.GAME.POSITION_CHANGED, 'UP');
 
@@ -107,7 +103,11 @@ export default class MultiPlayer extends GameEngine {
 
       case 'endGame':
         console.log('endGame', msg);
-        EventBus.emit(events.GAME.FINISH);
+        EventBus.emit(events.GAME.FINISH, {
+          you: this.state.score,
+          enemy: this.enemyState.score,
+          resultString: this.state.score >= this.enemyState.score ? 'You win!' : 'You lost'
+        });
         break;
 
       case 'debug':
