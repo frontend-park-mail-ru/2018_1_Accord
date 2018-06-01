@@ -14,17 +14,12 @@ export default class GameEngine {
     this.controller = controller;
     this.scene = scene;
 
-    this.gameLoop = this.gameLoop.bind(this);
-
-    this.gameLoopRequestId = null;
-    this.controllersLoopIntervalId = null;
-
     this.onGameStarted = this.onGameStarted.bind(this);
     this.onControllPressed = this.onControllPressed.bind(this);
-    this.onGameFinished = this.onGameFinished.bind(this);
     this.onMouseClicked = this.onMouseClicked.bind(this);
     this.onMouseMoved = this.onMouseMoved.bind(this);
     this.onCollision = this.onCollision.bind(this);
+    this.onStateChanged = this.onStateChanged.bind(this);
   }
 
   start() {
@@ -32,8 +27,8 @@ export default class GameEngine {
     this.scene.init();
 
     EventBus.on(events.GAME.START, this.onGameStarted);
-    EventBus.on(events.GAME.FINISH, this.onGameFinished);
     EventBus.on(events.GAME.COLLISION, this.onCollision);
+    EventBus.on(events.GAME.SCENE_STATE_CHANGED, this.onStateChanged);
     EventBus.on(events.CONTROL.PRESSED, this.onControllPressed);
     EventBus.on(events.CONTROL.CLICKED, this.onMouseClicked);
     EventBus.on(events.CONTROL.MOUSE_MOVED, this.onMouseMoved);
@@ -51,9 +46,12 @@ export default class GameEngine {
   destroy() {
     clearInterval(this.controllersLoopIntervalId);
 
+    this.controller.destroy();
+    this.scene.stop();
+
     EventBus.off(events.GAME.START, this.onGameStarted);
-    EventBus.off(events.GAME.FINISH, this.onGameFinished);
     EventBus.off(events.GAME.COLLISION, this.onCollision);
+    EventBus.off(events.GAME.SCENE_STATE_CHANGED, this.onStateChanged);
     EventBus.off(events.CONTROL.PRESSED, this.onControllPressed);
     EventBus.off(events.CONTROL.CLICKED, this.onMouseClicked);
     EventBus.off(events.CONTROL.MOUSE_MOVED, this.onMouseMoved);
@@ -61,10 +59,6 @@ export default class GameEngine {
     Logger.log('game view: game finished');
 
     //TODO controller scene ??
-  }
-
-  gameLoop() {
-
   }
 
   onGameStarted() {
@@ -87,10 +81,8 @@ export default class GameEngine {
 
   }
 
-  onGameFinished() {
-    this.controller.destroy();
-    this.scene.stop();
-    cancelAnimationFrame(this.gameLoopRequestId);
+  onStateChanged() {
+
   }
 
   _pressed(name, data) {

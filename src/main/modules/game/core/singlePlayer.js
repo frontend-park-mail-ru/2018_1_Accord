@@ -36,6 +36,10 @@ export default class SinglePlayer extends GameEngine {
     }
   }
 
+  onStateChanged() {
+
+  }
+
   onGameStarted() {
     this.scene.startScene();
   }
@@ -47,7 +51,7 @@ export default class SinglePlayer extends GameEngine {
       this.state.flightState.hit = this.state.flightState.missed = false;
       this.state.lives--;
 
-      EventBus.emit(events.GAME.STATE_CHANGED, this.state);
+      EventBus.emit(events.GAME.ENGINE_STATE_CHANGED, this.state);
     }
   }
 

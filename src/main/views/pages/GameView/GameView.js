@@ -27,11 +27,13 @@ export default class GameView extends BaseView {
       level: gameSettings.level.EASY
     };
 
-    this.bus.on(events.GAME.FINISH, function () {
-      if (this.active) {
-        this.gameProc.destroy();
-      }
-    }.bind(this));
+    this._onGameFinish = this._onGameFinish.bind(this);
+    this._onLevelSelected = this._onLevelSelected.bind(this);
+    this._onSingleClicked = this._onSingleClicked.bind(this);
+    this._onBattleClicked = this._onBattleClicked.bind(this);
+    this.handleStart = this.handleStart.bind(this);
+
+    this.bus.on(events.GAME.FINISH, this._onGameFinish);
   }
 
   destroy() {
@@ -39,6 +41,11 @@ export default class GameView extends BaseView {
       this.gameProc.destroy();
       this.gameProc = null;
     }
+    this.bus.off(events.GAME.FINISH, this._onGameFinish);
+    this.bus.off(events.START_GAME.LEVEL_SELECTED, this._onLevelSelected);
+    this.bus.off(events.START_GAME.SINGLE_CLICKED, this._onSingleClicked);
+    this.bus.off(events.START_GAME.BATTLE_CLICKED, this._onBattleClicked);
+
     super.destroy();
   }
 
@@ -67,29 +74,9 @@ export default class GameView extends BaseView {
   _showStartMenu() {
     this.startMenu = new StartGameView(this.game, this.user);
 
-    const handleStart = () => {
-      this.gameProc = new Game(this.canvas, this.gameSettings);
-      this.startMenu.style.display = 'none';
-      this.unAuthInfo.style.display = 'none';
-      this.errorField.style.display = 'none';
-      this.canvas.style.display = 'block';
-      this.gameProc.start();
-    };
-
-    this.bus.on(events.START_GAME.LEVEL_SELECTED, (value) => {
-      this.gameSettings.level = value;
-      Logger.log('level: ', value);
-    });
-
-    this.bus.on(events.START_GAME.SINGLE_CLICKED, () => {
-      this.gameSettings.player = gameSettings.player.SINGLE_PLAYER;
-      handleStart();
-    });
-
-    this.bus.on(events.START_GAME.BATTLE_CLICKED, () => {
-      this.gameSettings.player = gameSettings.player.BATTLE;
-      handleStart();
-    });
+    this.bus.on(events.START_GAME.LEVEL_SELECTED, this._onLevelSelected);
+    this.bus.on(events.START_GAME.SINGLE_CLICKED, this._onSingleClicked);
+    this.bus.on(events.START_GAME.BATTLE_CLICKED, this._onBattleClicked);
   }
 
   _getElements() {
@@ -141,5 +128,35 @@ export default class GameView extends BaseView {
     this.gameSettings.mode = gameSettings.mode.OFFLINE;
 
     Logger.error(error);
+  }
+
+  _onGameFinish() {
+    if (this.active) {
+      this.gameProc.destroy();
+    }
+  }
+
+  handleStart() {
+    this.gameProc = new Game(this.canvas, this.gameSettings);
+    this.startMenu.style.display = 'none';
+    this.unAuthInfo.style.display = 'none';
+    this.errorField.style.display = 'none';
+    this.canvas.style.display = 'block';
+    this.gameProc.start();
+  }
+
+  _onLevelSelected(value) {
+    this.gameSettings.level = value;
+    Logger.log('level: ', value);
+  }
+
+  _onSingleClicked() {
+    this.gameSettings.player = gameSettings.player.SINGLE_PLAYER;
+    this.handleStart();
+  }
+
+  _onBattleClicked() {
+    this.gameSettings.player = gameSettings.player.BATTLE;
+    this.handleStart();
   }
 }
