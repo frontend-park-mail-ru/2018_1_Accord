@@ -1,0 +1,23 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+    <div class="start-game_text">
+        <div class="start-game_text-container">
+            <div class="start-game_text_white">
+                Your goal is to make Homer eat your donuts
+            </div>
+            <div class="start-game_text_white">
+                As much, as possible
+            </div>
+            <div class="start-game_text_white">
+                Use UP and DOWN arrows to move donut
+            </div>
+            <div class="start-game_text_white">
+                Move mouse and click it to launch your donut
+            </div>
+            <div class="start-game_text_pink">
+                Ready? Press SPACE
+            </div>
+        </div>
+    </div>
+</fest:template>
+
+

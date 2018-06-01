@@ -11,6 +11,7 @@
         </div>
 
         <fest:include src="../../../components/blocks/startGame/StartGame.tmpl.xml"/>
+        <fest:include src="../../../components/blocks/startGame/StartGameText.tmpl.xml"/>
         <fest:include src="../../../components/blocks/endGame/EndGameView.tmpl.xml"/>
 
         <div class="game-view__area">

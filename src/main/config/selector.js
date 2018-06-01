@@ -58,6 +58,7 @@ export const selector = {
   SELECT: '.start_game__select-select',
   SINGLE_BUTTON: '.start_game__buttons-single',
   BATTLE_BUTTON: '.start_game__buttons-battle',
+  START_TEXT: '.start-game_text',
 
   //end game elements
   TRY_AGAIN: '.end-game__text-line_pink',

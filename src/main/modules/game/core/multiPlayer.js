@@ -32,6 +32,7 @@ export default class MultiPlayer extends GameEngine {
   }
 
   onGameStarted() {
+    super.onGameStarted();
     this.ws = new WebSocketService();
   }
 

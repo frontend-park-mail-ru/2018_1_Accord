@@ -1,6 +1,7 @@
 import EventBus from '../../eventBus.js';
 import {events} from '../../events.js';
 import Logger from '../../../utils/logger.js';
+import {selector} from '../../../config/selector.js';
 
 const KEYS = {
   START: [' '],
@@ -62,7 +63,8 @@ export default class GameEngine {
   }
 
   onGameStarted() {
-
+    const startText = document.querySelector(selector.START_TEXT);
+    startText.style.display = 'none';
   }
 
   onMouseClicked() {

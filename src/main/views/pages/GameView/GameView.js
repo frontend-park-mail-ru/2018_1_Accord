@@ -85,11 +85,13 @@ export default class GameView extends BaseView {
     this.errorField = this.game.querySelector(selector.GAME_ERROR);
     this.canvas = this.el.querySelector(selector.CANVAS);
     this.endGame = this.game.querySelector(selector.END_GAME);
+    this.startText = this.game.querySelector(selector.START_TEXT);
 
     this.unAuthInfo.style.display = 'none';
     this.errorField.style.display = 'none';
     this.canvas.style.display = 'none';
     this.endGame.style.display = 'none';
+    this.startText.style.display = 'none';
 
     this.canvas.height = gameObjects.CANVAS.height;
     this.canvas.width = gameObjects.CANVAS.width;
@@ -145,6 +147,8 @@ export default class GameView extends BaseView {
     this.startMenu.style.display = 'none';
     this.unAuthInfo.style.display = 'none';
     this.errorField.style.display = 'none';
+
+    this.startText.style.display = 'block';
     this.canvas.style.display = 'block';
     this.gameProc.start();
   }

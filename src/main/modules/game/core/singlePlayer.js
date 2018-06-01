@@ -44,6 +44,7 @@ export default class SinglePlayer extends GameEngine {
   }
 
   onGameStarted() {
+    super.onGameStarted();
     this.scene.startScene();
   }
 

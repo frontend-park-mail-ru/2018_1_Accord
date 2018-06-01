@@ -3,22 +3,17 @@ import Donut from './Donut.js';
 import Homer from './Homer.js';
 import {gameObjects, state, enemyState} from '../graphics/gameObjects.js';
 import {events} from '../../events.js';
-import StartText from '../graphics/startText.js';
 import ScoreBoard from '../graphics/scoreBoard.js';
 import CanvasLives from '../graphics/lives.js';
 
 export default class GameScene {
   constructor(canvas, withEnemy) {
-    this.bus = EventBus;
     this.ctx = canvas.getContext('2d');
     this.requestFrameId = null;
     this.lastFrameTime = 0;
 
     this.donutLeft = new Donut(this.ctx, 'LEFT');
     this.homer = new Homer(this.ctx, gameObjects.HOMER.x, gameObjects.HOMER.y);
-
-    this.startText = new StartText(this.ctx, gameObjects.TEXT.startText,
-      gameObjects.TEXT.centerX, gameObjects.TEXT.centerY);
     this.scoreboard = new ScoreBoard(this.ctx, 1);
     this.lives = new CanvasLives(this.ctx, 50);
 
@@ -47,7 +42,6 @@ export default class GameScene {
     }
 
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-    this.startText.draw();
   }
 
   renderScene(now) {

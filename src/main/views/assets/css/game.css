@@ -145,6 +145,49 @@
     font-size: 2.7em;
 }
 
+.start-game_text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    height: 50%;
+    width: 100%;
+
+    margin-top: 15%;
+
+    min-width: 300px;
+    min-height: 250px;
+
+    font-family: 'LuckiestGuy';
+    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
+    user-select: none;
+}
+
+.start-game_text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.start-game_text_white {
+    font-size: 2.2em;
+    width: 70%;
+    color: #ffd304;
+    margin: 14px;
+    text-align: center;
+}
+
+.start-game_text_pink {
+    font-size: 2.3em;
+    width: 70%;
+    color: #f92397;
+    margin: 14px;
+    text-align: center;
+}
+
 .game__title-error {
     text-align: center;
     font-family: "LuckiestGuy";
