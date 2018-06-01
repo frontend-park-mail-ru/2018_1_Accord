@@ -4,6 +4,7 @@ node_js:
 script:
 - eval "$(ssh-agent -s)"
 - ssh-keyscan -H 78.155.207.152 >> ~/.ssh/known_hosts
+- chmod 600 $HOME/.ssh/id_rsa
 - ssh deploy@78.155.207.152 'rm -rf /var/www/*'
 - scp -r ./src/* deploy@78.155.207.152:/var/www
 before_install:
