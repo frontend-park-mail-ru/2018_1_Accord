@@ -1,4 +1,4 @@
-<fest:template xmlns:fest="http://fest.mail.ru">
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
     <div class="view game-view">
 
         <fest:include src="../../../components/blocks/navBar/NavBar.tmpl.xml"/>
@@ -18,6 +18,5 @@
             <canvas class="game-view__canvas"></canvas>
         </div>
     </div>
-
 
 </fest:template>

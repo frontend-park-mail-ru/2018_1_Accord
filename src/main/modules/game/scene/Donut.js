@@ -82,7 +82,8 @@ export default class Donut extends Figure {
       return;
     }
 
-    if (this.y <= collCoords.y
+    if (this.y >= collCoords.y
+      && this.y <= collCoords.y + 50
       && this.x >= collCoords.x
       && this.x <= collCoords.x + gameObjects.HOMER.width) {
 
