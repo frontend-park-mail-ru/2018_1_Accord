@@ -34,12 +34,17 @@ export default class GameScene {
     this.stop = this.stop.bind(this);
     this.donutMove = this.donutMove.bind(this);
     this.donutFly = this.donutFly.bind(this);
+    this.onEnemyStateChanged = this.onEnemyStateChanged.bind(this);
   }
 
   init() {
-    EventBus.on(events.GAME.STATE_CHANGED, this.onStateChanged);
+    EventBus.on(events.GAME.ENGINE_STATE_CHANGED, this.onStateChanged);
     EventBus.on(events.GAME.FINISH, this.stop);
     EventBus.on(events.GAME.POSITION_CHANGED, this.donutMove);
+
+    if (this.donutRight) {
+      EventBus.on(events.GAME.ENEMY_STATE_CHANGED, this.onEnemyStateChanged);
+    }
 
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     this.startText.draw();
@@ -53,6 +58,10 @@ export default class GameScene {
 
     if (this.state.inFlight) {
       this.donutFly(delay);
+    }
+
+    if (this.enemyState && this.enemyState.inFlight) {
+      this.enemyFly(delay);
     }
 
     this.scoreboard.setScore({player_1: this.state.score});
@@ -75,9 +84,13 @@ export default class GameScene {
     }
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 
-    EventBus.off(events.GAME.STATE_CHANGED, this.onStateChanged);
+    EventBus.off(events.GAME.ENGINE_STATE_CHANGED, this.onStateChanged);
     EventBus.off(events.GAME.POSITION_CHANGED, this.donutMove);
     EventBus.off(events.GAME.FINISH, this.stop);
+
+    if (this.donutRight) {
+      EventBus.off(events.GAME.ENEMY_STATE_CHANGED, this.onEnemyStateChanged);
+    }
 
     this.donutLeft = this.donutRight = null;
     this.homer = null;
@@ -94,10 +107,8 @@ export default class GameScene {
       this.donutLeft.y -= this.donutLeft.dYMove;
     }
 
-    const min = Math.min(this.ctx.canvas.width, this.ctx.canvas.height);
-    this.state.positionX = this.donutLeft.x * min / 100;
-    this.state.positionY = this.donutLeft.y * min / 100;
-    EventBus.emit(events.GAME.STATE_CHANGED, this.state);
+    this.state.positionY = this.donutLeft.y / this.ctx.canvas.height * 100;
+    EventBus.emit(events.GAME.SCENE_STATE_CHANGED, this.state);
   }
 
   donutFly(delay) {
@@ -119,10 +130,42 @@ export default class GameScene {
     }
   }
 
+  enemyFly(delay) {
+    console.log(this.donutRight.angle);
+    const enemyFlightState = this.donutRight.fly(delay, {x: this.homer.x, y: this.homer.y});
+
+    if (enemyFlightState.hit) {
+      this.enemyState.score++;
+      this.enemyState.inFlight = false;
+      this.enemyState.flightState = enemyFlightState;
+      // todo this.scoreboard.setScore({player_1: `${this.state.score}`});
+      // EventBus.emit(events.GAME.COLLISION, this.state);
+      console.log('enemy hit homer');
+      return;
+    }
+
+    if (enemyFlightState.missed) {
+      this.enemyState.inFlight = false;
+      this.enemyState.flightState = enemyFlightState;
+      //todo EB emit Collision
+      console.log('enemy missed homer');
+    }
+  }
+
   onStateChanged(state) {
     this.state = state;
     this.donutLeft.countAngle(this.state.mousePos);
+    this.state.angle = this.donutLeft.angle;
+
     this.donutLeft.countVelocity(this.state.mousePos);
+    this.state.velocity = this.donutLeft.v;
+  }
+
+  onEnemyStateChanged(state) {
+    this.enemyState = state;
+    this.donutRight.angle = this.enemyState.angle;
+    this.donutRight.velocity = this.enemyState.velocity;
+    this.donutRight.y = this.enemyState.positionY * this.ctx.canvas.height / 100;
   }
 
   renderAll() {

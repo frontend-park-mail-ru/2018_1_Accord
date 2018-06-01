@@ -25,6 +25,7 @@ export default class GameEngine {
     this.onMouseClicked = this.onMouseClicked.bind(this);
     this.onMouseMoved = this.onMouseMoved.bind(this);
     this.onCollision = this.onCollision.bind(this);
+    this.onStateChanged = this.onStateChanged.bind(this);
   }
 
   start() {
@@ -34,6 +35,7 @@ export default class GameEngine {
     EventBus.on(events.GAME.START, this.onGameStarted);
     EventBus.on(events.GAME.FINISH, this.onGameFinished);
     EventBus.on(events.GAME.COLLISION, this.onCollision);
+    EventBus.on(events.GAME.SCENE_STATE_CHANGED, this.onStateChanged);
     EventBus.on(events.CONTROL.PRESSED, this.onControllPressed);
     EventBus.on(events.CONTROL.CLICKED, this.onMouseClicked);
     EventBus.on(events.CONTROL.MOUSE_MOVED, this.onMouseMoved);
@@ -54,6 +56,7 @@ export default class GameEngine {
     EventBus.off(events.GAME.START, this.onGameStarted);
     EventBus.off(events.GAME.FINISH, this.onGameFinished);
     EventBus.off(events.GAME.COLLISION, this.onCollision);
+    EventBus.off(events.GAME.SCENE_STATE_CHANGED, this.onStateChanged);
     EventBus.off(events.CONTROL.PRESSED, this.onControllPressed);
     EventBus.off(events.CONTROL.CLICKED, this.onMouseClicked);
     EventBus.off(events.CONTROL.MOUSE_MOVED, this.onMouseMoved);
@@ -84,6 +87,10 @@ export default class GameEngine {
   }
 
   onCollision() {
+
+  }
+
+  onStateChanged() {
 
   }
 

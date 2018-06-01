@@ -1,15 +1,25 @@
 import EventBus from '../modules/eventBus.js';
 import {events} from '../modules/events.js';
+import userService from './UserService.js';
 
 class WebSocketService {
   constructor() {
     this.isConnected = false;
 
-    this.ws = new WebSocket('wss://донуц.рф/api/mgame');
-    this.ws.onopen = (event) => {
-      this.isConnected = true;
-      EventBus.emit(events.WS.START_GAME);
-      console.log('connection opened', event);
+    this.ws = new WebSocket('ws://localhost:8999/');
+    this.ws.onopen = () => {
+      userService.getUser()
+        .then((user) => {
+          this.sendMsg({
+            'email': `${user.email}`,
+            'level': 0
+          });
+        })
+        .catch((error) => {
+          this.ws.close();
+          console.log(error);
+          EventBus.emit(events.ROUTE.LOGIN);
+        });
     };
 
     this.ws.onmessage = (event) => {
@@ -18,7 +28,8 @@ class WebSocketService {
         const msg = JSON.parse(event.data);
         EventBus.emit(events.WS.MESSAGE, msg);
       } catch (error) {
-        console.log(error);
+        if (event.data === 'game started') {
+        }
       }
 
     };
@@ -27,10 +38,10 @@ class WebSocketService {
       if (event.wasClean) {
         console.log('Соединение закрыто чисто');
       } else {
+        EventBus.emit(events.GAME.FINISH);
         console.log('Обрыв соединения');
       }
       console.log('Код: ' + event.code + ' причина: ' + event.reason);
-      this.isConnected = false;
     };
 
     this.ws.onerror = (error) => {
