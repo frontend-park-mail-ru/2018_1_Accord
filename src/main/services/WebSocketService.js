@@ -4,8 +4,6 @@ import userService from './UserService.js';
 
 class WebSocketService {
   constructor() {
-    this.isConnected = false;
-
     this.ws = new WebSocket('ws://localhost:8999/');
     this.ws.onopen = () => {
       userService.getUser()
@@ -28,10 +26,8 @@ class WebSocketService {
         const msg = JSON.parse(event.data);
         EventBus.emit(events.WS.MESSAGE, msg);
       } catch (error) {
-        if (event.data === 'game started') {
-        }
+        console.log(error);
       }
-
     };
 
     this.ws.onclose = (event) => {

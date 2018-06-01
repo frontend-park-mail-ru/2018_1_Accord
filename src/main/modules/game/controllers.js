@@ -1,4 +1,4 @@
- import EventBus from '../eventBus.js';
+import EventBus from '../eventBus.js';
 import {events} from '../events.js';
 
 export default class GameControllers {

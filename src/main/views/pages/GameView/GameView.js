@@ -143,7 +143,7 @@ export default class GameView extends BaseView {
     this.errorField.style.display = 'none';
     this.canvas.style.display = 'block';
     this.gameProc.start();
-  };
+  }
 
   _onLevelSelected(value) {
     this.gameSettings.level = value;
