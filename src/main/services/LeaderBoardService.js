@@ -27,6 +27,15 @@ class LeaderBoardService {
             throw {status: 'Error', message: 'Unexpected error'};
         }
       })
+      .then((json) => {
+        if (json) {
+          return {
+            curPage: Number(json.currentPage),
+            pageNum: Number(json.numberOfPages),
+            data: json.scoreBoard
+          };
+        }
+      })
       .catch(errorTransformer);
 
     return this.dataPromise;
