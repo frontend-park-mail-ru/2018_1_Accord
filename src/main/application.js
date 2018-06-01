@@ -9,7 +9,6 @@ import HelpView from './views/pages/HelpView/HelpView.js';
 import LeaderBoardView from './views/pages/LeaderBoard/LeaderBoardView.js';
 import SignUpView from './views/pages/SignUpView/SignUpView.js';
 import GameView from './views/pages/GameView/GameView.js';
-//import ProfileView from './views/pages/ProfileView/profileView.main';
 import {pagePaths} from './config/pagePaths.js';
 
 

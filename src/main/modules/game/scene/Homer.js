@@ -14,10 +14,10 @@ export default class Homer extends Figure {
     this.height = gameObjects.HOMER.height;
 
     this.imgLeft = new Image(this.width, this.height);
-    this.imgLeft.src = '/images/homer_simpson_left.png';
+    this.imgLeft.src = '/img/homer_simpson_left.png';
 
     this.imgRight = new Image(this.width, this.height);
-    this.imgRight.src = '/images/homer_simpson_right.png';
+    this.imgRight.src = '/img/homer_simpson_right.png';
 
     this.curImg = this.imgRight;
   }

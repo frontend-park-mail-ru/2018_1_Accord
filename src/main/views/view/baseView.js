@@ -2,6 +2,7 @@
 
 import EventBus from '../../modules/eventBus.js';
 import {selector} from '../../config/selector.js';
+import audio from '../../modules/AudioPlayer/AudioPlayer.js';
 
 export default class BaseView {
   constructor(name) {
@@ -15,6 +16,7 @@ export default class BaseView {
   }
 
   render(attrs) {
+    audio.play();
     this.el.innerHTML = this.tmpl(attrs);
     return this;
   }

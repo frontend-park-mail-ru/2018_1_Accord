@@ -35,14 +35,14 @@ export default class HelpView extends BaseView {
             selector.PROFILE_BUTTON
           ];
         }
-        new NavBar(this.help, this.navBar, this.user);
+        new NavBar(this.help, this.navBar, user);
       })
       .catch((error) => {
         this.errorField.innerText = fetchFaildErrors.noConnection;
         this.errorField.style.display = 'block';
         Logger.error(error);
 
-        new NavBar(this.help, this.navBar, this.user);
+        new NavBar(this.help, this.navBar, null);
       });
 
     return this;

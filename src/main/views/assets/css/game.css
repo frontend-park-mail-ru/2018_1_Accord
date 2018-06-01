@@ -206,13 +206,12 @@
     height: 50%;
     width: 100%;
 
-    margin-top: 20%;
+    margin-top: 15%;
 
     min-width: 300px;
     min-height: 250px;
 
     font-family: 'LuckiestGuy';
-    font-size: 2.5em;
     text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
     user-select: none;
 
@@ -227,6 +226,7 @@
 }
 
 .end-game__text-line_white {
+    font-size: 2.5em;
     width: 50%;
     color: #f3f8f0;
     margin: 20px;
@@ -234,6 +234,7 @@
 }
 
 .end-game__text-line_yellow {
+    font-size: 2.5em;
     width: 50%;
     text-align: center;
     color: #ffd304;
@@ -241,6 +242,7 @@
 }
 
 .end-game__text-line_enemy {
+    font-size: 2.5em;
     width: 50%;
     color: #f3f8f0;
     margin: 20px;
@@ -248,6 +250,7 @@
 }
 
 .end-game__text-line_pink {
+    font-size: 2.5em;
     width: 50%;
     text-align: center;
     margin: 20px;
@@ -256,6 +259,5 @@
 }
 
 .end-game__text-line_pink:hover {
-    opacity: 0.9;
-    font-size: 2.7em;
+    font-size: 2.8em;
 }

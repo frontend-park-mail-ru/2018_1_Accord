@@ -6,7 +6,6 @@ import {selector} from '../../../config/selector.js';
 import NavBar from '../../../components/blocks/navBar/navBar.js';
 import MenuItems from '../../../components/blocks/menuItems.js';
 
-
 export default class MenuView extends BaseView {
   constructor() {
     super('main/views/pages/MainMenuView/MainMenuView.tmpl');
@@ -41,10 +40,8 @@ export default class MenuView extends BaseView {
       })
       .catch((error) => {
         this._rejectUser(error);
-
-        new NavBar(this.menu, this.navBar, this.user);
-
         this.loader.style.display = 'none';
+        new NavBar(this.menu, this.navBar, this.user);
         new MenuItems(this.menu, this.menuItems);
 
       });

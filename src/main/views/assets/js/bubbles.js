@@ -59,7 +59,7 @@
     individual_donut.className = 'individual-donut';
     individual_donut.setAttribute('style',
       'left: ' + randomValue(bArray) + 'px; ' +
-      'bottom: ' + -100 + 'px; ' +
+      'bottom: ' + -150 + 'px; ' +
       'width: ' + size + 'px; ' +
       'height: ' + size + 'px;');
     donutsSelector.appendChild(individual_donut);

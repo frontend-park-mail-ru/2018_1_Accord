@@ -1,3 +1,5 @@
+import audio from '../../../modules/AudioPlayer/AudioPlayer.js';
+
 export default class MuteButton {
 
   /**
@@ -20,6 +22,7 @@ export default class MuteButton {
   _onClick() {
     this.muteButton.addEventListener('click', (event) => {
       event.preventDefault();
+      audio.onMute();
     });
   }
 }

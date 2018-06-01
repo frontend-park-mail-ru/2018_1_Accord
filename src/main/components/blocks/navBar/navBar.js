@@ -9,7 +9,7 @@ export default class NavBar {
    *
    * @param {HTMLElement} element
    * @param {Array<String>} selectors
-   * @param {User} userdata
+   * @param {User || null} userdata
    */
   constructor(element, selectors, userdata) {
     this.navBar = element.querySelector(selector.NAV_BAR);

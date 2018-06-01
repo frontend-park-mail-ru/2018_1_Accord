@@ -7,7 +7,7 @@ export default class Circle extends Figure {
     this.width = radius * 2;
 
     this.img = new Image(this.width, this.width);
-    this.img.src = '/images/donut2.png';
+    this.img.src = '/img/donut.png';
   }
 
   draw() {
