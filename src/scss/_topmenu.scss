@@ -1,0 +1,96 @@
+.topmenu {
+  min-width: 400px;
+  width: 100%;
+  height: 60px;
+  /* position: relative; */
+  z-index: 1;
+}
+
+.topmenu__user {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.topmenu__user__avatar {
+  margin: 5px;
+  height: 40px;
+  width: 40px;
+  /* background: url("../avatar.jpg"); */
+  background-size: cover;
+  border-radius: 100%;
+  transition: transform 0.5s;
+}
+
+.topmenu__user__avatar:hover {
+  transform: scale(1.2);
+}
+
+.topmenu__user__name {
+  padding: 10px 0 0 8px;
+  font-family: "Nunito";
+  color: #f3f8f0;
+  font-size: 20px;
+}
+
+.topmenu_user__left-position {
+  position: absolute;
+  top: 10px;
+  left: 70px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.topmenu__buttons-right_container {
+  position: fixed;
+  right: 0;
+  margin-top: 10px;
+  height: 50px;
+  width: 120px;
+}
+
+.topmenu__buttons-left_container {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 50px;
+  width: 70px;
+  padding: 0 0 0 20px;
+}
+
+.topmenu__button {
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+  display: inline-block;
+  cursor: pointer;
+  background-size: cover;
+  user-select: none;
+  transition: transform 0.5s;
+}
+
+.topmenu__button:hover {
+  opacity: 0.9;
+  transform: scale(1.2);
+}
+
+.topmenu__button-mute.m-unmuted {
+  background-image: url('../icons/i-unmuted.png');
+}
+
+.topmenu__button-mute.m-muted {
+  background-image: url('../icons/i-muted.png');
+}
+
+.topmenu__button-settings {
+  display: inline-block !important;
+  background-image: url('../icons/i-settings.png');
+}
+
+.topmenu__button-back {
+  background-image: url('../icons/i-back.png');
+}

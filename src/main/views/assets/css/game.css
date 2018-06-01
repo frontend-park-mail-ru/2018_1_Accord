@@ -1,8 +1,8 @@
 .game-view {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+
+    background-color: #59c4eb ;
 
     height: 100%;
     width: 100%;
@@ -11,18 +11,22 @@
 .start_game {
     display: flex;
     align-items: center;
+    flex-direction: row;
+}
+
+.start_game-container {
+    display: flex;
+    align-items: center;
     justify-content: center;
-
-    height: 70%;
-    width: 40%;
-
     flex-direction: column;
-    margin-top: 15%;
-    margin-right: 30px;
+
+    height: 40%;
+    width: 100%;
+
+    margin-top: 12%;
 
     min-width: 300px;
     min-height: 250px;
-
 }
 
 .start_game__image {
@@ -30,10 +34,15 @@
     background-size: cover;
     position: absolute;
 
-    width: 250px;
-    height: 417px;
+    width: 10%;
+    height: 45%;
+    min-height: 275px;
+    min-width: 200px;
+    max-height: 417px;
+    max-width: 250px;
 
-    margin: 0 0 0 300px;
+    margin: 40% 10px 10px 10%;
+
 }
 
 .start_game__select {
@@ -41,8 +50,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    width: 100%;
-    height: 40%;
+    width: 50%;
+    height: 30%;
 }
 
 .start_game__select-text {
@@ -98,7 +107,7 @@
 
     min-width: 100px;
 
-    margin: 50px;
+    margin: 30px;
     text-align: center;
     cursor: pointer;
     font-size: 2.5em;
@@ -115,7 +124,7 @@
 
     min-width: 100px;
 
-    margin: 50px;
+    margin: 30px;
     text-align: center;
     cursor: pointer;
     font-size: 2.5em;
@@ -145,10 +154,59 @@
     user-select: none;
 }
 
-.game-view__area {
-    height: 100% !important;
+.end-game {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    height: 50%;
+    width: 100%;
+
+    margin-top: 20%;
+
+    min-width: 300px;
+    min-height: 250px;
+
+    font-family: 'LuckiestGuy';
+    font-size: 2.5em;
+    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
+    user-select: none;
+
 }
 
-.game-view__canvas {
-    height: 100% !important;
+.end-game__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.end-game__text-line_white {
+    width: 50%;
+    color: #f3f8f0;
+    margin: 20px;
+    text-align: center;
+}
+
+.end-game__text-line_yellow {
+    width: 50%;
+    text-align: center;
+    color: #ffd304;
+    margin: 20px;
+}
+
+.end-game__text-line_enemy {
+    width: 50%;
+    color: #f3f8f0;
+    margin: 20px;
+    text-align: center;
+}
+
+.end-game__text-line_pink {
+    width: 50%;
+    text-align: center;
+    margin: 20px;
+    color: #f92397;
 }

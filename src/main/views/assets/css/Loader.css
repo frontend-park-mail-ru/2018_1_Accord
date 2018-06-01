@@ -8,8 +8,12 @@
 }
 
 .loader {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
+
     border-radius: 50%;
 }
 

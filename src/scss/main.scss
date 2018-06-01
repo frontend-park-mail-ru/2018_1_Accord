@@ -22,6 +22,11 @@ body {
     min-width: 400px;
     height: 100%;
     margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     /* background: #fff url('../donuts_font.png') 100% 100%;
     background-size: cover; */
     background-color: #59c4eb;
@@ -32,12 +37,12 @@ body {
     width: 100%;
     height: 100%;
 }
-
-.game-view {
-    height: min-content;
-    margin: 0;
-    background-color: #59c4eb ;
-}
+//
+//.game-view {
+//    height: min-content;
+//    margin: 0;
+//    background-color: #59c4eb ;
+//}
 
 .menu {
     width: 100%;
@@ -374,31 +379,6 @@ input {
 } */
 /***************************************************/
 
-.error_text {
-    width: 200px;
-    background-color: #a10918;
-    color: #fff;
-    font-family: 'Nunito';
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-}
-
-.arrow_block {
-    width: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.arrow {
-    width: 15px;
-    height: 15px;
-    background-image: url("../icons/arrow.png");
-    background-size: cover;
-}
 
 /* Essential CSS - Makes the effect bubble work */
 .donuts {
@@ -415,22 +395,4 @@ input {
     bottom: -100px;
     z-index: -1;
     transition: transform 550ms;
-}
-
-
-.game__title-error {
-    text-align: center;
-    font-family: "LuckiestGuy";
-    color: #f92397;
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
-    font-size: 200%;
-    user-select: none;
-}
-
-.game-view__area {
-    height: 100% !important;
-}
-
-.game-view__canvas {
-    height: 100% !important;
 }

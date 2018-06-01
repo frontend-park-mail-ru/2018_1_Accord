@@ -18,6 +18,8 @@ class UserService {
     switch (response.status) {
       case 200:
         return response.json();
+      case 400:
+        return;
       case 401:
         return;
       case 500:

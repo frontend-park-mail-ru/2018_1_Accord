@@ -1,22 +1,24 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-  <div class="start_game__image"></div>
-  <div class="start_game">
 
-    <div class="start_game__select">
-      <div class="start_game__select-text">Select level</div>
-      <div class="start_game__select-select">
-        <select>
-          <option value="1">Easy</option>
-          <option value="2">Hard</option>
-        </select>
+  <div class="start_game">
+    <div class="start_game-container">
+      <div class="start_game__select">
+        <div class="start_game__select-text">Select level</div>
+        <div class="start_game__select-select">
+          <select>
+            <option value="1">Easy</option>
+            <option value="2">Hard</option>
+          </select>
+        </div>
+      </div>
+      <div class="start_game__buttons">
+        <div class="start_game__buttons-single">
+          Single player
+        </div>
+        <div class="start_game__buttons-battle">Battle</div>
       </div>
     </div>
-    <div class="start_game__buttons">
-      <div class="start_game__buttons-single">
-        Single player
-      </div>
-      <div class="start_game__buttons-battle">Battle</div>
-    </div>
+    <div class="start_game__image"></div>
   </div>
 
 </fest:template>

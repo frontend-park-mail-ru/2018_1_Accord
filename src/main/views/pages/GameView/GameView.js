@@ -10,6 +10,7 @@ import {gameSettings} from '../../../config/gameSettings.js';
 import {events} from '../../../modules/events.js';
 import {gameObjects} from '../../../modules/game/graphics/gameObjects.js';
 import StartGameView from '../../../components/blocks/startGame/StartGame.js';
+import EndGameView from '../../../components/blocks/endGame/EndGameView.js';
 
 
 export default class GameView extends BaseView {
@@ -27,19 +28,32 @@ export default class GameView extends BaseView {
       level: gameSettings.level.EASY
     };
 
-    this.bus.on(events.GAME.FINISH, function () {
-      if (this.active) {
-        //window.history.back();
-        this.gameProc.destroy();
-      }
-    }.bind(this));
+    this._onGameFinish = this._onGameFinish.bind(this);
+    this._onLevelSelected = this._onLevelSelected.bind(this);
+    this._onSingleClicked = this._onSingleClicked.bind(this);
+    this._onBattleClicked = this._onBattleClicked.bind(this);
+    this.handleStart = this.handleStart.bind(this);
+
+    this.bus.on(events.GAME.FINISH, this._onGameFinish);
+  }
+
+  destroy() {
+    if (this.gameProc) {
+      this.gameProc.destroy();
+      this.gameProc = null;
+    }
+    this.bus.off(events.GAME.FINISH, this._onGameFinish);
+    this.bus.off(events.START_GAME.LEVEL_SELECTED, this._onLevelSelected);
+    this.bus.off(events.START_GAME.SINGLE_CLICKED, this._onSingleClicked);
+    this.bus.off(events.START_GAME.BATTLE_CLICKED, this._onBattleClicked);
+
+    super.destroy();
   }
 
   render() {
     super.render();
 
     this.loader.style.display = 'none';
-
     this._getElements();
 
     userService.getUser()
@@ -59,26 +73,10 @@ export default class GameView extends BaseView {
 
   _showStartMenu() {
     this.startMenu = new StartGameView(this.game, this.user);
-    this.bus.on(events.START_GAME.LEVEL_SELECTED, (value) => {
-      this.gameSettings.level = value;
-      Logger.log('level: ', value);
-    });
 
-    this.bus.on(events.START_GAME.SINGLE_CLICKED, () => {
-      this.gameSettings.player = gameSettings.player.SINGLE_PLAYER;
-      Logger.log('game settings: ', this.gameSettings);
-
-
-      this.canvas.height = gameObjects.CANVAS.height;
-      this.canvas.width = gameObjects.CANVAS.width;
-      this.gameProc = new Game(this.canvas);
-      this.gameProc.start();
-    });
-
-    this.bus.on(events.START_GAME.BATTLE_CLICKED, () => {
-      this.gameSettings.player = gameSettings.player.BATTLE;
-      Logger.log('game settings: ', this.gameSettings);
-    });
+    this.bus.on(events.START_GAME.LEVEL_SELECTED, this._onLevelSelected);
+    this.bus.on(events.START_GAME.SINGLE_CLICKED, this._onSingleClicked);
+    this.bus.on(events.START_GAME.BATTLE_CLICKED, this._onBattleClicked);
   }
 
   _getElements() {
@@ -86,10 +84,15 @@ export default class GameView extends BaseView {
     this.unAuthInfo = this.game.querySelector(selector.GAME_UNAUTH_INFO);
     this.errorField = this.game.querySelector(selector.GAME_ERROR);
     this.canvas = this.el.querySelector(selector.CANVAS);
+    this.endGame = this.game.querySelector(selector.END_GAME);
 
     this.unAuthInfo.style.display = 'none';
     this.errorField.style.display = 'none';
     this.canvas.style.display = 'none';
+    this.endGame.style.display = 'none';
+
+    this.canvas.height = gameObjects.CANVAS.height;
+    this.canvas.width = gameObjects.CANVAS.width;
 
     this.game.parentElement.style.height = '100%';
   }
@@ -127,5 +130,37 @@ export default class GameView extends BaseView {
     this.gameSettings.mode = gameSettings.mode.OFFLINE;
 
     Logger.error(error);
+  }
+
+  _onGameFinish(result) {
+    console.log('finish', result);
+    if (this.active) {
+      this.gameProc.destroy();
+      this.endGame = new EndGameView(this.game, result);
+    }
+  }
+
+  handleStart() {
+    this.gameProc = new Game(this.canvas, this.gameSettings);
+    this.startMenu.style.display = 'none';
+    this.unAuthInfo.style.display = 'none';
+    this.errorField.style.display = 'none';
+    this.canvas.style.display = 'block';
+    this.gameProc.start();
+  }
+
+  _onLevelSelected(value) {
+    this.gameSettings.level = value;
+    Logger.log('level: ', value);
+  }
+
+  _onSingleClicked() {
+    this.gameSettings.player = gameSettings.player.SINGLE_PLAYER;
+    this.handleStart();
+  }
+
+  _onBattleClicked() {
+    this.gameSettings.player = gameSettings.player.BATTLE;
+    this.handleStart();
   }
 }
