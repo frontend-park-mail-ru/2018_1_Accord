@@ -38,7 +38,6 @@ export default class Donut extends Figure {
     const dx = dt * this.v * Math.cos(this.angle) * 0.01;
     const dy = dt * this.v * Math.sin(this.angle) * 0.01;
 
-    console.log('fly: ', this.x, this.y);
     this.x += this.position === 'LEFT' ? dx : -dx;
     this.y -= dy;
 
