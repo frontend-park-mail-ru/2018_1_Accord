@@ -26,7 +26,10 @@ export default class SinglePlayer extends GameEngine {
 
     } else if (this._pressed('FINISH', event)) {
       this.gameStarted = false;
-      EventBus.emit(events.GAME.FINISH);
+      EventBus.emit(events.GAME.FINISH, {
+        you: this.state.score,
+        resultString: this.state.lives > 0 ? 'You win!' : 'You lost',
+      });
 
     } else if (this._pressed('UP', event) && this.gameStarted) {
       EventBus.emit(events.GAME.POSITION_CHANGED, 'UP');

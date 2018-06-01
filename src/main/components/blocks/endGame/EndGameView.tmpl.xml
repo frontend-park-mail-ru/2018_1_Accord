@@ -1,0 +1,18 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+    <div class="end-game">
+        <div class="end-game__container">
+            <div class="end-game__text-line_white">
+                Your score:
+                <fest:value>data.you</fest:value>
+            </div>
+            <div class="end-game__text-line_enemy">
+                Enemy's score:
+                <fest:value>data.enemy</fest:value>
+            </div>
+            <div class="end-game__text-line_yellow">
+                <fest:value>data.resultString</fest:value>
+            </div>
+            <div class="end-game__text-line_pink">Try again</div>
+        </div>
+    </div>
+</fest:template>

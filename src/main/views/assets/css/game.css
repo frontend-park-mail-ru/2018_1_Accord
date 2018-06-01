@@ -11,9 +11,7 @@
 .start_game {
     display: flex;
     align-items: center;
-
     flex-direction: row;
-
 }
 
 .start_game-container {
@@ -156,8 +154,59 @@
     user-select: none;
 }
 
-.game-view__area {
+.end-game {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    height: 50%;
+    width: 100%;
+
+    margin-top: 20%;
+
+    min-width: 300px;
+    min-height: 250px;
+
+    font-family: 'LuckiestGuy';
+    font-size: 2.5em;
+    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.2);
+    user-select: none;
+
 }
 
-.game-view__canvas {
+.end-game__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.end-game__text-line_white {
+    width: 50%;
+    color: #f3f8f0;
+    margin: 20px;
+    text-align: center;
+}
+
+.end-game__text-line_yellow {
+    width: 50%;
+    text-align: center;
+    color: #ffd304;
+    margin: 20px;
+}
+
+.end-game__text-line_enemy {
+    width: 50%;
+    color: #f3f8f0;
+    margin: 20px;
+    text-align: center;
+}
+
+.end-game__text-line_pink {
+    width: 50%;
+    text-align: center;
+    margin: 20px;
+    color: #f92397;
 }
