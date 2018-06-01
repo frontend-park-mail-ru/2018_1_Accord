@@ -91,11 +91,6 @@ export default class GameScene {
     if (this.donutRight) {
       EventBus.off(events.GAME.ENEMY_STATE_CHANGED, this.onEnemyStateChanged);
     }
-
-    this.donutLeft = this.donutRight = null;
-    this.homer = null;
-    this.state = this.enemyState = null;
-    this.ctx = null;
   }
 
   donutMove(direction) {

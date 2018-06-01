@@ -152,13 +152,11 @@ export default class GameView extends BaseView {
 
   _onSingleClicked() {
     this.gameSettings.player = gameSettings.player.SINGLE_PLAYER;
-    console.log(this.bus.listeners);
     this.handleStart();
   }
 
   _onBattleClicked() {
     this.gameSettings.player = gameSettings.player.BATTLE;
-    console.log(this.bus.listeners);
     this.handleStart();
   }
 }

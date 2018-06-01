@@ -4,7 +4,7 @@ import userService from './UserService.js';
 
 class WebSocketService {
   constructor() {
-    this.ws = new WebSocket('ws://localhost:8999/');
+    this.ws = new WebSocket('wss://донуц.рф/api/mgame');
     this.ws.onopen = () => {
       userService.getUser()
         .then((user) => {
