@@ -32,7 +32,7 @@ this.addEventListener('fetch', (event) => {
       .then((cachedResponse) => {
         if (navigator.onLine) {
           return fetch(event.request).then((serverResponse) => {
-            if (!~path.indexOf('https://backend-accord-02-2018.herokuapp.com/')) {
+            if (!~path.indexOf('https://донуц.рф/api')) {
               let serverResponseClone = serverResponse.clone();
               caches.open(CACHE_NAME).then((cache) => {
                 cache.put(event.request, serverResponseClone);
