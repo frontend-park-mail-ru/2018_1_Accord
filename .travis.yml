@@ -1,18 +1,11 @@
-sudo: required
-dist: trusty
 language: node_js
-node_js: 9
-branches:
-  only:
-  - master
-  - develop
-  - yury
-deploy:
-  provider: heroku
-  app:
-    master: donuts-accord
-    develop: donuts-dev
-    yury: donutswars
-  skip_cleanup: true
-  api_key:
-    secure: Xm09nHNDF34+3L1U6JQ4wmcEJd2+POv0vFmpt+25kvW0XNkThbof7jM6qL7V++GWcjFJUsDexb0PDankxnkfGBgO3RYjbKVgghpIqfAwxZFx7aVl4kmf58TdcVXB5kK13psRFFa0rFl6Gh3S04kz0mDQEC3am39nnAhtpc8I9Nuib3gFouthTRXtMVzXT13B9DfujRVrfKMTwaF2N4ZTh48Z1DRlimR56JKKwJpHD4vstthEt1M3WwhcFz/DW7OaHVt2K0tNW/dSuLBD/OAYmGQnRF47UVyiUNdncLEzk+pcrpRttQD3uPuW0NV5ydtoVJLYQQNUJUZbPi16uKpUwZjSyn5V5daDlIoE5iqAJcdoeHj58QOj4kzJ9R2pP2PAr1uVdQpd3z24Bw5SQnTBPYFRmvJMJXHZqdpiBFOpJQ44XBtfkmjFHSjpZ/k3q2KEApjiVy035txrbyxbl12+o28CvUtzDLg18nU/RbTpF28UNfMq5ioBLcp/uPyN+6+AozjtqllSA7pHBxFTEJOlXmE/5f/E9hFoO9bLAS2vy5S8/lhD05GAcWnkSM/MGcrZInXQOBsHp8VDbneLmTxpLnA0nhzpW+AtXjsZ+Nx+w2cIRrNVgsNfMHAy8Fm4SlIrFsAnUvyDz8tgFGwoM/ilAhg5nP6urOHryQX4dI+1YVg=
+node_js:
+- '8'
+script:
+- eval "$(ssh-agent -s)"
+- ssh-keyscan -H 78.155.207.152 >> ~/.ssh/known_hosts
+- ssh deploy@78.155.207.152 'rm -rf /var/www/*'
+- scp -r ./src/* deploy@78.155.207.152:/var/www
+before_install:
+- openssl aes-256-cbc -K $encrypted_34838692b38c_key -iv $encrypted_34838692b38c_iv
+  -in id_rsa_vscale_deploy.enc -out ~\/.ssh/id_rsa_vscale_deploy -d
