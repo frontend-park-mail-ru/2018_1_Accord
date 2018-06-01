@@ -2,6 +2,7 @@ language: node_js
 node_js:
 - '8'
 script:
+- npm run build-fest
 - eval "$(ssh-agent -s)"
 - ssh-keyscan -H 78.155.207.152 >> ~/.ssh/known_hosts
 - chmod 600 $HOME/.ssh/id_rsa
