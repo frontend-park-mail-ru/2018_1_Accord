@@ -10,7 +10,7 @@ const APIMethods = {
 };
 
 export const config = {
-  debug: true
+  debug: false
 };
 
 export default {APIMethods, serverUrl};

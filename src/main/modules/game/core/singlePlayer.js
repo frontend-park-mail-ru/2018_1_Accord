@@ -22,7 +22,6 @@ export default class SinglePlayer extends GameEngine {
     if (this._pressed('START', event) && !this.gameStarted) {
       this.gameStarted = true;
       EventBus.emit(events.GAME.START);
-      console.log('start clicked');
 
     } else if (this._pressed('FINISH', event)) {
       this.gameStarted = false;

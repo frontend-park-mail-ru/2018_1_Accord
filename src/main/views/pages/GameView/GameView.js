@@ -135,7 +135,6 @@ export default class GameView extends BaseView {
   }
 
   _onGameFinish(result) {
-    console.log('finish', result);
     if (this.active) {
       this.gameProc.destroy();
       this.endGame = new EndGameView(this.game, result);

@@ -120,7 +120,6 @@ export default class GameScene {
   }
 
   enemyFly(delay) {
-    console.log(this.donutRight.angle);
     const enemyFlightState = this.donutRight.fly(delay, {x: this.homer.x, y: this.homer.y});
 
     if (enemyFlightState.hit) {
@@ -129,7 +128,6 @@ export default class GameScene {
       this.enemyState.flightState = enemyFlightState;
       // todo this.scoreboard.setScore({player_1: `${this.state.score}`});
       // EventBus.emit(events.GAME.COLLISION, this.state);
-      console.log('enemy hit homer');
       return;
     }
 
@@ -137,7 +135,6 @@ export default class GameScene {
       this.enemyState.inFlight = false;
       this.enemyState.flightState = enemyFlightState;
       //todo EB emit Collision
-      console.log('enemy missed homer');
     }
   }
 

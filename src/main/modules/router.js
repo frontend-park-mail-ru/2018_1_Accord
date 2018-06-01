@@ -37,9 +37,9 @@ export default class Router {
    */
   open(path) {
     const view = this.map[path];
-    if (!view || view === this.active) {
-      return this;
-    }
+    // if (!view || view === this.active) {
+    //   return this;
+    // }
 
     if (this.active) {
       this.active.destroy();
@@ -91,6 +91,7 @@ export default class Router {
     });
 
     EventBus.on(events.ROUTE.LOGOUT, () => {
+      console.log('logout in router');
       this.open(pagePaths.START_PATH);
     });
 

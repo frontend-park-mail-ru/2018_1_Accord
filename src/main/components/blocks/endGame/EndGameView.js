@@ -12,7 +12,7 @@ export default class EndGameView extends BaseView {
     this.tryAgain = this.endGame.querySelector(selector.TRY_AGAIN);
     this.tryAgain.addEventListener('click', (event) => {
       event.preventDefault();
-      console.log('try again');
+      console.log('try again', EventBus.listeners);
       EventBus.emit(events.ROUTE.GAME);
     });
 
