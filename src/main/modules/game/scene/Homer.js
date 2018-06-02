@@ -1,5 +1,7 @@
 import Figure from '../graphics/figure.js';
 import {gameObjects} from '../graphics/gameObjects.js';
+import Logger from '../../../utils/logger.js';
+import {selector} from '../../../config/selector.js';
 
 export default class Homer extends Figure {
   constructor(ctx, x, y) {
@@ -23,7 +25,14 @@ export default class Homer extends Figure {
   }
 
   draw() {
-    this.ctx.drawImage(this.curImg, this.x, this.y, this.width, this.height);
+    try {
+      this.ctx.drawImage(this.curImg, this.x, this.y, this.width, this.height);
+    } catch (error) {
+      Logger.log(error);
+      const errorField = document.querySelector(selector.GAME_ERROR);
+      errorField.style.display = 'block';
+      errorField.innerHTML = 'Can not load some images, check connection';
+    }
   }
 
   move(dt) {

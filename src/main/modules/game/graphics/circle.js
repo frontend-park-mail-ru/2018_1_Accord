@@ -1,4 +1,5 @@
 import Figure from './figure.js';
+import Logger from '../../../utils/logger.js';
 
 export default class Circle extends Figure {
   constructor(ctx, radius) {
@@ -12,10 +13,14 @@ export default class Circle extends Figure {
 
   draw() {
     const ctx = this.ctx;
-    ctx.beginPath();
-    this.ctx.drawImage(this.img, this.x, this.y, this.img.width, this.img.height);
-    ctx.closePath();
-    ctx.fill();
+    try {
+      ctx.beginPath();
+      this.ctx.drawImage(this.img, this.x, this.y, this.img.width, this.img.height);
+      ctx.closePath();
+      ctx.fill();
+    } catch (e) {
+      Logger.log(e);
+    }
   }
 
   render() {

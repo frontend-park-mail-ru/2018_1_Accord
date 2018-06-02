@@ -194,6 +194,7 @@
     color: #f92397;
     text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
     font-size: 200%;
+    margin-top: 30px;
     user-select: none;
 }
 
@@ -260,4 +261,9 @@
 
 .end-game__text-line_pink:hover {
     font-size: 2.8em;
+}
+
+.game-view__area {
+    margin-top: 30px;
+    width: 100%;
 }

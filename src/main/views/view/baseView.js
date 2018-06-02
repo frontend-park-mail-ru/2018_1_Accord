@@ -16,8 +16,8 @@ export default class BaseView {
   }
 
   render(attrs) {
-    audio.play();
     this.el.innerHTML = this.tmpl(attrs);
+    audio.play();
     return this;
   }
 

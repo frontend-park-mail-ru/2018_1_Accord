@@ -1,5 +1,5 @@
 const canvasWidth = window.innerWidth;
-const canvasHeight = window.innerHeight - 120;
+const canvasHeight = window.innerHeight;
 
 export const state = {
   user: 'me',
@@ -63,9 +63,9 @@ export const gameObjects = {
   },
 
   TEXT: {
-    size: canvasHeight * 0.03,
+    size: canvasHeight * 0.04,
     x: canvasWidth * 0.5,
-    y: 20,
+    y: 30,
     dy: canvasHeight * 0.04,
 
     centerSize: canvasHeight * 0.05,

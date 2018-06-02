@@ -24,6 +24,11 @@ export default class GameScene {
       this.enemyState = enemyState;
     }
 
+    window.addEventListener('resize', () => {
+      this.ctx.canvas.width = window.innerWidth;
+      this.ctx.canvas.height = window.innerHeight;
+    });
+
     this.renderScene = this.renderScene.bind(this);
     this.onStateChanged = this.onStateChanged.bind(this);
     this.stop = this.stop.bind(this);

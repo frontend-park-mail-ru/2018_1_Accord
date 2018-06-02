@@ -1,3 +1,5 @@
+import Logger from '../../utils/logger.js';
+
 class AudioPlayer {
   constructor() {
     this.audio = new Audio('/music/thesimpsons.mp3');
@@ -5,7 +7,13 @@ class AudioPlayer {
   }
 
   play() {
-    this.audio.play();
+    this.audio.play()
+      .then(() => {
+        this.isPlaying = true;
+      })
+      .catch((error) => {
+        Logger.log(error);
+      });
   }
 
   onMute() {
