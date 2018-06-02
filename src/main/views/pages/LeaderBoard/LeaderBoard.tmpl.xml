@@ -17,7 +17,7 @@
                     <div class="leader-board__table">
                         <table class="items">
                             <tbody>
-                                <fest:for iterate="data.scoreBoard" index="i" value="v">
+                                <fest:for iterate="data.data" index="i" value="v">
                                     <tr>
                                         <td>
                                             <fest:value>i + 1</fest:value>

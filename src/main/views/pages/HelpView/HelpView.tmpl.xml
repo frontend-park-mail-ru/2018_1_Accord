@@ -17,13 +17,14 @@
                     </div>
 
                     <div class="help-view__text container_help">
-                        <p><b>This game is a web version of the Auralux for two players. The game is played on the field, which
-                            is an abstract space. Single-user mode is implemented using a bot. Every player has a bubble
-                            at the beginning of the game. Any bubble occupied by the player can generate units with a certain
-                            speed. The goal of the game is to capture all the located bubbles on the map. For each bubble
-                            belonging to the player that generated a certain number of units can used to capture both enemy
-                            and neutral bubbles. With the help of units, you can also to improve the bubbles already in the
-                            possession of the player.</b></p>
+                        <p><b>
+                            The game is dedicated to the great donuts and Homer, their biggest fan.
+                            Please help Homer not to stay hungry.
+                            In single-player mode you need to throw in Homer as many donuts as possible, so that he does not feel sad.
+                            But there are only few donuts, so do not miss.
+                            In battle mode help Homer to eat more donuts than your opponent can do it.
+                            Otherwise, Homer does not want to be friends with you.
+                            </b></p>
                         <div class="help-view__title title__sub">Authors</div>
                         <b>
                             <p>Kamoldinova Victoria

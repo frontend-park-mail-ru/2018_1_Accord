@@ -24,6 +24,11 @@ export default class LeaderBoardView extends BaseView {
           this.errorField = this.el.querySelector(selector.LEADERBOARD_ERROR);
           this.errorField.innerText = `Can't open leader board on page ${this.page}`;
         }
+        else {
+          this.loader.style.display = 'none';
+          super.render(data);
+          new NavBar(this.el, this.navBar, this.user);
+        }
       })
       .catch((error) => {
         this.errorField = this.el.querySelector(selector.LEADERBOARD_ERROR);
@@ -31,11 +36,6 @@ export default class LeaderBoardView extends BaseView {
         Logger.error(error);
         //TODO: error dispatcher
       });
-
-    this.loader.style.display = 'none';
-    super.render(this.data);
-    new NavBar(this.el, this.navBar, this.user);
-
     return this;
   }
 }
