@@ -22,7 +22,7 @@ export default class MenuItems {
           break;
 
         case selector.HELP_BUTTON:
-          new LinkedButton(this.menu, selector.HELP_BUTTON, 'Help', undefined, pagePaths.HELP_PATH);
+          new LinkedButton(this.menu, selector.HELP_BUTTON, 'About', undefined, pagePaths.HELP_PATH);
           break;
 
         case selector.LOGIN_BUTTON:
