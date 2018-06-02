@@ -3,6 +3,7 @@ import WebSocketService from '../../../services/WebSocketService.js';
 import EventBus from '../../eventBus.js';
 import {events} from '../../events.js';
 import {enemyState, state} from '../graphics/gameObjects.js';
+import Logger from '../../../utils/logger.js';
 
 export default class MultiPlayer extends GameEngine {
   constructor(scene, controller) {
@@ -27,7 +28,11 @@ export default class MultiPlayer extends GameEngine {
     EventBus.off(events.WS.MESSAGE, this.receiveMessage);
     EventBus.off(events.WS.START_GAME, this.foundEnemyHandler);
     if (this.ws) {
-      this.ws.close();
+      try {
+        this.ws.close();
+      } catch (e) {
+        Logger.log(e);
+      }
     }
   }
 

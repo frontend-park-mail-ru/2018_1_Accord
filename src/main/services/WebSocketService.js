@@ -15,7 +15,11 @@ class WebSocketService {
           });
         })
         .catch((error) => {
-          this.ws.close();
+          try {
+            this.ws.close();
+          } catch (e) {
+            Logger.log(e);
+          }
           Logger.log(error);
           EventBus.emit(events.ROUTE.LOGIN);
         });
@@ -51,7 +55,11 @@ class WebSocketService {
   }
 
   close() {
-    this.ws.close();
+    try {
+      this.ws.close();
+    } catch (e) {
+      Logger.log(e);
+    }
   }
 }
 
